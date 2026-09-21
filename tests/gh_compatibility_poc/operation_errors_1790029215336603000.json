@@ -1,0 +1,5371 @@
+{
+  "runtime": {
+    "rhino": "8.35.26251.13002",
+    "gh": "Grasshopper, Version=8.35.26251.13002, Culture=neutral, PublicKeyToken=dda4f5ec2cd80803"
+  },
+  "ids": {
+    "Loft": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+    "Circle": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+    "Divide Curve": "2162e72e-72fc-4bf8-9459-d4d82fa8aa14",
+    "List Item": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+    "Interpolate": "2b2a4145-3dff-41d4-a8de-1ea9d29eef33",
+    "Line": "4c4e56eb-2f04-43f9-95a3-cc46a14f495a",
+    "Curve | Curve": "84627490-0fb2-4498-8138-ad134ee4cb36",
+    "Division": "ec875825-61e4-4c1c-a343-0e0cee0b321b",
+    "Boundary Surfaces": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+    "Brep Edges": "0148a65d-6f42-414a-9db7-9a9b2eb78437"
+  },
+  "cases": [
+    {
+      "case": "loft_single",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Loft",
+        "instance_id": "872fab7d-e693-4e3d-8958-6dfed15e284c",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 122.4483,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "f8e1c8ca-b7a1-4ac5-bb05-ae005724f9d4",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0093,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Options",
+            "instance_id": "ff9e6d44-584c-4360-a4c7-a7c05a342507",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "1f095317-34cc-4d42-bae8-51d0dcf00f3a",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.064,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "loft_split_branches",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Loft",
+        "instance_id": "2686007f-1a63-4169-9339-36ae8789190a",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 3.3356,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 2,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "152c93c7-72be-4abd-a105-9636748df234",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0012,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 2,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              },
+              {
+                "path": "{1}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 2
+          },
+          {
+            "name": "Options",
+            "instance_id": "9633e9dd-7726-46b5-a623-13c9fe16a140",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "468941b3-79b2-4af2-981d-598dadc846cc",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.002,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 2,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              },
+              {
+                "path": "{1}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 2,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "loft_mixed_branches",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Loft",
+        "instance_id": "86d5619e-6d79-4f40-81cb-b6bdf0a89c95",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 32.9269,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 3,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "7a77f5dd-771a-48e8-b4ce-becc69d9aea7",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0014,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 4,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              },
+              {
+                "path": "{1}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              },
+              {
+                "path": "{2}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 4
+          },
+          {
+            "name": "Options",
+            "instance_id": "25322a72-30e5-4a54-b490-fb7e1b0cb985",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "2f809314-e30c-4aa7-b48e-7879d96f0fe3",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0283,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 3,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Brep",
+                    "text": "Untrimmed Surface",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              },
+              {
+                "path": "{1}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              },
+              {
+                "path": "{2}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 2,
+            "valid_count": 1
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "circle_zero",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Circle",
+        "instance_id": "b9771c45-a152-433e-8108-dd3fda26e3e0",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.062,
+        "component_guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+        "component_type": "CurveComponents.Component_Circle",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Plane",
+            "instance_id": "eecb9a58-a014-4b04-a21b-9efa825c5131",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Plane",
+                    "text": "World XY",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Radius",
+            "instance_id": "96b23e3d-2d55-4681-aaf4-79ca6bc43512",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.001,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "0",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "instance_id": "3ec247dc-4792-4b5e-8843-471ac596ee82",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Circle",
+                    "text": "Invalid Circle",
+                    "valid": false,
+                    "why_not": "Circle radius is too small."
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "circle_negative",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Circle",
+        "instance_id": "adeb1a7b-6861-4e84-9b9e-b732c7353c9b",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.0585,
+        "component_guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+        "component_type": "CurveComponents.Component_Circle",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Plane",
+            "instance_id": "3b7d3cb2-07f1-4567-803c-5e07c31674f3",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0002,
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Plane",
+                    "text": "World XY",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Radius",
+            "instance_id": "d2805a6a-616b-446a-9a9a-2197d7455c5f",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0023,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "-5",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "instance_id": "c53a2b67-a3db-4914-a896-e264505d2180",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Circle",
+                    "text": "Circle(R:5.00 mm)",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "divide_zero",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Divide Curve",
+        "instance_id": "01742001-a4b4-4c1b-8cbf-65d1f6c96684",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 180.7323,
+        "component_guid": "2162e72e-72fc-4bf8-9459-d4d82fa8aa14",
+        "component_type": "VectorComponents.DivisionComponents.Component_DivideCurve",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curve",
+            "instance_id": "9709c326-1483-437b-b6f8-cf20e5e66301",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0007,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Count",
+            "instance_id": "1b2c298b-8a84-4469-86fb-2b7f3eecaf10",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0006,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "0",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Kinks",
+            "instance_id": "ed32f983-02da-4041-b85a-66999d51a267",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.4269,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Points",
+            "instance_id": "5b64d885-83ae-4a58-b7bd-4581a82fc4ec",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 1.1092,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Tangents",
+            "instance_id": "c49311b4-97e1-477d-9fe1-95b2596b1614",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 1.2049,
+            "declared_type": "Vector",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Parameters",
+            "instance_id": "cbbca4f8-d44f-4db2-9051-b7f2e53f22fb",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Number",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "divide_negative",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Divide Curve",
+        "instance_id": "48d70ee0-b7e5-44e5-8ef4-0808757f4438",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "The division count must be at least 0."
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.6433,
+        "component_guid": "2162e72e-72fc-4bf8-9459-d4d82fa8aa14",
+        "component_type": "VectorComponents.DivisionComponents.Component_DivideCurve",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curve",
+            "instance_id": "42e0075a-5e91-413a-9905-bb444b73e5a1",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0329,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Count",
+            "instance_id": "1f171b12-dd3f-49f6-9970-ad5fdef359c2",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0012,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "-2",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Kinks",
+            "instance_id": "6520d1a3-3785-47a9-a325-75f78654dc4b",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0007,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Points",
+            "instance_id": "c6928c39-4319-49d9-ac11-2fa276ce08d5",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0119,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Tangents",
+            "instance_id": "8f1843c3-9365-4f77-8e1c-cf247dccb3de",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0111,
+            "declared_type": "Vector",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Parameters",
+            "instance_id": "2f7e73d1-0eea-43a1-a8b4-3e45a42df9ab",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Number",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "interpolate_one_point",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Interpolate",
+        "instance_id": "4ba7f442-03f6-4a05-8208-132d97ed1775",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Insufficient interpolation points for a curve"
+        ],
+        "phase": "Computed",
+        "processor_ms": 4.8249,
+        "component_guid": "2b2a4145-3dff-41d4-a8de-1ea9d29eef33",
+        "component_type": "CurveComponents.Component_InterpCurve",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Vertices",
+            "instance_id": "c88f84f9-73be-415a-b745-fd2791b532af",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0025,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{0, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Degree",
+            "instance_id": "61ba74b7-41f7-41c2-bfbb-d7199fbc8bbf",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0012,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "3",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Periodic",
+            "instance_id": "c57e4315-af20-49f2-9647-a720cc7301f8",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0014,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "KnotStyle",
+            "instance_id": "259b9a07-819b-4972-8261-489e314af746",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "1",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Curve",
+            "instance_id": "c2aeccad-e5c3-4054-bed4-3262de7ef851",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.019,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          },
+          {
+            "name": "Length",
+            "instance_id": "06e3838a-dc0c-4112-ae9d-a88cf80d59bc",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0021,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          },
+          {
+            "name": "Domain",
+            "instance_id": "e2a12e1d-e841-4d48-8452-11e89d8e196f",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0115,
+            "declared_type": "Domain",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "interpolate_bad_degree",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Interpolate",
+        "instance_id": "1d0f70d1-b369-48c1-8211-da466f11c028",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "Curve degree must be higher than zero"
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 11.9348,
+        "component_guid": "2b2a4145-3dff-41d4-a8de-1ea9d29eef33",
+        "component_type": "CurveComponents.Component_InterpCurve",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Vertices",
+            "instance_id": "ffbbb8e3-f6c1-4551-9d4f-f59d3f0c3cb5",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0016,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 4,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{0, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{1, 2, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{3, 1, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{5, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 4
+          },
+          {
+            "name": "Degree",
+            "instance_id": "50d87ceb-798a-48c2-9613-db9464830eb9",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0005,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "0",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Periodic",
+            "instance_id": "e60ef056-ee74-455c-86a8-6c72495b0951",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0008,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "KnotStyle",
+            "instance_id": "43e76f22-c578-49fc-bc31-2c85cf7a8aeb",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "1",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Curve",
+            "instance_id": "d0a496bc-425f-4025-9c90-ced53ea4b39e",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0126,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Polyline Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Length",
+            "instance_id": "196f0f14-4bc9-4a7b-8752-b130d1611799",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0011,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "6.708204",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Domain",
+            "instance_id": "95b7a3cd-b0fc-41aa-9366-60a366761e72",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Domain",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Interval",
+                    "text": "0 To 3",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "line_coincident",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Line",
+        "instance_id": "5f5c9f70-17dd-46af-9887-8c4b0b4563a5",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 6.3195,
+        "component_guid": "4c4e56eb-2f04-43f9-95a3-cc46a14f495a",
+        "component_type": "CurveComponents.Component_Line",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Start Point",
+            "instance_id": "be3678f7-109d-447e-9076-008b5a701e4c",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0034,
+            "declared_type": "Point",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{0, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "End Point",
+            "instance_id": "d7e945f4-eac2-4d29-aa47-cf4f9a16afb3",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0002,
+            "declared_type": "Point",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{0, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Line",
+            "instance_id": "1b5abe5b-93ad-452e-abcb-9904de15ebc3",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0026,
+            "declared_type": "Line",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Line",
+                    "text": "Invalid Line",
+                    "valid": false,
+                    "why_not": "Line is too short."
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "list_out_of_range",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "List Item",
+        "instance_id": "c4cf35f0-36d4-44ff-9423-3c6b29538642",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "Supplied index too high."
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 2.5385,
+        "component_guid": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+        "component_type": "MathComponents.ArrayComponents.Component_ListItemVariable",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "List",
+            "instance_id": "867151fb-8fe7-4651-b4ae-4106873722b0",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.6807,
+            "declared_type": "Generic Data",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "7",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Index",
+            "instance_id": "9268fd8e-61ee-44a5-baa0-a8c8950683b4",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0022,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "99",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Wrap",
+            "instance_id": "0f2ff496-ebc8-4046-a77a-da7001d40c69",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0009,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Item",
+            "instance_id": "29eb6ab2-c8cc-43c8-a52f-74a03f8c5043",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.038,
+            "declared_type": "Generic Data",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "division_by_zero",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Division",
+        "instance_id": "46026ad7-bbd5-4638-84b1-fdea42537318",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.5823,
+        "component_guid": "ec875825-61e4-4c1c-a343-0e0cee0b321b",
+        "component_type": "MathComponents.OperatorComponents.Component_Division_OBSOLETE",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "First number",
+            "instance_id": "b976fd66-e265-4514-b24e-207bfcd1332f",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0017,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "1",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Second number",
+            "instance_id": "b2a0ce45-8e9f-4a96-9221-6ce97e970d73",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0027,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "0",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Result",
+            "instance_id": "6386c68a-eb93-40fe-a18d-420c24a252bc",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0007,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "MaxValue",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "boundary_open",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Boundary Surfaces",
+        "instance_id": "6e0ffad0-cd2d-4b4b-8ad0-60f23201d8d2",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "Planar surface routine returned no results"
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 95.3159,
+        "component_guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_BoundarySurfaces",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Edges",
+            "instance_id": "354cd6af-64f0-41e6-9687-669ff8f745ba",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0027,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Line-like Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Surfaces",
+            "instance_id": "5617d312-54f5-48fe-8f07-b978a58d0140",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 1.4335,
+            "declared_type": "Surface",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "boundary_nonplanar",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Boundary Surfaces",
+        "instance_id": "653c4964-f5fb-40e3-89dd-7bccdd6fd0e4",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "Planar surface routine returned no results"
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 1.0363,
+        "component_guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_BoundarySurfaces",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Edges",
+            "instance_id": "5400c9a9-99ea-4b0e-8633-97af5a3cefcb",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0014,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Polyline Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Surfaces",
+            "instance_id": "8fb42fca-262d-4bce-b655-d0a7e33fb5e0",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.004,
+            "declared_type": "Surface",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "intersection_empty",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Curve | Curve",
+        "instance_id": "4f145a7b-58a7-4b4a-a8e2-a32b10d7aa2d",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 35.5815,
+        "component_guid": "84627490-0fb2-4498-8138-ad134ee4cb36",
+        "component_type": "CurveComponents.Component_CurveIntersection",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curve A",
+            "instance_id": "6f675375-b465-45c6-b808-edcfde77e11f",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0019,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Curve B",
+            "instance_id": "0a386f03-23d6-45e1-9fde-48af3224dd6c",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0003,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Points",
+            "instance_id": "b9a326a5-ed6b-4340-a3ec-ac3ac56aca4c",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0912,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Params A",
+            "instance_id": "f5f53468-a659-41d8-9298-a5ad72751f8b",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0015,
+            "declared_type": "Number",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Params B",
+            "instance_id": "696a2f8c-ee4d-41b1-8c69-f450c5675041",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Number",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "upstream_failure_cascade",
+      "repeat": 0,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Brep Edges",
+        "instance_id": "b7059b06-7c9a-4c7a-8064-e3604b2410ab",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.2442,
+        "component_guid": "0148a65d-6f42-414a-9db7-9a9b2eb78437",
+        "component_type": "SurfaceComponents.AnalysisComponents.Component_BRepEdges",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Brep",
+            "instance_id": "2e48d631-004e-442e-aa26-5139ad0cbbde",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.1792,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Naked",
+            "instance_id": "bd06a065-0d83-4d86-87f0-bfbb183ce09b",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0013,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Interior",
+            "instance_id": "6e67eda5-ac32-47de-bcca-a5a55dbd7289",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0002,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Non-Manifold",
+            "instance_id": "13c7cad9-14f9-45b3-b58b-50519ba6d51d",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": {
+        "name": "Loft",
+        "instance_id": "cdac7430-efb1-4ddc-8c17-829ba0dffdc0",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 0.1482,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "196390f3-2adf-4b8b-95b2-9983464c966b",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0008,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Options",
+            "instance_id": "515561f9-f0f5-4226-8108-8b85ac254d93",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "d36d1f48-ee9d-4981-8773-11a0193373a5",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0012,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "loft_single",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Loft",
+        "instance_id": "7fcb9bf6-8bd0-4184-b242-e054bd86ddbc",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 0.1528,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "4c467045-dc66-40ad-87be-abacb1f7935c",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0025,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Options",
+            "instance_id": "d256c627-4f94-49c8-9e47-2b0796282283",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "76bcda85-464d-4deb-807b-a3fb311cdbc4",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.001,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "loft_split_branches",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Loft",
+        "instance_id": "e32368ab-e1bb-4795-b5e9-75f4ed345502",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 0.1495,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 2,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "06d87da1-ef6b-4cd2-a127-481e0d7a84b2",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0008,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 2,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              },
+              {
+                "path": "{1}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 2
+          },
+          {
+            "name": "Options",
+            "instance_id": "838bbf0c-2edd-4518-baa6-e8c82a8fc738",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "93fcb2f5-42e9-4307-afdc-1f1da1426497",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0007,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 2,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              },
+              {
+                "path": "{1}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 2,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "loft_mixed_branches",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Loft",
+        "instance_id": "8a4f7201-b0bd-4615-a624-6841f0b5dc90",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 0.352,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 3,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "73441462-2584-44c2-9b05-8d1a4ca063c0",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0008,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 4,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              },
+              {
+                "path": "{1}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              },
+              {
+                "path": "{2}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 4
+          },
+          {
+            "name": "Options",
+            "instance_id": "b982bae1-3617-47db-a339-cf83bc80f47e",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "a4f6dcf3-9f21-45a9-92c5-67f0819d51d1",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0013,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 3,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Brep",
+                    "text": "Untrimmed Surface",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              },
+              {
+                "path": "{1}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              },
+              {
+                "path": "{2}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 2,
+            "valid_count": 1
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "circle_zero",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Circle",
+        "instance_id": "340cce9a-7598-4b88-bbd7-2cf7d3c77021",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.027,
+        "component_guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+        "component_type": "CurveComponents.Component_Circle",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Plane",
+            "instance_id": "57e4f9e0-8979-4085-b7e9-c12bfe05d45d",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Plane",
+                    "text": "World XY",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Radius",
+            "instance_id": "189f27c4-e52b-4df3-b647-d1d2d02f67b7",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0005,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "0",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "instance_id": "d3352c63-1a81-46a3-8563-0b7a4bc04fb2",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Circle",
+                    "text": "Invalid Circle",
+                    "valid": false,
+                    "why_not": "Circle radius is too small."
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "circle_negative",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Circle",
+        "instance_id": "fd5af3b8-0a22-47cf-a79d-9881b2f926f5",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.0179,
+        "component_guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+        "component_type": "CurveComponents.Component_Circle",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Plane",
+            "instance_id": "57ad1b8d-1438-44bd-8299-7a1983d97e69",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0001,
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Plane",
+                    "text": "World XY",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Radius",
+            "instance_id": "a2ce3972-e64c-46ba-8fb1-b29d307fc206",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0007,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "-5",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "instance_id": "73ddfcdc-62ed-49ac-aeca-ab61dceba2c3",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Circle",
+                    "text": "Circle(R:5.00 mm)",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "divide_zero",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Divide Curve",
+        "instance_id": "3c4a4e35-b215-4c8c-86ea-a4ba4c60f0cc",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.081,
+        "component_guid": "2162e72e-72fc-4bf8-9459-d4d82fa8aa14",
+        "component_type": "VectorComponents.DivisionComponents.Component_DivideCurve",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curve",
+            "instance_id": "deae0746-140d-4aa5-b129-5165be97ba9d",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0005,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Count",
+            "instance_id": "26f0643d-abfd-461d-9d4f-70039f5fef92",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0005,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "0",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Kinks",
+            "instance_id": "04f22108-79cc-44de-add3-6a8c71fcc914",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0015,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Points",
+            "instance_id": "0d16ee67-a895-4ace-bc94-94f4c382f581",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0013,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Tangents",
+            "instance_id": "9c2a9c17-e4fd-4a64-8c0e-8863726436e5",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0005,
+            "declared_type": "Vector",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Parameters",
+            "instance_id": "e534dbdb-1ab8-42d6-a317-8cad6433eab1",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Number",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "divide_negative",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Divide Curve",
+        "instance_id": "f8c7fae1-2603-4757-a1bd-03a5c4a03006",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "The division count must be at least 0."
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.1155,
+        "component_guid": "2162e72e-72fc-4bf8-9459-d4d82fa8aa14",
+        "component_type": "VectorComponents.DivisionComponents.Component_DivideCurve",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curve",
+            "instance_id": "ce5d8168-6099-499c-a4f0-0a4bf935bacb",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0006,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Count",
+            "instance_id": "cd3b0e06-4e60-44d8-813e-70f05c7adf7a",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0003,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "-2",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Kinks",
+            "instance_id": "e8aa48c6-b2ff-40a8-8c8a-6bedf8504f51",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0002,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Points",
+            "instance_id": "e28ec706-7a78-47f3-b9aa-3f1e44808417",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0011,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Tangents",
+            "instance_id": "24c47142-21db-41f4-a132-9dd0debb22c8",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0002,
+            "declared_type": "Vector",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Parameters",
+            "instance_id": "56b92672-4f12-42cf-85bc-590f06e7f175",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Number",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "interpolate_one_point",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Interpolate",
+        "instance_id": "c68e1cc7-9228-4648-bba0-0c81c710ef8a",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Insufficient interpolation points for a curve"
+        ],
+        "phase": "Computed",
+        "processor_ms": 0.2723,
+        "component_guid": "2b2a4145-3dff-41d4-a8de-1ea9d29eef33",
+        "component_type": "CurveComponents.Component_InterpCurve",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Vertices",
+            "instance_id": "5b4a9285-7f7f-4ff5-88a3-bff38b19a399",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0016,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{0, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Degree",
+            "instance_id": "add16ac3-8e85-4bda-9c17-cfb8aa0a923e",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0001,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "3",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Periodic",
+            "instance_id": "5f943906-abcc-4b1a-8048-9ff5c09a032c",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0004,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "KnotStyle",
+            "instance_id": "40589f5d-1392-47a0-b226-a2a71128998d",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "1",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Curve",
+            "instance_id": "4afde85c-4835-4aae-aeb7-65b2f4163d39",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0022,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          },
+          {
+            "name": "Length",
+            "instance_id": "934e9938-9bde-41ee-87e3-4c0c492c35e3",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          },
+          {
+            "name": "Domain",
+            "instance_id": "6f174321-a904-4513-836c-5f91372a119f",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Domain",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "interpolate_bad_degree",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Interpolate",
+        "instance_id": "29ebd30d-f979-4606-9201-17eaf1e96437",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "Curve degree must be higher than zero"
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.1092,
+        "component_guid": "2b2a4145-3dff-41d4-a8de-1ea9d29eef33",
+        "component_type": "CurveComponents.Component_InterpCurve",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Vertices",
+            "instance_id": "bd514555-2741-484f-844d-ad179c320abd",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0014,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 4,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{0, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{1, 2, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{3, 1, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{5, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 4
+          },
+          {
+            "name": "Degree",
+            "instance_id": "26167ee7-16af-4b5c-ad98-8598c07281c3",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0003,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "0",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Periodic",
+            "instance_id": "8d680854-c034-4b7f-87ba-7051b2f18e3e",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0007,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "KnotStyle",
+            "instance_id": "7487eede-2e43-4249-99e1-9168c3ba7b7c",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "1",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Curve",
+            "instance_id": "06ccc7b2-6324-4a14-bec1-04e503cce1e1",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0021,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Polyline Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Length",
+            "instance_id": "bf9b281b-1411-4356-8d26-462ad106aa76",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "6.708204",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Domain",
+            "instance_id": "ca8c261e-63d8-467b-8782-6bffb23e6263",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0,
+            "declared_type": "Domain",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Interval",
+                    "text": "0 To 3",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "line_coincident",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Line",
+        "instance_id": "fa2a33ad-345e-4e95-ae55-78e4c2e3421c",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.1348,
+        "component_guid": "4c4e56eb-2f04-43f9-95a3-cc46a14f495a",
+        "component_type": "CurveComponents.Component_Line",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Start Point",
+            "instance_id": "5aaabf8f-83cb-43f0-a9dc-37c57260f25f",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0014,
+            "declared_type": "Point",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{0, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "End Point",
+            "instance_id": "20a294ec-328f-40f8-84bf-b53a9a3877ef",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0002,
+            "declared_type": "Point",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Point",
+                    "text": "{0, 0, 0}",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Line",
+            "instance_id": "4567a1ad-05ea-4c70-b53c-ad0edb2fc686",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Line",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Line",
+                    "text": "Invalid Line",
+                    "valid": false,
+                    "why_not": "Line is too short."
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "list_out_of_range",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "List Item",
+        "instance_id": "db7e0cac-b9a6-4da2-a315-a8e000601b1d",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "Supplied index too high."
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.0976,
+        "component_guid": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+        "component_type": "MathComponents.ArrayComponents.Component_ListItemVariable",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "List",
+            "instance_id": "ee147c01-af19-405d-82f6-49f3f0210e51",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0012,
+            "declared_type": "Generic Data",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "7",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Index",
+            "instance_id": "d66c3c17-2059-4792-a9df-34d5d0a45e81",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0011,
+            "declared_type": "Integer",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Integer",
+                    "text": "99",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Wrap",
+            "instance_id": "85279428-e681-4ef4-9bfe-45f36a180d31",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0043,
+            "declared_type": "Boolean",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Boolean",
+                    "text": "False",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Item",
+            "instance_id": "db6792c1-78ed-45d6-9039-e04a8dd135c6",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0018,
+            "declared_type": "Generic Data",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "division_by_zero",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Division",
+        "instance_id": "68284884-60ca-451f-9986-d96fe72062ad",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.023,
+        "component_guid": "ec875825-61e4-4c1c-a343-0e0cee0b321b",
+        "component_type": "MathComponents.OperatorComponents.Component_Division_OBSOLETE",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "First number",
+            "instance_id": "970aebff-26f1-44f7-b511-78fef93f513e",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0011,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "1",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Second number",
+            "instance_id": "d684be60-bd02-4d6c-b9c4-15b09bc20d67",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0002,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "0",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Result",
+            "instance_id": "8acc943c-24f7-4e97-931a-b8469ef37763",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Number",
+                    "text": "MaxValue",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "boundary_open",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Boundary Surfaces",
+        "instance_id": "68fc0983-ffc5-4311-b50f-31c0adc08326",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "Planar surface routine returned no results"
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.1906,
+        "component_guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_BoundarySurfaces",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Edges",
+            "instance_id": "3a249ec3-736c-4e6c-89cd-a2a1f979c5ef",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0005,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Line-like Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Surfaces",
+            "instance_id": "69526bfb-f1fc-410d-a201-441d77460aae",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0013,
+            "declared_type": "Surface",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "boundary_nonplanar",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Boundary Surfaces",
+        "instance_id": "4f68d2b3-5d8b-47bd-ac60-993ea2ac2834",
+        "level": "Warning",
+        "remarks": [],
+        "warnings": [
+          "Planar surface routine returned no results"
+        ],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.1105,
+        "component_guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_BoundarySurfaces",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Edges",
+            "instance_id": "31f38b40-df74-48b3-a3d6-f56fb6eb8d30",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0005,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Polyline Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Surfaces",
+            "instance_id": "7278c623-9dce-4a76-bdb0-c6c971a92a4c",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0012,
+            "declared_type": "Surface",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "intersection_empty",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Curve | Curve",
+        "instance_id": "2d997b1e-555c-41f2-819b-03c8be207e38",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 1.2258,
+        "component_guid": "84627490-0fb2-4498-8138-ad134ee4cb36",
+        "component_type": "CurveComponents.Component_CurveIntersection",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curve A",
+            "instance_id": "26673ae8-b6c5-4e26-a3a8-c6fa239c6ec2",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0011,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Curve B",
+            "instance_id": "9ba60802-d158-4a5c-b259-1e76f729aefa",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0002,
+            "declared_type": "Curve",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Points",
+            "instance_id": "315bcd5f-c1bf-4811-9984-a4614d1b4224",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0027,
+            "declared_type": "Point",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Params A",
+            "instance_id": "b477fd29-d490-42bc-854b-52aefb3452e1",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0006,
+            "declared_type": "Number",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Params B",
+            "instance_id": "dbf97998-637b-4179-9268-d60320e29f4f",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0001,
+            "declared_type": "Number",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": null
+    },
+    {
+      "case": "upstream_failure_cascade",
+      "repeat": 1,
+      "solver": "PostProcess",
+      "component": {
+        "name": "Brep Edges",
+        "instance_id": "0e461eab-c5ac-4c88-8281-42f1ca822e2f",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.011,
+        "component_guid": "0148a65d-6f42-414a-9db7-9a9b2eb78437",
+        "component_type": "SurfaceComponents.AnalysisComponents.Component_BRepEdges",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Brep",
+            "instance_id": "b21242fe-7a82-472f-bfdf-d9984165abf5",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.001,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Naked",
+            "instance_id": "776a76e3-8294-4b7d-a56c-9507ed938220",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0004,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Interior",
+            "instance_id": "5ada2316-7e6f-4a78-a21c-854308cf05f8",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0002,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Non-Manifold",
+            "instance_id": "9f5c2923-fb43-485e-8c25-38d3374910d9",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0002,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 0,
+            "tree": [
+              {
+                "path": "{0;0}",
+                "items": []
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 0
+          }
+        ]
+      },
+      "upstream": {
+        "name": "Loft",
+        "instance_id": "b9473eb2-572a-481e-81de-7473327fc39d",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 0.12,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "2df1ed6f-9b9c-4d84-ba7f-b86c4dd0b89a",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0009,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Options",
+            "instance_id": "5a63c3b3-402f-4541-b4bf-d59c50c5d7c3",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "ad51c850-70ce-4021-8edf-fde394862890",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.001,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      }
+    }
+  ],
+  "repairs": [
+    {
+      "repeat": 0,
+      "before": {
+        "name": "Loft",
+        "instance_id": "ddae3500-b6bc-4695-b449-a1c53d06d7ac",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 0.1073,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "a667cb90-66cd-4316-b3a1-7339d6fa9b9b",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.001,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Options",
+            "instance_id": "7c565890-2ab3-422a-96a6-908eb76deb4b",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "9eccf195-5905-4cff-8862-a843add919dc",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0014,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      },
+      "after": {
+        "name": "Loft",
+        "instance_id": "ddae3500-b6bc-4695-b449-a1c53d06d7ac",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.3107,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "a667cb90-66cd-4316-b3a1-7339d6fa9b9b",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0005,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 2,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 2
+          },
+          {
+            "name": "Options",
+            "instance_id": "7c565890-2ab3-422a-96a6-908eb76deb4b",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "9eccf195-5905-4cff-8862-a843add919dc",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0042,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Brep",
+                    "text": "Untrimmed Surface",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ]
+      }
+    },
+    {
+      "repeat": 1,
+      "before": {
+        "name": "Loft",
+        "instance_id": "1514c026-0757-4e09-841b-385656155d82",
+        "level": "Error",
+        "remarks": [],
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "phase": "Computed",
+        "processor_ms": 0.0816,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "1dffec93-c7f4-4afa-b418-eaa6b7d012a7",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0004,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Options",
+            "instance_id": "c8ac95ff-8bbf-4464-9e52-64ef8f8c154d",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "8b4bc2ae-b087-43a3-9201-d2c8e650f61d",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0005,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": true
+                  }
+                ]
+              }
+            ],
+            "null_count": 1,
+            "valid_count": 0
+          }
+        ]
+      },
+      "after": {
+        "name": "Loft",
+        "instance_id": "1514c026-0757-4e09-841b-385656155d82",
+        "level": "Blank",
+        "remarks": [],
+        "warnings": [],
+        "errors": [],
+        "phase": "Computed",
+        "processor_ms": 0.2292,
+        "component_guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+        "component_type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+        "run_count": 1,
+        "message": null,
+        "inputs": [
+          {
+            "name": "Curves",
+            "instance_id": "1dffec93-c7f4-4afa-b418-eaa6b7d012a7",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0004,
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "raw_count": 2,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  },
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Curve",
+                    "text": "Circular Curve",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 2
+          },
+          {
+            "name": "Options",
+            "instance_id": "c8ac95ff-8bbf-4464-9e52-64ef8f8c154d",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Collected",
+            "processor_ms": 0.0,
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                    "text": " Loft",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "instance_id": "8b4bc2ae-b087-43a3-9201-d2c8e650f61d",
+            "level": "Blank",
+            "remarks": [],
+            "warnings": [],
+            "errors": [],
+            "phase": "Computed",
+            "processor_ms": 0.0018,
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "raw_count": 1,
+            "tree": [
+              {
+                "path": "{0}",
+                "items": [
+                  {
+                    "null": false,
+                    "type": "Grasshopper.Kernel.Types.GH_Brep",
+                    "text": "Untrimmed Surface",
+                    "valid": true,
+                    "why_not": ""
+                  }
+                ]
+              }
+            ],
+            "null_count": 0,
+            "valid_count": 1
+          }
+        ]
+      }
+    }
+  ],
+  "isolation": {
+    "same_rhino_document": true,
+    "same_rhino_object_ids": true,
+    "same_canvas_document": true
+  }
+}

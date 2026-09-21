@@ -1,0 +1,1226 @@
+{
+  "passed": true,
+  "count": 305,
+  "checks": [
+    {
+      "check": "46 runs",
+      "passed": true
+    },
+    {
+      "check": "complete repeated fixtures",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 0 current component",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 0 severity",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 0 current component",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 0 severity",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 0 paths not reversed",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 0 current component",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 0 severity",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 0 list input",
+      "passed": true
+    },
+    {
+      "check": "unequal 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "unequal 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "unequal 0 current component",
+      "passed": true
+    },
+    {
+      "check": "unequal 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "unequal 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "unequal 0 severity",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 0 current component",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 0 severity",
+      "passed": true
+    },
+    {
+      "check": "scalar 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "scalar 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "scalar 0 current component",
+      "passed": true
+    },
+    {
+      "check": "scalar 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "scalar 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "scalar 0 severity",
+      "passed": true
+    },
+    {
+      "check": "same_paths 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "same_paths 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "same_paths 0 current component",
+      "passed": true
+    },
+    {
+      "check": "same_paths 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "same_paths 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "same_paths 0 severity",
+      "passed": true
+    },
+    {
+      "check": "different_paths 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "different_paths 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "different_paths 0 current component",
+      "passed": true
+    },
+    {
+      "check": "different_paths 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "different_paths 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "different_paths 0 severity",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 0 current component",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 0 severity",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 0 generated path not in inputs",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 0 current component",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 0 severity",
+      "passed": true
+    },
+    {
+      "check": "graft_A 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "graft_A 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "graft_A 0 current component",
+      "passed": true
+    },
+    {
+      "check": "graft_A 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "graft_A 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "graft_A 0 severity",
+      "passed": true
+    },
+    {
+      "check": "graft_both 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "graft_both 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "graft_both 0 current component",
+      "passed": true
+    },
+    {
+      "check": "graft_both 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "graft_both 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "graft_both 0 severity",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 0 current component",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 0 severity",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 0 current component",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 0 severity",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 0 prefix removed in collected input only",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 0 current component",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 0 severity",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 0 source order recorded",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 0 current component",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 0 severity",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 0 source order recorded",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 0 current component",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 0 severity",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 0 source order recorded",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 0 current component",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 0 severity",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 0 source order recorded",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 0 reverse after merging",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 0 current component",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 0 severity",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 0 list input",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 0 current component",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 0 severity",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 0 list input",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 0 current component",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 0 severity",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 0 whole tree one call",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 0 lengths and branch count",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 0 current component",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 0 severity",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 0 no exception",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 0 solve finished",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 0 current component",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 0 iteration count",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 0 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 0 severity",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 1 current component",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "branch_counts_swapped 1 severity",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 1 current component",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 1 severity",
+      "passed": true
+    },
+    {
+      "check": "reverse_multibranch 1 paths not reversed",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 1 current component",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 1 severity",
+      "passed": true
+    },
+    {
+      "check": "loft_baseline 1 list input",
+      "passed": true
+    },
+    {
+      "check": "unequal 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "unequal 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "unequal 1 current component",
+      "passed": true
+    },
+    {
+      "check": "unequal 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "unequal 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "unequal 1 severity",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 1 current component",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "unequal_swapped 1 severity",
+      "passed": true
+    },
+    {
+      "check": "scalar 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "scalar 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "scalar 1 current component",
+      "passed": true
+    },
+    {
+      "check": "scalar 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "scalar 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "scalar 1 severity",
+      "passed": true
+    },
+    {
+      "check": "same_paths 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "same_paths 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "same_paths 1 current component",
+      "passed": true
+    },
+    {
+      "check": "same_paths 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "same_paths 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "same_paths 1 severity",
+      "passed": true
+    },
+    {
+      "check": "different_paths 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "different_paths 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "different_paths 1 current component",
+      "passed": true
+    },
+    {
+      "check": "different_paths 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "different_paths 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "different_paths 1 severity",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 1 current component",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 1 severity",
+      "passed": true
+    },
+    {
+      "check": "different_branch_counts 1 generated path not in inputs",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 1 current component",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "flatten_A 1 severity",
+      "passed": true
+    },
+    {
+      "check": "graft_A 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "graft_A 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "graft_A 1 current component",
+      "passed": true
+    },
+    {
+      "check": "graft_A 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "graft_A 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "graft_A 1 severity",
+      "passed": true
+    },
+    {
+      "check": "graft_both 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "graft_both 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "graft_both 1 current component",
+      "passed": true
+    },
+    {
+      "check": "graft_both 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "graft_both 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "graft_both 1 severity",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 1 current component",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "reverse_A 1 severity",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 1 current component",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 1 severity",
+      "passed": true
+    },
+    {
+      "check": "simplify_A 1 prefix removed in collected input only",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 1 current component",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 1 severity",
+      "passed": true
+    },
+    {
+      "check": "sources_AB 1 source order recorded",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 1 current component",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 1 severity",
+      "passed": true
+    },
+    {
+      "check": "sources_BA 1 source order recorded",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 1 current component",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 1 severity",
+      "passed": true
+    },
+    {
+      "check": "sources_disjoint 1 source order recorded",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 1 current component",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 1 severity",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 1 source order recorded",
+      "passed": true
+    },
+    {
+      "check": "sources_reverse 1 reverse after merging",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 1 current component",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 1 severity",
+      "passed": true
+    },
+    {
+      "check": "loft_flatten 1 list input",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 1 current component",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 1 severity",
+      "passed": true
+    },
+    {
+      "check": "loft_graft 1 list input",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 1 current component",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 1 severity",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 1 whole tree one call",
+      "passed": true
+    },
+    {
+      "check": "tree_statistics 1 lengths and branch count",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 1 current component",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "flip_matrix 1 severity",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 1 no exception",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 1 solve finished",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 1 current component",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 1 iteration count",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 1 exact output paths values and null positions",
+      "passed": true
+    },
+    {
+      "check": "flip_ragged 1 severity",
+      "passed": true
+    },
+    {
+      "check": "user documents unchanged",
+      "passed": true
+    }
+  ]
+}

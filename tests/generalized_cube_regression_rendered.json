@@ -1,0 +1,221 @@
+{
+  "document_id": "50666:268435501",
+  "display_mode": "Rendered",
+  "width": 256,
+  "height": 256,
+  "aspect_ratio": 1.0,
+  "square_requested": true,
+  "columns": 4,
+  "sheet": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered.png",
+  "views": [
+    {
+      "name": "front",
+      "direction": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.034090909090909,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-front.png",
+      "camera": [
+        0.0,
+        -13.90625,
+        0.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "back",
+      "direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.034090909090909,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-back.png",
+      "camera": [
+        0.0,
+        13.90625,
+        0.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left",
+      "direction": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.034090909090909,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-left.png",
+      "camera": [
+        -13.90625,
+        0.0,
+        0.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right",
+      "direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.034090909090909,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-right.png",
+      "camera": [
+        13.90625,
+        0.0,
+        0.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "top",
+      "direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "up": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.034090909090909,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-top.png",
+      "camera": [
+        0.0,
+        0.0,
+        13.90625
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "bottom",
+      "direction": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "up": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.034090909090909,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-bottom.png",
+      "camera": [
+        0.0,
+        0.0,
+        -13.90625
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "iso_upper_right",
+      "direction": [
+        0.5773502691896258,
+        -0.5773502691896258,
+        0.5773502691896258
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.2068397381155527,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-iso_upper_right.png",
+      "camera": [
+        13.857421874999998,
+        -13.857421874999998,
+        13.857421874999998
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "iso_lower_left",
+      "direction": [
+        -0.5773502691896258,
+        -0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.2068397381155527,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-iso_lower_left.png",
+      "camera": [
+        -13.857421874999998,
+        -13.857421874999998,
+        -13.857421874999998
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "restored": true
+}

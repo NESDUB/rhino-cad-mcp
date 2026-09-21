@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "run_id": "389eda1704b142629da435fa1539561b",
+  "state": "completed",
+  "result": {
+    "run_id": "389eda1704b142629da435fa1539561b",
+    "output": "/tmp/grasshopper_master_v2.json",
+    "components": 1235,
+    "known_type_names": 97,
+    "source_goo_classes": 90,
+    "target_goo_classes": 92,
+    "pair_count": 8280,
+    "counts": {
+      "observed_success": 435,
+      "observed_rejection": 833,
+      "conditional_observed": 29,
+      "untested": 6164,
+      "error": 819
+    },
+    "sample_casts": 1533,
+    "extraction_errors": 0,
+    "isolation": {
+      "same_rhino_document": true,
+      "same_rhino_objects": true,
+      "same_canvas_document": true,
+      "global_solver_unchanged": true
+    }
+  },
+  "console": "",
+  "elapsed_ms": 57814.4
+}

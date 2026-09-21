@@ -1,0 +1,1125 @@
+{
+  "passed": true,
+  "document_id": "50666:268435501",
+  "target_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/viewport_orientation_cube.3dm",
+  "object_count": 6,
+  "face_verification": {
+    "faces": [
+      {
+        "name": "+X_RIGHT",
+        "color_source": "ColorFromObject",
+        "has_render_material": true,
+        "render_type": "Physically Based",
+        "pbr": true,
+        "base_color": [
+          220,
+          20,
+          30
+        ],
+        "expected": [
+          220,
+          20,
+          30
+        ]
+      },
+      {
+        "name": "-X_LEFT",
+        "color_source": "ColorFromObject",
+        "has_render_material": true,
+        "render_type": "Physically Based",
+        "pbr": true,
+        "base_color": [
+          20,
+          60,
+          220
+        ],
+        "expected": [
+          20,
+          60,
+          220
+        ]
+      },
+      {
+        "name": "+Y_BACK",
+        "color_source": "ColorFromObject",
+        "has_render_material": true,
+        "render_type": "Physically Based",
+        "pbr": true,
+        "base_color": [
+          20,
+          170,
+          45
+        ],
+        "expected": [
+          20,
+          170,
+          45
+        ]
+      },
+      {
+        "name": "-Y_FRONT",
+        "color_source": "ColorFromObject",
+        "has_render_material": true,
+        "render_type": "Physically Based",
+        "pbr": true,
+        "base_color": [
+          240,
+          210,
+          20
+        ],
+        "expected": [
+          240,
+          210,
+          20
+        ]
+      },
+      {
+        "name": "+Z_TOP",
+        "color_source": "ColorFromObject",
+        "has_render_material": true,
+        "render_type": "Physically Based",
+        "pbr": true,
+        "base_color": [
+          220,
+          30,
+          210
+        ],
+        "expected": [
+          220,
+          30,
+          210
+        ]
+      },
+      {
+        "name": "-Z_BOTTOM",
+        "color_source": "ColorFromObject",
+        "has_render_material": true,
+        "render_type": "Physically Based",
+        "pbr": true,
+        "base_color": [
+          20,
+          210,
+          220
+        ],
+        "expected": [
+          20,
+          210,
+          220
+        ]
+      }
+    ],
+    "pass": true
+  },
+  "modes": [
+    "Wireframe",
+    "Shaded",
+    "Rendered",
+    "Arctic",
+    "Technical",
+    "Ghosted"
+  ],
+  "receipts": [
+    {
+      "tool": "rhino_list_documents",
+      "args": {},
+      "data": {
+        "ok": true,
+        "result": {
+          "documents": [
+            {
+              "document_id": "50666:268435460",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435463",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435467",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435469",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435471",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435473",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435477",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435481",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435501",
+              "name": "viewport_orientation_cube.3dm",
+              "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/viewport_orientation_cube.3dm",
+              "headless": false,
+              "current_script_document": true,
+              "gui_active": true
+            }
+          ]
+        },
+        "operation_id": "96caff9df78f473b95109a52f863c1b6",
+        "operation": "list_documents",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 4.6,
+        "job_id": "96caff9df78f473b95109a52f863c1b6",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_inspect_document",
+      "args": {
+        "document_id": "50666:268435501"
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "document_id": "50666:268435501",
+          "name": "viewport_orientation_cube.3dm",
+          "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/viewport_orientation_cube.3dm",
+          "headless": false,
+          "units": "Millimeters",
+          "absolute_tolerance": 0.01,
+          "relative_tolerance": 0.01,
+          "angle_tolerance_degrees": 1.0,
+          "live_object_count": 6,
+          "object_count": 6,
+          "object_table_count": 6,
+          "layers": [
+            {
+              "index": 0,
+              "id": "067719d4-3e20-4748-b818-7418d4fd784f",
+              "name": "Default",
+              "full_path": "Default",
+              "parent_id": "00000000-0000-0000-0000-000000000000",
+              "visible": true,
+              "locked": false
+            }
+          ],
+          "groups": [],
+          "objects": [
+            {
+              "id": "57ad36b0-9e3f-4f85-bfd5-92a00944817a",
+              "name": "+X_RIGHT",
+              "type": "Brep",
+              "layer_index": 0,
+              "selected": false,
+              "bbox": {
+                "min": [
+                  9.65,
+                  -10.0,
+                  -10.0
+                ],
+                "max": [
+                  10.0,
+                  10.0,
+                  10.0
+                ]
+              }
+            },
+            {
+              "id": "90044cbd-2a93-4389-bdd6-2733b33da3e5",
+              "name": "-X_LEFT",
+              "type": "Brep",
+              "layer_index": 0,
+              "selected": false,
+              "bbox": {
+                "min": [
+                  -10.0,
+                  -10.0,
+                  -10.0
+                ],
+                "max": [
+                  -9.65,
+                  10.0,
+                  10.0
+                ]
+              }
+            },
+            {
+              "id": "7a265484-5a20-4fad-bbdc-302afec9388d",
+              "name": "+Y_BACK",
+              "type": "Brep",
+              "layer_index": 0,
+              "selected": false,
+              "bbox": {
+                "min": [
+                  -10.0,
+                  9.65,
+                  -10.0
+                ],
+                "max": [
+                  10.0,
+                  10.0,
+                  10.0
+                ]
+              }
+            },
+            {
+              "id": "3e628c11-37a7-4e5e-b879-12253e52d981",
+              "name": "-Y_FRONT",
+              "type": "Brep",
+              "layer_index": 0,
+              "selected": false,
+              "bbox": {
+                "min": [
+                  -10.0,
+                  -10.0,
+                  -10.0
+                ],
+                "max": [
+                  10.0,
+                  -9.65,
+                  10.0
+                ]
+              }
+            },
+            {
+              "id": "4e6c4aa8-5530-495f-aaa8-2c3fee3142a6",
+              "name": "+Z_TOP",
+              "type": "Brep",
+              "layer_index": 0,
+              "selected": false,
+              "bbox": {
+                "min": [
+                  -10.0,
+                  -10.0,
+                  9.65
+                ],
+                "max": [
+                  10.0,
+                  10.0,
+                  10.0
+                ]
+              }
+            },
+            {
+              "id": "758d69de-2bf2-4c33-b1eb-43a2cc115403",
+              "name": "-Z_BOTTOM",
+              "type": "Brep",
+              "layer_index": 0,
+              "selected": false,
+              "bbox": {
+                "min": [
+                  -10.0,
+                  -10.0,
+                  -10.0
+                ],
+                "max": [
+                  10.0,
+                  10.0,
+                  -9.65
+                ]
+              }
+            }
+          ]
+        },
+        "operation_id": "2d357413416d47df9562de91c185c5cf",
+        "operation": "inspect_document",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 9.1,
+        "job_id": "2d357413416d47df9562de91c185c5cf",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_run",
+      "args": {
+        "document_id": "50666:268435501",
+        "code": "import Rhino,scriptcontext as sc\nexpected={\"+X_RIGHT\": [220, 20, 30], \"-X_LEFT\": [20, 60, 220], \"+Y_BACK\": [20, 170, 45], \"-Y_FRONT\": [240, 210, 20], \"+Z_TOP\": [220, 30, 210], \"-Z_BOTTOM\": [20, 210, 220]}\nrows=[]\nfor o in list(sc.doc.Objects):\n a=o.Attributes; rm=o.RenderMaterial; sim=None if rm is None else rm.SimulatedMaterial(Rhino.Render.RenderTexture.TextureGeneration.Allow); p=None if sim is None else sim.PhysicallyBased; c=None if p is None else p.BaseColor\n base=None if c is None else [round(c.R*255),round(c.G*255),round(c.B*255)]\n rows.append({'name':a.Name,'color_source':str(a.ColorSource),'has_render_material':rm is not None,'render_type':None if rm is None else rm.TypeName,'pbr':bool(sim is not None and sim.IsPhysicallyBased),'base_color':base,'expected':expected.get(a.Name)})\nresult={'faces':rows,'pass':len(rows)==6 and all(x['name'] in expected and x['color_source']=='ColorFromObject' and x['has_render_material'] and x['render_type']=='Physically Based' and x['pbr'] and x['base_color']==x['expected'] for x in rows)}"
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "faces": [
+            {
+              "name": "+X_RIGHT",
+              "color_source": "ColorFromObject",
+              "has_render_material": true,
+              "render_type": "Physically Based",
+              "pbr": true,
+              "base_color": [
+                220,
+                20,
+                30
+              ],
+              "expected": [
+                220,
+                20,
+                30
+              ]
+            },
+            {
+              "name": "-X_LEFT",
+              "color_source": "ColorFromObject",
+              "has_render_material": true,
+              "render_type": "Physically Based",
+              "pbr": true,
+              "base_color": [
+                20,
+                60,
+                220
+              ],
+              "expected": [
+                20,
+                60,
+                220
+              ]
+            },
+            {
+              "name": "+Y_BACK",
+              "color_source": "ColorFromObject",
+              "has_render_material": true,
+              "render_type": "Physically Based",
+              "pbr": true,
+              "base_color": [
+                20,
+                170,
+                45
+              ],
+              "expected": [
+                20,
+                170,
+                45
+              ]
+            },
+            {
+              "name": "-Y_FRONT",
+              "color_source": "ColorFromObject",
+              "has_render_material": true,
+              "render_type": "Physically Based",
+              "pbr": true,
+              "base_color": [
+                240,
+                210,
+                20
+              ],
+              "expected": [
+                240,
+                210,
+                20
+              ]
+            },
+            {
+              "name": "+Z_TOP",
+              "color_source": "ColorFromObject",
+              "has_render_material": true,
+              "render_type": "Physically Based",
+              "pbr": true,
+              "base_color": [
+                220,
+                30,
+                210
+              ],
+              "expected": [
+                220,
+                30,
+                210
+              ]
+            },
+            {
+              "name": "-Z_BOTTOM",
+              "color_source": "ColorFromObject",
+              "has_render_material": true,
+              "render_type": "Physically Based",
+              "pbr": true,
+              "base_color": [
+                20,
+                210,
+                220
+              ],
+              "expected": [
+                20,
+                210,
+                220
+              ]
+            }
+          ],
+          "pass": true
+        },
+        "operation_id": "82e50c80e3f44c938ba151e362443f4d",
+        "operation": "run_script",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 1.4,
+        "job_id": "82e50c80e3f44c938ba151e362443f4d",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_capture_views",
+      "args": {
+        "document_id": "50666:268435501",
+        "views": [
+          {
+            "name": "front",
+            "direction": [
+              0,
+              -1,
+              0
+            ]
+          },
+          {
+            "name": "back",
+            "direction": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "left",
+            "direction": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "right",
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "top",
+            "direction": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "bottom",
+            "direction": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "name": "iso_upper_right",
+            "direction": [
+              1,
+              -1,
+              1
+            ]
+          },
+          {
+            "name": "iso_lower_left",
+            "direction": [
+              -1,
+              -1,
+              -1
+            ]
+          }
+        ],
+        "width": 256,
+        "height": 192,
+        "square": true,
+        "output_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe.png",
+        "display_mode": "Wireframe",
+        "parallel": true,
+        "columns": 4
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe.png",
+          "manifest_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe.json",
+          "view_count": 8,
+          "individual_paths": [
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe-front.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe-back.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe-left.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe-right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe-top.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe-bottom.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe-iso_upper_right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_wireframe-iso_lower_left.png"
+          ],
+          "restored": true
+        },
+        "operation_id": "3ad125c2b67e4d95885762579998d5e1",
+        "operation": "capture_views",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 132.1,
+        "job_id": "3ad125c2b67e4d95885762579998d5e1",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_capture_views",
+      "args": {
+        "document_id": "50666:268435501",
+        "views": [
+          {
+            "name": "front",
+            "direction": [
+              0,
+              -1,
+              0
+            ]
+          },
+          {
+            "name": "back",
+            "direction": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "left",
+            "direction": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "right",
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "top",
+            "direction": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "bottom",
+            "direction": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "name": "iso_upper_right",
+            "direction": [
+              1,
+              -1,
+              1
+            ]
+          },
+          {
+            "name": "iso_lower_left",
+            "direction": [
+              -1,
+              -1,
+              -1
+            ]
+          }
+        ],
+        "width": 256,
+        "height": 192,
+        "square": true,
+        "output_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded.png",
+        "display_mode": "Shaded",
+        "parallel": true,
+        "columns": 4
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded.png",
+          "manifest_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded.json",
+          "view_count": 8,
+          "individual_paths": [
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded-front.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded-back.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded-left.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded-right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded-top.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded-bottom.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded-iso_upper_right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_shaded-iso_lower_left.png"
+          ],
+          "restored": true
+        },
+        "operation_id": "129c883b5a8f4c93a2625c1b97e4840a",
+        "operation": "capture_views",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 130.5,
+        "job_id": "129c883b5a8f4c93a2625c1b97e4840a",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_capture_views",
+      "args": {
+        "document_id": "50666:268435501",
+        "views": [
+          {
+            "name": "front",
+            "direction": [
+              0,
+              -1,
+              0
+            ]
+          },
+          {
+            "name": "back",
+            "direction": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "left",
+            "direction": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "right",
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "top",
+            "direction": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "bottom",
+            "direction": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "name": "iso_upper_right",
+            "direction": [
+              1,
+              -1,
+              1
+            ]
+          },
+          {
+            "name": "iso_lower_left",
+            "direction": [
+              -1,
+              -1,
+              -1
+            ]
+          }
+        ],
+        "width": 256,
+        "height": 192,
+        "square": true,
+        "output_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered.png",
+        "display_mode": "Rendered",
+        "parallel": true,
+        "columns": 4
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered.png",
+          "manifest_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered.json",
+          "view_count": 8,
+          "individual_paths": [
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-front.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-back.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-left.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-top.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-bottom.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-iso_upper_right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_rendered-iso_lower_left.png"
+          ],
+          "restored": true
+        },
+        "operation_id": "facb9969a8594b77a0d914ac870e587a",
+        "operation": "capture_views",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 129.3,
+        "job_id": "facb9969a8594b77a0d914ac870e587a",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_capture_views",
+      "args": {
+        "document_id": "50666:268435501",
+        "views": [
+          {
+            "name": "front",
+            "direction": [
+              0,
+              -1,
+              0
+            ]
+          },
+          {
+            "name": "back",
+            "direction": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "left",
+            "direction": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "right",
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "top",
+            "direction": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "bottom",
+            "direction": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "name": "iso_upper_right",
+            "direction": [
+              1,
+              -1,
+              1
+            ]
+          },
+          {
+            "name": "iso_lower_left",
+            "direction": [
+              -1,
+              -1,
+              -1
+            ]
+          }
+        ],
+        "width": 256,
+        "height": 192,
+        "square": true,
+        "output_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic.png",
+        "display_mode": "Arctic",
+        "parallel": true,
+        "columns": 4
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic.png",
+          "manifest_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic.json",
+          "view_count": 8,
+          "individual_paths": [
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic-front.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic-back.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic-left.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic-right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic-top.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic-bottom.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic-iso_upper_right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_arctic-iso_lower_left.png"
+          ],
+          "restored": true
+        },
+        "operation_id": "3f88d22a8e974886ae98762829c405cc",
+        "operation": "capture_views",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 144.3,
+        "job_id": "3f88d22a8e974886ae98762829c405cc",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_capture_views",
+      "args": {
+        "document_id": "50666:268435501",
+        "views": [
+          {
+            "name": "front",
+            "direction": [
+              0,
+              -1,
+              0
+            ]
+          },
+          {
+            "name": "back",
+            "direction": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "left",
+            "direction": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "right",
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "top",
+            "direction": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "bottom",
+            "direction": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "name": "iso_upper_right",
+            "direction": [
+              1,
+              -1,
+              1
+            ]
+          },
+          {
+            "name": "iso_lower_left",
+            "direction": [
+              -1,
+              -1,
+              -1
+            ]
+          }
+        ],
+        "width": 256,
+        "height": 192,
+        "square": true,
+        "output_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical.png",
+        "display_mode": "Technical",
+        "parallel": true,
+        "columns": 4
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical.png",
+          "manifest_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical.json",
+          "view_count": 8,
+          "individual_paths": [
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical-front.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical-back.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical-left.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical-right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical-top.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical-bottom.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical-iso_upper_right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_technical-iso_lower_left.png"
+          ],
+          "restored": true
+        },
+        "operation_id": "4ff6d83645784d0bbf5a2082a27eca9b",
+        "operation": "capture_views",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 133.4,
+        "job_id": "4ff6d83645784d0bbf5a2082a27eca9b",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_capture_views",
+      "args": {
+        "document_id": "50666:268435501",
+        "views": [
+          {
+            "name": "front",
+            "direction": [
+              0,
+              -1,
+              0
+            ]
+          },
+          {
+            "name": "back",
+            "direction": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "name": "left",
+            "direction": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "right",
+            "direction": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "name": "top",
+            "direction": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "name": "bottom",
+            "direction": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "name": "iso_upper_right",
+            "direction": [
+              1,
+              -1,
+              1
+            ]
+          },
+          {
+            "name": "iso_lower_left",
+            "direction": [
+              -1,
+              -1,
+              -1
+            ]
+          }
+        ],
+        "width": 256,
+        "height": 192,
+        "square": true,
+        "output_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted.png",
+        "display_mode": "Ghosted",
+        "parallel": true,
+        "columns": 4
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted.png",
+          "manifest_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted.json",
+          "view_count": 8,
+          "individual_paths": [
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted-front.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted-back.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted-left.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted-right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted-top.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted-bottom.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted-iso_upper_right.png",
+            "/Users/nes/bin/mcp/rhino-cad-mcp/tests/generalized_cube_regression_ghosted-iso_lower_left.png"
+          ],
+          "restored": true
+        },
+        "operation_id": "826a621355fc4877aa73d94b55bad6a7",
+        "operation": "capture_views",
+        "document_id": "50666:268435501",
+        "console": "",
+        "rhino_elapsed_ms": 145.8,
+        "job_id": "826a621355fc4877aa73d94b55bad6a7",
+        "state": "completed"
+      }
+    }
+  ],
+  "timestamp": 1789968080.226228
+}

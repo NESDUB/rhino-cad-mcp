@@ -1,0 +1,734 @@
+{
+  "passed": true,
+  "count": 182,
+  "checks": [
+    {
+      "check": "all 40 fixtures present",
+      "passed": true
+    },
+    {
+      "check": "two repetitions of every fixture",
+      "passed": true
+    },
+    {
+      "check": "division_generic_by_zero repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "division_generic_by_zero repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "division_generic_by_zero repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "division_generic_by_zero repeat 0 current implementation reports zero division",
+      "passed": true
+    },
+    {
+      "check": "division_complex_by_zero repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "division_complex_by_zero repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "division_complex_by_zero repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "division_complex_by_zero repeat 0 obsolete invalid infinity",
+      "passed": true
+    },
+    {
+      "check": "loft_two_same_branch repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "loft_two_same_branch repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "loft_two_same_branch repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "loft_two_same_branch repeat 0 valid output",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 0 shared vague warning",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 0 deeper native explanation",
+      "passed": true
+    },
+    {
+      "check": "loft_single repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "loft_single repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "loft_single repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "loft_single repeat 0 operation error despite valid curve",
+      "passed": true
+    },
+    {
+      "check": "loft_split_branches repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "loft_split_branches repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "loft_split_branches repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "loft_split_branches repeat 0 two failed list iterations",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 0 partial results retained",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 0 messages are not failure counts",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 0 successful branch identifiable",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 0 invalid despite no messages",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 0 detailed Goo reason",
+      "passed": true
+    },
+    {
+      "check": "circle_negative repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "circle_negative repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "circle_negative repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "circle_negative repeat 0 normalized radius",
+      "passed": true
+    },
+    {
+      "check": "divide_zero repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "divide_zero repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "divide_zero repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "divide_zero repeat 0 empty without warning",
+      "passed": true
+    },
+    {
+      "check": "divide_negative repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "divide_negative repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "divide_negative repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "divide_negative repeat 0 specific constraint",
+      "passed": true
+    },
+    {
+      "check": "interpolate_one_point repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "interpolate_one_point repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "interpolate_one_point repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "interpolate_one_point repeat 0 specific failure",
+      "passed": true
+    },
+    {
+      "check": "interpolate_bad_degree repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "interpolate_bad_degree repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "interpolate_bad_degree repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "interpolate_bad_degree repeat 0 corrected output despite warning",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 0 invalid despite no messages",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 0 detailed Goo reason",
+      "passed": true
+    },
+    {
+      "check": "list_out_of_range repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "list_out_of_range repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "list_out_of_range repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "list_out_of_range repeat 0 specific list warning",
+      "passed": true
+    },
+    {
+      "check": "division_by_zero repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "division_by_zero repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "division_by_zero repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "division_by_zero repeat 0 obsolete finite sentinel",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 0 shared vague warning",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 0 valid planar but open",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 0 shared vague warning",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 0 valid closed but nonplanar",
+      "passed": true
+    },
+    {
+      "check": "intersection_empty repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "intersection_empty repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "intersection_empty repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "intersection_empty repeat 0 legitimate no-intersection result",
+      "passed": true
+    },
+    {
+      "check": "upstream_failure_cascade repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "upstream_failure_cascade repeat 0 actual solution",
+      "passed": true
+    },
+    {
+      "check": "upstream_failure_cascade repeat 0 measured severity",
+      "passed": true
+    },
+    {
+      "check": "upstream_failure_cascade repeat 0 upstream error not propagated",
+      "passed": true
+    },
+    {
+      "check": "division_generic_by_zero repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "division_generic_by_zero repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "division_generic_by_zero repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "division_generic_by_zero repeat 1 current implementation reports zero division",
+      "passed": true
+    },
+    {
+      "check": "division_complex_by_zero repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "division_complex_by_zero repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "division_complex_by_zero repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "division_complex_by_zero repeat 1 obsolete invalid infinity",
+      "passed": true
+    },
+    {
+      "check": "loft_two_same_branch repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "loft_two_same_branch repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "loft_two_same_branch repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "loft_two_same_branch repeat 1 valid output",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 1 shared vague warning",
+      "passed": true
+    },
+    {
+      "check": "boundary_invalid_curve repeat 1 deeper native explanation",
+      "passed": true
+    },
+    {
+      "check": "loft_single repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "loft_single repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "loft_single repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "loft_single repeat 1 operation error despite valid curve",
+      "passed": true
+    },
+    {
+      "check": "loft_split_branches repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "loft_split_branches repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "loft_split_branches repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "loft_split_branches repeat 1 two failed list iterations",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 1 partial results retained",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 1 messages are not failure counts",
+      "passed": true
+    },
+    {
+      "check": "loft_mixed_branches repeat 1 successful branch identifiable",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 1 invalid despite no messages",
+      "passed": true
+    },
+    {
+      "check": "circle_zero repeat 1 detailed Goo reason",
+      "passed": true
+    },
+    {
+      "check": "circle_negative repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "circle_negative repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "circle_negative repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "circle_negative repeat 1 normalized radius",
+      "passed": true
+    },
+    {
+      "check": "divide_zero repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "divide_zero repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "divide_zero repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "divide_zero repeat 1 empty without warning",
+      "passed": true
+    },
+    {
+      "check": "divide_negative repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "divide_negative repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "divide_negative repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "divide_negative repeat 1 specific constraint",
+      "passed": true
+    },
+    {
+      "check": "interpolate_one_point repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "interpolate_one_point repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "interpolate_one_point repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "interpolate_one_point repeat 1 specific failure",
+      "passed": true
+    },
+    {
+      "check": "interpolate_bad_degree repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "interpolate_bad_degree repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "interpolate_bad_degree repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "interpolate_bad_degree repeat 1 corrected output despite warning",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 1 invalid despite no messages",
+      "passed": true
+    },
+    {
+      "check": "line_coincident repeat 1 detailed Goo reason",
+      "passed": true
+    },
+    {
+      "check": "list_out_of_range repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "list_out_of_range repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "list_out_of_range repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "list_out_of_range repeat 1 specific list warning",
+      "passed": true
+    },
+    {
+      "check": "division_by_zero repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "division_by_zero repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "division_by_zero repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "division_by_zero repeat 1 obsolete finite sentinel",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 1 shared vague warning",
+      "passed": true
+    },
+    {
+      "check": "boundary_open repeat 1 valid planar but open",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 1 shared vague warning",
+      "passed": true
+    },
+    {
+      "check": "boundary_nonplanar repeat 1 valid closed but nonplanar",
+      "passed": true
+    },
+    {
+      "check": "intersection_empty repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "intersection_empty repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "intersection_empty repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "intersection_empty repeat 1 legitimate no-intersection result",
+      "passed": true
+    },
+    {
+      "check": "upstream_failure_cascade repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "upstream_failure_cascade repeat 1 actual solution",
+      "passed": true
+    },
+    {
+      "check": "upstream_failure_cascade repeat 1 measured severity",
+      "passed": true
+    },
+    {
+      "check": "upstream_failure_cascade repeat 1 upstream error not propagated",
+      "passed": true
+    },
+    {
+      "check": "two repair fixtures",
+      "passed": true
+    },
+    {
+      "check": "repair repeat 0 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "repair repeat 0 same component corrected",
+      "passed": true
+    },
+    {
+      "check": "repair repeat 1 no harness failure",
+      "passed": true
+    },
+    {
+      "check": "repair repeat 1 same component corrected",
+      "passed": true
+    },
+    {
+      "check": "user documents unchanged",
+      "passed": true
+    }
+  ]
+}

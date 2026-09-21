@@ -1,0 +1,2172 @@
+{
+  "runtime": {
+    "rhino": "8.35.26251.13002",
+    "grasshopper": "Grasshopper, Version=8.35.26251.13002, Culture=neutral, PublicKeyToken=dda4f5ec2cd80803"
+  },
+  "component_guids": {
+    "Circle": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+    "Loft": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+    "Addition": "58669268-a825-4688-8072-7d3508fcf91c",
+    "Brep Edges": "0148a65d-6f42-414a-9db7-9a9b2eb78437"
+  },
+  "cases": [
+    {
+      "case": "two_circles_to_loft",
+      "repetition": 0,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [
+        {
+          "source_type": "Circle",
+          "target_type": "Curve",
+          "accepted": true
+        }
+      ],
+      "source": {
+        "name": "Circle",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Plane",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 2,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Plane",
+                "valid": true,
+                "value": "World XY"
+              },
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Plane",
+                "valid": true,
+                "value": "O(0.00,0.00,10.00) Z(0.00,0.00,1.00)"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 2
+          },
+          {
+            "name": "Radius",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Number",
+                "valid": true,
+                "value": "1"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 2,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Circle",
+                "valid": true,
+                "value": "Circle(R:1.00 mm)"
+              },
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Circle",
+                "valid": true,
+                "value": "Circle(R:1.00 mm)"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 2
+          }
+        ]
+      },
+      "receiver": {
+        "name": "Loft",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Curves",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "count": 2,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Curve",
+                "valid": true,
+                "value": "Circular Curve"
+              },
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Curve",
+                "valid": true,
+                "value": "Circular Curve"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 2
+          },
+          {
+            "name": "Options",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                "valid": true,
+                "value": " Loft"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Brep",
+                "valid": true,
+                "value": "Untrimmed Surface"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ]
+      }
+    },
+    {
+      "case": "one_circle_to_loft",
+      "repetition": 0,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [
+        {
+          "source_type": "Circle",
+          "target_type": "Curve",
+          "accepted": true
+        }
+      ],
+      "source": {
+        "name": "Circle",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Plane",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Plane",
+                "valid": true,
+                "value": "World XY"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Radius",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Number",
+                "valid": true,
+                "value": "1"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Circle",
+                "valid": true,
+                "value": "Circle(R:1.00 mm)"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "receiver": {
+        "name": "Loft",
+        "level": "Error",
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "inputs": [
+          {
+            "name": "Curves",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Curve",
+                "valid": true,
+                "value": "Circular Curve"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Options",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                "valid": true,
+                "value": " Loft"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [],
+            "null_slots": 1,
+            "valid_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "missing_loft_curves",
+      "repetition": 0,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [],
+      "source": null,
+      "receiver": {
+        "name": "Loft",
+        "level": "Warning",
+        "warnings": [
+          "Input parameter C failed to collect data"
+        ],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Curves",
+            "level": "Warning",
+            "warnings": [
+              "Input parameter C failed to collect data"
+            ],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Options",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                "valid": true,
+                "value": " Loft"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "addition_to_brep_edges",
+      "repetition": 0,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [
+        {
+          "source_type": "Complex",
+          "target_type": "Brep",
+          "accepted": true
+        }
+      ],
+      "source": {
+        "name": "Addition",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "First number",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Complex",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_ComplexNumber",
+                "valid": true,
+                "value": "{2, 0}"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Second number",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Complex",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_ComplexNumber",
+                "valid": true,
+                "value": "{3, 0}"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Result",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Complex",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_ComplexNumber",
+                "valid": true,
+                "value": "{5, 0}"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "receiver": {
+        "name": "Brep Edges",
+        "level": "Error",
+        "warnings": [],
+        "errors": [
+          "Data conversion failed from Complex to Brep"
+        ],
+        "inputs": [
+          {
+            "name": "Brep",
+            "level": "Error",
+            "warnings": [],
+            "errors": [
+              "Data conversion failed from Complex to Brep"
+            ],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [],
+            "null_slots": 1,
+            "valid_count": 0
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Naked",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Interior",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Non-Manifold",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "circle_to_brep_edges",
+      "repetition": 0,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [
+        {
+          "source_type": "Circle",
+          "target_type": "Brep",
+          "accepted": true
+        }
+      ],
+      "source": {
+        "name": "Circle",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Plane",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Plane",
+                "valid": true,
+                "value": "World XY"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Radius",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Number",
+                "valid": true,
+                "value": "1"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Circle",
+                "valid": true,
+                "value": "Circle(R:1.00 mm)"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "receiver": {
+        "name": "Brep Edges",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Brep",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Brep",
+                "valid": true,
+                "value": "Trimmed Surface"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Naked",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Curve",
+                "valid": true,
+                "value": "Circular Curve"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Interior",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Non-Manifold",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "two_circles_to_loft",
+      "repetition": 1,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [
+        {
+          "source_type": "Circle",
+          "target_type": "Curve",
+          "accepted": true
+        }
+      ],
+      "source": {
+        "name": "Circle",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Plane",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 2,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Plane",
+                "valid": true,
+                "value": "World XY"
+              },
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Plane",
+                "valid": true,
+                "value": "O(0.00,0.00,10.00) Z(0.00,0.00,1.00)"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 2
+          },
+          {
+            "name": "Radius",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Number",
+                "valid": true,
+                "value": "1"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 2,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Circle",
+                "valid": true,
+                "value": "Circle(R:1.00 mm)"
+              },
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Circle",
+                "valid": true,
+                "value": "Circle(R:1.00 mm)"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 2
+          }
+        ]
+      },
+      "receiver": {
+        "name": "Loft",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Curves",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "count": 2,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Curve",
+                "valid": true,
+                "value": "Circular Curve"
+              },
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Curve",
+                "valid": true,
+                "value": "Circular Curve"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 2
+          },
+          {
+            "name": "Options",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                "valid": true,
+                "value": " Loft"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Brep",
+                "valid": true,
+                "value": "Untrimmed Surface"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ]
+      }
+    },
+    {
+      "case": "one_circle_to_loft",
+      "repetition": 1,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [
+        {
+          "source_type": "Circle",
+          "target_type": "Curve",
+          "accepted": true
+        }
+      ],
+      "source": {
+        "name": "Circle",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Plane",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Plane",
+                "valid": true,
+                "value": "World XY"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Radius",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Number",
+                "valid": true,
+                "value": "1"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Circle",
+                "valid": true,
+                "value": "Circle(R:1.00 mm)"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "receiver": {
+        "name": "Loft",
+        "level": "Error",
+        "warnings": [],
+        "errors": [
+          "Loft could not be constructed."
+        ],
+        "inputs": [
+          {
+            "name": "Curves",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Curve",
+                "valid": true,
+                "value": "Circular Curve"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Options",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                "valid": true,
+                "value": " Loft"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [],
+            "null_slots": 1,
+            "valid_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "missing_loft_curves",
+      "repetition": 1,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [],
+      "source": null,
+      "receiver": {
+        "name": "Loft",
+        "level": "Warning",
+        "warnings": [
+          "Input parameter C failed to collect data"
+        ],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Curves",
+            "level": "Warning",
+            "warnings": [
+              "Input parameter C failed to collect data"
+            ],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Options",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Loft Options",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "SurfaceComponents.SurfaceComponents.LoftOptions",
+                "valid": true,
+                "value": " Loft"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Loft",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "addition_to_brep_edges",
+      "repetition": 1,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [
+        {
+          "source_type": "Complex",
+          "target_type": "Brep",
+          "accepted": true
+        }
+      ],
+      "source": {
+        "name": "Addition",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "First number",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Complex",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_ComplexNumber",
+                "valid": true,
+                "value": "{2, 0}"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Second number",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Complex",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_ComplexNumber",
+                "valid": true,
+                "value": "{3, 0}"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Result",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Complex",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_ComplexNumber",
+                "valid": true,
+                "value": "{5, 0}"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "receiver": {
+        "name": "Brep Edges",
+        "level": "Error",
+        "warnings": [],
+        "errors": [
+          "Data conversion failed from Complex to Brep"
+        ],
+        "inputs": [
+          {
+            "name": "Brep",
+            "level": "Error",
+            "warnings": [],
+            "errors": [
+              "Data conversion failed from Complex to Brep"
+            ],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [],
+            "null_slots": 1,
+            "valid_count": 0
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Naked",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Interior",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Non-Manifold",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "circle_to_brep_edges",
+      "repetition": 1,
+      "solver_state": "PostProcess",
+      "enabled": true,
+      "wiring": [
+        {
+          "source_type": "Circle",
+          "target_type": "Brep",
+          "accepted": true
+        }
+      ],
+      "source": {
+        "name": "Circle",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Plane",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Plane",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Plane",
+                "valid": true,
+                "value": "World XY"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Radius",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Number",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Number",
+                "valid": true,
+                "value": "1"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Circle",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Circle",
+            "access": "item",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Circle",
+                "valid": true,
+                "value": "Circle(R:1.00 mm)"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ]
+      },
+      "receiver": {
+        "name": "Brep Edges",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "inputs": [
+          {
+            "name": "Brep",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Brep",
+            "access": "item",
+            "optional": false,
+            "sources": 1,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Brep",
+                "valid": true,
+                "value": "Trimmed Surface"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Naked",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 1,
+            "data": [
+              {
+                "type": "Grasshopper.Kernel.Types.GH_Curve",
+                "valid": true,
+                "value": "Circular Curve"
+              }
+            ],
+            "null_slots": 0,
+            "valid_count": 1
+          },
+          {
+            "name": "Interior",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          },
+          {
+            "name": "Non-Manifold",
+            "level": "Blank",
+            "warnings": [],
+            "errors": [],
+            "declared_type": "Curve",
+            "access": "list",
+            "optional": false,
+            "sources": 0,
+            "count": 0,
+            "data": [],
+            "null_slots": 0,
+            "valid_count": 0
+          }
+        ]
+      }
+    }
+  ],
+  "casts": [
+    {
+      "case": "circle_to_curve",
+      "source_type": "Grasshopper.Kernel.Types.GH_Circle",
+      "target_type": "Grasshopper.Kernel.Types.GH_Curve",
+      "cast_from_ok": true,
+      "cast_from_value": "Circular Curve",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "Null Curve",
+      "cast_to_valid": false
+    },
+    {
+      "case": "circle_to_brep",
+      "source_type": "Grasshopper.Kernel.Types.GH_Circle",
+      "target_type": "Grasshopper.Kernel.Types.GH_Brep",
+      "cast_from_ok": true,
+      "cast_from_value": "Trimmed Surface",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "Null Brep",
+      "cast_to_valid": false
+    },
+    {
+      "case": "number_to_brep",
+      "source_type": "Grasshopper.Kernel.Types.GH_Number",
+      "target_type": "Grasshopper.Kernel.Types.GH_Brep",
+      "cast_from_ok": false,
+      "cast_from_value": "Null Brep",
+      "cast_from_valid": false,
+      "cast_to_ok": false,
+      "cast_to_value": "Null Brep",
+      "cast_to_valid": false
+    },
+    {
+      "case": "number_to_curve",
+      "source_type": "Grasshopper.Kernel.Types.GH_Number",
+      "target_type": "Grasshopper.Kernel.Types.GH_Curve",
+      "cast_from_ok": false,
+      "cast_from_value": "Null Curve",
+      "cast_from_valid": false,
+      "cast_to_ok": false,
+      "cast_to_value": "Null Curve",
+      "cast_to_valid": false
+    },
+    {
+      "case": "line_to_circle",
+      "source_type": "Grasshopper.Kernel.Types.GH_Curve",
+      "target_type": "Grasshopper.Kernel.Types.GH_Circle",
+      "cast_from_ok": false,
+      "cast_from_value": "Invalid Circle",
+      "cast_from_valid": false,
+      "cast_to_ok": false,
+      "cast_to_value": "Invalid Circle",
+      "cast_to_valid": false
+    },
+    {
+      "case": "circular_curve_to_circle",
+      "source_type": "Grasshopper.Kernel.Types.GH_Curve",
+      "target_type": "Grasshopper.Kernel.Types.GH_Circle",
+      "cast_from_ok": true,
+      "cast_from_value": "Circle(R:5.00 mm)",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "Invalid Circle",
+      "cast_to_valid": false
+    },
+    {
+      "case": "boolean_to_number",
+      "source_type": "Grasshopper.Kernel.Types.GH_Boolean",
+      "target_type": "Grasshopper.Kernel.Types.GH_Number",
+      "cast_from_ok": true,
+      "cast_from_value": "1",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "0",
+      "cast_to_valid": true
+    },
+    {
+      "case": "number_42.1_to_integer",
+      "source_type": "Grasshopper.Kernel.Types.GH_Number",
+      "target_type": "Grasshopper.Kernel.Types.GH_Integer",
+      "cast_from_ok": true,
+      "cast_from_value": "42",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "0",
+      "cast_to_valid": true
+    },
+    {
+      "case": "number_42.5_to_integer",
+      "source_type": "Grasshopper.Kernel.Types.GH_Number",
+      "target_type": "Grasshopper.Kernel.Types.GH_Integer",
+      "cast_from_ok": true,
+      "cast_from_value": "43",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "0",
+      "cast_to_valid": true
+    },
+    {
+      "case": "number_42.9_to_integer",
+      "source_type": "Grasshopper.Kernel.Types.GH_Number",
+      "target_type": "Grasshopper.Kernel.Types.GH_Integer",
+      "cast_from_ok": true,
+      "cast_from_value": "43",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "0",
+      "cast_to_valid": true
+    },
+    {
+      "case": "number_43.5_to_integer",
+      "source_type": "Grasshopper.Kernel.Types.GH_Number",
+      "target_type": "Grasshopper.Kernel.Types.GH_Integer",
+      "cast_from_ok": true,
+      "cast_from_value": "44",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "0",
+      "cast_to_valid": true
+    },
+    {
+      "case": "number_-42.5_to_integer",
+      "source_type": "Grasshopper.Kernel.Types.GH_Number",
+      "target_type": "Grasshopper.Kernel.Types.GH_Integer",
+      "cast_from_ok": true,
+      "cast_from_value": "-43",
+      "cast_from_valid": true,
+      "cast_to_ok": false,
+      "cast_to_value": "0",
+      "cast_to_valid": true
+    }
+  ],
+  "parameter_cases": [
+    {
+      "case": "circular_curve_to_circle",
+      "repetition": 0,
+      "source": {
+        "name": "Curve",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Curve",
+        "access": "item",
+        "optional": false,
+        "sources": 0,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Curve",
+            "valid": true,
+            "value": "Circular Curve"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      },
+      "receiver": {
+        "name": "Circle",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Circle",
+        "access": "item",
+        "optional": false,
+        "sources": 1,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Circle",
+            "valid": true,
+            "value": "Circle(R:5.00 mm)"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      }
+    },
+    {
+      "case": "line_curve_to_circle",
+      "repetition": 0,
+      "source": {
+        "name": "Curve",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Curve",
+        "access": "item",
+        "optional": false,
+        "sources": 0,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Curve",
+            "valid": true,
+            "value": "Line-like Curve"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      },
+      "receiver": {
+        "name": "Circle",
+        "level": "Error",
+        "warnings": [],
+        "errors": [
+          "Data conversion failed from Curve to Circle"
+        ],
+        "declared_type": "Circle",
+        "access": "item",
+        "optional": false,
+        "sources": 1,
+        "count": 1,
+        "data": [],
+        "null_slots": 1,
+        "valid_count": 0
+      }
+    },
+    {
+      "case": "number_42.5_to_integer",
+      "repetition": 0,
+      "source": {
+        "name": "Number",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Number",
+        "access": "item",
+        "optional": false,
+        "sources": 0,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Number",
+            "valid": true,
+            "value": "42.5"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      },
+      "receiver": {
+        "name": "Integer",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Integer",
+        "access": "item",
+        "optional": false,
+        "sources": 1,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Integer",
+            "valid": true,
+            "value": "43"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      }
+    },
+    {
+      "case": "number_negative_42.5_to_integer",
+      "repetition": 0,
+      "source": {
+        "name": "Number",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Number",
+        "access": "item",
+        "optional": false,
+        "sources": 0,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Number",
+            "valid": true,
+            "value": "-42.5"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      },
+      "receiver": {
+        "name": "Integer",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Integer",
+        "access": "item",
+        "optional": false,
+        "sources": 1,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Integer",
+            "valid": true,
+            "value": "-43"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      }
+    },
+    {
+      "case": "circular_curve_to_circle",
+      "repetition": 1,
+      "source": {
+        "name": "Curve",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Curve",
+        "access": "item",
+        "optional": false,
+        "sources": 0,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Curve",
+            "valid": true,
+            "value": "Circular Curve"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      },
+      "receiver": {
+        "name": "Circle",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Circle",
+        "access": "item",
+        "optional": false,
+        "sources": 1,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Circle",
+            "valid": true,
+            "value": "Circle(R:5.00 mm)"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      }
+    },
+    {
+      "case": "line_curve_to_circle",
+      "repetition": 1,
+      "source": {
+        "name": "Curve",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Curve",
+        "access": "item",
+        "optional": false,
+        "sources": 0,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Curve",
+            "valid": true,
+            "value": "Line-like Curve"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      },
+      "receiver": {
+        "name": "Circle",
+        "level": "Error",
+        "warnings": [],
+        "errors": [
+          "Data conversion failed from Curve to Circle"
+        ],
+        "declared_type": "Circle",
+        "access": "item",
+        "optional": false,
+        "sources": 1,
+        "count": 1,
+        "data": [],
+        "null_slots": 1,
+        "valid_count": 0
+      }
+    },
+    {
+      "case": "number_42.5_to_integer",
+      "repetition": 1,
+      "source": {
+        "name": "Number",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Number",
+        "access": "item",
+        "optional": false,
+        "sources": 0,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Number",
+            "valid": true,
+            "value": "42.5"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      },
+      "receiver": {
+        "name": "Integer",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Integer",
+        "access": "item",
+        "optional": false,
+        "sources": 1,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Integer",
+            "valid": true,
+            "value": "43"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      }
+    },
+    {
+      "case": "number_negative_42.5_to_integer",
+      "repetition": 1,
+      "source": {
+        "name": "Number",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Number",
+        "access": "item",
+        "optional": false,
+        "sources": 0,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Number",
+            "valid": true,
+            "value": "-42.5"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      },
+      "receiver": {
+        "name": "Integer",
+        "level": "Blank",
+        "warnings": [],
+        "errors": [],
+        "declared_type": "Integer",
+        "access": "item",
+        "optional": false,
+        "sources": 1,
+        "count": 1,
+        "data": [
+          {
+            "type": "Grasshopper.Kernel.Types.GH_Integer",
+            "valid": true,
+            "value": "-43"
+          }
+        ],
+        "null_slots": 0,
+        "valid_count": 1
+      }
+    }
+  ],
+  "native_cast_controls": [
+    {
+      "case": "circle_to_native_curve",
+      "ok": false,
+      "value": "None"
+    },
+    {
+      "case": "number_to_native_double",
+      "ok": true,
+      "value": "42.5"
+    }
+  ],
+  "isolation": {
+    "same_canvas_document": true,
+    "same_rhino_document": true,
+    "rhino_object_ids_unchanged": true
+  },
+  "elapsed_seconds": 0.09287714958190918,
+  "regression": {
+    "passed": false,
+    "count": 63,
+    "checks": [
+      {
+        "check": "ten component fixtures executed",
+        "passed": true
+      },
+      {
+        "check": "two_circles_to_loft repeat 0 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "two_circles_to_loft repeat 0 solver completed",
+        "passed": true
+      },
+      {
+        "check": "two_circles_to_loft repeat 0 wire accepted",
+        "passed": true
+      },
+      {
+        "check": "two_circles_to_loft repeat 0 successful conversion and geometry",
+        "passed": true
+      },
+      {
+        "check": "one_circle_to_loft repeat 0 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "one_circle_to_loft repeat 0 solver completed",
+        "passed": true
+      },
+      {
+        "check": "one_circle_to_loft repeat 0 wire accepted",
+        "passed": true
+      },
+      {
+        "check": "one_circle_to_loft repeat 0 conversion success but operation failure",
+        "passed": true
+      },
+      {
+        "check": "missing_loft_curves repeat 0 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "missing_loft_curves repeat 0 solver completed",
+        "passed": true
+      },
+      {
+        "check": "missing_loft_curves repeat 0 missing-data warning",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 0 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 0 solver completed",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 0 wire accepted",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 0 upstream value exists",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 0 conversion error diagnosed",
+        "passed": true
+      },
+      {
+        "check": "circle_to_brep_edges repeat 0 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "circle_to_brep_edges repeat 0 solver completed",
+        "passed": true
+      },
+      {
+        "check": "circle_to_brep_edges repeat 0 wire accepted",
+        "passed": true
+      },
+      {
+        "check": "circle_to_brep_edges repeat 0 implicit geometric conversion",
+        "passed": true
+      },
+      {
+        "check": "two_circles_to_loft repeat 1 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "two_circles_to_loft repeat 1 solver completed",
+        "passed": true
+      },
+      {
+        "check": "two_circles_to_loft repeat 1 wire accepted",
+        "passed": true
+      },
+      {
+        "check": "two_circles_to_loft repeat 1 successful conversion and geometry",
+        "passed": true
+      },
+      {
+        "check": "one_circle_to_loft repeat 1 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "one_circle_to_loft repeat 1 solver completed",
+        "passed": true
+      },
+      {
+        "check": "one_circle_to_loft repeat 1 wire accepted",
+        "passed": true
+      },
+      {
+        "check": "one_circle_to_loft repeat 1 conversion success but operation failure",
+        "passed": true
+      },
+      {
+        "check": "missing_loft_curves repeat 1 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "missing_loft_curves repeat 1 solver completed",
+        "passed": true
+      },
+      {
+        "check": "missing_loft_curves repeat 1 missing-data warning",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 1 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 1 solver completed",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 1 wire accepted",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 1 upstream value exists",
+        "passed": true
+      },
+      {
+        "check": "addition_to_brep_edges repeat 1 conversion error diagnosed",
+        "passed": true
+      },
+      {
+        "check": "circle_to_brep_edges repeat 1 no harness exception",
+        "passed": true
+      },
+      {
+        "check": "circle_to_brep_edges repeat 1 solver completed",
+        "passed": true
+      },
+      {
+        "check": "circle_to_brep_edges repeat 1 wire accepted",
+        "passed": true
+      },
+      {
+        "check": "circle_to_brep_edges repeat 1 implicit geometric conversion",
+        "passed": true
+      },
+      {
+        "check": "CastFrom succeeds where CastTo GH wrapper fails",
+        "passed": true
+      },
+      {
+        "check": "curve conversion depends on geometry",
+        "passed": true
+      },
+      {
+        "check": "cast tests free of interop exceptions",
+        "passed": true
+      },
+      {
+        "check": "circular_curve_to_circle repeat 0 parameter harness succeeded",
+        "passed": true
+      },
+      {
+        "check": "circular_curve_to_circle repeat 0 converted",
+        "passed": true
+      },
+      {
+        "check": "line_curve_to_circle repeat 0 parameter harness succeeded",
+        "passed": true
+      },
+      {
+        "check": "line_curve_to_circle repeat 0 rejected",
+        "passed": true
+      },
+      {
+        "check": "number_42.5_to_integer repeat 0 parameter harness succeeded",
+        "passed": true
+      },
+      {
+        "check": "number_42.5_to_integer repeat 0 rounding is not truncation",
+        "passed": true
+      },
+      {
+        "check": "number_negative_42.5_to_integer repeat 0 parameter harness succeeded",
+        "passed": true
+      },
+      {
+        "check": "number_negative_42.5_to_integer repeat 0 rounding is not truncation",
+        "passed": true
+      },
+      {
+        "check": "circular_curve_to_circle repeat 1 parameter harness succeeded",
+        "passed": true
+      },
+      {
+        "check": "circular_curve_to_circle repeat 1 converted",
+        "passed": true
+      },
+      {
+        "check": "line_curve_to_circle repeat 1 parameter harness succeeded",
+        "passed": true
+      },
+      {
+        "check": "line_curve_to_circle repeat 1 rejected",
+        "passed": true
+      },
+      {
+        "check": "number_42.5_to_integer repeat 1 parameter harness succeeded",
+        "passed": true
+      },
+      {
+        "check": "number_42.5_to_integer repeat 1 rounding is not truncation",
+        "passed": true
+      },
+      {
+        "check": "number_negative_42.5_to_integer repeat 1 parameter harness succeeded",
+        "passed": true
+      },
+      {
+        "check": "number_negative_42.5_to_integer repeat 1 rounding is not truncation",
+        "passed": true
+      },
+      {
+        "check": "circle_to_native_curve invocation control",
+        "passed": false
+      },
+      {
+        "check": "number_to_native_double invocation control",
+        "passed": true
+      },
+      {
+        "check": "user documents unchanged",
+        "passed": true
+      }
+    ]
+  }
+}

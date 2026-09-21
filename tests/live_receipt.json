@@ -1,0 +1,524 @@
+{
+  "passed": false,
+  "failure": "RuntimeError('{\\'ok\\': False, \\'kind\\': \\'python_exception\\', \\'error\\': \\'Target changed during staging; refusing commit\\', \\'traceback\\': \\'Traceback (most recent call last):\\\\n  File \"file:///Users/nes/Library/Caches/rhino-cad-mcp/jobs/f91ea3fc7a8c42d9ad22a6c1aeff8d64/script.py\", line 28, in <module>\\\\n  File \"/Users/nes/bin/mcp/rhino-cad-mcp/runtime_ops.py\", line 275, in transaction\\\\n    if _object_stamp(target)!=stamp:raise RuntimeError(\\\\\\'Target changed during staging; refusing commit\\\\\\')\\\\nRuntimeError: Target changed during staging; refusing commit\\\\n\\', \\'operation_id\\': \\'f91ea3fc7a8c42d9ad22a6c1aeff8d64\\', \\'operation\\': \\'transaction\\', \\'document_id\\': \\'50666:268435490\\', \\'console\\': \\'\\', \\'rhino_elapsed_ms\\': 80.1, \\'job_id\\': \\'f91ea3fc7a8c42d9ad22a6c1aeff8d64\\', \\'state\\': \\'failed\\'}')",
+  "created_documents": [
+    "50666:268435490"
+  ],
+  "original_document": null,
+  "calls": [
+    {
+      "tool": "rhino_status",
+      "args": null,
+      "data": {
+        "rhinocode": "/Applications/Rhino 8.app/Contents/Resources/bin/rhinocode",
+        "environment": {
+          "TMPDIR": "/var/folders/vz/vr29b8_93_q9t3zs2659nzph0000gn/T/",
+          "tmpdir_repaired": false,
+          "HOME_present": true
+        },
+        "ok": true,
+        "instances": [
+          {
+            "pid": 50666,
+            "instance_id": "rhinocode_remotepipe_50666",
+            "document_hint": ""
+          }
+        ],
+        "instances_raw": "PID ID                             DOC                  PATH\n     50666 rhinocode_remotepipe_50666",
+        "stderr": "",
+        "ping": {
+          "ok": true,
+          "result": {
+            "ping": "pong"
+          },
+          "operation_id": "196fb3d6149a40af9c68d0f5be2cba32",
+          "operation": "status_ping",
+          "document_id": "50666:268435489",
+          "console": "",
+          "rhino_elapsed_ms": 0.7,
+          "job_id": "196fb3d6149a40af9c68d0f5be2cba32",
+          "state": "completed"
+        }
+      }
+    },
+    {
+      "tool": "rhino_list_documents",
+      "args": null,
+      "data": {
+        "ok": true,
+        "result": {
+          "documents": [
+            {
+              "document_id": "50666:268435460",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435463",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435467",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435469",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435471",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435473",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435477",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435481",
+              "name": null,
+              "path": null,
+              "headless": false,
+              "current_script_document": false,
+              "gui_active": false
+            },
+            {
+              "document_id": "50666:268435489",
+              "name": null,
+              "path": null,
+              "headless": true,
+              "current_script_document": true,
+              "gui_active": false
+            }
+          ]
+        },
+        "operation_id": "1ac1bb5d453447a3bcf2e611fdf7c531",
+        "operation": "list_documents",
+        "document_id": "50666:268435489",
+        "console": "",
+        "rhino_elapsed_ms": 10.7,
+        "job_id": "1ac1bb5d453447a3bcf2e611fdf7c531",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_create_document",
+      "args": {
+        "headless": true
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "document_id": "50666:268435490",
+          "name": null,
+          "path": null,
+          "headless": true,
+          "units": "Millimeters",
+          "absolute_tolerance": 0.01,
+          "relative_tolerance": 0.01,
+          "angle_tolerance_degrees": 1.0,
+          "live_object_count": 0,
+          "object_count": 0,
+          "object_table_count": 0,
+          "layers": [
+            {
+              "index": 0,
+              "id": "4f9ccc4d-8945-4033-b351-b1db8fe9f109",
+              "name": "Default",
+              "full_path": "Default",
+              "visible": true,
+              "locked": false
+            }
+          ],
+          "objects": []
+        },
+        "operation_id": "087e4f7a97fb4afbbf9cde08e403e8d7",
+        "operation": "new_document",
+        "document_id": "50666:268435489",
+        "console": "",
+        "rhino_elapsed_ms": 13.0,
+        "job_id": "087e4f7a97fb4afbbf9cde08e403e8d7",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_run",
+      "args": {
+        "code": "import Rhino,scriptcontext as sc\nG=Rhino.Geometry\na=G.Sphere(G.Point3d(0,0,0),5).ToBrep();b=G.Sphere(G.Point3d(7,0,0),5).ToBrep()\nx=sc.doc.Objects.AddBrep(a);y=sc.doc.Objects.AddBrep(b);z=sc.doc.Objects.AddBrep(a.DuplicateBrep());sc.doc.Objects.Delete(z,True)\nresult={'ids':[str(x),str(y)],'live':len(list(sc.doc.Objects))}\n",
+        "document_id": "50666:268435490"
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "ids": [
+            "e537fa85-ee97-4d7d-b8c5-93b0f096af50",
+            "5454946d-7458-42eb-9870-0e146864504b"
+          ],
+          "live": 2
+        },
+        "operation_id": "5713bb8b0fc74198a72847d3c42dbba9",
+        "operation": "run_script",
+        "document_id": "50666:268435490",
+        "console": "",
+        "rhino_elapsed_ms": 4.6,
+        "job_id": "5713bb8b0fc74198a72847d3c42dbba9",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_inspect_document",
+      "args": {
+        "document_id": "50666:268435490"
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "document_id": "50666:268435490",
+          "name": null,
+          "path": null,
+          "headless": true,
+          "units": "Millimeters",
+          "absolute_tolerance": 0.01,
+          "relative_tolerance": 0.01,
+          "angle_tolerance_degrees": 1.0,
+          "live_object_count": 2,
+          "object_count": 2,
+          "object_table_count": 3,
+          "layers": [
+            {
+              "index": 0,
+              "id": "4f9ccc4d-8945-4033-b351-b1db8fe9f109",
+              "name": "Default",
+              "full_path": "Default",
+              "visible": true,
+              "locked": false
+            }
+          ],
+          "objects": [
+            {
+              "id": "5454946d-7458-42eb-9870-0e146864504b",
+              "name": null,
+              "type": "Brep",
+              "layer_index": 0,
+              "selected": false,
+              "bbox": {
+                "min": [
+                  2.0,
+                  -5.0,
+                  -5.0
+                ],
+                "max": [
+                  12.0,
+                  5.0,
+                  5.0
+                ]
+              }
+            },
+            {
+              "id": "e537fa85-ee97-4d7d-b8c5-93b0f096af50",
+              "name": null,
+              "type": "Brep",
+              "layer_index": 0,
+              "selected": false,
+              "bbox": {
+                "min": [
+                  -5.0,
+                  -5.0,
+                  -5.0
+                ],
+                "max": [
+                  5.0,
+                  5.0,
+                  5.0
+                ]
+              }
+            }
+          ]
+        },
+        "operation_id": "95068e44718d411fb3189db0d6fc3a37",
+        "operation": "inspect_document",
+        "document_id": "50666:268435490",
+        "console": "",
+        "rhino_elapsed_ms": 6.5,
+        "job_id": "95068e44718d411fb3189db0d6fc3a37",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_apply_material",
+      "args": {
+        "document_id": "50666:268435490",
+        "object_ids": [
+          "e537fa85-ee97-4d7d-b8c5-93b0f096af50"
+        ],
+        "name": "MCP test cherry enamel",
+        "base_color": [
+          174,
+          15,
+          34
+        ],
+        "roughness": 0.22,
+        "clearcoat": 0.8
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "render_material_id": "cab3960f-18c2-4982-83d7-c1ec58ebad44",
+          "render_type": "Physically Based",
+          "verified": true,
+          "values": {
+            "is_pbr": true,
+            "name": "MCP test cherry enamel",
+            "base_color": [
+              0.6823529601097107,
+              0.05882352963089943,
+              0.13333334028720856,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.22,
+            "clearcoat": 0.8,
+            "clearcoat_roughness": 0.1,
+            "opacity": 1.0,
+            "ior": 1.5,
+            "specular": 0.5,
+            "anisotropic": 0.0
+          },
+          "object_ids": [
+            "e537fa85-ee97-4d7d-b8c5-93b0f096af50"
+          ]
+        },
+        "operation_id": "d253371d7e7042fcb0d5472daf2b3338",
+        "operation": "material_apply",
+        "document_id": "50666:268435490",
+        "console": "",
+        "rhino_elapsed_ms": 12.6,
+        "job_id": "d253371d7e7042fcb0d5472daf2b3338",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_read_material",
+      "args": {
+        "document_id": "50666:268435490",
+        "object_id": "e537fa85-ee97-4d7d-b8c5-93b0f096af50"
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "object_id": "e537fa85-ee97-4d7d-b8c5-93b0f096af50",
+          "material_source": "MaterialFromObject",
+          "material_index": 0,
+          "render_material_id": "cab3960f-18c2-4982-83d7-c1ec58ebad44",
+          "render_type": "Physically Based",
+          "values": {
+            "is_pbr": true,
+            "name": "MCP test cherry enamel",
+            "base_color": [
+              0.6823529601097107,
+              0.05882352963089943,
+              0.13333334028720856,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.22,
+            "clearcoat": 0.8,
+            "clearcoat_roughness": 0.1,
+            "opacity": 1.0,
+            "ior": 1.5,
+            "specular": 0.5,
+            "anisotropic": 0.0
+          }
+        },
+        "operation_id": "4d9937db0c994472807962ede18b2ca3",
+        "operation": "material_read",
+        "document_id": "50666:268435490",
+        "console": "",
+        "rhino_elapsed_ms": 9.3,
+        "job_id": "4d9937db0c994472807962ede18b2ca3",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_validate_assembly",
+      "args": {
+        "document_id": "50666:268435490",
+        "check_intersections": true
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "document_id": "50666:268435490",
+          "object_count": 2,
+          "objects": [
+            {
+              "id": "5454946d-7458-42eb-9870-0e146864504b",
+              "name": null,
+              "valid": true,
+              "bbox": {
+                "min": [
+                  2.0,
+                  -5.0,
+                  -5.0
+                ],
+                "max": [
+                  12.0,
+                  5.0,
+                  5.0
+                ]
+              },
+              "type": "Brep",
+              "solid": true,
+              "manifold": true,
+              "naked_edges": 0,
+              "faces": 1
+            },
+            {
+              "id": "e537fa85-ee97-4d7d-b8c5-93b0f096af50",
+              "name": null,
+              "valid": true,
+              "bbox": {
+                "min": [
+                  -5.0,
+                  -5.0,
+                  -5.0
+                ],
+                "max": [
+                  5.0,
+                  5.0,
+                  5.0
+                ]
+              },
+              "type": "Brep",
+              "solid": true,
+              "manifold": true,
+              "naked_edges": 0,
+              "faces": 1
+            }
+          ],
+          "missing_ids": [],
+          "geometry_pass": true,
+          "invalid_or_non_solid_ids": [],
+          "duplicates": [],
+          "metadata_incomplete": [
+            {
+              "id": "5454946d-7458-42eb-9870-0e146864504b",
+              "missing": [
+                "role",
+                "created_by",
+                "revision",
+                "parent"
+              ]
+            },
+            {
+              "id": "e537fa85-ee97-4d7d-b8c5-93b0f096af50",
+              "missing": [
+                "role",
+                "created_by",
+                "revision",
+                "parent"
+              ]
+            }
+          ],
+          "intersections": [
+            {
+              "pair": [
+                "5454946d-7458-42eb-9870-0e146864504b",
+                "e537fa85-ee97-4d7d-b8c5-93b0f096af50"
+              ],
+              "volume": 63.61827302900077
+            }
+          ],
+          "intersection_check": {
+            "requested": true,
+            "tested_pairs": 1,
+            "candidate_pairs": 1,
+            "complete": true,
+            "errors": [],
+            "broad_phase_axis_overlap": 0.03,
+            "minimum_reported_volume": 0.2,
+            "scope": "Modeled-pose Boolean screening; not continuous motion, clearance or manufacturability certification."
+          }
+        },
+        "operation_id": "7b6ba90e912942d0b8b16d9c5a99e80e",
+        "operation": "validate_assembly",
+        "document_id": "50666:268435490",
+        "console": "",
+        "rhino_elapsed_ms": 36.7,
+        "job_id": "7b6ba90e912942d0b8b16d9c5a99e80e",
+        "state": "completed"
+      }
+    },
+    {
+      "tool": "rhino_transaction",
+      "args": {
+        "document_id": "50666:268435490",
+        "code": "import Rhino,scriptcontext as sc\nsc.doc.Objects.AddBrep(Rhino.Geometry.Sphere(Rhino.Geometry.Point3d(30,0,0),3).ToBrep())\nresult='staged'",
+        "dry_run": true
+      },
+      "data": {
+        "ok": false,
+        "kind": "python_exception",
+        "error": "Target changed during staging; refusing commit",
+        "traceback": "Traceback (most recent call last):\n  File \"file:///Users/nes/Library/Caches/rhino-cad-mcp/jobs/f91ea3fc7a8c42d9ad22a6c1aeff8d64/script.py\", line 28, in <module>\n  File \"/Users/nes/bin/mcp/rhino-cad-mcp/runtime_ops.py\", line 275, in transaction\n    if _object_stamp(target)!=stamp:raise RuntimeError('Target changed during staging; refusing commit')\nRuntimeError: Target changed during staging; refusing commit\n",
+        "operation_id": "f91ea3fc7a8c42d9ad22a6c1aeff8d64",
+        "operation": "transaction",
+        "document_id": "50666:268435490",
+        "console": "",
+        "rhino_elapsed_ms": 80.1,
+        "job_id": "f91ea3fc7a8c42d9ad22a6c1aeff8d64",
+        "state": "failed"
+      }
+    },
+    {
+      "tool": "rhino_run",
+      "args": {
+        "document_id": "50666:268435490",
+        "code": "import scriptcontext as sc\nsc.doc.Dispose()\nresult={'disposed':True}"
+      },
+      "data": {
+        "ok": true,
+        "result": {
+          "disposed": true
+        },
+        "operation_id": "ecc1b1e6c17041a1b905454429f313c4",
+        "operation": "run_script",
+        "document_id": "50666:268435490",
+        "console": "",
+        "rhino_elapsed_ms": 1.5,
+        "job_id": "ecc1b1e6c17041a1b905454429f313c4",
+        "state": "completed"
+      }
+    }
+  ]
+}

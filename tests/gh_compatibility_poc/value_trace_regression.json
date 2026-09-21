@@ -1,0 +1,438 @@
+{
+  "passed": true,
+  "count": 108,
+  "checks": [
+    {
+      "check": "16 runs",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 source really produced data",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 source collection alone has no output",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 receiver not computed during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 source unaffected by receiver",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 staged matches normal observable final state",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 circle exists before conversion",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 target conversion visible during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 0 expected loft geometry",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success normal 0 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success normal 0 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success normal 0 normal solution finished",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 source really produced data",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 source collection alone has no output",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 receiver not computed during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 source unaffected by receiver",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 staged matches normal observable final state",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 circle exists before conversion",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 target conversion visible during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 0 error arises only at computation",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient normal 0 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient normal 0 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient normal 0 normal solution finished",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 source really produced data",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 source collection alone has no output",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 receiver not computed during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 source unaffected by receiver",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 staged matches normal observable final state",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 circle exists before conversion",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 target conversion visible during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 circle converted to planar face",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 0 expected extracted circumference",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges normal 0 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges normal 0 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges normal 0 normal solution finished",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 source really produced data",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 source collection alone has no output",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 receiver not computed during collection",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 source unaffected by receiver",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 staged matches normal observable final state",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 conversion fails at collection",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 upstream numeric result retained",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 0 computed does not imply usable output",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges normal 0 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges normal 0 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges normal 0 normal solution finished",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 source really produced data",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 source collection alone has no output",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 receiver not computed during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 source unaffected by receiver",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 staged matches normal observable final state",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 circle exists before conversion",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 target conversion visible during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success staged 1 expected loft geometry",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success normal 1 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success normal 1 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_success normal 1 normal solution finished",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 source really produced data",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 source collection alone has no output",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 receiver not computed during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 source unaffected by receiver",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 staged matches normal observable final state",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 circle exists before conversion",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 target conversion visible during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient staged 1 error arises only at computation",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient normal 1 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient normal 1 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_loft_insufficient normal 1 normal solution finished",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 source really produced data",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 source collection alone has no output",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 receiver not computed during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 source unaffected by receiver",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 staged matches normal observable final state",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 circle exists before conversion",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 target conversion visible during collection",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 circle converted to planar face",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges staged 1 expected extracted circumference",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges normal 1 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges normal 1 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "circle_to_brep_edges normal 1 normal solution finished",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 source really produced data",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 source collection alone has no output",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 receiver not computed during collection",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 source unaffected by receiver",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 staged matches normal observable final state",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 conversion fails at collection",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 upstream numeric result retained",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges staged 1 computed does not imply usable output",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges normal 1 no harness exception",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges normal 1 initially unsolved",
+      "passed": true
+    },
+    {
+      "check": "addition_to_brep_edges normal 1 normal solution finished",
+      "passed": true
+    },
+    {
+      "check": "user documents preserved",
+      "passed": true
+    }
+  ]
+}

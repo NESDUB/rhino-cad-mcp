@@ -1,0 +1,63 @@
+{
+  "document_id": "50666:268435501",
+  "display_mode": "Technical",
+  "width": 320,
+  "height": 240,
+  "columns": 2,
+  "sheet": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/cube_matrix_technical.png",
+  "views": [
+    {
+      "name": "front",
+      "direction": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.034090909090909,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/cube_matrix_technical-front.png",
+      "camera": [
+        0.0,
+        -13.90625,
+        0.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "iso_lower_left",
+      "direction": [
+        -0.5773502691896258,
+        -0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 3.2068397381155527,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/cube_matrix_technical-iso_lower_left.png",
+      "camera": [
+        -13.857421874999998,
+        -13.857421874999998,
+        -13.857421874999998
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "restored": true
+}

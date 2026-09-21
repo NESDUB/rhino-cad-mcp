@@ -1,0 +1,83 @@
+{
+  "document_id": "50666:268435501",
+  "document_path": "/Users/nes/bin/mcp/rhino-cad-mcp/tests/viewport_orientation_cube.3dm",
+  "width": 400,
+  "height": 220,
+  "aspect_ratio": 1.81818182,
+  "square_requested": false,
+  "view": "Perspective",
+  "camera": [
+    52.69308734500998,
+    48.96419117547766,
+    40.53127654348429
+  ],
+  "target": [
+    -7.105427357601002e-15,
+    -7.105427357601002e-15,
+    -7.105427357601002e-15
+  ],
+  "direction": [
+    -52.693087345009985,
+    -48.964191175477666,
+    -40.531276543484296
+  ],
+  "up": [
+    -0.35961432987493336,
+    -0.33416574516021447,
+    0.871212252272729
+  ],
+  "parallel": false,
+  "lens_mm": 49.9999999999997,
+  "display_mode": "Rendered",
+  "display_mode_id": "cae60bae-2d51-4299-abf7-a339fca86f3b",
+  "render_settings": {
+    "AmbientLight": "Color [A=255, R=0, G=0, B=0]",
+    "BackgroundColorTop": "Color [A=255, R=255, G=255, B=255]",
+    "BackgroundColorBottom": "Color [A=255, R=160, G=160, B=160]",
+    "UseHiddenLights": false,
+    "DepthCue": false,
+    "FlatShade": false,
+    "RenderBackfaces": true,
+    "RenderPoints": false,
+    "RenderCurves": false,
+    "RenderIsoparams": false,
+    "RenderMeshEdges": false,
+    "RenderAnnotations": false,
+    "AntialiasLevel": "Draft",
+    "UseViewportSize": true,
+    "ScaleBackgroundToFit": false,
+    "TransparentBackground": false,
+    "ImageUnitSystem": "Inches",
+    "ImageDpi": 72.0,
+    "ImageSize": "{Width=800, Height=600}",
+    "ShadowmapLevel": 1,
+    "BackgroundStyle": "SolidColor",
+    "LinearWorkflow": "Rhino.Render.LinearWorkflow",
+    "Dithering": "Rhino.Render.Dithering",
+    "RenderChannels": "Rhino.Render.RenderChannels",
+    "GroundPlane": "Rhino.Render.GroundPlane",
+    "SafeFrame": "Rhino.Render.SafeFrame",
+    "Skylight": "Rhino.Render.Skylight",
+    "Sun": "Rhino.Render.Sun",
+    "PostEffects": "Rhino.Render.PostEffects.PostEffectCollection",
+    "NamedView": null,
+    "Snapshot": null,
+    "SpecificViewport": null,
+    "RenderSource": "ActiveViewport",
+    "IsDocumentControlled": true,
+    "IsValid": true,
+    "Disposed": false,
+    "HasUserData": true,
+    "UserData": "Rhino.DocObjects.Custom.UserDataList",
+    "UserDictionary": "Rhino.Collections.ArchivableDictionary"
+  },
+  "lighting": [],
+  "environments": [
+    {
+      "id": "73496264-2907-2b57-0c02-736f40256677",
+      "name": "Studio",
+      "type": "Basic Environment"
+    }
+  ],
+  "exposure_note": "Render settings are recorded verbatim where exposed. Scene archive retains materials/environments; renderer convergence is not guaranteed by viewport capture."
+}

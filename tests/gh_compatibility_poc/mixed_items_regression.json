@@ -1,0 +1,1410 @@
+{
+  "passed": true,
+  "count": 351,
+  "checks": [
+    {
+      "check": "24 fixtures",
+      "passed": true
+    },
+    {
+      "check": "complete repeated case grid",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 solved",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 item 0",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 item 1",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 0 control output intact",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 solved",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 valid control output",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 0 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 solved",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 item 0",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 item 1",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 item 2",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 0 control output intact",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 solved",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 valid control output",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "null Loft 0 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 solved",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 item 0",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 item 1",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 item 2",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 0 control output intact",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 solved",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 valid control output",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 0 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 solved",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 item 0",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 item 1",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 degenerate input yields duplicate valid points",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 item 2",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 0 control output intact",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 solved",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 valid control output",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 0 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 solved",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 item 0",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 item 1",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 item 2",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 item 3",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 degenerate input yields duplicate valid points",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 item 4",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 0 control output intact",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 solved",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 valid control output",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 0 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 solved",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 item 0",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 item 1",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 degenerate input yields duplicate valid points",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 item 2",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 item 3",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 item 4",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 0 control output intact",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 solved",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 valid control output",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 0 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 solved",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 item 0",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 item 1",
+      "passed": true
+    },
+    {
+      "check": "valid Divide Curve 1 control output intact",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 solved",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 valid control output",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "valid Loft 1 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 solved",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 item 0",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 item 1",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 item 2",
+      "passed": true
+    },
+    {
+      "check": "null Divide Curve 1 control output intact",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 solved",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 valid control output",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "null Loft 1 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 solved",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 item 0",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 item 1",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 item 2",
+      "passed": true
+    },
+    {
+      "check": "incompatible Divide Curve 1 control output intact",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 solved",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 valid control output",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "incompatible Loft 1 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 solved",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 item 0",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 item 1",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 degenerate input yields duplicate valid points",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 item 2",
+      "passed": true
+    },
+    {
+      "check": "invalid Divide Curve 1 control output intact",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 solved",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 valid control output",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "invalid Loft 1 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 solved",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 item 0",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 item 1",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 item 2",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 item 3",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 degenerate input yields duplicate valid points",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 item 4",
+      "passed": true
+    },
+    {
+      "check": "mixed Divide Curve 1 control output intact",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 solved",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 valid control output",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "mixed Loft 1 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 solved",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 no downstream messages",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 runs include null slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 item 0",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 item 1",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 degenerate input yields duplicate valid points",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 item 2",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 item 3",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 item 4",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Divide Curve 1 control output intact",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 harness succeeded",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 source preserves payload slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 conversion preserves order and substitutes null",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 receiver input retains collected slots",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 source branch matches persistent data",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 control branch preserved",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 conversion error iff text present",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 solved",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 list operation runs per branch",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 valid control output",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 branch outcome depends on invalid not null",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 null removal warning",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 invalid warning",
+      "passed": true
+    },
+    {
+      "check": "mixed_reversed Loft 1 error matches heterogeneous closure",
+      "passed": true
+    },
+    {
+      "check": "user documents unchanged",
+      "passed": true
+    }
+  ]
+}

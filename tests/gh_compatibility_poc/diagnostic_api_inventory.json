@@ -1,0 +1,841 @@
+[
+  {
+    "name": "Divide Curve",
+    "category": "Curve",
+    "subcategory": "Division",
+    "guid": "2162e72e-72fc-4bf8-9459-d4d82fa8aa14",
+    "type": "VectorComponents.DivisionComponents.Component_DivideCurve",
+    "inputs": [
+      {
+        "name": "Curve",
+        "nickname": "C",
+        "type": "Curve",
+        "access": "item",
+        "optional": false,
+        "description": "Curve to divide"
+      },
+      {
+        "name": "Count",
+        "nickname": "N",
+        "type": "Integer",
+        "access": "item",
+        "optional": false,
+        "description": "Number of segments"
+      },
+      {
+        "name": "Kinks",
+        "nickname": "K",
+        "type": "Boolean",
+        "access": "item",
+        "optional": false,
+        "description": "Split segments at kinks"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Points",
+        "type": "Point"
+      },
+      {
+        "name": "Tangents",
+        "type": "Vector"
+      },
+      {
+        "name": "Parameters",
+        "type": "Number"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "List Item",
+    "category": "Sets",
+    "subcategory": "List",
+    "guid": "285ddd8a-5398-4a3e-b3c2-361025711a51",
+    "type": "MathComponents.ArrayComponents.Component_ListItem_OBSOLETE_ASWELL",
+    "inputs": [
+      {
+        "name": "List",
+        "nickname": "L",
+        "type": "Generic Data",
+        "access": "list",
+        "optional": false,
+        "description": "Base list"
+      },
+      {
+        "name": "Index",
+        "nickname": "i",
+        "type": "Integer",
+        "access": "item",
+        "optional": false,
+        "description": "Item index"
+      },
+      {
+        "name": "Wrap",
+        "nickname": "W",
+        "type": "Boolean",
+        "access": "item",
+        "optional": false,
+        "description": "Wrap index to list bounds"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Element",
+        "type": "Generic Data"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Interpolate",
+    "category": "Curve",
+    "subcategory": "Spline",
+    "guid": "2b2a4145-3dff-41d4-a8de-1ea9d29eef33",
+    "type": "CurveComponents.Component_InterpCurve",
+    "inputs": [
+      {
+        "name": "Vertices",
+        "nickname": "V",
+        "type": "Point",
+        "access": "list",
+        "optional": false,
+        "description": "Interpolation points"
+      },
+      {
+        "name": "Degree",
+        "nickname": "D",
+        "type": "Integer",
+        "access": "item",
+        "optional": false,
+        "description": "Curve degree"
+      },
+      {
+        "name": "Periodic",
+        "nickname": "P",
+        "type": "Boolean",
+        "access": "item",
+        "optional": false,
+        "description": "Periodic curve"
+      },
+      {
+        "name": "KnotStyle",
+        "nickname": "K",
+        "type": "Integer",
+        "access": "item",
+        "optional": false,
+        "description": "Knot spacing (0=uniform, 1=chord, 2=sqrtchord)"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Curve",
+        "type": "Curve"
+      },
+      {
+        "name": "Length",
+        "type": "Number"
+      },
+      {
+        "name": "Domain",
+        "type": "Domain"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Line",
+    "category": "Curve",
+    "subcategory": "Primitive",
+    "guid": "4c4e56eb-2f04-43f9-95a3-cc46a14f495a",
+    "type": "CurveComponents.Component_Line",
+    "inputs": [
+      {
+        "name": "Start Point",
+        "nickname": "A",
+        "type": "Point",
+        "access": "item",
+        "optional": false,
+        "description": "Line start point"
+      },
+      {
+        "name": "End Point",
+        "nickname": "B",
+        "type": "Point",
+        "access": "item",
+        "optional": false,
+        "description": "Line end point"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Line",
+        "type": "Line"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "List Item",
+    "category": "Sets",
+    "subcategory": "List",
+    "guid": "59daf374-bc21-4a5e-8282-5504fb7ae9ae",
+    "type": "MathComponents.ArrayComponents.Component_ListItemVariable",
+    "inputs": [
+      {
+        "name": "List",
+        "nickname": "L",
+        "type": "Generic Data",
+        "access": "list",
+        "optional": false,
+        "description": "Base list"
+      },
+      {
+        "name": "Index",
+        "nickname": "i",
+        "type": "Integer",
+        "access": "item",
+        "optional": false,
+        "description": "Item index"
+      },
+      {
+        "name": "Wrap",
+        "nickname": "W",
+        "type": "Boolean",
+        "access": "item",
+        "optional": false,
+        "description": "Wrap index to list bounds"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Item",
+        "type": "Generic Data"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Circle",
+    "category": "Curve",
+    "subcategory": "Primitive",
+    "guid": "807b86e3-be8d-4970-92b5-f8cdcb45b06b",
+    "type": "CurveComponents.Component_Circle",
+    "inputs": [
+      {
+        "name": "Plane",
+        "nickname": "P",
+        "type": "Plane",
+        "access": "item",
+        "optional": false,
+        "description": "Base plane of circle"
+      },
+      {
+        "name": "Radius",
+        "nickname": "R",
+        "type": "Number",
+        "access": "item",
+        "optional": false,
+        "description": "Radius of circle"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Circle",
+        "type": "Circle"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Curve | Curve",
+    "category": "Intersect",
+    "subcategory": "Physical",
+    "guid": "84627490-0fb2-4498-8138-ad134ee4cb36",
+    "type": "CurveComponents.Component_CurveIntersection",
+    "inputs": [
+      {
+        "name": "Curve A",
+        "nickname": "A",
+        "type": "Curve",
+        "access": "item",
+        "optional": false,
+        "description": "First curve"
+      },
+      {
+        "name": "Curve B",
+        "nickname": "B",
+        "type": "Curve",
+        "access": "item",
+        "optional": false,
+        "description": "Second curve"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Points",
+        "type": "Point"
+      },
+      {
+        "name": "Params A",
+        "type": "Number"
+      },
+      {
+        "name": "Params B",
+        "type": "Number"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Division",
+    "category": "Maths",
+    "subcategory": "Operators",
+    "guid": "9c85271f-89fa-4e9f-9f4a-d75802120ccc",
+    "type": "MathComponents.OperatorComponents.Operator_Division",
+    "inputs": [
+      {
+        "name": "A",
+        "nickname": "A",
+        "type": "Generic Data",
+        "access": "item",
+        "optional": false,
+        "description": "Item to divide (dividend)"
+      },
+      {
+        "name": "B",
+        "nickname": "B",
+        "type": "Generic Data",
+        "access": "item",
+        "optional": false,
+        "description": "Item to divide with (divisor)"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "Generic Data"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Loft",
+    "category": "Surface",
+    "subcategory": "Freeform",
+    "guid": "a7a41d0a-2188-4f7a-82cc-1a2c4e4ec850",
+    "type": "SurfaceComponents.SurfaceComponents.Component_LoftSurface",
+    "inputs": [
+      {
+        "name": "Curves",
+        "nickname": "C",
+        "type": "Curve",
+        "access": "list",
+        "optional": false,
+        "description": "Section curves"
+      },
+      {
+        "name": "Options",
+        "nickname": "O",
+        "type": "Loft Options",
+        "access": "item",
+        "optional": false,
+        "description": "Loft options"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Loft",
+        "type": "Brep"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Division",
+    "category": "Complex",
+    "subcategory": "Operators",
+    "guid": "cb4ec4a1-f48e-4685-b58c-72ed27b53681",
+    "type": "MathComponents.ComplexComponents.Component_Division_OBSOLETE",
+    "inputs": [
+      {
+        "name": "First number",
+        "nickname": "A",
+        "type": "Complex",
+        "access": "item",
+        "optional": false,
+        "description": "First number"
+      },
+      {
+        "name": "Second number",
+        "nickname": "B",
+        "type": "Complex",
+        "access": "item",
+        "optional": false,
+        "description": "Second number"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "Complex"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Boundary Surfaces",
+    "category": "Surface",
+    "subcategory": "Freeform",
+    "guid": "d51e9b65-aa4e-4fd6-976c-cef35d421d05",
+    "type": "SurfaceComponents.SurfaceComponents.Component_BoundarySurfaces",
+    "inputs": [
+      {
+        "name": "Edges",
+        "nickname": "E",
+        "type": "Curve",
+        "access": "list",
+        "optional": false,
+        "description": "Boundary curves"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Surfaces",
+        "type": "Surface"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Division",
+    "category": "Scalar",
+    "subcategory": "Operators",
+    "guid": "ec875825-61e4-4c1c-a343-0e0cee0b321b",
+    "type": "MathComponents.OperatorComponents.Component_Division_OBSOLETE",
+    "inputs": [
+      {
+        "name": "First number",
+        "nickname": "A",
+        "type": "Number",
+        "access": "item",
+        "optional": false,
+        "description": "First number"
+      },
+      {
+        "name": "Second number",
+        "nickname": "B",
+        "type": "Number",
+        "access": "item",
+        "optional": false,
+        "description": "Second number"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "Number"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  },
+  {
+    "name": "Interpolate",
+    "category": "Curve",
+    "subcategory": "Spline",
+    "guid": "f5ea9d41-f062-487e-8dbf-7666ca53fbcd",
+    "type": "CurveComponents.Component_InterpCurve_OBSOLETE",
+    "inputs": [
+      {
+        "name": "Vertices",
+        "nickname": "V",
+        "type": "Point",
+        "access": "list",
+        "optional": false,
+        "description": "Interpolation points"
+      },
+      {
+        "name": "Degree",
+        "nickname": "D",
+        "type": "Integer",
+        "access": "item",
+        "optional": false,
+        "description": "Curve degree"
+      },
+      {
+        "name": "Periodic",
+        "nickname": "P",
+        "type": "Boolean",
+        "access": "item",
+        "optional": false,
+        "description": "Periodic curve"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Curve",
+        "type": "Curve"
+      },
+      {
+        "name": "Length",
+        "type": "Number"
+      },
+      {
+        "name": "Domain",
+        "type": "Domain"
+      }
+    ],
+    "diagnostic_properties": [
+      {
+        "name": "RuntimeMessageLevel",
+        "type": "Grasshopper.Kernel.GH_RuntimeMessageLevel"
+      },
+      {
+        "name": "Message",
+        "type": "System.String"
+      },
+      {
+        "name": "RunCount",
+        "type": "System.Int32"
+      },
+      {
+        "name": "ProcessorTime",
+        "type": "System.TimeSpan"
+      },
+      {
+        "name": "Phase",
+        "type": "Grasshopper.Kernel.GH_SolutionPhase"
+      }
+    ],
+    "diagnostic_methods": [
+      "Void ClearRuntimeMessages()",
+      "Grasshopper.Kernel.GH_RuntimeMessageLevel get_RuntimeMessageLevel()",
+      "System.Collections.Generic.IList`1[System.String] RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)",
+      "Void AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)"
+    ]
+  }
+]
