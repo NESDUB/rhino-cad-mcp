@@ -3,7 +3,7 @@
 from pathlib import Path
 import json
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer as FastMCP
 
 from bridge import execute, status, job_status, wait_job, list_jobs
 from tool_support import targeted, runtime_call, check_code
