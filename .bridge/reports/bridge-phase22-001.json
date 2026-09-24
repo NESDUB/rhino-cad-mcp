@@ -1,0 +1,29 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase22-001",
+  "status": "complete",
+  "operator": "claude-local",
+  "ack": "BRIDGE-PHASE22-ZESTLY-CORRECTION-20260924-8C41D7-OPERATOR-ACK",
+  "base_commit": "e9e57ac2272a9ce066a3d2b97b6674adce9fdfe1",
+  "result_commit": "45ff55162d3efed4fe4c5b829ce03b53ffa3f17e",
+  "branch": "operator/bridge-phase22-001",
+  "summary": "Pass 2 CORRECTION executed against Phase 21 document 16858:268435461. All 5 Phase 21 medium/low discrepancies addressed by controller payload. Assembly: 0 intersections (all D3/D4 proxy overlaps resolved), 0 metadata_incomplete (full lineage on all objects), geometry_pass=true. Body push-up dome confirmed (Z=-39mm). Cap is now a hollow integrated solid with 145-face grip-rib geometry. Label sleeve radial gap 0.03mm (conformant). 3 remaining discrepancies: push-up depth 39mm (medium — unusually deep for PET), label face orientation requires visual review of front render (medium), and label sleeve inset 0.03mm (low). ZESTLY_BOTTLE_PASS2.3dm: 843,132 bytes, 5/5 readback verified.",
+  "files_changed": [
+    ".bridge/evidence/bridge-phase22-001/pass-evaluation.json",
+    ".bridge/evidence/bridge-phase22-001/operator-experience.md",
+    ".bridge/artifacts/bridge-phase22-001/ZESTLY_BOTTLE_PASS2.3dm",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_rendered.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_rendered-front.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_rendered-right.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_rendered-top.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_rendered-isometric.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_shaded.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_shaded-front.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_shaded-right.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_shaded-top.png",
+    ".bridge/artifacts/bridge-phase22-001/contact_sheet_shaded-isometric.png"
+  ],
+  "tests": "N/A — operator execution task; no fixture tests",
+  "blockers": [],
+  "notes_for_controller": "All 5 Phase 21 correction targets confirmed addressed. Phase 21 medium discrepancies D3 and D4 fully resolved (0 intersections in assembly check). Integrated grip-rib cap solid confirmed (145 faces). Push-up dome is present but body extends 39mm below Z=0 — notably deeper than typical PET push-up (8-15mm); controller may wish to verify this is intentional or adjust in detail_qa. Label face orientation after 184-degree rotation requires visual confirmation from the front rendered capture. Label sleeve is 0.03mm inside body surface at label zone — conformant to tolerance."
+}
