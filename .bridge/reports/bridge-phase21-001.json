@@ -1,0 +1,29 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase21-001",
+  "status": "complete",
+  "operator": "claude-local",
+  "ack": "BRIDGE-PHASE21-ZESTLY-FOUNDATION-20260924-6F2C91-OPERATOR-ACK",
+  "base_commit": "a3ba7eeb0d2379c9868d9bb055ef117a1254aa96",
+  "result_commit": "e8ace3769f9be3c1c925e452483b0d5b3e47e5bb",
+  "branch": "operator/bridge-phase21-001",
+  "summary": "Pass 1 FOUNDATION executed for Zestly modern soda bottle. Controller payload SHA verified. Dedicated document 16858:268435461 (Millimeters). All 34 objects created: body, neck finish, printed label sleeve, screw cap, tamper ring, base contact ring, 28 cap grip ribs. Geometry pass: all solids valid/manifold/0 naked edges; label sleeve valid open surface with Zestly Lemon Lime Label material confirmed. 6 objective discrepancies recorded (proxy overlaps, height, sleeve gap). 8 captures (rendered + shaded). ZESTLY_BOTTLE_PASS1.3dm saved and readback-verified.",
+  "files_changed": [
+    ".bridge/evidence/bridge-phase21-001/pass-evaluation.json",
+    ".bridge/evidence/bridge-phase21-001/operator-experience.md",
+    ".bridge/artifacts/bridge-phase21-001/ZESTLY_BOTTLE_PASS1.3dm",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered-isometric.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered-front.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered-top.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered-right.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-isometric.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-front.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-top.png",
+    ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-right.png"
+  ],
+  "tests": "N/A — operator execution task; no fixture tests",
+  "blockers": [],
+  "notes_for_controller": "Proxy model has no boolean operations applied — all primary components overlap (neck/body, cap/neck, tamper ring/neck, base ring/body). This is expected foundation-pass geometry. See D3 and D4 discrepancies for tamper ring Z-position overlap (medium impact). Label sleeve material confirmed; rendered appearance of label texture requires visual review of captures. All 34 objects have correct task/run/pass user strings from controller payload."
+}
