@@ -8,4 +8,9 @@ For tasks with a controller-authored payload, verify that the executed payload h
 in `manifest.json`. Check whether any local modeling occurred without `local_modeling_authorized=true`
 authorization in the request — unrequested local authoring of geometry is a rejection criterion.
 
+For multi-pass tasks, verify pass lineage: `modeling_run_id` is consistent across passes,
+`pass_index` increments correctly, `parent_task_id`/`parent_payload_sha256`/`parent_result_commit`
+reference the actual preceding pass report. Verify the pass-evaluation evidence packet includes
+`operator_recommendation_scope="evidence_only"` and contains no autonomous redesign decisions.
+
 Approve only if branch isolation, report schema, requested scope, validation evidence, and safety invariants are all intact. Reject or block work with missing evidence, unverified claims, unsafe Git operations, silent failures, scope expansion, or self-merge. Communicate a concrete review result to the controller; do not rewrite the operator's history or perform unreviewed merges.

@@ -1,5 +1,5 @@
 {
-  "_comment": "Template for controller-authored Rhino payload manifests. Copy to .bridge/payloads/<task-id>/manifest.json and fill all fields. Do not commit with _comment or unfilled placeholders.",
+  "_comment": "Template for controller-authored Rhino payload manifests. Copy to .bridge/payloads/<task-id>/manifest.json and fill required fields. Multi-pass fields are optional — omit them for single-pass payloads. Do not commit with _comment or unfilled placeholders.",
   "payload_version": "1",
   "task_id": "<TASK_ID>",
   "author_role": "controller",
@@ -11,5 +11,13 @@
   "sha256": "<sha256 hex digest of rhino.py as committed>",
   "target_document_required": true,
   "local_modeling_authorized": false,
-  "notes": "<Optional: describe geometry intent, expected side effects, any special targeting requirements.>"
+  "notes": "<Optional: describe geometry intent, expected side effects, any special targeting requirements.>",
+  "_multi_pass_comment": "Fields below are OPTIONAL. Omit for single-pass payloads. See .bridge/workflows/MULTI_PASS_RHINO.md.",
+  "modeling_run_id": "<optional: stable ID shared across all passes of this model, e.g. run-abc123>",
+  "pass_index": 1,
+  "pass_kind": "<optional: foundation | correction | detail_qa | hotfix | single_pass>",
+  "parent_task_id": "<optional: task_id of the immediately preceding pass>",
+  "parent_payload_sha256": "<optional: sha256 of the preceding pass's rhino.py>",
+  "parent_result_commit": "<optional: result_commit SHA from the preceding pass's report>",
+  "requires_controller_review_after": true
 }

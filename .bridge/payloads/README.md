@@ -70,6 +70,28 @@ The operator records the failure in evidence and reports it through the normal b
 The controller revises `rhino.py`, recomputes the hash, updates `manifest.json`, and commits a
 corrected request. The operator does not silently fix controller code.
 
+## Multi-pass modeling
+
+For complex or reference-driven geometry, payloads are organized in a controller-led iterative loop.
+All passes for one model share a stable `modeling_run_id`; each pass is a separate `task_id`, branch,
+payload, hash-verified execution, and report.
+
+Include these optional fields in `manifest.json` for multi-pass tasks:
+
+| Field | Purpose |
+|-------|---------|
+| `modeling_run_id` | Stable ID linking all passes of one model |
+| `pass_index` | 1-based pass number within the run |
+| `pass_kind` | `foundation`, `correction`, `detail_qa`, `hotfix`, or `single_pass` |
+| `parent_task_id` | `task_id` of the preceding pass |
+| `parent_payload_sha256` | SHA-256 of the preceding pass's `rhino.py` |
+| `parent_result_commit` | `result_commit` from the preceding pass's report |
+| `requires_controller_review_after` | `true` when this pass must be reviewed before continuing |
+
+The operator produces a pass-evaluation evidence packet after each pass using
+`.bridge/templates/rhino-pass-evaluation-v1.json`. See `.bridge/workflows/MULTI_PASS_RHINO.md`
+for the full multi-pass lifecycle and role boundaries.
+
 ## Backward compatibility
 
 Tasks that predate this convention (Phases 1–17) used direct `rhino_run` MCP tool calls.

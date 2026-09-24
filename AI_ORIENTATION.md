@@ -50,6 +50,11 @@ no implicit modeling authority from being Codex or from a task being urgent.
 The runner (`run_rhino_payload.py`) enforces these invariants: it rejects mismatched hashes,
 non-controller author_role, missing targets, and Python that fails `tool_support.check_code`.
 
+**Complex modeling is normally controller-led and iterative.** Each pass is a separate structured
+request; the local operator returns objective evidence after execution; the controller reviews that
+evidence and authors the next targeted refinement payload. The operator does not autonomously
+redesign geometry or create its own next-pass payload. See `.bridge/workflows/MULTI_PASS_RHINO.md`.
+
 ## Safety invariants
 
 - Never work directly on `main` for an operator task; never force-push, overwrite history, auto-discard local work, or merge an operator branch as the operator.

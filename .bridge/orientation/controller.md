@@ -15,6 +15,22 @@ error; revise the script, recompute the hash, and commit a corrected payload wit
 See `.bridge/payloads/README.md` for the full payload lifecycle and `.bridge/templates/rhino-payload-manifest-v1.json`
 for the manifest template.
 
+## Multi-pass iterative modeling loop
+
+For complex or reference-driven geometry, use an iterative controller-led loop:
+
+1. Author `rhino.py` for the current pass (foundation, correction, or detail/QA).
+2. Commit it alongside the request; include `modeling_run_id`, `pass_index`, and `pass_kind`
+   in `manifest.json` to link passes.
+3. The operator executes, validates, captures, saves, and returns a pass-evaluation evidence packet.
+4. Inspect the returned evidence and captures; compare against reference/specification.
+5. Select a bounded set of the highest-impact discrepancies.
+6. Author a new `rhino.py` addressing only those targets; commit as the next pass.
+7. Repeat until acceptance criteria are met.
+
+The operator does not author the next refinement payload. The controller's review between passes
+is the design decision point. See `.bridge/workflows/MULTI_PASS_RHINO.md` for the full lifecycle.
+
 ## Before requesting work
 
 Inspect the repository's visible `main` state, `.bridge/protocol.json`, `.bridge/state/controller.json`, existing requests/reports, and relevant implementation documentation. Do not represent local terminal output, local uncommitted state, a Rhino session, screenshots, or installed applications as facts unless an operator has supplied reviewable evidence.

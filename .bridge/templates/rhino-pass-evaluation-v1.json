@@ -1,0 +1,91 @@
+{
+  "_comment": "Template for the standardized operator evidence packet produced after each payload execution pass. Fill all fields; omit optional fields only when genuinely not applicable. operator_recommendation_scope must always be 'evidence_only'.",
+  "template_version": "1",
+  "task_id": "<TASK_ID>",
+  "modeling_run_id": "<stable run ID shared across all passes of this model, e.g. run-abc123>",
+  "pass_index": 1,
+  "pass_kind": "<foundation | correction | detail_qa | hotfix | single_pass>",
+  "executed_payload_sha256": "<sha256 of the rhino.py that was actually executed>",
+  "execution_utc": "<ISO 8601 UTC timestamp>",
+  "document_identity": {
+    "document_id": "<PID:runtime_serial>",
+    "saved_path": "<path to saved .3dm artifact>",
+    "saved_bytes": 0,
+    "verified": true
+  },
+  "object_summary": {
+    "total_objects": 0,
+    "layers": [],
+    "object_list": [
+      {
+        "guid": "<guid>",
+        "name": "<name>",
+        "type": "<Brep | Mesh | Curve | ...>",
+        "layer": "<layer_name>"
+      }
+    ]
+  },
+  "measurements": {
+    "note": "Report bounding boxes, volumes, areas, key dimensions in document units.",
+    "per_object": [
+      {
+        "guid": "<guid>",
+        "name": "<name>",
+        "bbox_min": [0, 0, 0],
+        "bbox_max": [0, 0, 0],
+        "volume_mm3": 0,
+        "area_mm2": 0
+      }
+    ],
+    "assembly_bbox_min": [0, 0, 0],
+    "assembly_bbox_max": [0, 0, 0],
+    "assembly_height_mm": 0,
+    "assembly_footprint_mm": [0, 0]
+  },
+  "validation_summary": {
+    "geometry_pass": true,
+    "per_object": [
+      {
+        "guid": "<guid>",
+        "name": "<name>",
+        "is_valid": true,
+        "is_solid": true,
+        "is_manifold": true,
+        "naked_edges": 0
+      }
+    ],
+    "assembly": {
+      "invalid_or_non_solid_ids": [],
+      "duplicates": [],
+      "intersections": [],
+      "metadata_incomplete": []
+    }
+  },
+  "capture_artifacts": {
+    "contact_sheet": "<path>",
+    "individual_views": [
+      {"name": "isometric", "path": "<path>"},
+      {"name": "top", "path": "<path>"},
+      {"name": "front", "path": "<path>"},
+      {"name": "right", "path": "<path>"}
+    ],
+    "manifest_json": "<path>"
+  },
+  "save_artifact": {
+    "path": "<path to .3dm>",
+    "bytes": 0,
+    "verified": true,
+    "readback_object_count": 0
+  },
+  "retries_and_errors": [],
+  "objective_discrepancies": [
+    {
+      "id": "D1",
+      "description": "<Measurable gap vs. specification or reference. State the observed value and the expected value. No redesign proposals.>",
+      "observed": "<e.g. shaft diameter=60mm>",
+      "expected": "<e.g. shaft diameter=80mm per spec>",
+      "impact": "<high | medium | low>"
+    }
+  ],
+  "operator_recommendation_scope": "evidence_only"
+}

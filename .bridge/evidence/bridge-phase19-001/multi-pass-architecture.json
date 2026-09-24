@@ -1,0 +1,88 @@
+{
+  "task_id": "bridge-phase19-001",
+  "generated_utc": "2026-09-24T12:25:00Z",
+
+  "architecture": {
+    "principle": "Complex modeling is controller-led and iterative. Each pass is a separate structured request. The controller reviews returned evidence between passes and authors the next refinement payload. The local operator does not autonomously redesign geometry.",
+    "controller_loop": ["author payload", "commit + request", "operator executes", "review evidence/captures", "select bounded correction targets", "author next payload", "repeat until acceptance"],
+    "operator_loop": ["receive task", "execute exact payload via run_rhino_payload.py", "measure/validate/capture/save", "produce pass-evaluation evidence", "commit + report", "stop"],
+    "key_constraint": "operator_recommendation_scope = evidence_only in every pass-evaluation packet"
+  },
+
+  "file_map": {
+    "new_files": [
+      ".bridge/workflows/MULTI_PASS_RHINO.md",
+      ".bridge/templates/rhino-pass-evaluation-v1.json",
+      ".bridge/evidence/bridge-phase19-001/multi-pass-architecture.json"
+    ],
+    "modified_files": [
+      ".bridge/templates/rhino-payload-manifest-v1.json",
+      ".bridge/protocol.json",
+      "AI_ORIENTATION.md",
+      ".bridge/orientation/controller.md",
+      ".bridge/orientation/operator.md",
+      ".bridge/orientation/reviewer.md",
+      ".bridge/payloads/README.md"
+    ],
+    "protected_files_unchanged": [
+      "server.py", "bridge.py", "runtime_ops.py", "tool_support.py",
+      "snippets.py", ".mcp.json", "exchange.sh", "orient.sh", "operator.sh",
+      ".bridge/bridge_cli.py", ".bridge/run_rhino_payload.py"
+    ]
+  },
+
+  "pass_state_transitions": {
+    "states": ["pending", "executing", "evidence_returned", "controller_reviewing", "accepted_or_next_pass_queued"],
+    "transitions": [
+      {"from": "pending", "to": "executing", "actor": "operator", "trigger": "exchange.sh prepare + run_rhino_payload.py"},
+      {"from": "executing", "to": "evidence_returned", "actor": "operator", "trigger": "commit + push + report"},
+      {"from": "evidence_returned", "to": "controller_reviewing", "actor": "controller", "trigger": "merge + inspect captures/measurements"},
+      {"from": "controller_reviewing", "to": "accepted_or_next_pass_queued", "actor": "controller", "trigger": "accept result OR author next payload + commit new request"}
+    ]
+  },
+
+  "default_three_pass_strategy": {
+    "pass_1": {"pass_kind": "foundation", "focus": "Primary proportions, topology, major solids, coarse dimensions"},
+    "pass_2": {"pass_kind": "correction", "focus": "Controller-selected bounded discrepancy corrections from pass 1 evidence"},
+    "pass_3": {"pass_kind": "detail_qa", "focus": "Secondary geometry, cleanup, dimensional QA, artifact finalization"},
+    "note": "Three passes are a useful default, not a hard limit. Extra or skipped passes are valid."
+  },
+
+  "role_boundaries": {
+    "controller": "Authors every modeling/refinement payload. Reviews evidence between passes. Selects correction targets. Accepts result.",
+    "claude_operator": "Executes exact payload. Measures, validates, captures, saves. Reports objective evidence. Does not redesign. Does not author next pass.",
+    "codex_operator": "Same default as Claude. May author modeling code only when active request contains explicit local_modeling_authorized=true.",
+    "reviewer": "Verifies modeling_run_id consistency, pass_index sequencing, parent references, executed SHA, and absence of unauthorized local modeling."
+  },
+
+  "pass_lineage_fields": {
+    "modeling_run_id": "Stable ID linking all passes of one model build. Controller assigns.",
+    "pass_index": "1-based; increments with each pass.",
+    "pass_kind": "foundation | correction | detail_qa | hotfix | single_pass",
+    "parent_task_id": "task_id of immediately preceding pass.",
+    "parent_payload_sha256": "SHA-256 of preceding pass rhino.py.",
+    "parent_result_commit": "result_commit from preceding pass report.",
+    "requires_controller_review_after": "True when pass must be reviewed before continuing."
+  },
+
+  "backward_compatibility": {
+    "single_pass_payloads": "Multi-pass fields are all optional. Existing single-pass manifests (including _example) remain valid — run_rhino_payload.py does not check for these fields.",
+    "run_rhino_payload_py": "Unchanged. No new dependencies on multi-pass fields.",
+    "protocol_version": "0.3 unchanged. multi_pass_modeling block added as additive field.",
+    "existing_tasks": "Tasks 1-18 unaffected."
+  },
+
+  "validation_results": {
+    "json_valid": {
+      ".bridge/protocol.json": "PASS",
+      ".bridge/templates/rhino-payload-manifest-v1.json": "PASS",
+      ".bridge/templates/rhino-pass-evaluation-v1.json": "PASS",
+      ".bridge/payloads/_example/manifest.json": "PASS"
+    },
+    "run_rhino_payload_compile": "PASS",
+    "dry_run_example": "PASS (exit 0)",
+    "protected_runtime_files_unchanged": "PASS (0 changes)",
+    "git_diff_check": "PASS",
+    "geometry_execution_in_phase": false
+  }
+}

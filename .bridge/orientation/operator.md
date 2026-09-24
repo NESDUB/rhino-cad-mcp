@@ -27,6 +27,11 @@ When a task provides a payload, execute it through `python3 .bridge/run_rhino_pa
 --document-id <id>` rather than copying the Python into an MCP call. The runner verifies the hash and
 calls `bridge.execute()` with the exact controller-authored code.
 
+**Multi-pass operator loop:** execute the exact payload → collect standardized evidence using the
+`.bridge/templates/rhino-pass-evaluation-v1.json` schema → stop and hand back to the controller.
+Do not author a next-pass payload. Do not redesign geometry to fix discrepancies you observe.
+Discrepancies go into `objective_discrepancies` in the evidence packet with `operator_recommendation_scope="evidence_only"`.
+
 ## Completion contract
 
 Run the exact required validations and proportional syntax/diff/schema checks. Create evidence that names commands, results, artifacts, and limitations. Commit implementation and evidence as the work commit and capture its SHA. Create the v0.3 report with the exact acknowledgement, base SHA, result SHA, required branch, tests, blockers, and controller notes; run `python3 .bridge/bridge_cli.py verify-report <task-id>` and require `REPORT_OK`; commit the report separately; push the operator branch normally. Never merge the branch yourself or force-push it.

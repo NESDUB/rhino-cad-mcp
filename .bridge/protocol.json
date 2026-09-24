@@ -21,6 +21,13 @@
     "default": "controller-authored-payload",
     "note": "ChatGPT Web is the normal Rhino modeling author. Local AI executes, validates, captures, saves, and reports. Local modeling is only authorized when the active structured request explicitly grants it."
   },
+  "multi_pass_modeling": {
+    "note": "Complex modeling is normally controller-led and iterative. Each pass is a separate task_id/branch/payload. The controller reviews returned evidence between passes and authors the next refinement payload. The local operator does not autonomously redesign geometry or author the next pass.",
+    "default_pass_sequence": ["foundation", "correction", "detail_qa"],
+    "pass_lineage_fields": ["modeling_run_id", "pass_index", "pass_kind", "parent_task_id", "parent_payload_sha256", "parent_result_commit"],
+    "backward_compatible": true,
+    "guide": ".bridge/workflows/MULTI_PASS_RHINO.md"
+  },
   "principles": [
     "Git is the durable source of truth.",
     "Controller requests are machine-readable JSON.",
