@@ -1,0 +1,46 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase18-001",
+  "status": "complete",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "ack": "BRIDGE-PHASE18-CONTROLLER-PAYLOADS-20260924-82D4A1-OPERATOR-ACK",
+  "base_commit": "9152994accebab51b51a4b2c1af6c6f19442bd3d",
+  "result_commit": "810618b4c3a9f1e2d7b5c8a0e4f6d9b2c1a3e8f7",
+  "branch": "operator/bridge-phase18-001",
+  "summary": "COMPLETE — controller-authored payload convention formalized. Added: .bridge/run_rhino_payload.py (hash-verified runner, all negative tests pass), .bridge/payloads/_example/ (non-mutating fixture with valid SHA-256), .bridge/payloads/README.md (payload lifecycle + role policy), .bridge/templates/rhino-payload-manifest-v1.json (manifest template). Updated AI_ORIENTATION.md, controller/operator/reviewer guides, AGENTS.md, CLAUDE.md with modeling authority policy: ChatGPT Web = normal modeling author; Claude = execution/validation only; Codex = same default, local modeling only with explicit request authorization. protocol.json: operator generalized to local-ai, modeling_authority block added. No Rhino/MCP runtime files changed. No geometry execution. Protocol version unchanged at 0.3.",
+  "files_changed": [
+    ".bridge/run_rhino_payload.py",
+    ".bridge/payloads/README.md",
+    ".bridge/payloads/_example/rhino.py",
+    ".bridge/payloads/_example/manifest.json",
+    ".bridge/templates/rhino-payload-manifest-v1.json",
+    ".bridge/evidence/bridge-phase18-001/controller-payload-workflow.json",
+    "AI_ORIENTATION.md",
+    ".bridge/orientation/controller.md",
+    ".bridge/orientation/operator.md",
+    ".bridge/orientation/reviewer.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    ".bridge/protocol.json"
+  ],
+  "tests": [
+    "python3 -m py_compile .bridge/run_rhino_payload.py — PASS",
+    "python3 .bridge/run_rhino_payload.py --task _example --dry-run — PASS (exit 0)",
+    "negative: wrong hash — PASS (exit 1, SHA mismatch error)",
+    "negative: path traversal --task '../etc/passwd' — PASS (exit 3, invalid task_id format)",
+    "negative: non-existent task — PASS (exit 1, dir not found)",
+    "negative: target_document_required=true, no --document-id — PASS (exit 1, clear error)",
+    "negative: subprocess import in payload — PASS (exit 1, check_code rejection)",
+    "git diff --check — PASS",
+    "protected runtime files unchanged — PASS (server.py, bridge.py, runtime_ops.py, tool_support.py, snippets.py, .mcp.json, exchange.sh, orient.sh, operator.sh, bridge_cli.py — 0 changes)",
+    "no geometry-changing Rhino execution — PASS"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "The payload runner enforces author_role=controller, SHA-256 match, Python 3.9 compat, and target document presence before executing anything.",
+    "For real modeling tasks starting from Phase 19+: author rhino.py in the ChatGPT session, compute sha256sum, write manifest.json, commit both alongside the request. Claude will execute the exact script without modification.",
+    "The _example fixture is safe to dry-run at any time. It reads doc metadata only.",
+    "protocol.json operator field changed from 'codex' to 'local-ai'. No schema impact on existing report validation.",
+    "AI_ORIENTATION.md now has a dedicated 'Modeling authority and controller-authored payloads' section. orient.sh payloads will include this in all future sessions."
+  ]
+}
