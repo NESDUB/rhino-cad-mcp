@@ -1,0 +1,44 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase7-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE7-20260924-44C2F8",
+  "objective": "Build the first safe one-command local operator runner for the real rhino-cad-mcp bridge, using the actually installed Codex CLI syntax instead of assumptions.",
+  "operator_branch": "operator/bridge-phase7-001",
+  "instructions": [
+    "Work only in /Users/nes/bin/mcp/rhino-cad-mcp.",
+    "From a clean local main, fast-forward from origin/main and run ./exchange.sh to confirm this request is discovered.",
+    "Run ./exchange.sh prepare bridge-phase7-001 and work only on operator/bridge-phase7-001.",
+    "Inspect the installed Codex CLI read-only using codex --help, codex exec --help, and any other help-only subcommands needed to determine the exact supported non-interactive invocation, working-directory option, approval/sandbox controls, stdin/prompt handling, exit-code behavior, and whether nested invocation from a shell script is supported.",
+    "Do not guess Codex flags. Record the exact measured CLI capabilities relevant to a one-command runner.",
+    "Implement a root-level operator.sh that is strictly control-plane code and does not import or modify Rhino/MCP runtime modules.",
+    "operator.sh must refuse unsafe execution when the Git worktree has tracked changes, must require starting from main, must fast-forward origin/main only, must discover exactly one next pending structured request, must derive its task_id and operator_branch from .bridge JSON rather than parsing prose, and must never force-push or overwrite an existing task branch.",
+    "Add any minimal bridge_cli.py subcommand needed for reliable machine-readable task discovery, such as next-id or next-branch. Keep protocol compatibility with existing v0.3 request/report files.",
+    "The intended final UX is one local command: ./operator.sh. That command should synchronize the controller request, invoke the installed Codex CLI non-interactively with a fixed operator bootstrap instruction pointing Codex to the discovered structured request, and let Codex perform the existing prepare/work/validate/report/push lifecycle.",
+    "If the installed Codex CLI cannot safely support fully non-interactive nested execution, do not fake it. Implement operator.sh in a safe degraded mode that performs sync/discovery and emits the exact one-line Codex invocation or reports the precise blocker. Record which mode was achieved.",
+    "Do not execute operator.sh against bridge-phase7-001 itself after modifying it; this task is the builder phase. A separate controller request will test the runner after merge.",
+    "Create .bridge/evidence/bridge-phase7-001/operator-runner-capability.json containing measured Codex CLI facts, achieved_mode, runner_contract, safety_guards, limitations, and exact validation commands/results.",
+    "Run bash -n operator.sh; bash -n exchange.sh; python3 -m py_compile .bridge/bridge_cli.py; python3 .bridge/bridge_cli.py status; git diff --check.",
+    "Verify server.py, bridge.py, runtime_ops.py, tool_support.py, snippets.py, test_bridge.py, requirements.txt, knowledge/, and tests/ are unchanged relative to the task base.",
+    "Commit the runner/control-plane implementation and evidence as the task work commit and capture its SHA as RESULT_COMMIT.",
+    "Create .bridge/reports/bridge-phase7-001.json using the v0.3 report schema with ack exactly BRIDGE-PHASE7-20260924-44C2F8-OPERATOR-ACK, the exact base_commit, RESULT_COMMIT, and branch operator/bridge-phase7-001.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase7-001 and require REPORT_OK.",
+    "Commit the report as a separate receipt commit, push operator/bridge-phase7-001, and do not merge it."
+  ],
+  "expected_outputs": [
+    "operator.sh",
+    "Any minimal control-plane-only bridge_cli.py enhancement needed for machine-readable discovery",
+    ".bridge/evidence/bridge-phase7-001/operator-runner-capability.json",
+    ".bridge/reports/bridge-phase7-001.json",
+    "Remote branch operator/bridge-phase7-001"
+  ],
+  "constraints": [
+    "Do not modify Rhino/MCP runtime implementation files.",
+    "Do not run live Rhino tests.",
+    "Do not install dependencies.",
+    "Do not execute the new runner against this builder task.",
+    "Do not force push.",
+    "Do not merge the operator branch."
+  ]
+}
