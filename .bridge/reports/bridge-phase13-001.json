@@ -1,0 +1,46 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase13-001",
+  "status": "complete",
+  "operator": "claude-code (claude-sonnet-4-6)",
+  "ack": "BRIDGE-PHASE13-UNBLOCK-20260924-7D2A61-OPERATOR-ACK",
+  "base_commit": "360f67f21a5b5a5f53fcdcda109e88eb5a075e22",
+  "result_commit": "d9d893e8818a445e08ed43cb0651b2495bc7afdf",
+  "branch": "operator/bridge-phase13-001",
+  "summary": "F1 partially fixed and F2 fully fixed. F1a (server not registered): FIXED — .mcp.json created at project root; claude mcp get confirms project-scope recognition. F1b (server.py broken import path mcp.server.mcpserver): BLOCKED — requires a 1-line change to the protected server.py (fix: from mcp.server.fastmcp import FastMCP). F2 (skill not discoverable): FIXED — root cause confirmed as Claude Code 2.x not following directory symlinks in ~/.claude/skills/; installer updated to use managed real file copy; skill confirmed visible in running session without restart, byte-for-byte match verified. Retest is NO-GO until F1b is authorized and applied; all other GO conditions are met.",
+  "files_changed": [
+    ".mcp.json",
+    "install-claude-orientation.sh",
+    ".bridge/evidence/bridge-phase13-001/unblock-results.json",
+    ".bridge/evidence/bridge-phase13-001/retest-readiness.md",
+    ".bridge/reports/bridge-phase13-001.json"
+  ],
+  "tests": [
+    "python3 .mcp.json validation — JSON_VALID — PASS",
+    "claude mcp get rhino-cad — Scope: Project config (shared via .mcp.json) — PASS",
+    "python3 server.py startup — ModuleNotFoundError mcp.server.mcpserver — FAIL (F1b, server.py protected)",
+    "bash -n install-claude-orientation.sh — SYNTAX_OK — PASS",
+    "install-claude-orientation.sh first run — migrated symlink, copied skill, byte-match OK — PASS",
+    "install-claude-orientation.sh second run — idempotent, no unintended changes — PASS",
+    "cmp personal SKILL.md vs canonical SKILL.md — BYTE_MATCH_OK — PASS",
+    "skill visible in session skill list — rhino-chatgpt-orientation confirmed — PASS",
+    "git diff --check — GIT_DIFF_CHECK_OK — PASS",
+    "protected files unchanged (server.py, bridge.py, runtime_ops.py, tool_support.py, snippets.py, requirements.txt) — 0 diff lines — PASS"
+  ],
+  "blockers": [
+    {
+      "id": "F1b",
+      "severity": "high",
+      "title": "server.py line 6: broken import mcp.server.mcpserver",
+      "fix": "Change 'from mcp.server.mcpserver import MCPServer as FastMCP' to 'from mcp.server.fastmcp import FastMCP'",
+      "constraint": "server.py is protected in Phase 13; requires controller authorization"
+    }
+  ],
+  "notes_for_controller": [
+    "The work commit is d9d893e8818a445e08ed43cb0651b2495bc7afdf; this report is the receipt commit.",
+    "The single remaining action before Phase 12 retest is the 1-line server.py import fix. The pre-enhancement backup at backups/pre-enhancements-20260920/server.py shows the correct form.",
+    "F2 is fully resolved in this session. The skill appeared in the skill list immediately after the real-file install without requiring a restart.",
+    "retest-readiness.md contains the explicit GO checklist for the Phase 12 rerun.",
+    "No orientation, runtime, bridge, or protocol files were modified."
+  ]
+}
