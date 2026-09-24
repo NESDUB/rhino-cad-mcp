@@ -4,7 +4,7 @@
   "status": "queued",
   "controller": "chatgpt-web",
   "challenge": "BRIDGE-PHASE24-ZESTLY-MODERN-HIRES-20260924-74C2A9",
-  "objective": "Execute one combined controller-authored correction pass from the verified Phase 21 artifact that (1) redesigns the bottle into a modern current-day 500 mL PET soda bottle and (2) replaces the low-resolution 256x67 label proxy with the crisp 1536x399 Zestly label texture, then return visual and geometric evidence without local redesign.",
+  "objective": "Execute one combined controller-authored correction pass from the verified Phase 21 artifact that (1) redesigns the bottle into a modern current-day 500 mL PET soda bottle and (2) replaces the low-resolution 256x67 label proxy with the complete crisp 960x249 Zestly label texture, then return visual and geometric evidence without local redesign.",
   "operator_branch": "operator/bridge-phase24-001",
   "instructions": [
     "Load Rhino CHATGPT orientation in operator mode and safely synchronize clean main with origin/main.",
@@ -13,7 +13,7 @@
     "Do not use bridge-phase22-001 as a source model. Phase 22 was rejected for visual regression.",
     "Use only the verified Phase 21 artifact .bridge/artifacts/bridge-phase21-001/ZESTLY_BOTTLE_PASS1.3dm as the source state. Open it as a dedicated document if necessary.",
     "Before mutation, confirm the Phase 21 source has modeling_run_id=zestly-modern-soda-bottle-001 and exactly 34 live foundation objects: bottle body, neck finish, printed label sleeve, screw cap, tamper ring, base contact ring, and 28 cap ribs.",
-    "Verify the high-resolution label asset exists at .bridge/assets/bridge-phase24-001/zestly_full_label_1536.jpg, is 1536x399 pixels, and has SHA-256 6ec396c93db291d15b2420c3f26db7dbd80a46c57cc805a505a8f82ffe38b69c.",
+    "Verify the high-resolution label transport asset exists at .bridge/assets/bridge-phase24-001/zestly_label_960_q80.jpg.b64. The payload must decode it to .bridge/artifacts/bridge-phase24-001/zestly_label_960_q80.jpg and verify decoded JPEG SHA-256 c597c2f244b6f3e31812e54d2af71fe7817a4517a9c8e226aad608293074860e. Expected decoded dimensions are 960x249.",
     "Run python3 .bridge/run_rhino_payload.py --task bridge-phase24-001 --dry-run and require success.",
     "Execute the exact controller payload against the verified Phase 21 document. Do not edit, repair, substitute, or rewrite rhino.py or manifest.json.",
     "If any controller API call or geometry construction fails, stop and report the exact blocker. Do not locally redesign or simplify the model.",
@@ -22,7 +22,7 @@
     "Validate the main body, neck, support ring, cap, tamper ring, five petaloid feet, grip details, and cap ribs. Report invalid/nonmanifold/open solids objectively.",
     "Run assembly intersection checks, but distinguish deliberate visual integration contacts (petaloid feet into lower body, grip-detail rings touching the body, cap ribs touching cap body) from accidental detached/interpenetrating geometry. Do not redesign locally.",
     "Capture high-quality rendered Front, Right, Top, Bottom, and Isometric views. Also capture at least one close-up rendered Front view focused on the label at sufficient viewport resolution to judge text/logo sharpness.",
-    "In the evidence, explicitly compare label sharpness against Phase 21: Phase 21 used 256x67; this pass must use 1536x399. Report whether the front label appears visibly sharper in the rendered close-up.",
+    "In the evidence, explicitly compare label sharpness against Phase 21: Phase 21 used 256x67; this pass uses 960x249 (~3.75x linear resolution and ~13.9x pixel count). Report whether the front label appears visibly sharper in the rendered close-up.",
     "Explicitly report which label region is centered in the standard Front render. Desired: green Zestly hero panel centered/front-facing. The mapping rotation is controller-authored; do not rotate it yourself.",
     "Measure overall height, max body diameter, waist diameter, label diameter/height, cap diameter, and body/base minimum Z. Compare them to the controller nominal values from the payload.",
     "Verify all new controlled objects carry task_id=bridge-phase24-001, modeling_run_id=zestly-modern-soda-bottle-001, pass_index=2, pass_kind=correction, revision=2, parent=bridge-phase21-001, parent_task_id, and parent_result_commit.",
@@ -47,7 +47,7 @@
   "constraints": [
     "ChatGPT Web is the geometry author; Claude is execution/validation only.",
     "Use Phase 21 as the source baseline; Phase 22 is rejected and Phase 23 is superseded.",
-    "Do not modify the controller payload, manifest, or high-resolution label asset.",
+    "Do not modify the controller payload, manifest, or high-resolution label transport asset.",
     "Do not perform local geometry repair if execution fails.",
     "No dependency installation, configuration change, force push, or merge."
   ]
