@@ -1,0 +1,31 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase9-001",
+  "status": "complete",
+  "operator": "codex",
+  "ack": "BRIDGE-PHASE9-20260924-5E8C31-OPERATOR-ACK",
+  "base_commit": "9198d42afd1a18079852bcc28754310b6ba9a4ad",
+  "result_commit": "d30df6b886511d47b9811983af7df3265442b84a",
+  "branch": "operator/bridge-phase9-001",
+  "summary": "Completed the first end-to-end smoke test of the repaired one-command operator runner: the runner-launched Codex worker prepared the required task branch, recorded runner and environment evidence, preserved protected runtime and control-plane files, and completed the v0.3 work/receipt lifecycle without live Rhino execution or dependency changes.",
+  "files_changed": [
+    ".bridge/evidence/bridge-phase9-001/runner-smoke.json",
+    ".bridge/reports/bridge-phase9-001.json"
+  ],
+  "tests": [
+    "Observed process ancestry matched operator.sh codex exec arguments and exact generated bootstrap \u2014 passed",
+    "./exchange.sh prepare bridge-phase9-001 \u2014 REQUEST_OK; created operator/bridge-phase9-001 at base 9198d42afd1a18079852bcc28754310b6ba9a4ad",
+    "python3 -m json.tool .bridge/evidence/bridge-phase9-001/runner-smoke.json \u2014 passed",
+    "git diff --check \u2014 passed",
+    "Protected Rhino/MCP runtime and runner/control-plane implementation paths unchanged relative to 9198d42afd1a18079852bcc28754310b6ba9a4ad \u2014 passed",
+    "Work commit contains only .bridge/evidence/bridge-phase9-001/runner-smoke.json \u2014 passed",
+    "python3 .bridge/bridge_cli.py verify-report bridge-phase9-001 \u2014 REPORT_OK"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "The smoke worker was launched non-interactively with codex exec --approve-for-me by the repaired operator runner; operator.sh uses exec, so the shell process is intentionally replaced.",
+    "No protected runner/control-plane or Rhino/MCP runtime implementation files changed.",
+    "No live Rhino tests ran and no dependencies were installed.",
+    "The operator branch is intentionally unmerged and was pushed without force."
+  ]
+}
