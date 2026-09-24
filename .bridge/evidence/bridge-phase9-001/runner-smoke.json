@@ -1,0 +1,13 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase9-001",
+  "launched_via_operator_runner": true,
+  "repository": "NESDUB/rhino-cad-mcp",
+  "local_path": "/Users/nes/bin/mcp/rhino-cad-mcp",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "branch": "operator/bridge-phase9-001",
+  "base_commit": "9198d42afd1a18079852bcc28754310b6ba9a4ad",
+  "codex_version": "codex-cli 0.156.1",
+  "checked_at": "2026-09-24T09:58:43+00:00",
+  "note": "Runner-launched non-interactive worker reached the structured v0.3 lifecycle from clean, up-to-date main. Observed process ancestry matches operator.sh exec arguments and its exact generated bootstrap; exec replaces the runner shell. exchange.sh prepare validated the request and created the required branch. No nested runner invocation, live Rhino tests, dependency installation, or runtime/control-plane implementation edits."
+}
