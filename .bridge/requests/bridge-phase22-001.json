@@ -1,0 +1,51 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase22-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE22-ZESTLY-CORRECTION-20260924-8C41D7",
+  "objective": "Execute controller-authored Pass 2 CORRECTION for modeling run zestly-modern-soda-bottle-001 against the verified Phase 21 bottle, return standardized evidence, and do not perform any local redesign or payload repair.",
+  "operator_branch": "operator/bridge-phase22-001",
+  "instructions": [
+    "Load the Rhino CHATGPT orientation skill in operator mode and apply it silently.",
+    "Synchronize clean main and prepare bridge-phase22-001 using the normal exchange lifecycle.",
+    "Treat .bridge/payloads/bridge-phase22-001/rhino.py and manifest.json as the exact controller-authored modeling contract. Do not edit either file.",
+    "Run python3 .bridge/run_rhino_payload.py --task bridge-phase22-001 --dry-run and require success before Rhino mutation.",
+    "Target the exact Phase 21 Zestly model, not an unrelated Rhino document. Prefer the still-open Phase 21 document if it can be proven by modeling_run_id=zestly-modern-soda-bottle-001 and prior task/document metadata. If it is not open, open the verified .bridge/artifacts/bridge-phase21-001/ZESTLY_BOTTLE_PASS1.3dm as a dedicated document using the existing MCP/document tooling. Do not recreate the model manually.",
+    "Before execution, verify the target contains exactly the expected foundation objects by name: Zestly PET Bottle Body, Zestly Neck Finish, Zestly Printed Label Sleeve, Zestly Screw Cap, Zestly Tamper Ring, Zestly Base Contact Ring, and the 28 Zestly Cap Rib objects. If the expected foundation state is not present, stop and report a blocker.",
+    "Execute the exact controller payload with .bridge/run_rhino_payload.py --task bridge-phase22-001 --document-id <verified-document-id>.",
+    "Do not fix any controller-code failure locally. If the payload fails, capture the exact error and return it to the controller.",
+    "After execution, inspect the resulting controlled object set. Expected controlled objects are the bottle body, neck finish, printed label sleeve, integrated screw cap, and tamper ring. The old base-ring proxy and 28 separate rib objects should be gone.",
+    "Validate all resulting geometry. The body, neck, integrated cap, and tamper ring must be valid/manifold solids with 0 naked edges. The label sleeve is intentionally an open cylindrical surface and may have 2 naked edges.",
+    "Run assembly validation/interference checks. Specifically verify whether the Phase 21 medium discrepancies D3 and D4 are resolved: neck/body should no longer have volumetric overlap; tamper ring should no longer have volumetric overlap with neck/body/cap; cap should clear the neck interior. Report exact intersection volumes if any remain.",
+    "Verify the label sleeve radius is closely conformal to the bottle label zone and report the measured radial gap.",
+    "Capture controller-reviewable rendered views: front, right, top, and isometric. The front rendered view is especially important: objectively report which label region is centered/front-facing after the 184-degree mapping correction. Do not rotate the label yourself if it is still wrong; report it.",
+    "Inspect the corrected base from bottom/top/isometric evidence and report whether the central push-up is visible and whether the old base-ring proxy is absent.",
+    "Verify revision=2, parent=bridge-phase21-001, parent_task_id, parent_result_commit, task_id=bridge-phase22-001, modeling_run_id, pass_index=2, and pass_kind=correction metadata on all controlled objects.",
+    "Save the corrected model as .bridge/artifacts/bridge-phase22-001/ZESTLY_BOTTLE_PASS2.3dm without overwriting the Phase 21 artifact.",
+    "Write the canonical .bridge/evidence/bridge-phase22-001/pass-evaluation.json using the v1 template. Set operator_recommendation_scope exactly to evidence_only, local_modeling_used=false, local_modeling_authorized=false, payload_modified_by_operator=false, and provenance_check=pass.",
+    "The pass evaluation must include the exact executed payload SHA, document identity, object list/count, key dimensions, validation summary, assembly intersections, rendered capture paths, save artifact, retries/errors, and objective discrepancies only.",
+    "Create .bridge/evidence/bridge-phase22-001/operator-experience.md with concise execution observations only; do not propose geometry redesign.",
+    "Do not modify bridge/runtime/config/orientation files. Do not install dependencies or reconfigure MCP/Rhino.",
+    "Run git diff --check and verify only Phase 22 evidence/artifacts/report files were added on the operator branch.",
+    "Commit evidence/artifacts as the work commit and capture RESULT_COMMIT.",
+    "Create .bridge/reports/bridge-phase22-001.json with ack exactly BRIDGE-PHASE22-ZESTLY-CORRECTION-20260924-8C41D7-OPERATOR-ACK, exact base_commit, RESULT_COMMIT, and branch operator/bridge-phase22-001.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase22-001 before the receipt commit and require REPORT_OK.",
+    "Commit the report separately, push operator/bridge-phase22-001, and do not merge it."
+  ],
+  "expected_outputs": [
+    ".bridge/evidence/bridge-phase22-001/pass-evaluation.json",
+    ".bridge/evidence/bridge-phase22-001/operator-experience.md",
+    ".bridge/artifacts/bridge-phase22-001/ZESTLY_BOTTLE_PASS2.3dm",
+    "Rendered front/right/top/isometric captures under .bridge/artifacts/bridge-phase22-001/",
+    ".bridge/reports/bridge-phase22-001.json",
+    "Remote branch operator/bridge-phase22-001"
+  ],
+  "constraints": [
+    "ChatGPT Web is the geometry author. Claude is execution/validation only.",
+    "Do not modify the controller payload or manifest.",
+    "Do not create substitute geometry if execution fails.",
+    "Operate only on the verified Phase 21 Zestly model.",
+    "No dependency install, configuration changes, force push, or merge."
+  ]
+}
