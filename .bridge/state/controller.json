@@ -3,7 +3,7 @@
   "controller": "chatgpt-web",
   "repository": "NESDUB/rhino-cad-mcp",
   "branch": "main",
-  "latest_request": "bridge-phase21-001",
+  "latest_request": "bridge-phase22-001",
   "transport_verified": true,
   "operator_branch_model": "operator/<task-id>",
   "bootstrap_merged": true,
@@ -43,13 +43,14 @@
     "multi_pass_workflow": "verified",
     "provenance_enforcement": "verified"
   },
-  "phase21_modeling_run": {
+  "active_modeling_run": {
     "modeling_run_id": "zestly-modern-soda-bottle-001",
-    "current_pass": 1,
-    "pass_kind": "foundation",
-    "task_id": "bridge-phase21-001",
-    "controller_payload_sha256": "38e13fa9af65dd9b8e97a96c1ba1e1e9357a938b1f0f7ed40e996b4abbc4d18d",
-    "label_asset_sha256": "8095b8b50f9b0a11b8ce335c767a607a9fa866752e0d34cc0895f493f0dda1f6",
+    "accepted_parent_task": "bridge-phase21-001",
+    "accepted_parent_result_commit": "e8ace3769f9be3c1c925e452483b0d5b3e47e5bb",
+    "current_pass": 2,
+    "pass_kind": "correction",
+    "task_id": "bridge-phase22-001",
+    "controller_payload_sha256": "30b8d6e03ad60b2b0c85de3b071933a72dffe8fafb74528bf87811346206da6e",
     "status": "queued"
   }
 }
