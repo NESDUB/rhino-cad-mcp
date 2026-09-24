@@ -1,0 +1,15 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "TASK_ID",
+  "status": "complete",
+  "operator": "codex",
+  "ack": "CONTROLLER_CHALLENGE-OPERATOR-ACK",
+  "base_commit": "0000000000000000000000000000000000000000",
+  "result_commit": "0000000000000000000000000000000000000000",
+  "branch": "operator/TASK_ID",
+  "summary": "What was done",
+  "files_changed": [],
+  "tests": [],
+  "blockers": [],
+  "notes_for_controller": []
+}

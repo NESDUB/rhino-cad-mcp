@@ -1,0 +1,10 @@
+{
+  "protocol_version": "0.3",
+  "controller": "chatgpt-web",
+  "repository": "NESDUB/rhino-cad-mcp",
+  "branch": "main",
+  "latest_request": null,
+  "transport_verified": true,
+  "operator_branch_model": "operator/<task-id>",
+  "bootstrap_branch": "operator/bridge-bootstrap-v1"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "rhino-chatgpt-bridge",
+  "protocol_version": "0.3",
+  "transport": "git",
+  "controller": "chatgpt-web",
+  "operator": "codex",
+  "default_branch": "main",
+  "operator_branch_prefix": "operator/",
+  "request_directory": ".bridge/requests",
+  "report_directory": ".bridge/reports",
+  "state_directory": ".bridge/state",
+  "request_states": [
+    "queued",
+    "claimed",
+    "running",
+    "blocked",
+    "complete",
+    "reviewed"
+  ],
+  "principles": [
+    "Git is the durable source of truth.",
+    "Controller requests are machine-readable JSON.",
+    "Operator work happens on a task branch, not directly on main.",
+    "Operator reports are committed after the work commit and reference that work commit.",
+    "Never discard local work automatically.",
+    "Pulls must fast-forward or fail.",
+    "Execution is separate from synchronization.",
+    "The controller reviews operator evidence before merge."
+  ],
+  "repository": "NESDUB/rhino-cad-mcp"
+}
