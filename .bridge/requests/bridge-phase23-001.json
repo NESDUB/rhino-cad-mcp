@@ -1,7 +1,7 @@
 {
   "protocol_version": "0.3",
   "task_id": "bridge-phase23-001",
-  "status": "queued",
+  "status": "superseded",
   "controller": "chatgpt-web",
   "challenge": "BRIDGE-PHASE23-ZESTLY-VISUAL-ROLLBACK-20260924-5D90B2",
   "objective": "Execute the controller-authored replacement Pass 2 correction from the verified Phase 21 artifact, preserving all Phase 21 bottle geometry exactly while correcting only label orientation and provenance metadata. bridge-phase22-001 is explicitly rejected as a visual regression and must not be used as the source state.",
@@ -43,5 +43,7 @@
     "No geometry edits are authorized in this replacement pass.",
     "Do not modify the controller payload or manifest.",
     "No dependency install, configuration change, force push, or merge."
-  ]
+  ],
+  "superseded_by": "bridge-phase24-001",
+  "superseded_reason": "User requested one combined pass that both modernizes the bottle geometry and installs the high-resolution label; Phase 23 label-only rollback pass should not execute."
 }
