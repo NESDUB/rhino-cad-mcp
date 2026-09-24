@@ -3,7 +3,7 @@
   "controller": "chatgpt-web",
   "repository": "NESDUB/rhino-cad-mcp",
   "branch": "main",
-  "latest_request": "bridge-phase14-001",
+  "latest_request": "bridge-phase15-001",
   "transport_verified": true,
   "operator_branch_model": "operator/<task-id>",
   "bootstrap_merged": true,
@@ -14,8 +14,12 @@
   "phase12_rhino_workflow_poc_status": "blocked_at_mcp_discovery",
   "phase13_results": {
     "skill_discovery": "fixed",
-    "mcp_registration": "fixed",
-    "mcp_server_startup": "blocked_by_server_import"
+    "mcp_registration": "fixed"
   },
-  "phase14_server_import_fix_under_test": true
+  "phase14_results": {
+    "server_import_fix": "verified",
+    "mcp_registration_status": "connected",
+    "retest_readiness": "GO"
+  },
+  "phase15_rhino_workflow_poc_rerun_under_test": true
 }
