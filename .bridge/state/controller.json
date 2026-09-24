@@ -3,7 +3,7 @@
   "controller": "chatgpt-web",
   "repository": "NESDUB/rhino-cad-mcp",
   "branch": "main",
-  "latest_request": "bridge-phase23-001",
+  "latest_request": "bridge-phase24-001",
   "transport_verified": true,
   "operator_branch_model": "operator/<task-id>",
   "bootstrap_merged": true,
@@ -48,12 +48,23 @@
     "accepted_parent_task": "bridge-phase21-001",
     "accepted_parent_result_commit": "e8ace3769f9be3c1c925e452483b0d5b3e47e5bb",
     "rejected_task": "bridge-phase22-001",
-    "rejected_reason": "visual regression: body/base correction produced a detached/deep bulbous base form and reduced the bottle likeness despite improved numerical intersections",
+    "rejected_reason": "visual regression: numerical cleanup produced a detached/bulbous base and worse bottle likeness",
+    "superseded_task": "bridge-phase23-001",
+    "superseded_reason": "user requested geometry modernization and high-resolution label replacement in one combined pass",
     "current_pass": 2,
     "pass_kind": "correction",
-    "task_id": "bridge-phase23-001",
-    "controller_payload_sha256": "bc6cc6104f17881b68e0daa8bab72c75f87953594f3b7e04fd5799ceb876af17",
-    "change_scope": "preserve Phase 21 geometry exactly; rotate label mapping and update lineage metadata only",
+    "task_id": "bridge-phase24-001",
+    "controller_payload_sha256": "c37dc146d4b39085173b364b838e6434643090f96e4fd1c588bfaadd2a80724c",
+    "high_resolution_label": {
+      "path": ".bridge/assets/bridge-phase24-001/zestly_full_label_1536.jpg",
+      "dimensions_px": [1536, 399],
+      "sha256": "6ec396c93db291d15b2420c3f26db7dbd80a46c57cc805a505a8f82ffe38b69c"
+    },
+    "combined_scope": [
+      "modern current-day 500 mL PET soda bottle redesign",
+      "high-resolution Zestly label replacement",
+      "front-facing hero label orientation"
+    ],
     "status": "queued"
   }
 }
