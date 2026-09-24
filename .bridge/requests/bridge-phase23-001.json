@@ -1,0 +1,47 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase23-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE23-ZESTLY-VISUAL-ROLLBACK-20260924-5D90B2",
+  "objective": "Execute the controller-authored replacement Pass 2 correction from the verified Phase 21 artifact, preserving all Phase 21 bottle geometry exactly while correcting only label orientation and provenance metadata. bridge-phase22-001 is explicitly rejected as a visual regression and must not be used as the source state.",
+  "operator_branch": "operator/bridge-phase23-001",
+  "instructions": [
+    "Load Rhino CHATGPT orientation in operator mode and synchronize clean main.",
+    "Prepare bridge-phase23-001 with the normal exchange lifecycle.",
+    "Do not use the Phase 22 Rhino artifact or currently-open Phase 22 document as input.",
+    "Open or target the verified .bridge/artifacts/bridge-phase21-001/ZESTLY_BOTTLE_PASS1.3dm only. Confirm modeling_run_id=zestly-modern-soda-bottle-001 and Phase 21 object state before mutation.",
+    "Require exactly 34 live Phase 21 objects: body, neck finish, printed label sleeve, screw cap, tamper ring, base contact ring, and 28 separate cap ribs. If this state is not present, stop and report a blocker.",
+    "Dry-run .bridge/run_rhino_payload.py --task bridge-phase23-001 and require hash/provenance/Python-3.9 validation success.",
+    "Execute the exact controller payload against the verified Phase 21 document. Do not edit or repair rhino.py or manifest.json.",
+    "This payload has an intentionally narrow scope: cylindrical texture mapping orientation and lineage metadata only. It must not replace, transform, boolean, resize, delete, add, or otherwise alter Rhino geometry.",
+    "After execution, prove geometry preservation. Verify all 34 original live object GUIDs remain, object count remains 34, and body/neck/cap/tamper/base-ring/rib bounding boxes and topology counts match the Phase 21 evidence. Record any mismatch as a blocker.",
+    "Capture rendered front, right, top, and isometric views. The front rendered view must be assessed visually: report which label region is centered/front-facing. The desired result is the green Zestly hero panel centered in Front.",
+    "Compare the rendered silhouette and base appearance to Phase 21. They should be visually unchanged apart from label orientation. Do not attempt any local visual improvement.",
+    "Save as .bridge/artifacts/bridge-phase23-001/ZESTLY_BOTTLE_PASS2_REPLACEMENT.3dm without overwriting Phase 21 or Phase 22 artifacts.",
+    "Write .bridge/evidence/bridge-phase23-001/pass-evaluation.json using the canonical v1 schema. Set local_modeling_used=false, local_modeling_authorized=false, payload_modified_by_operator=false, provenance_check=pass, and operator_recommendation_scope=evidence_only.",
+    "The evidence must explicitly state whether geometry_unchanged=true and whether the green Zestly hero panel is centered in the rendered Front view.",
+    "Create .bridge/evidence/bridge-phase23-001/operator-experience.md with execution observations only.",
+    "Do not modify bridge/runtime/config/orientation files. Do not install dependencies or change MCP/Rhino configuration.",
+    "Run git diff --check and verify only Phase 23 evidence/artifacts/report files are added on the operator branch.",
+    "Commit evidence/artifacts as the work commit and capture RESULT_COMMIT.",
+    "Create .bridge/reports/bridge-phase23-001.json with ack exactly BRIDGE-PHASE23-ZESTLY-VISUAL-ROLLBACK-20260924-5D90B2-OPERATOR-ACK, exact base_commit, RESULT_COMMIT, and branch operator/bridge-phase23-001.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase23-001 and require REPORT_OK.",
+    "Commit the report separately, push operator/bridge-phase23-001, and do not merge it."
+  ],
+  "expected_outputs": [
+    ".bridge/evidence/bridge-phase23-001/pass-evaluation.json",
+    ".bridge/evidence/bridge-phase23-001/operator-experience.md",
+    ".bridge/artifacts/bridge-phase23-001/ZESTLY_BOTTLE_PASS2_REPLACEMENT.3dm",
+    "Rendered front/right/top/isometric captures under .bridge/artifacts/bridge-phase23-001/",
+    ".bridge/reports/bridge-phase23-001.json",
+    "Remote branch operator/bridge-phase23-001"
+  ],
+  "constraints": [
+    "Phase 22 is visually rejected and must not be the source state.",
+    "ChatGPT Web is the geometry author; Claude is execution/validation only.",
+    "No geometry edits are authorized in this replacement pass.",
+    "Do not modify the controller payload or manifest.",
+    "No dependency install, configuration change, force push, or merge."
+  ]
+}
