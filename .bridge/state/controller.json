@@ -3,7 +3,7 @@
   "controller": "chatgpt-web",
   "repository": "NESDUB/rhino-cad-mcp",
   "branch": "main",
-  "latest_request": "bridge-phase22-001",
+  "latest_request": "bridge-phase23-001",
   "transport_verified": true,
   "operator_branch_model": "operator/<task-id>",
   "bootstrap_merged": true,
@@ -47,10 +47,13 @@
     "modeling_run_id": "zestly-modern-soda-bottle-001",
     "accepted_parent_task": "bridge-phase21-001",
     "accepted_parent_result_commit": "e8ace3769f9be3c1c925e452483b0d5b3e47e5bb",
+    "rejected_task": "bridge-phase22-001",
+    "rejected_reason": "visual regression: body/base correction produced a detached/deep bulbous base form and reduced the bottle likeness despite improved numerical intersections",
     "current_pass": 2,
     "pass_kind": "correction",
-    "task_id": "bridge-phase22-001",
-    "controller_payload_sha256": "30b8d6e03ad60b2b0c85de3b071933a72dffe8fafb74528bf87811346206da6e",
+    "task_id": "bridge-phase23-001",
+    "controller_payload_sha256": "bc6cc6104f17881b68e0daa8bab72c75f87953594f3b7e04fd5799ceb876af17",
+    "change_scope": "preserve Phase 21 geometry exactly; rotate label mapping and update lineage metadata only",
     "status": "queued"
   }
 }
