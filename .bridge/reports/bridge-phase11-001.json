@@ -1,0 +1,36 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase11-001",
+  "status": "complete",
+  "operator": "claude-code",
+  "ack": "BRIDGE-PHASE11-CLAUDE-SKILL-20260924-8F3D21-OPERATOR-ACK",
+  "base_commit": "a5ead1499b60a2528529749276dd47e1b8157561",
+  "result_commit": "777030817551b93ab929f228a619ad31baed4189",
+  "branch": "operator/bridge-phase11-001",
+  "summary": "Created the rhino-chatgpt-orientation Claude Code skill (.claude/skills/rhino-chatgpt-orientation/SKILL.md) with YAML frontmatter and trigger description. Wrote install-claude-orientation.sh — an idempotent installer that symlinks the project skill into ~/.claude/skills/ and appends a managed pointer block to ~/.claude/CLAUDE.md. Updated project CLAUDE.md with a minimal onboarding pointer. Ran installer; symlink and global managed block installed. Validated idempotency (two runs), orient.sh operator output, git diff --check, and evidence recorded.",
+  "files_changed": [
+    ".claude/skills/rhino-chatgpt-orientation/SKILL.md",
+    "install-claude-orientation.sh",
+    "CLAUDE.md",
+    ".bridge/evidence/bridge-phase11-001/claude-orientation-skill.json",
+    ".bridge/reports/bridge-phase11-001.json"
+  ],
+  "tests": [
+    "bash -n install-claude-orientation.sh — PASS",
+    "SKILL.md frontmatter present and valid (name, description fields) — PASS",
+    "./install-claude-orientation.sh (first run) — CREATED symlink, APPENDED managed block — PASS",
+    "./install-claude-orientation.sh (second run) — all OK, no changes (idempotency) — PASS",
+    "symlink ~/.claude/skills/rhino-chatgpt-orientation resolves to /Users/nes/bin/mcp/rhino-cad-mcp/.claude/skills/rhino-chatgpt-orientation — PASS",
+    "exactly 1 managed block in ~/.claude/CLAUDE.md — PASS",
+    "./orient.sh operator validation: orientation_version, repository_identity, current_main_sha, controller_state, handbook, operator_guide — all PASS",
+    "git diff --check — PASS"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "The work commit is 777030817551b93ab929f228a619ad31baed4189; this report is intentionally committed afterward as the receipt commit.",
+    "Installer was executed during this task. ~/.claude/skills/rhino-chatgpt-orientation now symlinks to the project skill and ~/.claude/CLAUDE.md contains exactly one managed Rhino CHATGPT pointer block.",
+    "A Claude Code session restart is required for the new skill to appear in the current session's skill list. The skill is immediately available to any new session.",
+    "No operator.sh, exchange.sh, bridge_cli.py, Rhino/MCP runtime, requirements.txt, knowledge/, or tests/ files were modified.",
+    "The managed block in ~/.claude/CLAUDE.md is clearly delimited and does not contain secrets, tokens, or the full orientation handbook."
+  ]
+}
