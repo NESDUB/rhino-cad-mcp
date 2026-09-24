@@ -1,0 +1,51 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase21-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE21-ZESTLY-FOUNDATION-20260924-6F2C91",
+  "objective": "Execute the controller-authored FOUNDATION pass for a simple modern 500 mL PET-style soda bottle with the complete Zestly AI-generated flat label wrapped as one texture asset, then return standardized evidence for controller review before any correction pass.",
+  "operator_branch": "operator/bridge-phase21-001",
+  "payload_path": ".bridge/payloads/bridge-phase21-001/rhino.py",
+  "modeling_run_id": "zestly-modern-soda-bottle-001",
+  "pass_index": 1,
+  "pass_kind": "foundation",
+  "local_modeling_authorized": false,
+  "instructions": [
+    "Load the Rhino CHATGPT orientation in operator mode and treat this request plus the committed controller payload as authoritative.",
+    "Synchronize clean main, then use ./exchange.sh prepare bridge-phase21-001. Do not edit rhino.py, manifest.json, or the label asset.",
+    "Rhino 8 must already be running. Run rhino_status and rhino_list_documents first.",
+    "Create a dedicated new Rhino document named ZESTLY_BOTTLE_PASS1. Never mutate an existing user document. Record its PID:runtime_serial document_id and prove it is empty before execution.",
+    "Prefer millimeter units for the dedicated document. If the available create-document surface cannot set units, inspect the resulting units and report the discrepancy rather than modifying the controller payload.",
+    "Run python3 .bridge/run_rhino_payload.py --task bridge-phase21-001 --dry-run and require success before live execution.",
+    "Execute the exact verified payload with python3 .bridge/run_rhino_payload.py --task bridge-phase21-001 --document-id <PID:runtime_serial>. Do not copy, rewrite, patch, or substitute the modeling code.",
+    "The expected foundation result is a modern soda bottle exterior proxy with separate body, neck finish, printed label sleeve, screw cap, tamper ring, base contact ring, and cap grip ribs. The label sleeve is intentionally an open textured surface; do not classify its non-solid state as a bottle-body failure.",
+    "After execution, inspect the document and read back object names, layers, user strings, bounding boxes, areas/volumes where applicable, and the document-level RHINO_CHATGPT metadata.",
+    "Validate the body, neck, cap, tamper ring, base contact ring, and representative cap ribs for validity/solidity/manifoldness/naked edges. Validate the label sleeve for validity and correct texture/material/mapping presence, not solidity.",
+    "Run assembly validation where supported. Report actual interferences, duplicates, metadata gaps, or inconclusive checks without fixing them.",
+    "Capture controller-reviewable views. Prefer Rendered mode for at least one isometric/front view so the Zestly label can be evaluated; also capture a neutral shaded or technical orthographic view for silhouette review. Preserve capture artifacts under .bridge/artifacts/bridge-phase21-001/.",
+    "Save the dedicated model to .bridge/artifacts/bridge-phase21-001/ZESTLY_BOTTLE_PASS1.3dm without overwriting an existing file, and verify save/readback.",
+    "Create .bridge/evidence/bridge-phase21-001/pass-evaluation.json using the canonical rhino-pass-evaluation-v1 schema. It must contain task_id=bridge-phase21-001, modeling_run_id=zestly-modern-soda-bottle-001, pass_index=1, pass_kind=foundation, executed_payload_sha256=38e13fa9af65dd9b8e97a96c1ba1e1e9357a938b1f0f7ed40e996b4abbc4d18d, operator_recommendation_scope=evidence_only, local_modeling_used=false, local_modeling_authorized=false, payload_modified_by_operator=false, and provenance_check=pass.",
+    "In objective_discrepancies, report measurable/visible issues only. Do not propose redesigns; the controller will choose Pass 2 corrections.",
+    "Also create .bridge/evidence/bridge-phase21-001/operator-experience.md with execution friction only, not modeling recommendations.",
+    "Run git diff --check and ensure controller-owned payload and asset files are byte-identical to base.",
+    "Commit evidence/artifacts as the work commit and capture RESULT_COMMIT.",
+    "Create .bridge/reports/bridge-phase21-001.json with ack exactly BRIDGE-PHASE21-ZESTLY-FOUNDATION-20260924-6F2C91-OPERATOR-ACK, exact base_commit, RESULT_COMMIT, and branch operator/bridge-phase21-001.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase21-001 while HEAD is RESULT_COMMIT and require REPORT_OK.",
+    "Commit the report separately, push operator/bridge-phase21-001, and do not merge."
+  ],
+  "expected_outputs": [
+    ".bridge/evidence/bridge-phase21-001/pass-evaluation.json",
+    ".bridge/evidence/bridge-phase21-001/operator-experience.md",
+    ".bridge/artifacts/bridge-phase21-001/ZESTLY_BOTTLE_PASS1.3dm",
+    ".bridge/artifacts/bridge-phase21-001/ controller-reviewable captures",
+    ".bridge/reports/bridge-phase21-001.json",
+    "Remote branch operator/bridge-phase21-001"
+  ],
+  "constraints": [
+    "Claude is execution/validation only; no local modeling or payload edits.",
+    "Use only the dedicated ZESTLY_BOTTLE_PASS1 document for mutation.",
+    "Do not fix observed modeling problems during Pass 1.",
+    "No dependency installation, MCP reconfiguration, service restart, force push, or merge."
+  ]
+}

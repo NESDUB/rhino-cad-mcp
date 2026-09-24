@@ -1,0 +1,26 @@
+{
+  "asset_version": "1",
+  "task_id": "bridge-phase21-001",
+  "asset_name": "zestly_full_label_crop",
+  "asset_role": "printed_wrap_label_texture",
+  "source_description": "AI-generated flat unraveled Zestly lemon-lime soda label created from BottleLabelLock; cropped once to the complete label bounds, not dissected.",
+  "source_crop_bbox_xyxy": [
+    88,
+    176,
+    1893,
+    645
+  ],
+  "source_cropped_dimensions_px": [
+    1805,
+    469
+  ],
+  "transport_texture_dimensions_px": [
+    256,
+    67
+  ],
+  "transport_texture_format": "JPEG",
+  "repo_relative_path": ".bridge/assets/bridge-phase21-001/zestly_full_label_256.jpg",
+  "sha256": "8095b8b50f9b0a11b8ce335c767a607a9fa866752e0d34cc0895f493f0dda1f6",
+  "mapping_intent": "cylindrical wrap around the label sleeve",
+  "notes": "This manifest describes the whole label as one asset. No internal logo/barcode/nutrition sub-crops are part of the modeling workflow."
+}

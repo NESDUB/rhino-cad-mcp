@@ -1,0 +1,18 @@
+{
+  "payload_version": "1",
+  "task_id": "bridge-phase21-001",
+  "author_role": "controller",
+  "authoring_model": "GPT-5.6 Sol",
+  "payload_type": "rhino_run",
+  "python_compatibility": "3.9",
+  "execution_method": "bridge.execute",
+  "operation_name": "create_zestly_bottle_foundation",
+  "sha256": "38e13fa9af65dd9b8e97a96c1ba1e1e9357a938b1f0f7ed40e996b4abbc4d18d",
+  "target_document_required": true,
+  "local_modeling_authorized": false,
+  "notes": "Foundation pass for a modern 500 mL PET-style soda bottle using the controller-provided Zestly flat-label texture asset.",
+  "modeling_run_id": "zestly-modern-soda-bottle-001",
+  "pass_index": 1,
+  "pass_kind": "foundation",
+  "requires_controller_review_after": true
+}
