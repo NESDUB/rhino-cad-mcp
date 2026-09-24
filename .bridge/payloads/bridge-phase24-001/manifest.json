@@ -1,0 +1,21 @@
+{
+  "payload_version": "1",
+  "task_id": "bridge-phase24-001",
+  "author_role": "controller",
+  "authoring_model": "GPT-5.6 Sol",
+  "payload_type": "rhino_run",
+  "python_compatibility": "3.9",
+  "execution_method": "bridge.execute",
+  "operation_name": "redesign_modern_pet_bottle_with_highres_label",
+  "sha256": "c37dc146d4b39085173b364b838e6434643090f96e4fd1c588bfaadd2a80724c",
+  "target_document_required": true,
+  "local_modeling_authorized": false,
+  "notes": "Combined replacement correction pass. Starting from verified Phase 21 only, rebuild the bottle as a modern current-day 500 mL PET soda bottle and simultaneously replace the 256x67 label proxy with the 1536x399 high-resolution Zestly wrap asset. bridge-phase22-001 is visually rejected; bridge-phase23-001 is superseded before execution.",
+  "modeling_run_id": "zestly-modern-soda-bottle-001",
+  "pass_index": 2,
+  "pass_kind": "correction",
+  "parent_task_id": "bridge-phase21-001",
+  "parent_payload_sha256": "38e13fa9af65dd9b8e97a96c1ba1e1e9357a938b1f0f7ed40e996b4abbc4d18d",
+  "parent_result_commit": "e8ace3769f9be3c1c925e452483b0d5b3e47e5bb",
+  "requires_controller_review_after": true
+}
