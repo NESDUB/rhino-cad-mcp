@@ -1,0 +1,51 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase17-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE17-LIVE-RHINO-20260924-C6F18B",
+  "objective": "Complete the first live end-to-end Rhino CAD MCP proof of concept now that a fresh Claude session has confirmed rhino-cad is visible in-session and Rhino 8 is running.",
+  "operator_branch": "operator/bridge-phase17-001",
+  "instructions": [
+    "Observation only: do not fix or reconfigure the bridge, MCP runtime, Claude setup, orientation system, or Git tooling during this run.",
+    "Use the current fresh Claude session where rhino-cad resources/tools are already visible.",
+    "Load the rhino-chatgpt-orientation skill in operator mode.",
+    "Synchronize clean main, discover this request, and run ./exchange.sh prepare bridge-phase17-001.",
+    "Create .bridge/evidence/bridge-phase17-001/session-log.json and log each stage with timestamp, outcome, elapsed time when measurable, retries, tool used, and manual intervention.",
+    "Record baseline session facts including Claude version/model, session starting directory, base commit, Git cleanliness, and visible rhino-cad tool/resource inventory.",
+    "Run rhino_status and rhino_list_documents. Record exact results, instance/document IDs, timing, ambiguity, and retries.",
+    "Protect all existing user documents. Create a dedicated document named RHINO_CHATGPT_BRIDGE_POC_004 with rhino_create_document. If safe isolation cannot be demonstrated, stop before mutation and report a high-severity blocker.",
+    "List documents again, identify the new document ID, activate/target it if required, inspect it, and prove it is empty before creating geometry.",
+    "Create a deterministic three-solid assembly only in the isolated POC document: rectangular base, centered vertical cylindrical pedestal, and smaller rectangular top cap.",
+    "Create layer BRIDGE_POC_004 if supported and place all three objects on it.",
+    "Assign names and metadata to each object: role, created_by=bridge-phase17-001, revision=1, and operation_id. Read metadata back and preserve exact GUIDs.",
+    "Validate each object with rhino_validate or equivalent and record validity, solidity, manifold state, naked edges if returned, bbox, area, volume, and metadata.",
+    "Run rhino_validate_assembly and record invalid/non-solid IDs, duplicates, interference findings, metadata gaps, inconclusive checks, and limitations.",
+    "Capture visual evidence with rhino_capture_views or rhino_visual_qa, including an isometric and at least one orthographic/secondary view. Preserve PNG/contact sheet, manifest, and scene archive if generated.",
+    "Copy controller-reviewable artifacts into .bridge/artifacts/bridge-phase17-001/ without altering contents.",
+    "Save the isolated document to .bridge/artifacts/bridge-phase17-001/RHINO_CHATGPT_BRIDGE_POC_004.3dm with rhino_save_as if supported. Do not overwrite an existing file. Record save/readback verification and file size.",
+    "Re-inspect the saved POC document and record final document ID, active state, object/layer counts, GUIDs, and validity. Leave the POC document open for user inspection.",
+    "Create .bridge/evidence/bridge-phase17-001/workflow-assessment.json with architecture path, stage metrics, session validation, tool inventory, preflight, isolation, CAD operations, metadata, validation, artifacts, save, final state, retries/errors, manual interventions, ambiguities, friction points, and recommendations.",
+    "Create .bridge/evidence/bridge-phase17-001/operator-experience.md describing what felt smooth or awkward and ranking the top five workflow improvements by impact.",
+    "Do not modify implementation/configuration files during this baseline.",
+    "Run git diff --check and verify only Phase 17 evidence/artifacts/report files are added.",
+    "Commit evidence/artifacts as the work commit and capture RESULT_COMMIT.",
+    "Create .bridge/reports/bridge-phase17-001.json with ack exactly BRIDGE-PHASE17-LIVE-RHINO-20260924-C6F18B-OPERATOR-ACK, exact base_commit, RESULT_COMMIT, and branch operator/bridge-phase17-001.",
+    "Classify the full path as COMPLETE, PARTIAL, or BLOCKED and name the first failing stage if not COMPLETE.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase17-001 and require REPORT_OK.",
+    "Commit the report separately, push operator/bridge-phase17-001, and do not merge it."
+  ],
+  "expected_outputs": [
+    ".bridge/evidence/bridge-phase17-001/session-log.json",
+    ".bridge/evidence/bridge-phase17-001/workflow-assessment.json",
+    ".bridge/evidence/bridge-phase17-001/operator-experience.md",
+    ".bridge/artifacts/bridge-phase17-001/",
+    ".bridge/reports/bridge-phase17-001.json"
+  ],
+  "constraints": [
+    "Never mutate existing user Rhino documents.",
+    "Require isolated document identity before mutation.",
+    "Do not fix issues during this run.",
+    "Do not install dependencies, change config, restart services, force push, or merge."
+  ]
+}
