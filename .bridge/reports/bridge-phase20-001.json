@@ -5,9 +5,9 @@
   "operator": "claude-local",
   "ack": "BRIDGE-PHASE20-MULTIPASS-ENFORCEMENT-20260924-94C2E7-OPERATOR-ACK",
   "base_commit": "9423329cc6cba9448e8adb39cfa000c1256e3fae",
-  "result_commit": "79df58f8f82161d952648cd27196ab5c54cf5e2e",
+  "result_commit": "52385b7b2dcd469f6bef6a864dc006830ca3362c",
   "branch": "operator/bridge-phase20-001",
-  "summary": "Phase 20 machine-enforces multi-pass payload provenance and lineage in verify-report. Controller review corrections closed three trust-boundary bypasses: self-authorization via result manifest, fabricated payload absent at base_commit, and fake/post-receipt result_commit. 20-case fixture test suite (all tests verify before receipt commit). All invariants documented. 20/20 PASS.",
+  "summary": "Phase 20 machine-enforces multi-pass payload provenance and lineage. All five controller-identified trust-boundary bypasses are closed: (1) authorization from result manifest, (2) fabrication absent at base, (3) fake/post-receipt result_commit, (4) manifest-deletion disabling enforcement, (5) authorized operator modifying controller-owned contract fields. 29-case fixture test suite; all verify-report calls before receipt commit. 29/29 PASS.",
   "files_changed": [
     ".bridge/bridge_cli.py",
     ".bridge/tests/test_bridge_cli.py",
@@ -17,7 +17,7 @@
     ".bridge/orientation/operator.md",
     ".bridge/evidence/bridge-phase20-001/multipass-enforcement.json"
   ],
-  "tests": "python3 .bridge/tests/test_bridge_cli.py → 20/20 OK (14 original + 6 review-correction cases: self-authorization attack, fabricated payload, manifest changed unauthorized, rhino.py changed unauthorized, nonexistent result_commit, result_commit != HEAD)",
+  "tests": "python3 .bridge/tests/test_bridge_cli.py → 29/29 OK",
   "blockers": [],
-  "notes_for_controller": "All three bypasses from controller review are closed. Authorization source is now exclusively base_commit manifest. Payload fabrication (files absent at base) is rejected. result_commit must be a real git object equal to HEAD at verify time. The _example dry-run and all existing report verifications are unaffected. Known limitation: parent report presence at base_commit is used as the controller-review proxy — there is no cryptographic signature."
+  "notes_for_controller": "All five bypasses from two rounds of controller review are closed. Payload-task detection is now base_commit-driven. Manifest-deletion attack rejected. Authorized operator limited to sha256 change only; all other controller contract fields locked to base. Authoritative manifest passed to lineage/eval checks uses base contract + verified result sha256. The _example dry-run and all previous report verifications are unaffected."
 }
