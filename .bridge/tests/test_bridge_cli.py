@@ -969,5 +969,311 @@ class TestResultCommitNotCurrentHead(unittest.TestCase):
             repo.cleanup()
 
 
+# ===========================================================================
+# Final Phase-20 review-correction tests (deletion bypass + manifest contract)
+# ===========================================================================
+
+class TestOperatorDeletesManifest(unittest.TestCase):
+    """
+    Controller payload exists at base; operator deletes manifest.json on result.
+    Must reject — base present + result absent = deletion attack.
+    """
+
+    def test_operator_deletes_manifest(self):
+        repo = TempRepo()
+        try:
+            task_id = "task-del-manifest"
+            repo.write(".bridge/protocol.json", _PROTOCOL_STUB)
+            repo.write(f".bridge/requests/{task_id}.json",
+                       json.dumps(_base_request(task_id)))
+            manifest = _base_manifest(task_id)
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", _RHINO_CONTENT)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(manifest))
+            repo.add(".")
+            base = repo.commit("base")
+
+            # Operator deletes manifest.json (remove it and commit something else)
+            (repo.root / ".bridge" / "payloads" / task_id / "manifest.json").unlink()
+            repo.write(f".bridge/evidence/{task_id}/notes.txt", "work")
+            repo.add(".")
+            # git add -A to pick up deletion
+            _git_ok(["add", "-A"], str(repo.root))
+            result = repo.commit("work-manifest-deleted")
+
+            repo.write(f".bridge/reports/{task_id}.json",
+                       json.dumps(_base_report(task_id, base, result)))
+
+            _expect_fail(repo, task_id, "PROVENANCE_ERROR")
+        finally:
+            repo.cleanup()
+
+
+class TestOperatorDeletesRhinoPy(unittest.TestCase):
+    """
+    Controller payload exists at base; operator deletes rhino.py on result.
+    Must reject — base present + result rhino.py absent.
+    """
+
+    def test_operator_deletes_rhino_py(self):
+        repo = TempRepo()
+        try:
+            task_id = "task-del-rhino"
+            repo.write(".bridge/protocol.json", _PROTOCOL_STUB)
+            repo.write(f".bridge/requests/{task_id}.json",
+                       json.dumps(_base_request(task_id)))
+            manifest = _base_manifest(task_id)
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", _RHINO_CONTENT)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(manifest))
+            repo.add(".")
+            base = repo.commit("base")
+
+            # Operator deletes rhino.py
+            (repo.root / ".bridge" / "payloads" / task_id / "rhino.py").unlink()
+            repo.write(f".bridge/evidence/{task_id}/notes.txt", "work")
+            _git_ok(["add", "-A"], str(repo.root))
+            result = repo.commit("work-rhino-deleted")
+
+            repo.write(f".bridge/reports/{task_id}.json",
+                       json.dumps(_base_report(task_id, base, result)))
+
+            _expect_fail(repo, task_id, "PROVENANCE_ERROR")
+        finally:
+            repo.cleanup()
+
+
+class TestNoPayloadAtEitherCommit(unittest.TestCase):
+    """No payload files at base or result → non-payload task, backward-compat PASS."""
+
+    def test_no_payload_anywhere(self):
+        repo = _setup_nonpayload_repo("task-nopayload-both")
+        try:
+            _run_verify(repo, "task-nopayload-both")
+        finally:
+            repo.cleanup()
+
+
+class TestResultOnlyPayload(unittest.TestCase):
+    """Payload only at result (not base) → fabrication, already covered but explicit."""
+
+    def test_result_only(self):
+        repo = TempRepo()
+        try:
+            task_id = "task-result-only"
+            repo.write(".bridge/protocol.json", _PROTOCOL_STUB)
+            repo.write(f".bridge/requests/{task_id}.json",
+                       json.dumps(_base_request(task_id)))
+            repo.add(".")
+            base = repo.commit("base-no-payload")
+
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", _RHINO_CONTENT)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(_base_manifest(task_id)))
+            repo.add(".")
+            result = repo.commit("work-fabricated")
+
+            repo.write(f".bridge/reports/{task_id}.json",
+                       json.dumps(_base_report(task_id, base, result)))
+
+            _expect_fail(repo, task_id, "PROVENANCE_ERROR")
+        finally:
+            repo.cleanup()
+
+
+class TestAuthorizedLocalModelingValid(unittest.TestCase):
+    """
+    Authorized Codex task: changes rhino.py and manifest.sha256 only.
+    All other fields identical to base. Must PASS.
+    """
+
+    def test_authorized_rhino_and_sha_only(self):
+        repo = TempRepo()
+        try:
+            task_id = "task-auth-valid"
+            repo.write(".bridge/protocol.json", _PROTOCOL_STUB)
+            repo.write(f".bridge/requests/{task_id}.json",
+                       json.dumps(_base_request(task_id)))
+
+            base_manifest = _base_manifest(task_id, local_modeling_authorized=True)
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", _RHINO_CONTENT)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(base_manifest))
+            repo.add(".")
+            base = repo.commit("base")
+
+            # Codex changes rhino.py; updates sha256; everything else identical
+            new_rhino = b"# codex-authored geometry\ncreate_box()\n"
+            new_sha = _sha256(new_rhino)
+            result_manifest = dict(base_manifest)
+            result_manifest["sha256"] = new_sha
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", new_rhino)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(result_manifest))
+            repo.add(".")
+            result = repo.commit("work-codex")
+
+            repo.write(f".bridge/reports/{task_id}.json",
+                       json.dumps(_base_report(task_id, base, result)))
+
+            _run_verify(repo, task_id)  # must not raise
+        finally:
+            repo.cleanup()
+
+
+class TestAuthorizedChangesModelingRunId(unittest.TestCase):
+    """Authorized operator changes modeling_run_id → MANIFEST_CONTRACT_ERROR."""
+
+    def test_changes_run_id(self):
+        repo = TempRepo()
+        try:
+            task_id = "task-auth-runid"
+            repo.write(".bridge/protocol.json", _PROTOCOL_STUB)
+            repo.write(f".bridge/requests/{task_id}.json",
+                       json.dumps(_base_request(task_id)))
+
+            base_manifest = _base_manifest(task_id, local_modeling_authorized=True,
+                                           modeling_run_id="run-original",
+                                           pass_index=1, pass_kind="foundation")
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", _RHINO_CONTENT)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(base_manifest))
+            repo.add(".")
+            base = repo.commit("base")
+
+            new_rhino = b"# codex geometry\npass\n"
+            new_sha = _sha256(new_rhino)
+            result_manifest = dict(base_manifest)
+            result_manifest["sha256"] = new_sha
+            result_manifest["modeling_run_id"] = "run-operator-altered"  # changed!
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", new_rhino)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(result_manifest))
+            repo.add(".")
+            result = repo.commit("work")
+
+            repo.write(f".bridge/reports/{task_id}.json",
+                       json.dumps(_base_report(task_id, base, result)))
+
+            _expect_fail(repo, task_id, "MANIFEST_CONTRACT_ERROR")
+        finally:
+            repo.cleanup()
+
+
+class TestAuthorizedRemovesModelingRunId(unittest.TestCase):
+    """Authorized operator removes modeling_run_id → MANIFEST_CONTRACT_ERROR."""
+
+    def test_removes_run_id(self):
+        repo = TempRepo()
+        try:
+            task_id = "task-auth-rmrunid"
+            repo.write(".bridge/protocol.json", _PROTOCOL_STUB)
+            repo.write(f".bridge/requests/{task_id}.json",
+                       json.dumps(_base_request(task_id)))
+
+            base_manifest = _base_manifest(task_id, local_modeling_authorized=True,
+                                           modeling_run_id="run-original",
+                                           pass_index=1, pass_kind="foundation")
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", _RHINO_CONTENT)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(base_manifest))
+            repo.add(".")
+            base = repo.commit("base")
+
+            new_rhino = b"# codex geometry\npass\n"
+            new_sha = _sha256(new_rhino)
+            result_manifest = dict(base_manifest)
+            result_manifest["sha256"] = new_sha
+            del result_manifest["modeling_run_id"]  # removed!
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", new_rhino)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(result_manifest))
+            repo.add(".")
+            result = repo.commit("work")
+
+            repo.write(f".bridge/reports/{task_id}.json",
+                       json.dumps(_base_report(task_id, base, result)))
+
+            _expect_fail(repo, task_id, "MANIFEST_CONTRACT_ERROR")
+        finally:
+            repo.cleanup()
+
+
+class TestAuthorizedChangesPassIndex(unittest.TestCase):
+    """Authorized operator changes pass_index → MANIFEST_CONTRACT_ERROR."""
+
+    def test_changes_pass_index(self):
+        repo = TempRepo()
+        try:
+            task_id = "task-auth-pidx"
+            repo.write(".bridge/protocol.json", _PROTOCOL_STUB)
+            repo.write(f".bridge/requests/{task_id}.json",
+                       json.dumps(_base_request(task_id)))
+
+            base_manifest = _base_manifest(task_id, local_modeling_authorized=True,
+                                           modeling_run_id="run-abc",
+                                           pass_index=1, pass_kind="foundation")
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", _RHINO_CONTENT)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(base_manifest))
+            repo.add(".")
+            base = repo.commit("base")
+
+            new_rhino = b"# codex geometry\npass\n"
+            new_sha = _sha256(new_rhino)
+            result_manifest = dict(base_manifest)
+            result_manifest["sha256"] = new_sha
+            result_manifest["pass_index"] = 99  # changed!
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", new_rhino)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(result_manifest))
+            repo.add(".")
+            result = repo.commit("work")
+
+            repo.write(f".bridge/reports/{task_id}.json",
+                       json.dumps(_base_report(task_id, base, result)))
+
+            _expect_fail(repo, task_id, "MANIFEST_CONTRACT_ERROR")
+        finally:
+            repo.cleanup()
+
+
+class TestAuthorizedChangesAuthorRole(unittest.TestCase):
+    """Authorized operator changes author_role → MANIFEST_CONTRACT_ERROR."""
+
+    def test_changes_author_role(self):
+        repo = TempRepo()
+        try:
+            task_id = "task-auth-role"
+            repo.write(".bridge/protocol.json", _PROTOCOL_STUB)
+            repo.write(f".bridge/requests/{task_id}.json",
+                       json.dumps(_base_request(task_id)))
+
+            base_manifest = _base_manifest(task_id, local_modeling_authorized=True)
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", _RHINO_CONTENT)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(base_manifest))
+            repo.add(".")
+            base = repo.commit("base")
+
+            new_rhino = b"# codex geometry\npass\n"
+            new_sha = _sha256(new_rhino)
+            result_manifest = dict(base_manifest)
+            result_manifest["sha256"] = new_sha
+            result_manifest["author_role"] = "codex"  # changed!
+            repo.write(f".bridge/payloads/{task_id}/rhino.py", new_rhino)
+            repo.write(f".bridge/payloads/{task_id}/manifest.json",
+                       json.dumps(result_manifest))
+            repo.add(".")
+            result = repo.commit("work")
+
+            repo.write(f".bridge/reports/{task_id}.json",
+                       json.dumps(_base_report(task_id, base, result)))
+
+            _expect_fail(repo, task_id, "MANIFEST_CONTRACT_ERROR")
+        finally:
+            repo.cleanup()
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

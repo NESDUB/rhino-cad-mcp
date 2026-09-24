@@ -78,41 +78,54 @@ def _check_payload_provenance(task_id: str, base_commit: str, result_commit: str
     """
     Enforce controller-authored payload provenance.
 
-    Trust boundary rules (strengthened in Phase-20 review correction):
-      - The BASE-COMMIT manifest is authoritative for local_modeling_authorized.
-        An operator may not self-authorize by altering the result manifest.
-      - Both manifest.json and rhino.py must already exist at base_commit.
-        If either appears only on the operator branch, the payload is fabricated.
+    Payload-task status is determined from BASE commit, never result commit:
+      base absent + result absent → non-payload task, return None
+      base absent + result present → operator fabricated a payload, reject
+      base present + result absent → operator deleted the manifest, reject
+      base present + result present → full provenance validation
+
+    Additional trust-boundary rules:
       - author_role=controller is checked at base_commit.
       - base rhino.py SHA-256 must match base manifest.sha256.
-      - When local_modeling_authorized is false:
-          result manifest must be byte-for-byte identical to base manifest.
-          result rhino.py must be byte-for-byte identical to base rhino.py.
-      - When local_modeling_authorized is true:
-          result manifest SHA-256 must match result rhino.py (operator may modify).
+      - Authorization is read exclusively from base manifest.
+        Operator cannot self-authorize by changing local_modeling_authorized.
+      - When local_modeling_authorized=false:
+          result manifest and rhino.py must be byte-for-byte identical to base.
+      - When local_modeling_authorized=true (authorized Codex task):
+          result rhino.py SHA-256 must match result manifest.sha256.
+          Only manifest.sha256 may differ; all other controller-owned fields
+          (task_id, author_role, modeling_run_id, pass_index, pass_kind,
+          parent lineage, etc.) must remain identical to base manifest.
+          Returns a manifest using base contract values + verified result sha256
+          so downstream lineage checks cannot consume operator-modified fields.
 
-    Returns the result-commit manifest dict on success, or None when no manifest
-    exists at result_commit (non-payload task — skip silently).
-
+    Returns the authoritative manifest dict on success.
     Raises SystemExit on any provenance violation.
     """
     manifest_rel = f".bridge/payloads/{task_id}/manifest.json"
     rhino_rel    = f".bridge/payloads/{task_id}/rhino.py"
 
-    # Load manifest bytes from both commits up front.
+    # Payload-task detection is driven by base_commit (controller's state).
     base_manifest_bytes   = _git_show_bytes(base_commit, manifest_rel)
     result_manifest_bytes = _git_show_bytes(result_commit, manifest_rel)
 
-    if result_manifest_bytes is None:
-        # No manifest at result_commit → not a payload task; skip.
-        return None
-
-    # Payload must have originated from the controller before the operator branch.
     if base_manifest_bytes is None:
+        if result_manifest_bytes is None:
+            # Neither commit has a manifest → ordinary non-payload task.
+            return None
+        # Operator introduced a payload that has no controller origin.
         raise SystemExit(
-            f"PROVENANCE_ERROR: {manifest_rel} not found at base_commit {base_commit}. "
-            f"A controller-authored payload must exist on main before the operator branch; "
-            f"an operator cannot introduce a new manifest."
+            f"PROVENANCE_ERROR: {manifest_rel} is absent at base_commit {base_commit} "
+            f"but present at result_commit. Operator cannot introduce a controller "
+            f"payload; it must originate from the controller on main."
+        )
+
+    # base manifest present → this is a payload task regardless of result.
+    if result_manifest_bytes is None:
+        raise SystemExit(
+            f"PROVENANCE_ERROR: {manifest_rel} exists at base_commit {base_commit} "
+            f"but was deleted by the operator on result_commit {result_commit}. "
+            f"Operator cannot delete a controller-authored manifest."
         )
 
     # Parse manifests.
@@ -147,7 +160,8 @@ def _check_payload_provenance(task_id: str, base_commit: str, result_commit: str
         )
     if result_rhino is None:
         raise SystemExit(
-            f"PROVENANCE_ERROR: {rhino_rel} not found at result_commit {result_commit}."
+            f"PROVENANCE_ERROR: {rhino_rel} was deleted by operator at "
+            f"result_commit {result_commit}. Operator cannot delete rhino.py."
         )
 
     # Base integrity: base rhino.py SHA-256 must match base manifest.sha256.
@@ -171,7 +185,7 @@ def _check_payload_provenance(task_id: str, base_commit: str, result_commit: str
         )
 
     if not authorized:
-        # Payload files must be byte-for-byte identical to base commit.
+        # Byte-for-byte immutability when not authorized.
         if result_manifest_bytes != base_manifest_bytes:
             raise SystemExit(
                 f"UNAUTHORIZED_LOCAL_MODELING: manifest.json was modified on the operator "
@@ -182,17 +196,42 @@ def _check_payload_provenance(task_id: str, base_commit: str, result_commit: str
                 f"UNAUTHORIZED_LOCAL_MODELING: rhino.py was modified on the operator "
                 f"branch but local_modeling_authorized=false per base manifest"
             )
-    else:
-        # When authorized: result rhino.py SHA-256 must match result manifest.
-        result_computed = hashlib.sha256(result_rhino).hexdigest()
-        result_declared = result_manifest.get("sha256", "")
-        if result_computed != result_declared:
-            raise SystemExit(
-                f"PROVENANCE_ERROR: result rhino.py SHA-256 mismatch — "
-                f"computed {result_computed}, result manifest declares {result_declared}"
-            )
+        # Both identical — return result manifest (equals base manifest).
+        return result_manifest
 
-    return result_manifest
+    # ---- Authorized local-modeling path ----
+    # Codex may change rhino.py and update sha256. All other controller-owned
+    # contract fields must remain identical to base manifest.
+
+    result_computed = hashlib.sha256(result_rhino).hexdigest()
+    result_declared = result_manifest.get("sha256", "")
+    if result_computed != result_declared:
+        raise SystemExit(
+            f"PROVENANCE_ERROR: result rhino.py SHA-256 mismatch — "
+            f"computed {result_computed}, result manifest declares {result_declared}"
+        )
+
+    # Only sha256 may differ; all other fields must be controller-authoritative.
+    _OPERATOR_WRITABLE = {"sha256"}
+    base_contract   = {k: v for k, v in base_manifest.items()
+                       if k not in _OPERATOR_WRITABLE}
+    result_contract = {k: v for k, v in result_manifest.items()
+                       if k not in _OPERATOR_WRITABLE}
+    if base_contract != result_contract:
+        all_keys = set(base_contract) | set(result_contract)
+        changed = sorted(k for k in all_keys
+                         if base_contract.get(k) != result_contract.get(k))
+        raise SystemExit(
+            f"MANIFEST_CONTRACT_ERROR: local_modeling_authorized=true permits only "
+            f"sha256 to change; these fields differ from the controller base: {changed}"
+        )
+
+    # Return authoritative manifest: base controller contract + verified result sha256.
+    # This ensures _check_multipass_lineage/_check_pass_evaluation cannot consume
+    # any operator-modified contract values.
+    authoritative = dict(base_manifest)
+    authoritative["sha256"] = result_declared
+    return authoritative
 
 
 def _check_multipass_lineage(task_id: str, base_commit: str, manifest: dict) -> None:
