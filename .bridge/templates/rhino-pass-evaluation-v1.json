@@ -87,5 +87,9 @@
       "impact": "<high | medium | low>"
     }
   ],
+  "local_modeling_used": false,
+  "local_modeling_authorized": false,
+  "payload_modified_by_operator": false,
+  "provenance_check": "pass",
   "operator_recommendation_scope": "evidence_only"
 }

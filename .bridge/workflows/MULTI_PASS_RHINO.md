@@ -13,6 +13,11 @@ and authors the next targeted correction. The loop continues until the controlle
 belong to the controller. The operator's job is to return accurate, structured evidence that makes
 those decisions possible.
 
+**These policies are machine-enforced.** `verify-report` checks payload SHA provenance,
+unauthorized operator modifications, multi-pass lineage sequencing, and presence of the canonical
+`pass-evaluation.json` at `.bridge/evidence/<task-id>/pass-evaluation.json`. A report that
+violates any of these invariants will not reach `REPORT_OK`.
+
 ## Role boundaries
 
 | Who | Does |

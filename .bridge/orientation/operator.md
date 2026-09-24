@@ -28,9 +28,12 @@ When a task provides a payload, execute it through `python3 .bridge/run_rhino_pa
 calls `bridge.execute()` with the exact controller-authored code.
 
 **Multi-pass operator loop:** execute the exact payload → collect standardized evidence using the
-`.bridge/templates/rhino-pass-evaluation-v1.json` schema → stop and hand back to the controller.
+`.bridge/templates/rhino-pass-evaluation-v1.json` schema and save it as
+`.bridge/evidence/<task-id>/pass-evaluation.json` → stop and hand back to the controller.
 Do not author a next-pass payload. Do not redesign geometry to fix discrepancies you observe.
-Discrepancies go into `objective_discrepancies` in the evidence packet with `operator_recommendation_scope="evidence_only"`.
+Discrepancies go into `objective_discrepancies` with `operator_recommendation_scope="evidence_only"`.
+These invariants (payload SHA, provenance, lineage, pass-evaluation presence) are now machine-enforced
+by `verify-report`; the report will not reach `REPORT_OK` if they are violated.
 
 ## Completion contract
 

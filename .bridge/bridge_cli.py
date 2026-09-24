@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -10,12 +12,20 @@ ROOT = Path(__file__).resolve().parents[1]
 BRIDGE = ROOT / ".bridge"
 REQUESTS = BRIDGE / "requests"
 REPORTS = BRIDGE / "reports"
+PAYLOADS = BRIDGE / "payloads"
+EVIDENCE = BRIDGE / "evidence"
 PROTOCOL = BRIDGE / "protocol.json"
 CURRENT_PROTOCOL = "0.3"
 
 TASK_RE = re.compile(r"^[A-Za-z0-9._-]+$")
 BRANCH_RE = re.compile(r"^[A-Za-z0-9._/-]+$")
+SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+VALID_PASS_KINDS = {"foundation", "correction", "detail_qa", "hotfix", "single_pass"}
 
+
+# ---------------------------------------------------------------------------
+# Basic I/O helpers
+# ---------------------------------------------------------------------------
 
 def load(path: Path):
     with path.open("r", encoding="utf-8") as f:
@@ -34,6 +44,299 @@ def validate_task_id(task_id: str):
     if not TASK_RE.fullmatch(task_id):
         raise SystemExit(f"Invalid task id: {task_id}")
 
+
+# ---------------------------------------------------------------------------
+# Git helpers (subprocess — standard library only)
+# ---------------------------------------------------------------------------
+
+def _git_show_bytes(sha: str, rel_path: str) -> bytes | None:
+    """Return the raw bytes of rel_path at the given commit SHA, or None."""
+    r = subprocess.run(
+        ["git", "show", f"{sha}:{rel_path}"],
+        capture_output=True,
+        cwd=str(ROOT),
+    )
+    return r.stdout if r.returncode == 0 else None
+
+
+def _git_show_json(sha: str, rel_path: str) -> dict | None:
+    """Return parsed JSON of rel_path at the given commit SHA, or None."""
+    raw = _git_show_bytes(sha, rel_path)
+    if raw is None:
+        return None
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Phase-20 provenance checks
+# ---------------------------------------------------------------------------
+
+def _check_payload_provenance(task_id: str, base_commit: str, result_commit: str) -> dict | None:
+    """
+    If a controller-authored payload manifest exists at result_commit, enforce:
+      - author_role = "controller"
+      - sha256 in manifest matches sha256 of rhino.py at result_commit
+      - if local_modeling_authorized is false/absent:
+          rhino.py and manifest.json must be unchanged from base_commit
+
+    Returns the manifest dict if provenance checks passed, or None if no
+    manifest exists (non-payload task — skip silently).
+
+    Raises SystemExit on any provenance violation.
+    """
+    manifest_rel = f".bridge/payloads/{task_id}/manifest.json"
+    rhino_rel    = f".bridge/payloads/{task_id}/rhino.py"
+
+    manifest = _git_show_json(result_commit, manifest_rel)
+    if manifest is None:
+        # No manifest → not a controller-authored payload task; skip.
+        return None
+
+    # 1. author_role must be "controller"
+    if manifest.get("author_role") != "controller":
+        raise SystemExit(
+            f"PROVENANCE_ERROR: manifest.author_role is "
+            f"{manifest.get('author_role')!r}, expected 'controller'"
+        )
+
+    # 2. rhino.py must exist at result_commit
+    rhino_bytes = _git_show_bytes(result_commit, rhino_rel)
+    if rhino_bytes is None:
+        raise SystemExit(
+            f"PROVENANCE_ERROR: {rhino_rel} not found at result_commit {result_commit}"
+        )
+
+    # 3. SHA-256 of rhino.py must match manifest.sha256
+    computed = hashlib.sha256(rhino_bytes).hexdigest()
+    declared = manifest.get("sha256", "")
+    if computed != declared:
+        raise SystemExit(
+            f"PROVENANCE_ERROR: rhino.py SHA-256 mismatch — "
+            f"computed {computed}, manifest declares {declared}"
+        )
+
+    # 4. If local_modeling_authorized is false/absent, operator must not have
+    #    modified rhino.py or manifest.json relative to base_commit.
+    authorized = manifest.get("local_modeling_authorized", False)
+    if not authorized:
+        base_rhino    = _git_show_bytes(base_commit, rhino_rel)
+        base_manifest = _git_show_bytes(base_commit, manifest_rel)
+        result_manifest = _git_show_bytes(result_commit, manifest_rel)
+
+        if base_rhino is not None and base_rhino != rhino_bytes:
+            raise SystemExit(
+                f"UNAUTHORIZED_LOCAL_MODELING: rhino.py was modified on the operator "
+                f"branch but local_modeling_authorized=false in {manifest_rel}"
+            )
+        if base_manifest is not None and base_manifest != result_manifest:
+            raise SystemExit(
+                f"UNAUTHORIZED_LOCAL_MODELING: manifest.json was modified on the "
+                f"operator branch but local_modeling_authorized=false in {manifest_rel}"
+            )
+
+    return manifest
+
+
+def _check_multipass_lineage(task_id: str, base_commit: str, manifest: dict) -> None:
+    """
+    Enforce multi-pass lineage invariants when manifest carries a modeling_run_id.
+    Raises SystemExit on any violation.
+    """
+    run_id = manifest.get("modeling_run_id", "")
+    if not run_id:
+        return  # Not a multi-pass task; skip.
+
+    # modeling_run_id must be a non-empty string (already confirmed above)
+
+    # pass_index must be a positive integer
+    pass_index = manifest.get("pass_index")
+    if not isinstance(pass_index, int) or pass_index < 1:
+        raise SystemExit(
+            f"LINEAGE_ERROR: manifest.pass_index must be a positive integer, "
+            f"got {pass_index!r}"
+        )
+
+    # pass_kind must be one of the valid values
+    pass_kind = manifest.get("pass_kind", "")
+    if pass_kind not in VALID_PASS_KINDS:
+        raise SystemExit(
+            f"LINEAGE_ERROR: manifest.pass_kind {pass_kind!r} not in "
+            f"{sorted(VALID_PASS_KINDS)}"
+        )
+
+    # requires_controller_review_after must be boolean if present
+    rcra = manifest.get("requires_controller_review_after")
+    if rcra is not None and not isinstance(rcra, bool):
+        raise SystemExit(
+            f"LINEAGE_ERROR: manifest.requires_controller_review_after must be "
+            f"boolean, got {rcra!r}"
+        )
+
+    parent_task_id     = manifest.get("parent_task_id", "")
+    parent_sha256      = manifest.get("parent_payload_sha256", "")
+    parent_result_sha  = manifest.get("parent_result_commit", "")
+
+    if pass_index == 1:
+        # Foundation pass: reject parent lineage fields unless this is explicitly
+        # a hotfix/import case (documented via pass_kind=hotfix).
+        if pass_kind != "hotfix":
+            if parent_task_id or parent_sha256 or parent_result_sha:
+                raise SystemExit(
+                    f"LINEAGE_ERROR: pass_index=1/pass_kind={pass_kind!r} must not "
+                    f"carry parent lineage fields (parent_task_id, "
+                    f"parent_payload_sha256, parent_result_commit)"
+                )
+    else:
+        # pass_index > 1: require all parent lineage fields
+        for field, value in [
+            ("parent_task_id",         parent_task_id),
+            ("parent_payload_sha256",  parent_sha256),
+            ("parent_result_commit",   parent_result_sha),
+        ]:
+            if not value:
+                raise SystemExit(
+                    f"LINEAGE_ERROR: pass_index={pass_index} requires "
+                    f"manifest.{field}"
+                )
+
+        # Validate parent_task_id format
+        if not TASK_RE.fullmatch(parent_task_id):
+            raise SystemExit(
+                f"LINEAGE_ERROR: invalid parent_task_id {parent_task_id!r}"
+            )
+
+        # Validate parent_result_commit is a 40-char SHA
+        if not SHA_RE.fullmatch(parent_result_sha):
+            raise SystemExit(
+                f"LINEAGE_ERROR: parent_result_commit must be a 40-character "
+                f"lowercase SHA, got {parent_result_sha!r}"
+            )
+
+        # Resolve parent from base_commit (not from operator modifications)
+        parent_report_rel   = f".bridge/reports/{parent_task_id}.json"
+        parent_manifest_rel = f".bridge/payloads/{parent_task_id}/manifest.json"
+
+        parent_report = _git_show_json(base_commit, parent_report_rel)
+        if parent_report is None:
+            raise SystemExit(
+                f"LINEAGE_ERROR: parent report "
+                f"{parent_report_rel} not found at base_commit {base_commit}. "
+                f"Controller must merge the parent pass before queuing the next."
+            )
+
+        # Parent report's result_commit must equal manifest's parent_result_commit
+        pr_result = parent_report.get("result_commit", "")
+        if pr_result != parent_result_sha:
+            raise SystemExit(
+                f"LINEAGE_ERROR: parent report result_commit {pr_result!r} does not "
+                f"match manifest.parent_result_commit {parent_result_sha!r}"
+            )
+
+        # Parent payload manifest must exist at base_commit
+        parent_manifest = _git_show_json(base_commit, parent_manifest_rel)
+        if parent_manifest is None:
+            raise SystemExit(
+                f"LINEAGE_ERROR: parent manifest {parent_manifest_rel} not found "
+                f"at base_commit {base_commit}"
+            )
+
+        # Parent manifest sha256 must equal manifest's parent_payload_sha256
+        pm_sha = parent_manifest.get("sha256", "")
+        if pm_sha != parent_sha256:
+            raise SystemExit(
+                f"LINEAGE_ERROR: parent manifest sha256 {pm_sha!r} does not match "
+                f"manifest.parent_payload_sha256 {parent_sha256!r}"
+            )
+
+        # Same modeling_run_id
+        pm_run_id = parent_manifest.get("modeling_run_id", "")
+        if pm_run_id != run_id:
+            raise SystemExit(
+                f"LINEAGE_ERROR: parent manifest modeling_run_id {pm_run_id!r} "
+                f"does not match current modeling_run_id {run_id!r}"
+            )
+
+        # pass_index must be parent pass_index + 1
+        parent_pass_index = parent_manifest.get("pass_index")
+        if not isinstance(parent_pass_index, int):
+            raise SystemExit(
+                f"LINEAGE_ERROR: parent manifest pass_index is not an integer: "
+                f"{parent_pass_index!r}"
+            )
+        if pass_index != parent_pass_index + 1:
+            raise SystemExit(
+                f"LINEAGE_ERROR: expected pass_index={parent_pass_index + 1}, "
+                f"got {pass_index}"
+            )
+
+
+def _check_pass_evaluation(task_id: str, result_commit: str, manifest: dict) -> None:
+    """
+    For multi-pass tasks, require pass-evaluation.json at result_commit and
+    validate its fields against the manifest.
+    Raises SystemExit on any violation.
+    """
+    run_id = manifest.get("modeling_run_id", "")
+    if not run_id:
+        return  # Not a multi-pass task; skip.
+
+    eval_rel = f".bridge/evidence/{task_id}/pass-evaluation.json"
+    raw = _git_show_bytes(result_commit, eval_rel)
+    if raw is None:
+        raise SystemExit(
+            f"PASS_EVAL_ERROR: {eval_rel} not found at result_commit "
+            f"{result_commit}. Multi-pass tasks must commit pass-evaluation.json."
+        )
+
+    try:
+        ev = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"PASS_EVAL_ERROR: {eval_rel} is not valid JSON: {exc}")
+
+    # Cross-validate fields against manifest
+    checks = [
+        ("task_id",                   task_id,                  ev.get("task_id")),
+        ("modeling_run_id",           run_id,                   ev.get("modeling_run_id")),
+        ("pass_index",                manifest.get("pass_index"), ev.get("pass_index")),
+        ("pass_kind",                 manifest.get("pass_kind"),  ev.get("pass_kind")),
+        ("executed_payload_sha256",   manifest.get("sha256"),    ev.get("executed_payload_sha256")),
+    ]
+    for field, expected, actual in checks:
+        if actual != expected:
+            raise SystemExit(
+                f"PASS_EVAL_ERROR: pass-evaluation.{field}={actual!r}, "
+                f"expected {expected!r}"
+            )
+
+    # operator_recommendation_scope must be "evidence_only"
+    scope = ev.get("operator_recommendation_scope")
+    if scope != "evidence_only":
+        raise SystemExit(
+            f"PASS_EVAL_ERROR: operator_recommendation_scope={scope!r}, "
+            f"must be 'evidence_only'"
+        )
+
+    # Unauthorized local modeling checks
+    authorized = manifest.get("local_modeling_authorized", False)
+    if not authorized:
+        if ev.get("local_modeling_used") is True:
+            raise SystemExit(
+                "PASS_EVAL_ERROR: pass-evaluation.local_modeling_used=true but "
+                "manifest.local_modeling_authorized=false"
+            )
+        if ev.get("payload_modified_by_operator") is True:
+            raise SystemExit(
+                "PASS_EVAL_ERROR: pass-evaluation.payload_modified_by_operator=true "
+                "but manifest.local_modeling_authorized=false"
+            )
+
+
+# ---------------------------------------------------------------------------
+# Request / report loading
+# ---------------------------------------------------------------------------
 
 def load_request(task_id: str):
     validate_task_id(task_id)
@@ -95,6 +398,10 @@ def single_pending_request():
     req = load_request(item["task_id"])
     return path, req
 
+
+# ---------------------------------------------------------------------------
+# Commands
+# ---------------------------------------------------------------------------
 
 def cmd_status():
     protocol = load(PROTOCOL)
@@ -174,8 +481,72 @@ def cmd_verify_report(task_id: str):
     req = load_request(task_id)
     if report["branch"] != req["operator_branch"]:
         raise SystemExit("Report branch does not match request operator_branch")
+
+    # Phase-20 provenance and multi-pass enforcement
+    base_commit   = report["base_commit"]
+    result_commit = report["result_commit"]
+
+    manifest = _check_payload_provenance(task_id, base_commit, result_commit)
+    if manifest is not None:
+        _check_multipass_lineage(task_id, base_commit, manifest)
+        _check_pass_evaluation(task_id, result_commit, manifest)
+
     print(f"REPORT_OK {task_id}")
 
+
+def cmd_next_pass_context(parent_task_id: str):
+    """
+    Non-mutating helper: reads parent report + manifest from the current
+    checkout and prints JSON with the lineage context for the next pass.
+    Does not author geometry or modify any file.
+    """
+    validate_task_id(parent_task_id)
+
+    parent_report_path   = REPORTS / f"{parent_task_id}.json"
+    parent_manifest_path = PAYLOADS / parent_task_id / "manifest.json"
+
+    if not parent_report_path.exists():
+        raise SystemExit(
+            f"next-pass-context: parent report not found: {parent_report_path}"
+        )
+    if not parent_manifest_path.exists():
+        raise SystemExit(
+            f"next-pass-context: parent manifest not found: {parent_manifest_path}"
+        )
+
+    parent_report   = load(parent_report_path)
+    parent_manifest = load(parent_manifest_path)
+
+    run_id = parent_manifest.get("modeling_run_id", "")
+    if not run_id:
+        raise SystemExit(
+            f"next-pass-context: parent manifest has no modeling_run_id — "
+            f"{parent_task_id} is not a multi-pass task"
+        )
+
+    parent_pass_index = parent_manifest.get("pass_index")
+    if not isinstance(parent_pass_index, int) or parent_pass_index < 1:
+        raise SystemExit(
+            f"next-pass-context: parent manifest pass_index invalid: "
+            f"{parent_pass_index!r}"
+        )
+
+    result_commit = parent_report.get("result_commit", "")
+
+    context = {
+        "modeling_run_id":        run_id,
+        "next_pass_index":        parent_pass_index + 1,
+        "parent_task_id":         parent_task_id,
+        "parent_payload_sha256":  parent_manifest.get("sha256", ""),
+        "parent_result_commit":   result_commit,
+        "parent_pass_kind":       parent_manifest.get("pass_kind", ""),
+    }
+    print(json.dumps(context, indent=2, sort_keys=True))
+
+
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
 
 def main():
     command = sys.argv[1] if len(sys.argv) > 1 else "status"
@@ -200,6 +571,10 @@ def main():
         if len(sys.argv) != 3:
             raise SystemExit("usage: bridge_cli.py verify-report TASK_ID")
         cmd_verify_report(sys.argv[2])
+    elif command == "next-pass-context":
+        if len(sys.argv) != 3:
+            raise SystemExit("usage: bridge_cli.py next-pass-context PARENT_TASK_ID")
+        cmd_next_pass_context(sys.argv[2])
     else:
         raise SystemExit(f"unknown command: {command}")
 
