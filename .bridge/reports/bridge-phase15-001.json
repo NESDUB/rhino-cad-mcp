@@ -1,0 +1,42 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase15-001",
+  "status": "complete",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "ack": "BRIDGE-PHASE15-RHINO-POC-RERUN-20260924-91C4F2-OPERATOR-ACK",
+  "base_commit": "727697250162cd320c6e3d3080f3d09dbe2028d0",
+  "result_commit": "497a556f9403c6d37f8b145d3efa0485e07efc4d",
+  "branch": "operator/bridge-phase15-001",
+  "summary": "PARTIAL — blocked at mcp_tool_discovery_in_session (Stage 7 of ~16). The full path ChatGPT controller → Git request → Claude operator → rhino-cad MCP → rhinocode/Rhino → validation/artifacts → Git report was NOT demonstrated end to end. First failing stage: rhino-cad tools not available in Claude session. Root cause: project-scoped .mcp.json is only injected into sessions started from (or below) the project root directory. This session started from /Users/nes; rhino-cad was absent from the session's active server list despite claude mcp get reporting Connected. Improvements vs Phase 12: orientation skill now works correctly, server import fixed, .mcp.json registered. New fix required: add rhino-cad to global user MCP config (~5 min).",
+  "files_changed": [
+    ".bridge/evidence/bridge-phase15-001/session-log.json",
+    ".bridge/evidence/bridge-phase15-001/workflow-assessment.json",
+    ".bridge/evidence/bridge-phase15-001/operator-experience.md"
+  ],
+  "tests": [
+    "orientation skill invocation — OK (improved vs Phase 12)",
+    "git sync — OK",
+    "orient.sh operator — OK",
+    "exchange.sh prepare — REQUEST_OK, branch created",
+    "claude mcp get rhino-cad — Connected (CLI level)",
+    "ToolSearch rhino — 0 results (session scope) — BLOCKED",
+    "ListMcpResourcesTool server=rhino-cad — not found (session scope) — BLOCKED",
+    "git diff --check — PASS",
+    "no implementation files modified — PASS"
+  ],
+  "blockers": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "title": "Project .mcp.json tools not in session when Claude started outside project root",
+      "fix": "claude mcp add --scope user rhino-cad -- /Users/nes/.pyenv/versions/3.12.0/bin/python3 /Users/nes/bin/mcp/rhino-cad-mcp/server.py"
+    }
+  ],
+  "notes_for_controller": [
+    "The work commit is 497a556f9403c6d37f8b145d3efa0485e07efc4d; this report is the receipt commit.",
+    "Phase 12 blockers (server import, registration) are all fixed and confirmed. This is a new, distinct blocker at a different layer.",
+    "The fix is one command: claude mcp add --scope user. This adds rhino-cad to ~/.claude.json so it loads in every session regardless of starting directory.",
+    "Alternatively, the operator can start Claude Code from /Users/nes/bin/mcp/rhino-cad-mcp directly. Global registration is cleaner.",
+    "No orientation, runtime, installer, or bridge protocol files were modified."
+  ]
+}
