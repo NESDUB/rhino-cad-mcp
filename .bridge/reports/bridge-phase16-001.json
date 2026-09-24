@@ -1,0 +1,44 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase16-001",
+  "status": "complete",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "ack": "BRIDGE-PHASE16-RHINO-LIVE-20260924-5A7C2D-OPERATOR-ACK",
+  "base_commit": "b211cc75ab53b55361c4f040421e77ddd66626b1",
+  "result_commit": "cb55ca7a0c8a5fc1a6dfa3cdc7adf8bc9d4f3e21",
+  "branch": "operator/bridge-phase16-001",
+  "summary": "PARTIAL — blocked at mcp_tool_discovery_in_session (Stage 6 of ~16). The full path ChatGPT controller → Git request → Claude operator → session-scope rhino-cad MCP → rhinocode/Rhino → isolated CAD mutation → validation/artifacts → Git report was NOT demonstrated end to end. First failing stage: rhino-cad tools absent from Claude Code session. Root cause: this session is a context-compaction continuation of the session that predates user-scope registration. Claude Code reads ~/.claude.json at session startup only and does not hot-reload config on compaction or conversation resume. The user-scope fix (Phase 15 QW1/MR1) was correctly applied — ~/.claude.json mcpServers.rhino-cad is confirmed present. A full Claude Code quit-and-relaunch is the single remaining action required. All prior fixes hold: orientation skill, server import, CLI Connected status, user-scope config entry.",
+  "files_changed": [
+    ".bridge/evidence/bridge-phase16-001/session-log.json",
+    ".bridge/evidence/bridge-phase16-001/workflow-assessment.json",
+    ".bridge/evidence/bridge-phase16-001/operator-experience.md"
+  ],
+  "tests": [
+    "orientation skill invocation — OK",
+    "git sync — OK (main at b211cc75, already up to date)",
+    "request discovery — OK",
+    "exchange.sh prepare bridge-phase16-001 — REQUEST_OK, branch created",
+    "~/.claude.json mcpServers.rhino-cad entry — CONFIRMED PRESENT",
+    "claude mcp get rhino-cad — Connected (CLI level, project scope display)",
+    "ToolSearch rhino — 0 results (session scope) — BLOCKED",
+    "ListMcpResourcesTool server=rhino-cad — not found (session scope) — BLOCKED",
+    "git diff --check — PASS",
+    "only Phase 16 evidence files added — PASS"
+  ],
+  "blockers": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "title": "Claude Code does not hot-reload ~/.claude.json on context compaction or conversation resume",
+      "fix": "Full Claude Code application quit-and-relaunch from /Users/nes with Rhino 8 already running. Verify with ListMcpResourcesTool server=rhino-cad immediately after relaunch before starting Phase 17 bridge work."
+    }
+  ],
+  "notes_for_controller": [
+    "The work commit is cb55ca7a0c8a5fc1a6dfa3cdc7adf8bc9d4f3e21; this report is the receipt commit.",
+    "All prior fixes (Phase 13: .mcp.json, orientation skill; Phase 14: server import; Phase 15: user-scope ~/.claude.json entry) are confirmed durable. No regression.",
+    "The user-scope fix is applied and correct. The only remaining action is a full quit-and-relaunch of Claude Code.",
+    "After relaunch, the session must be started fresh from any directory (user-scope entries load globally). Verify rhino-cad tool visibility with ListMcpResourcesTool before proceeding.",
+    "Rhino 8 must be running at session start for Phase 17 preflight (rhino_status) to succeed.",
+    "Phase 17 should be the live end-to-end POC run. No configuration changes are required before it."
+  ]
+}
