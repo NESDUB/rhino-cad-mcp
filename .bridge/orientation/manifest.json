@@ -1,0 +1,37 @@
+{
+  "orientation_version": "1.0.0",
+  "compatible_protocol_version": "0.3",
+  "repository": "NESDUB/rhino-cad-mcp",
+  "canonical_handbook_path": "AI_ORIENTATION.md",
+  "role_guides": {
+    "controller": ".bridge/orientation/controller.md",
+    "operator": ".bridge/orientation/operator.md",
+    "reviewer": ".bridge/orientation/reviewer.md",
+    "universal": ".bridge/orientation/quickstart.md"
+  },
+  "generated_payload": {
+    "format": "markdown",
+    "format_version": "1.0",
+    "generator": ".bridge/orientation/build_payload.py",
+    "entrypoint": "./orient.sh",
+    "required_sections": [
+      "generated identity and live facts",
+      "stable universal handbook",
+      "selected role guide"
+    ]
+  },
+  "required_live_state_sources": [
+    ".bridge/protocol.json",
+    ".bridge/state/controller.json",
+    "git rev-parse main",
+    "python3 .bridge/bridge_cli.py status"
+  ],
+  "instruction_precedence": [
+    "platform and applicable safety requirements",
+    "active structured request and .bridge/protocol.json",
+    "repository-specific safety instructions including AGENTS.md and CLAUDE.md",
+    "AI_ORIENTATION.md and selected role guide",
+    "generated live-state facts",
+    "informal chat or bootstrap text"
+  ]
+}

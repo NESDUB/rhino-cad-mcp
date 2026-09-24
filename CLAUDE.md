@@ -1,3 +1,7 @@
+# Onboarding
+
+Before substantive repository work, read `AI_ORIENTATION.md` and `.bridge/orientation/operator.md`. The Rhino CAD Agent Rules below remain mandatory for live Rhino or Grasshopper work.
+
 # Rhino CAD Agent Rules
 
 Use the `rhino-cad` MCP tools as the primary interface to Rhino 8 and Grasshopper.

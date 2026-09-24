@@ -1,0 +1,89 @@
+{
+  "task_id": "bridge-phase10-001",
+  "orientation_version": "1.0.0",
+  "protocol_version": "0.3",
+  "base_commit": "e42dae49d8edb3f0eb119afde27cd171484973a1",
+  "purpose": "Versioned, self-contained onboarding payload system for context-free controller, operator, reviewer, and universal AI sessions.",
+  "file_map": {
+    "AI_ORIENTATION.md": "Canonical stable universal handbook.",
+    "AGENTS.md": "Thin coding-agent bootstrap pointing to the handbook and local operator guide.",
+    "CLAUDE.md": "Existing Rhino CAD Agent Rules preserved with a minimal onboarding pointer prepended.",
+    ".bridge/orientation/manifest.json": "Version, protocol compatibility, source paths, payload contract, live-state sources, and precedence order.",
+    ".bridge/orientation/controller.md": "Remote/controller request and review responsibilities.",
+    ".bridge/orientation/operator.md": "Local operator lifecycle and safeguards.",
+    ".bridge/orientation/reviewer.md": "Independent evidence and merge-readiness review guide.",
+    ".bridge/orientation/quickstart.md": "Minimal context-free role selection and reading sequence.",
+    ".bridge/orientation/build_payload.py": "Standard-library payload composer using tracked sources and local Git/bridge status commands.",
+    "orient.sh": "Executable role-aware payload entrypoint with optional macOS pbcopy support."
+  },
+  "supported_roles": [
+    "controller",
+    "operator",
+    "reviewer",
+    "universal"
+  ],
+  "payload_contract": {
+    "format": "markdown",
+    "format_version": "1.0",
+    "stable_content": [
+      "canonical universal handbook",
+      "selected canonical role guide"
+    ],
+    "generated_live_content": [
+      "orientation version and protocol/repository identity",
+      "selected role",
+      "current local main commit from git rev-parse main",
+      "controller state from .bridge/state/controller.json",
+      "pending task count and IDs from python3 .bridge/bridge_cli.py status when available"
+    ],
+    "copy_behavior": "--copy uses pbcopy when available and still prints; --copy-only requires pbcopy and suppresses stdout."
+  },
+  "precedence_model": [
+    "platform and applicable safety requirements",
+    "active structured request and .bridge/protocol.json",
+    "repository-specific safety instructions including AGENTS.md and CLAUDE.md",
+    "AI_ORIENTATION.md and selected role guide",
+    "generated live-state facts",
+    "informal chat or bootstrap text"
+  ],
+  "validation_results": [
+    {
+      "command": "bash -n orient.sh",
+      "result": "passed"
+    },
+    {
+      "command": "python3 -m py_compile .bridge/orientation/build_payload.py",
+      "result": "passed"
+    },
+    {
+      "command": "./orient.sh universal",
+      "result": "passed; payload includes universal handbook, quickstart guide, protocol/repository identity, current main SHA, controller state, and live bridge status"
+    },
+    {
+      "command": "./orient.sh controller",
+      "result": "passed; payload includes controller guide and required generated/stable sections"
+    },
+    {
+      "command": "./orient.sh operator",
+      "result": "passed; payload includes operator guide and required generated/stable sections"
+    },
+    {
+      "command": "./orient.sh reviewer",
+      "result": "passed; payload includes reviewer guide and required generated/stable sections"
+    },
+    {
+      "command": "role-specific grep contract checks against all four generated payloads",
+      "result": "passed; verified orientation version, repository, protocol version, current main SHA e42dae49d8edb3f0eb119afde27cd171484973a1, controller-state section, handbook, selected role, and matching role-guide source"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "limitations": [
+    "Live facts describe the local checkout at generation time and may be unavailable outside a Git checkout or if bridge_cli.py cannot execute.",
+    "The payload never asserts local Rhino access; it reports only tracked controller state and locally determinable Git/bridge facts.",
+    "pbcopy is intentionally not invoked during automated validation to avoid mutating the clipboard."
+  ],
+  "protected_paths_changed": []
+}
