@@ -1,0 +1,183 @@
+{
+  "task_id": "bridge-phase17-001",
+  "session_start_utc": "2026-09-24T11:52:00Z",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "session_primary_wd": "/Users/nes",
+  "session_type": "fresh_session_after_full_relaunch",
+  "project_dir": "/Users/nes/bin/mcp/rhino-cad-mcp",
+  "session_facts": {
+    "claude_code_version": "v2.1.100",
+    "model": "claude-sonnet-4-6",
+    "session_starting_directory": "/Users/nes",
+    "session_type": "fresh — full quit-and-relaunch confirmed by user",
+    "effective_project_directory": "/Users/nes/bin/mcp/rhino-cad-mcp",
+    "orientation_skill_result": "OK",
+    "local_base_commit": "fdb4fe85201a8130b129b70b1a9c259dba2df193",
+    "git_clean": true,
+    "rhino_cad_in_session": true,
+    "rhino_tools_visible": 42,
+    "list_mcp_resources_result": "3 resources returned from rhino-cad server"
+  },
+  "events": [
+    {
+      "seq": 1, "utc": "2026-09-24T11:52:00Z",
+      "stage": "orientation_skill_invocation",
+      "outcome": "OK", "elapsed_seconds": 3, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": null,
+      "notes": "rhino-chatgpt-orientation skill invoked, orient.sh operator ran. Controller state: phase16 merged, phase17 queued. pending_task_count=0 initially (before pull)."
+    },
+    {
+      "seq": 2, "utc": "2026-09-24T11:52:03Z",
+      "stage": "mcp_session_scope_verification",
+      "outcome": "OK", "elapsed_seconds": 3, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "ListMcpResourcesTool, ToolSearch",
+      "notes": "ListMcpResourcesTool server=rhino-cad: returned 3 resources (gh_capability_map, gh_recipe_intelligence, gh_compatibility). ToolSearch 'rhino_status rhino_list_documents rhino_create_document': returned rhino tool schemas. rhino-cad IN SESSION. Full relaunch confirmed working."
+    },
+    {
+      "seq": 3, "utc": "2026-09-24T11:52:06Z",
+      "stage": "git_sync",
+      "outcome": "OK", "elapsed_seconds": 5, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": null,
+      "notes": "git checkout main, fetch, pull --ff-only. Fast-forwarded b211cc7..fdb4fe8. Phase 16 evidence + Phase 17 request now on main."
+    },
+    {
+      "seq": 4, "utc": "2026-09-24T11:52:11Z",
+      "stage": "request_discovery",
+      "outcome": "OK", "elapsed_seconds": 1, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": null,
+      "notes": "bridge-phase17-001.json read. Objective: first live end-to-end Rhino CAD MCP POC."
+    },
+    {
+      "seq": 5, "utc": "2026-09-24T11:52:12Z",
+      "stage": "branch_preparation",
+      "outcome": "OK", "elapsed_seconds": 8, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": null,
+      "notes": "./exchange.sh prepare bridge-phase17-001. REQUEST_OK. Created operator/bridge-phase17-001. BASE_COMMIT=fdb4fe85201a8130b129b70b1a9c259dba2df193."
+    },
+    {
+      "seq": 6, "utc": "2026-09-24T11:52:35Z",
+      "stage": "rhino_preflight_status",
+      "outcome": "OK", "elapsed_seconds": 6, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_status",
+      "notes": "rhino_status: ok=true. rhinocode=/Applications/Rhino 8.app/.../rhinocode. 1 instance: pid=16858, instance_id=rhinocode_remotepipe_16858. ping=pong, rhino_elapsed_ms=5.3. Rhino 8 reachable."
+    },
+    {
+      "seq": 7, "utc": "2026-09-24T11:52:41Z",
+      "stage": "rhino_preflight_list_documents",
+      "outcome": "OK", "elapsed_seconds": 2, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_list_documents",
+      "notes": "1 existing document: 16858:268435457, unnamed (no path), headless=false, gui_active=true. Pre-existing user document identified and will not be touched."
+    },
+    {
+      "seq": 8, "utc": "2026-09-24T11:52:43Z",
+      "stage": "document_isolation_create",
+      "outcome": "OK", "elapsed_seconds": 10, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_create_document",
+      "notes": "rhino_create_document(headless=false, units=Millimeters, absolute_tolerance=0.01). New document_id=16858:268435459, temp path in TMPDIR. object_count=0, 1 layer (Default). Note: rhino_create_document has no name parameter; document identity established via save_as path."
+    },
+    {
+      "seq": 9, "utc": "2026-09-24T11:52:53Z",
+      "stage": "document_isolation_verify",
+      "outcome": "OK", "elapsed_seconds": 2, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_list_documents",
+      "notes": "2 documents confirmed. 16858:268435457 now current_script_document=false, gui_active=false. 16858:268435459 current_script_document=true, gui_active=true, object_count=0. Isolation confirmed — original document untouched."
+    },
+    {
+      "seq": 10, "utc": "2026-09-24T11:52:55Z",
+      "stage": "layer_creation",
+      "outcome": "OK", "elapsed_seconds": 2, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_create_layer",
+      "notes": "rhino_create_layer(name=BRIDGE_POC_004, color=0,120,215, document_id=16858:268435459). index=1, id=7fac5ab8-425a-44e6-85f2-829e2ad2f88d."
+    },
+    {
+      "seq": 11, "utc": "2026-09-24T11:52:57Z",
+      "stage": "cad_geometry_creation",
+      "outcome": "OK", "elapsed_seconds": 4, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_run",
+      "notes": "rhino_run: created 3 Brep solids on BRIDGE_POC_004. base guid=b4fd6cb8-023f-40c9-8bc0-96e1748d19a4, pedestal guid=cbf54f5a-a0cf-4639-8562-387f25c24ef9, cap guid=6fb025c1-3aa0-44d2-869c-ad1d504cde9a. object_count=3. rhino_elapsed_ms=34.8."
+    },
+    {
+      "seq": 12, "utc": "2026-09-24T11:53:01Z",
+      "stage": "metadata_assignment",
+      "outcome": "OK", "elapsed_seconds": 4, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_set_metadata, mcp__rhino-cad__rhino_run",
+      "notes": "Set role, created_by=bridge-phase17-001, revision=1, operation_id on all 3 objects. Readback confirmed all keys on all objects. rhino_elapsed_ms=3.9."
+    },
+    {
+      "seq": 13, "utc": "2026-09-24T11:53:05Z",
+      "stage": "object_validation_base",
+      "outcome": "OK", "elapsed_seconds": 5, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_validate",
+      "notes": "base: is_valid=true, is_solid=true, is_manifold=true, naked_edges=0, faces=6, edges=12, vertices=8, volume=800000mm³, area=96000mm²."
+    },
+    {
+      "seq": 14, "utc": "2026-09-24T11:53:10Z",
+      "stage": "object_validation_pedestal",
+      "outcome": "OK", "elapsed_seconds": 3, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_validate",
+      "notes": "pedestal: is_valid=true, is_solid=true, is_manifold=true, naked_edges=0, faces=3, edges=3, vertices=2, volume=402123.86mm³ (π×40²×80≈402124), area=30159.29mm²."
+    },
+    {
+      "seq": 15, "utc": "2026-09-24T11:53:13Z",
+      "stage": "object_validation_cap",
+      "outcome": "OK", "elapsed_seconds": 2, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_validate",
+      "notes": "cap: is_valid=true, is_solid=true, is_manifold=true, naked_edges=0, faces=6, edges=12, vertices=8, volume=54000mm³, area=10800mm²."
+    },
+    {
+      "seq": 16, "utc": "2026-09-24T11:53:15Z",
+      "stage": "assembly_validation",
+      "outcome": "OK_WITH_NOTES", "elapsed_seconds": 4, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_validate_assembly",
+      "notes": "geometry_pass=true. invalid_or_non_solid_ids=[]. duplicates=[]. intersections=[] (tested_pairs=0 — stacked geometry, no volumetric overlap). metadata_incomplete: all 3 objects missing 'parent' key (not required; not assigned). Scope note: modeled-pose Boolean screening only."
+    },
+    {
+      "seq": 17, "utc": "2026-09-24T11:53:20Z",
+      "stage": "visual_capture_attempt_1",
+      "outcome": "RETRY", "elapsed_seconds": 2, "retries": 1, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_capture_views",
+      "notes": "FAILED: 'output_path must end in .png' — passed directory path. Tool requires contact-sheet PNG path, not directory. Corrected on retry."
+    },
+    {
+      "seq": 18, "utc": "2026-09-24T11:53:22Z",
+      "stage": "visual_capture_attempt_2",
+      "outcome": "RETRY", "elapsed_seconds": 2, "retries": 1, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_capture_views",
+      "notes": "FAILED: 'Each view needs a direction vector' — used preset names (iso, top, front, right) which are not supported. Tool requires explicit direction vectors. Read runtime_ops.py source to determine correct format, then retried."
+    },
+    {
+      "seq": 19, "utc": "2026-09-24T11:53:32Z",
+      "stage": "visual_capture",
+      "outcome": "OK", "elapsed_seconds": 10, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_capture_views",
+      "notes": "4 views captured with explicit direction vectors: isometric [1,1,1], top [0,0,1], front [0,-1,0], right [1,0,0]. Output: contact-sheet.png (153k), contact-sheet-isometric.png (72k), contact-sheet-top.png (34k), contact-sheet-front.png (8.3k), contact-sheet-right.png (8.3k), contact-sheet.json (2.3k). rhino_elapsed_ms=115.7. Viewport restored. archive_scene=true parameter did not produce a separate .3dm in this tool."
+    },
+    {
+      "seq": 20, "utc": "2026-09-24T11:53:45Z",
+      "stage": "save",
+      "outcome": "OK", "elapsed_seconds": 8, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_save_as",
+      "notes": "rhino_save_as to .bridge/artifacts/bridge-phase17-001/RHINO_CHATGPT_BRIDGE_POC_004.3dm. bytes=119548, verified=true. Readback: live_count=3, file_count=3, all_valid=true, units_match=true, no bbox mismatches. active_document_path unchanged (temp path). rhino_elapsed_ms=573.1."
+    },
+    {
+      "seq": 21, "utc": "2026-09-24T11:53:53Z",
+      "stage": "final_inspection",
+      "outcome": "OK", "elapsed_seconds": 3, "retries": 0, "human_intervention_required": false,
+      "mcp_tool": "mcp__rhino-cad__rhino_inspect_document",
+      "notes": "rhino_inspect_document(16858:268435459): live_object_count=3, object_count=3, layers=2 (Default + BRIDGE_POC_004), all 3 object GUIDs present on BRIDGE_POC_004 (layer_index=1). Document remains open. POC document left open for user inspection per instructions."
+    }
+  ],
+  "final_stage_reached": "final_inspection",
+  "first_blocking_stage": null,
+  "summary": {
+    "total_elapsed_seconds": 113,
+    "git_commands": 4,
+    "mcp_calls_successful": 16,
+    "mcp_calls_attempted": 18,
+    "retries": 2,
+    "manual_interventions": 0,
+    "handoff_steps_completed": 16,
+    "handoff_steps_blocked": 0
+  },
+  "session_end_utc": "2026-09-24T11:53:56Z"
+}

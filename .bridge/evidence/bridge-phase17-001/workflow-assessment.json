@@ -1,0 +1,307 @@
+{
+  "task_id": "bridge-phase17-001",
+  "assessment_utc": "2026-09-24T11:53:56Z",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "base_commit": "fdb4fe85201a8130b129b70b1a9c259dba2df193",
+
+  "architecture_path_observed": {
+    "path": "ChatGPT controller → Git request → Claude operator → session-scope rhino-cad MCP → rhinocode/Rhino 8 → isolated document creation → three-solid geometry → metadata → object validation → assembly validation → visual capture → verified save → final inspection → Git report",
+    "completion_status": "COMPLETE",
+    "first_failing_stage": null,
+    "stages_completed": [
+      "orientation_skill_invocation",
+      "mcp_session_scope_verification — rhino-cad IN SESSION (fresh relaunch confirmed)",
+      "git_sync",
+      "request_discovery",
+      "branch_preparation",
+      "rhino_preflight_status — Rhino 8 running, ping 5.3ms",
+      "rhino_preflight_list_documents — 1 existing doc identified, isolated",
+      "document_isolation_create — new doc 16858:268435459, empty",
+      "document_isolation_verify — original doc untouched",
+      "layer_creation — BRIDGE_POC_004",
+      "cad_geometry_creation — 3 Brep solids created",
+      "metadata_assignment — role/created_by/revision/operation_id on all 3",
+      "object_validation_base — valid, solid, manifold",
+      "object_validation_pedestal — valid, solid, manifold",
+      "object_validation_cap — valid, solid, manifold",
+      "assembly_validation — geometry_pass, no duplicates, no interference",
+      "visual_capture — 4 views + contact sheet + manifest (2 retries to fix API usage)",
+      "save — RHINO_CHATGPT_BRIDGE_POC_004.3dm, 119548 bytes, verified",
+      "final_inspection — 3 objects, 2 layers, all GUIDs confirmed"
+    ]
+  },
+
+  "stage_metrics": {
+    "orientation_skill":             {"outcome": "OK",           "elapsed_seconds": 3,  "retries": 0},
+    "mcp_session_scope_verification":{"outcome": "OK",           "elapsed_seconds": 3,  "retries": 0},
+    "git_sync":                      {"outcome": "OK",           "elapsed_seconds": 5,  "retries": 0},
+    "request_discovery":             {"outcome": "OK",           "elapsed_seconds": 1,  "retries": 0},
+    "branch_preparation":            {"outcome": "OK",           "elapsed_seconds": 8,  "retries": 0},
+    "rhino_preflight_status":        {"outcome": "OK",           "elapsed_seconds": 6,  "retries": 0, "rhino_elapsed_ms": 5.3},
+    "rhino_preflight_list_documents":{"outcome": "OK",           "elapsed_seconds": 2,  "retries": 0, "rhino_elapsed_ms": 70.8},
+    "document_isolation_create":     {"outcome": "OK",           "elapsed_seconds": 10, "retries": 0, "rhino_elapsed_ms": 805.3},
+    "document_isolation_verify":     {"outcome": "OK",           "elapsed_seconds": 2,  "retries": 0, "rhino_elapsed_ms": 9.0},
+    "layer_creation":                {"outcome": "OK",           "elapsed_seconds": 2,  "retries": 0, "rhino_elapsed_ms": 16.0},
+    "cad_geometry_creation":         {"outcome": "OK",           "elapsed_seconds": 4,  "retries": 0, "rhino_elapsed_ms": 34.8},
+    "metadata_assignment":           {"outcome": "OK",           "elapsed_seconds": 4,  "retries": 0, "rhino_elapsed_ms": 3.9},
+    "object_validation_base":        {"outcome": "OK",           "elapsed_seconds": 5,  "retries": 0, "rhino_elapsed_ms": 41.0},
+    "object_validation_pedestal":    {"outcome": "OK",           "elapsed_seconds": 3,  "retries": 0, "rhino_elapsed_ms": 10.4},
+    "object_validation_cap":         {"outcome": "OK",           "elapsed_seconds": 2,  "retries": 0, "rhino_elapsed_ms": 2.3},
+    "assembly_validation":           {"outcome": "OK_WITH_NOTES","elapsed_seconds": 4,  "retries": 0, "rhino_elapsed_ms": 21.9},
+    "visual_capture":                {"outcome": "OK",           "elapsed_seconds": 14, "retries": 2, "rhino_elapsed_ms": 115.7},
+    "save":                          {"outcome": "OK",           "elapsed_seconds": 8,  "retries": 0, "rhino_elapsed_ms": 573.1},
+    "final_inspection":              {"outcome": "OK",           "elapsed_seconds": 3,  "retries": 0, "rhino_elapsed_ms": 10.0}
+  },
+
+  "session_scope_validation": {
+    "method": "ListMcpResourcesTool + ToolSearch",
+    "rhino_cad_in_session": true,
+    "resources_returned": ["gh_capability_map", "gh_recipe_intelligence", "gh_compatibility"],
+    "rhino_tool_schemas_returned": true,
+    "session_type": "fresh — full quit-and-relaunch"
+  },
+
+  "mcp_tool_inventory": {
+    "tools_visible_in_session": 42,
+    "rhino_tools_used": ["rhino_status", "rhino_list_documents", "rhino_create_document", "rhino_create_layer", "rhino_run", "rhino_set_metadata", "rhino_validate", "rhino_validate_assembly", "rhino_capture_views", "rhino_save_as", "rhino_inspect_document"],
+    "tools_not_used_this_run": ["rhino_inspect_object", "rhino_inspect_selection", "rhino_activate_document", "rhino_command", "rhino_transaction", "rhino_move_to_layer", "rhino_apply_material", "rhino_capture_viewport", "rhino_visual_qa", "rhino_save", "rhino_undo", "rhino_close_document", "rhino_open_document", "rhino_inspect_hierarchy", "rhino_status (document_id variant)"]
+  },
+
+  "rhino_preflight": {
+    "attempted": true,
+    "rhino_status": {
+      "ok": true,
+      "pid": 16858,
+      "instance_id": "rhinocode_remotepipe_16858",
+      "ping_ms": 5.3
+    },
+    "documents_before": [
+      {"document_id": "16858:268435457", "name": null, "path": null, "headless": false, "gui_active": true}
+    ]
+  },
+
+  "document_isolation": {
+    "attempted": true,
+    "dedicated_doc_created": true,
+    "poc_document_id": "16858:268435459",
+    "poc_document_name_in_rhino": "rhino-new-55960f1ca7cb467ca4eb200bbdf2f55b.3dm",
+    "saved_as": "RHINO_CHATGPT_BRIDGE_POC_004.3dm",
+    "units": "Millimeters",
+    "absolute_tolerance": 0.01,
+    "object_count_at_creation": 0,
+    "existing_docs_modified": false,
+    "original_doc_id": "16858:268435457",
+    "original_doc_untouched": true,
+    "note": "rhino_create_document has no name parameter. Identity assigned via save_as path. GUI document, not headless."
+  },
+
+  "cad_operations": {
+    "attempted": true,
+    "method": "rhino_run (RhinoCommon Python 3.9)",
+    "objects": [
+      {
+        "role": "base",
+        "guid": "b4fd6cb8-023f-40c9-8bc0-96e1748d19a4",
+        "name": "base",
+        "type": "Box (Brep)",
+        "dimensions_mm": "200 x 200 x 20",
+        "bbox_min": [-100, -100, 0],
+        "bbox_max": [100, 100, 20],
+        "layer": "BRIDGE_POC_004",
+        "metadata": {"role": "base", "created_by": "bridge-phase17-001", "revision": "1", "operation_id": "poc004-base"}
+      },
+      {
+        "role": "pedestal",
+        "guid": "cbf54f5a-a0cf-4639-8562-387f25c24ef9",
+        "name": "pedestal",
+        "type": "Cylinder (Brep)",
+        "dimensions_mm": "r=40, h=80, z=20..100",
+        "bbox_min": [-40, -40, 20],
+        "bbox_max": [40, 40, 100],
+        "layer": "BRIDGE_POC_004",
+        "metadata": {"role": "pedestal", "created_by": "bridge-phase17-001", "revision": "1", "operation_id": "poc004-pedestal"}
+      },
+      {
+        "role": "cap",
+        "guid": "6fb025c1-3aa0-44d2-869c-ad1d504cde9a",
+        "name": "cap",
+        "type": "Box (Brep)",
+        "dimensions_mm": "60 x 60 x 15",
+        "bbox_min": [-30, -30, 100],
+        "bbox_max": [30, 30, 115],
+        "layer": "BRIDGE_POC_004",
+        "metadata": {"role": "cap", "created_by": "bridge-phase17-001", "revision": "1", "operation_id": "poc004-cap"}
+      }
+    ]
+  },
+
+  "validation_results": {
+    "attempted": true,
+    "per_object": [
+      {"guid": "b4fd6cb8-023f-40c9-8bc0-96e1748d19a4", "name": "base",     "is_valid": true, "is_solid": true, "is_manifold": true, "naked_edges": 0, "faces": 6,  "edges": 12, "vertices": 8, "volume_mm3": 800000.0,    "area_mm2": 96000.0,    "metadata_confirmed": true},
+      {"guid": "cbf54f5a-a0cf-4639-8562-387f25c24ef9", "name": "pedestal", "is_valid": true, "is_solid": true, "is_manifold": true, "naked_edges": 0, "faces": 3,  "edges": 3,  "vertices": 2, "volume_mm3": 402123.86,   "area_mm2": 30159.29,   "metadata_confirmed": true},
+      {"guid": "6fb025c1-3aa0-44d2-869c-ad1d504cde9a", "name": "cap",      "is_valid": true, "is_solid": true, "is_manifold": true, "naked_edges": 0, "faces": 6,  "edges": 12, "vertices": 8, "volume_mm3": 54000.0,     "area_mm2": 10800.0,    "metadata_confirmed": true}
+    ],
+    "assembly": {
+      "geometry_pass": true,
+      "invalid_or_non_solid_ids": [],
+      "duplicates": [],
+      "intersections": [],
+      "intersection_check": {"requested": true, "tested_pairs": 0, "candidate_pairs": 0, "complete": true},
+      "metadata_incomplete": [
+        {"id": "b4fd6cb8-023f-40c9-8bc0-96e1748d19a4", "missing": ["parent"]},
+        {"id": "cbf54f5a-a0cf-4639-8562-387f25c24ef9", "missing": ["parent"]},
+        {"id": "6fb025c1-3aa0-44d2-869c-ad1d504cde9a", "missing": ["parent"]}
+      ],
+      "note": "'parent' key missing on all 3 objects — not assigned, not required by this task. Geometry pass is clean."
+    }
+  },
+
+  "artifact_manifest": {
+    "contact_sheet_png": ".bridge/artifacts/bridge-phase17-001/contact-sheet.png",
+    "contact_sheet_size_bytes": 156672,
+    "individual_views": [
+      {"name": "isometric", "path": ".bridge/artifacts/bridge-phase17-001/contact-sheet-isometric.png", "size_bytes": 73728},
+      {"name": "top",       "path": ".bridge/artifacts/bridge-phase17-001/contact-sheet-top.png",       "size_bytes": 34816},
+      {"name": "front",     "path": ".bridge/artifacts/bridge-phase17-001/contact-sheet-front.png",     "size_bytes": 8499},
+      {"name": "right",     "path": ".bridge/artifacts/bridge-phase17-001/contact-sheet-right.png",     "size_bytes": 8499}
+    ],
+    "manifest_json": ".bridge/artifacts/bridge-phase17-001/contact-sheet.json",
+    "saved_3dm": ".bridge/artifacts/bridge-phase17-001/RHINO_CHATGPT_BRIDGE_POC_004.3dm",
+    "saved_3dm_bytes": 119548,
+    "saved_3dm_verified": true
+  },
+
+  "save_results": {
+    "attempted": true,
+    "path": "/Users/nes/bin/mcp/rhino-cad-mcp/.bridge/artifacts/bridge-phase17-001/RHINO_CHATGPT_BRIDGE_POC_004.3dm",
+    "bytes": 119548,
+    "verified": true,
+    "readback": {"live_count": 3, "file_count": 3, "all_valid": true, "units_match": true, "identity_name_bbox_mismatches": []},
+    "active_document_path_after": "/var/folders/vz/vr29b8_93_q9t3zs2659nzph0000gn/T/rhino-new-55960f1ca7cb467ca4eb200bbdf2f55b.3dm",
+    "note": "SaveAs writes to the target path; active_document_path in Rhino remains the original temp path."
+  },
+
+  "final_state": {
+    "document_id": "16858:268435459",
+    "document_open": true,
+    "object_count": 3,
+    "layer_count": 2,
+    "objects": [
+      {"guid": "b4fd6cb8-023f-40c9-8bc0-96e1748d19a4", "name": "base",     "layer_index": 1},
+      {"guid": "cbf54f5a-a0cf-4639-8562-387f25c24ef9", "name": "pedestal", "layer_index": 1},
+      {"guid": "6fb025c1-3aa0-44d2-869c-ad1d504cde9a", "name": "cap",      "layer_index": 1}
+    ],
+    "saved_path": "/Users/nes/bin/mcp/rhino-cad-mcp/.bridge/artifacts/bridge-phase17-001/RHINO_CHATGPT_BRIDGE_POC_004.3dm"
+  },
+
+  "retries_and_errors": [
+    {
+      "stage": "visual_capture_attempt_1",
+      "error": "output_path must end in .png",
+      "retries": 1,
+      "resolution": "Changed output_path from directory to .png file path"
+    },
+    {
+      "stage": "visual_capture_attempt_2",
+      "error": "Each view needs a direction vector",
+      "retries": 1,
+      "resolution": "Read runtime_ops.py source; replaced preset name strings with explicit [x,y,z] direction vectors"
+    }
+  ],
+
+  "manual_interventions": [],
+
+  "ambiguities": [
+    {
+      "stage": "document_isolation_create",
+      "description": "rhino_create_document has no 'name' parameter. The tool generates a UUID-based temp filename. POC document identity (RHINO_CHATGPT_BRIDGE_POC_004) is established only at rhino_save_as time. Operators cannot set a display name in the GUI at creation time via this tool."
+    },
+    {
+      "stage": "save",
+      "description": "rhino_save_as 'SaveAs' mode writes the file to the target path but does not update the document's active path in Rhino's GUI (active_document_path_after still shows the temp path). The document is identified as RHINO_CHATGPT_BRIDGE_POC_004 by its saved artifact path, not by its in-Rhino name."
+    },
+    {
+      "stage": "assembly_validation",
+      "description": "rhino_validate_assembly tested_pairs=0 for 3 stacked objects. The stacked geometry (touching at faces but not volumetrically overlapping) produces 0 candidate pairs in the broad-phase bbox overlap test. This is correct behavior — no interference — but an operator unfamiliar with the tool's narrow intersection test may interpret 0 tested_pairs as 'check did not run'."
+    },
+    {
+      "stage": "visual_capture",
+      "description": "archive_scene=true in rhino_capture_views did not produce a separate .3dm scene archive. The parameter appears defined in the tool schema but the tool's output did not include an archive path. Scene archive was instead obtained via rhino_save_as."
+    }
+  ],
+
+  "friction_points": [
+    {
+      "id": "F1", "severity": "low", "category": "tool_schema",
+      "stage": "visual_capture",
+      "title": "rhino_capture_views requires explicit direction vectors; preset name strings not supported",
+      "description": "The tool schema description says 'Capture arbitrary camera presets' but the runtime requires direction:[x,y,z] dicts, not named presets like 'iso' or 'top'. An operator who passes {preset:'iso'} or {name:'top'} gets a runtime error with no schema-level warning. Required inspection of runtime_ops.py to determine correct format.",
+      "evidence": "Two retries: attempt 1 output_path error; attempt 2 direction vector error. Fixed by reading source.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F2", "severity": "low", "category": "tool_schema",
+      "stage": "visual_capture",
+      "title": "rhino_capture_views output_path must be a .png file path, not a directory",
+      "description": "The parameter name 'output_path' implies a file path but an operator might naturally pass a directory, expecting individual files to be named automatically. The error message is clear but the schema description could state this explicitly.",
+      "evidence": "First capture attempt failed: 'output_path must end in .png'.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F3", "severity": "low", "category": "tool_schema",
+      "stage": "document_isolation_create",
+      "title": "rhino_create_document has no name parameter",
+      "description": "The tool creates a document with a UUID-based temp name. There is no way to set a semantic name (e.g., RHINO_CHATGPT_BRIDGE_POC_004) at creation time. Identity must be established separately via save_as or document user strings.",
+      "evidence": "Created doc name: 'rhino-new-55960f1ca7cb467ca4eb200bbdf2f55b.3dm'.",
+      "fix_type": "MCP_RUNTIME_CHANGES"
+    },
+    {
+      "id": "F4", "severity": "low", "category": "tool_schema",
+      "stage": "save",
+      "title": "rhino_save_as does not update active_document_path in Rhino GUI",
+      "description": "After rhino_save_as, the document's path in Rhino's GUI remains the original temp path. This is technically correct (SaveAs behavior) but can confuse an operator who expects the GUI to reflect the new canonical path after save.",
+      "evidence": "active_document_path_after remains temp TMPDIR path despite successful save to .bridge/artifacts/.",
+      "fix_type": "MCP_RUNTIME_CHANGES"
+    }
+  ],
+
+  "recommendations": {
+    "QUICK_WINS": [
+      {
+        "id": "QW1", "priority": 1,
+        "title": "Document rhino_capture_views direction vector format with examples",
+        "description": "Add to tool description or operator guide: views require {'name':'iso', 'direction':[1,1,1], 'up':[0,0,1]} format, not preset name strings. Include four standard view examples (iso, top, front, right) with their direction vectors.",
+        "effort": "10 minutes"
+      },
+      {
+        "id": "QW2", "priority": 2,
+        "title": "Clarify rhino_capture_views output_path semantics in schema",
+        "description": "Update description to state explicitly: output_path is the contact sheet file path and must end in .png. Individual view PNGs are written alongside it automatically.",
+        "effort": "5 minutes"
+      }
+    ],
+    "PROTOCOL_CHANGES": [
+      {
+        "id": "PC1", "priority": 1,
+        "title": "Add full-quit-and-relaunch requirement to operator checklist",
+        "description": "The proof that fresh-relaunch fixes the user-scope MCP loading issue is now established. Add to operator.md: after any MCP config change, quit Claude Code fully before the next POC run. Verify with ListMcpResourcesTool as the first action of each session.",
+        "effort": "10 minutes"
+      }
+    ],
+    "MCP_RUNTIME_CHANGES": [
+      {
+        "id": "MR1", "priority": 1,
+        "title": "Add optional name parameter to rhino_create_document",
+        "description": "Allow operators to set a semantic document name at creation time rather than relying on save_as to establish identity.",
+        "effort": "30 minutes"
+      },
+      {
+        "id": "MR2", "priority": 2,
+        "title": "Support named view presets in rhino_capture_views",
+        "description": "Accept preset strings like 'iso', 'top', 'front', 'right' as shorthand for standard direction vectors, with explicit vectors as override. This aligns the parameter name 'preset' in the tool schema with actual behavior.",
+        "effort": "30 minutes"
+      }
+    ]
+  }
+}
