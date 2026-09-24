@@ -3,7 +3,7 @@
   "controller": "chatgpt-web",
   "repository": "NESDUB/rhino-cad-mcp",
   "branch": "main",
-  "latest_request": "bridge-phase17-001",
+  "latest_request": "bridge-phase18-001",
   "transport_verified": true,
   "operator_branch_model": "operator/<task-id>",
   "bootstrap_merged": true,
@@ -11,22 +11,16 @@
   "one_command_operator_runner_verified": true,
   "ai_orientation_system_verified": true,
   "claude_orientation_skill_verified": true,
-  "phase12_rhino_workflow_poc_status": "blocked_at_mcp_discovery",
-  "phase13_results": {
-    "skill_discovery": "fixed",
-    "mcp_registration": "fixed"
+  "phase17_results": {
+    "status": "COMPLETE",
+    "end_to_end_rhino_workflow_verified": true,
+    "successful_mcp_calls": 16,
+    "manual_interventions": 0
   },
-  "phase14_results": {
-    "server_import_fix": "verified",
-    "mcp_registration_status": "connected"
+  "steady_state_modeling_policy": {
+    "default_author": "chatgpt-web",
+    "claude_local_modeling": "not_permitted",
+    "codex_local_modeling": "explicit_authorization_required"
   },
-  "phase15_results": {
-    "status": "blocked_at_session_scope_tool_visibility",
-    "user_scope_mcp_registration": "applied"
-  },
-  "phase16_results": {
-    "status": "blocked_by_stale_session_registry",
-    "fresh_session_user_scope_mcp_visibility": "manually_verified_after_full_relaunch"
-  },
-  "phase17_live_rhino_poc_under_test": true
+  "phase18_controller_payload_workflow_under_test": true
 }
