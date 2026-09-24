@@ -1,6 +1,8 @@
 # Onboarding
 
-Before substantive repository work, read `AI_ORIENTATION.md` and `.bridge/orientation/operator.md`. The Rhino CAD Agent Rules below remain mandatory for live Rhino or Grasshopper work.
+Before substantive repository work, run `./orient.sh operator` (or invoke the
+`rhino-chatgpt-orientation` skill) to load the canonical orientation payload. The Rhino CAD
+Agent Rules below remain mandatory for live Rhino or Grasshopper work.
 
 # Rhino CAD Agent Rules
 

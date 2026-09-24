@@ -1,0 +1,64 @@
+{
+  "task_id": "bridge-phase11-001",
+  "skill": {
+    "project_skill_path": "/Users/nes/bin/mcp/rhino-cad-mcp/.claude/skills/rhino-chatgpt-orientation/SKILL.md",
+    "skill_name": "rhino-chatgpt-orientation",
+    "slash_command": "/rhino-chatgpt-orientation",
+    "trigger_description": "Triggers when user mentions Rhino CHATGPT, rhino-cad-mcp, the Rhino bridge, operator.sh, exchange.sh, structured bridge requests, controller/operator/reviewer roles, or asks to recall/load/orient on the system",
+    "auto_invocable": true,
+    "user_invocable": true,
+    "role_selection": "operator by default in local coding sessions; controller/reviewer/universal on explicit request",
+    "canonical_source_command": "./orient.sh <role>",
+    "does_not_duplicate_handbook": true
+  },
+  "personal_symlink": {
+    "path": "/Users/nes/.claude/skills/rhino-chatgpt-orientation",
+    "target": "/Users/nes/bin/mcp/rhino-cad-mcp/.claude/skills/rhino-chatgpt-orientation",
+    "resolves_correctly": true,
+    "status": "created by install-claude-orientation.sh"
+  },
+  "global_memory_pointer": {
+    "file": "/Users/nes/.claude/CLAUDE.md",
+    "managed_block_start": "<!-- BEGIN RHINO-CHATGPT-ORIENTATION MANAGED BLOCK -->",
+    "managed_block_end": "<!-- END RHINO-CHATGPT-ORIENTATION MANAGED BLOCK -->",
+    "block_count": 1,
+    "contains_secrets": false,
+    "contains_full_orientation": false
+  },
+  "installer": {
+    "path": "install-claude-orientation.sh",
+    "idempotency_verified": true,
+    "first_run_result": "created symlink, appended managed block",
+    "second_run_result": "all OK, no changes (idempotent)",
+    "uninstall_supported": true,
+    "uninstall_scope": "managed symlink and managed CLAUDE.md block only",
+    "conflict_protection": "stops and reports if ~/.claude/skills/rhino-chatgpt-orientation is not a symlink",
+    "bash_syntax_valid": true
+  },
+  "validations": {
+    "bash_syntax": "PASS",
+    "skill_frontmatter_present": true,
+    "orient_sh_operator": {
+      "result": "PASS",
+      "checks": {
+        "orientation_version": "OK",
+        "repository_identity": "OK",
+        "current_main_sha": "OK",
+        "controller_state": "OK",
+        "handbook": "OK",
+        "operator_guide": "OK"
+      }
+    },
+    "git_diff_check": "PASS",
+    "symlink_resolves": "PASS",
+    "exactly_one_managed_block": "PASS",
+    "idempotency": "PASS"
+  },
+  "restart_required": true,
+  "restart_note": "A Claude Code session restart is required for the new skill to appear in the current session's skill list. The skill is immediately available to any new session opened after install.",
+  "limitations": [
+    "The current running Claude Code session will not see the new skill in /skills until restarted.",
+    "The skill runs ./orient.sh which requires the canonical repository to be present and accessible at /Users/nes/bin/mcp/rhino-cad-mcp.",
+    "If the repository is unavailable, the skill instructs Claude to report the failure rather than reconstruct state from memory."
+  ]
+}
