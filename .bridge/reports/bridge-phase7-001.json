@@ -1,0 +1,39 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase7-001",
+  "status": "complete",
+  "operator": "codex",
+  "ack": "BRIDGE-PHASE7-20260924-44C2F8-OPERATOR-ACK",
+  "base_commit": "83a9a71629f428b9ff9113e0f5902d1ddb591d6c",
+  "result_commit": "02961aa86876509bfaa81f0d70420ce679fcf073",
+  "branch": "operator/bridge-phase7-001",
+  "summary": "Built a safe root-level one-command operator runner using the measured Codex CLI 0.156.1 non-interactive exec capabilities, added JSON-backed scalar request discovery, and documented capabilities and limitations without executing the runner against its builder task.",
+  "files_changed": [
+    "operator.sh",
+    ".bridge/bridge_cli.py",
+    ".bridge/evidence/bridge-phase7-001/operator-runner-capability.json",
+    ".bridge/reports/bridge-phase7-001.json"
+  ],
+  "tests": [
+    "codex --help \u2014 exit 0; capability surface measured",
+    "codex exec --help \u2014 exit 0; non-interactive invocation, prompt/stdin, --cd, sandbox, approval, and automation options measured",
+    "codex help exec \u2014 exit 0",
+    "bash -n operator.sh \u2014 passed",
+    "bash -n exchange.sh \u2014 passed",
+    "python3 -m py_compile .bridge/bridge_cli.py \u2014 passed",
+    "python3 .bridge/bridge_cli.py status \u2014 protocol=0.3, pending=1",
+    "python3 .bridge/bridge_cli.py next-id \u2014 bridge-phase7-001",
+    "python3 .bridge/bridge_cli.py next-branch \u2014 operator/bridge-phase7-001",
+    "git diff --check \u2014 passed",
+    "Protected Rhino/MCP runtime paths unchanged relative to 83a9a71629f428b9ff9113e0f5902d1ddb591d6c",
+    "python3 .bridge/bridge_cli.py verify-report bridge-phase7-001 \u2014 REPORT_OK"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "Achieved mode: fully_noninteractive_runner_built_for_separate_controller_test.",
+    "operator.sh uses codex exec --cd, workspace-write sandboxing, --approve-for-me, --ephemeral, and shell exec exit propagation.",
+    "The dangerous approval/sandbox bypass is not used.",
+    "operator.sh was not executed against bridge-phase7-001, as explicitly required.",
+    "No live Rhino test ran, no dependency was installed, and the branch is intentionally unmerged."
+  ]
+}
