@@ -3,7 +3,7 @@
   "controller": "chatgpt-web",
   "repository": "NESDUB/rhino-cad-mcp",
   "branch": "main",
-  "latest_request": "bridge-phase16-001",
+  "latest_request": "bridge-phase17-001",
   "transport_verified": true,
   "operator_branch_model": "operator/<task-id>",
   "bootstrap_merged": true,
@@ -22,7 +22,11 @@
   },
   "phase15_results": {
     "status": "blocked_at_session_scope_tool_visibility",
-    "user_scope_mcp_registration": "applied_manually_after_run"
+    "user_scope_mcp_registration": "applied"
   },
-  "phase16_live_rhino_poc_under_test": true
+  "phase16_results": {
+    "status": "blocked_by_stale_session_registry",
+    "fresh_session_user_scope_mcp_visibility": "manually_verified_after_full_relaunch"
+  },
+  "phase17_live_rhino_poc_under_test": true
 }
