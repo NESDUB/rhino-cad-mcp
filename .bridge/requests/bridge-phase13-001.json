@@ -1,0 +1,51 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase13-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE13-UNBLOCK-20260924-7D2A61",
+  "objective": "Remove only the two high-severity blockers found by the Phase 12 baseline: register the rhino-cad MCP server for Claude Code and make the Rhino CHATGPT orientation skill actually discoverable in fresh Claude Code sessions. Do not implement the medium/low workflow improvements yet.",
+  "operator_branch": "operator/bridge-phase13-001",
+  "instructions": [
+    "Act as the local Claude operator. Begin from a clean, up-to-date main in /Users/nes/bin/mcp/rhino-cad-mcp and use the normal manual exchange lifecycle to prepare bridge-phase13-001.",
+    "Read the Phase 12 report, workflow-assessment.json, operator-experience.md, and current orientation/skill installer files before changing anything. Treat the Phase 12 evidence as the empirical baseline.",
+    "This is a focused unblock task. Fix only F1 (MCP registration) and F2 (orientation skill discovery). Do not implement staleness warnings, next-action hints, artifact auto-creation, or other medium/low recommendations in this phase.",
+    "For F1, inspect the installed Claude Code version and its own MCP help/config behavior before editing config. Prefer a project-level .mcp.json committed at repository root because this server belongs to this project. Use the installed Claude CLI to generate or validate the project-scope registration when practical rather than guessing the schema.",
+    "Register one stdio MCP server named rhino-cad that launches this repository's server.py with the Python interpreter that was measured to import the required mcp package. Prefer a repo-relative configuration if the installed Claude Code schema supports it; otherwise use the least brittle measured command and document the portability limitation.",
+    "Do not add credentials or secrets to .mcp.json. Do not alter server.py, bridge.py, runtime_ops.py, tool_support.py, snippets.py, requirements.txt, knowledge/, tests/, or Rhino runtime behavior.",
+    "Validate the MCP registration at three levels: JSON/config validity, the configured command can start the MCP server without immediate import/config failure, and Claude Code recognizes the rhino-cad server configuration using its installed inspection surface such as claude mcp list/get or equivalent. Do not claim live Rhino tool availability until a fresh Claude session actually confirms it.",
+    "For F2, first diagnose rather than assume. Check the installed Claude Code version, whether CLAUDE_CONFIG_DIR is set, the effective global Claude config directory, the project skill at .claude/skills/rhino-chatgpt-orientation/SKILL.md, the current ~/.claude/skills installation, symlink resolution, permissions, and any skill visibility/enablement information exposed by the installed Claude Code.",
+    "Use current Claude Code conventions measured from the installed client. The canonical project skill must remain .claude/skills/rhino-chatgpt-orientation/SKILL.md. The personal/global installation should live under the effective Claude config directory's skills/rhino-chatgpt-orientation path.",
+    "If the current symlink strategy is not discoverable, replace it with a real managed directory/file copy installed from the canonical project SKILL.md. The project copy remains canonical; the installer may synchronize the managed personal copy on each run. Do not duplicate the full AI orientation handbook into the personal skill.",
+    "Update install-claude-orientation.sh only as needed so installation is safe and idempotent for the actually working discovery strategy. Preserve unrelated ~/.claude/CLAUDE.md content and the existing managed pointer block. If a conflicting unmanaged personal skill path exists, stop rather than overwrite it.",
+    "Preserve uninstall behavior so it removes only files/symlinks and the managed memory block owned by this installer.",
+    "Validate installer idempotency with two installs. Verify the effective personal skill path exists and is readable. If a real copied skill is used, verify its content matches the canonical project SKILL.md byte-for-byte or by hash after install.",
+    "Attempt a fresh-session skill discovery validation using the installed Claude Code's non-destructive capabilities. Prefer a newly launched Claude Code process/session rather than relying on the current session's already-loaded skill registry. If a human restart is still required for definitive slash-command visibility, document that precisely instead of claiming success.",
+    "Do not modify the orientation handbook, orient.sh, operator.sh, exchange.sh, .bridge/bridge_cli.py, or protocol behavior unless a concrete blocker makes a control-plane-only change unavoidable. Any exception must be documented.",
+    "Create .bridge/evidence/bridge-phase13-001/unblock-results.json containing: installed Claude version, F1 root cause, final MCP registration path/content summary, interpreter/server command, config validation results, Claude MCP recognition result, F2 root cause evidence, effective Claude config dir, canonical skill path, personal skill installation strategy/path, symlink-or-copy decision, installer idempotency results, fresh-session skill discovery result, restart_required, remaining uncertainties, and files changed.",
+    "Create .bridge/evidence/bridge-phase13-001/retest-readiness.md with a concise GO/NO-GO assessment for rerunning the full Rhino workflow POC. GO requires MCP registration recognized by Claude Code and the orientation skill either verified in a fresh session or explicitly reducible to a single known restart step with no unresolved path/config ambiguity.",
+    "Run bash -n install-claude-orientation.sh; validate .mcp.json as JSON; git diff --check; and verify protected Rhino/MCP runtime implementation files are unchanged relative to the task base.",
+    "Commit project changes and evidence as the work commit and capture RESULT_COMMIT. Do not commit user-home Claude configuration files.",
+    "Create .bridge/reports/bridge-phase13-001.json with ack exactly BRIDGE-PHASE13-UNBLOCK-20260924-7D2A61-OPERATOR-ACK, exact base_commit, RESULT_COMMIT, and branch operator/bridge-phase13-001.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase13-001 and require REPORT_OK.",
+    "Commit the report as the separate receipt commit, push operator/bridge-phase13-001, and do not merge it."
+  ],
+  "expected_outputs": [
+    ".mcp.json with validated project-scope rhino-cad registration",
+    "A corrected install-claude-orientation.sh if needed",
+    "Canonical project skill preserved at .claude/skills/rhino-chatgpt-orientation/SKILL.md",
+    "Working managed personal skill installation in the effective Claude config directory",
+    ".bridge/evidence/bridge-phase13-001/unblock-results.json",
+    ".bridge/evidence/bridge-phase13-001/retest-readiness.md",
+    ".bridge/reports/bridge-phase13-001.json",
+    "Remote branch operator/bridge-phase13-001"
+  ],
+  "constraints": [
+    "Fix only the two Phase 12 high-severity blockers.",
+    "Do not modify Rhino/MCP runtime implementation files or install dependencies.",
+    "Do not run geometry-changing Rhino tests in this phase.",
+    "Do not overwrite unrelated Claude global configuration or unmanaged personal skills.",
+    "Do not claim fresh-session skill/MCP visibility without actual evidence.",
+    "No force push or merge."
+  ]
+}
