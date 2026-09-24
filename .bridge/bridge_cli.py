@@ -87,6 +87,15 @@ def pending():
     return out
 
 
+def single_pending_request():
+    pend = pending()
+    if len(pend) != 1:
+        raise SystemExit(f"Expected exactly one pending request, found {len(pend)}")
+    path, item = pend[0]
+    req = load_request(item["task_id"])
+    return path, req
+
+
 def cmd_status():
     protocol = load(PROTOCOL)
     reqs = list(iter_requests())
@@ -106,6 +115,16 @@ def cmd_next():
         return
     _, req = pend[0]
     print(json.dumps(req, indent=2, sort_keys=True))
+
+
+def cmd_next_id():
+    _, req = single_pending_request()
+    print(req["task_id"])
+
+
+def cmd_next_branch():
+    _, req = single_pending_request()
+    print(req["operator_branch"])
 
 
 def cmd_validate_request(task_id: str):
@@ -165,6 +184,10 @@ def main():
         cmd_status()
     elif command == "next":
         cmd_next()
+    elif command == "next-id":
+        cmd_next_id()
+    elif command == "next-branch":
+        cmd_next_branch()
     elif command == "validate-request":
         if len(sys.argv) != 3:
             raise SystemExit("usage: bridge_cli.py validate-request TASK_ID")

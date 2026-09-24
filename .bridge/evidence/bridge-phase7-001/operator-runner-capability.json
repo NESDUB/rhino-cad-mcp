@@ -1,0 +1,136 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase7-001",
+  "checked_at": "2026-09-24T09:40:59.627814Z",
+  "measured_codex_cli_facts": {
+    "version": "codex-cli 0.156.1",
+    "executable": "/opt/homebrew/bin/codex",
+    "executable_type": "/usr/bin/env node script text executable",
+    "non_interactive_command": "codex exec",
+    "prompt_input": {
+      "argument_supported": true,
+      "stdin_supported_when_prompt_omitted": true,
+      "dash_selects_stdin": true,
+      "piped_stdin_with_prompt_is_appended_as_stdin_block": true
+    },
+    "working_directory_option": "-C, --cd <DIR>",
+    "sandbox_option": "-s, --sandbox <read-only|workspace-write|danger-full-access>",
+    "approval_controls": {
+      "ask_for_approval_option": "-a, --ask-for-approval <on-request|never>",
+      "automatic_review_option": "--approve-for-me",
+      "automatic_review_behavior_from_help": "Routes approval requests through automatic review using the workspace-write sandbox.",
+      "dangerous_bypass_available": true,
+      "dangerous_bypass_used_by_runner": false
+    },
+    "automation_options_used": [
+      "--ephemeral",
+      "--color never"
+    ],
+    "output_options_available": [
+      "--json",
+      "--output-last-message <FILE>",
+      "--output-schema <FILE>"
+    ],
+    "help_exit_statuses": {
+      "codex --help": 0,
+      "codex exec --help": 0,
+      "codex help exec": 0
+    },
+    "exit_code_behavior": {
+      "documented_numeric_mapping_in_help": false,
+      "runner_behavior": "operator.sh uses shell exec, so the runner process is replaced by codex exec and propagates its process exit status without masking it."
+    },
+    "nested_shell_invocation": {
+      "supported_at_process_level": true,
+      "evidence": "The installed codex executable and codex exec help were invoked successfully from a shell process.",
+      "end_to_end_agent_invocation_tested_in_builder_phase": false,
+      "reason_not_tested": "The structured request explicitly forbids executing the new runner against bridge-phase7-001."
+    }
+  },
+  "achieved_mode": "fully_noninteractive_runner_built_for_separate_controller_test",
+  "exact_codex_invocation_template": "codex exec --cd \"$ROOT\" --sandbox workspace-write --approve-for-me --ephemeral --color never \"$prompt\"",
+  "bridge_cli_enhancement": {
+    "subcommands_added": [
+      "next-id",
+      "next-branch"
+    ],
+    "behavior": "Each command requires exactly one pending request, loads and validates the v0.3 request JSON, and emits only the requested machine-readable scalar.",
+    "protocol_compatibility": "Existing v0.3 status, next, validate-request, branch, and verify-report behavior is retained."
+  },
+  "runner_contract": [
+    "Operate from the repository root regardless of the caller's current directory.",
+    "Require git, python3, and codex executables.",
+    "Require the current branch to be main.",
+    "Refuse tracked staged or unstaged changes.",
+    "Refuse untracked non-ignored files to avoid accidental inclusion or overwrite.",
+    "Fetch origin/main and use git pull --ff-only origin main.",
+    "Require exactly one pending validated structured request.",
+    "Derive task_id and operator_branch through bridge_cli.py JSON-backed scalar commands.",
+    "Refuse an existing local or remote task branch before invoking Codex.",
+    "Launch codex exec non-interactively with a fixed bootstrap instruction that identifies the authoritative request JSON.",
+    "Replace the shell with codex exec so its exit status is propagated."
+  ],
+  "safety_guards": [
+    "No force-push command exists in operator.sh.",
+    "No merge command exists in operator.sh.",
+    "No Rhino/MCP runtime module is imported or modified by operator.sh or the bridge CLI enhancement.",
+    "The dangerous Codex approval/sandbox bypass flag is not used.",
+    "The fixed bootstrap instructs Codex not to force-push, merge, discard local work, or use another repository unless the request explicitly authorizes it.",
+    "Existing local or remote operator branches cause refusal rather than overwrite.",
+    "Multiple or zero pending requests cause refusal rather than ambiguous execution."
+  ],
+  "limitations": [
+    "The runner was not executed against bridge-phase7-001 because this is the builder task and the request prohibits doing so.",
+    "Codex help does not document a numeric exit-code map; the runner preserves whatever process status codex exec returns.",
+    "Successful end-to-end approval review, Git push, and task completion must be validated by the separate controller test after merge.",
+    "Automatic approval review may still deny an unsafe action; the agent must then report the concrete blocker rather than bypass safeguards."
+  ],
+  "validation_commands_results": [
+    {
+      "command": "codex --help",
+      "result": "exit 0; interactive/global options and codex exec command observed"
+    },
+    {
+      "command": "codex exec --help",
+      "result": "exit 0; non-interactive prompt/stdin, --cd, sandbox, approval, ephemeral, JSON/output options observed"
+    },
+    {
+      "command": "codex help exec",
+      "result": "exit 0; same exec capability surface confirmed"
+    },
+    {
+      "command": "bash -n operator.sh",
+      "result": "passed"
+    },
+    {
+      "command": "bash -n exchange.sh",
+      "result": "passed"
+    },
+    {
+      "command": "python3 -m py_compile .bridge/bridge_cli.py",
+      "result": "passed"
+    },
+    {
+      "command": "python3 .bridge/bridge_cli.py status",
+      "result": "protocol=0.3; requests=2; pending=1; reports=1; queued=bridge-phase7-001"
+    },
+    {
+      "command": "python3 .bridge/bridge_cli.py next-id",
+      "result": "bridge-phase7-001"
+    },
+    {
+      "command": "python3 .bridge/bridge_cli.py next-branch",
+      "result": "operator/bridge-phase7-001"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --quiet 83a9a71629f428b9ff9113e0f5902d1ddb591d6c -- protected runtime paths",
+      "result": "passed; runtime files unchanged"
+    }
+  ],
+  "runner_executed_against_builder_task": false,
+  "runtime_files_modified": []
+}
