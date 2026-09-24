@@ -1,0 +1,16 @@
+{
+  "protocol_version": "0.3",
+  "operator": "codex",
+  "repository": "NESDUB/rhino-cad-mcp",
+  "local_path": "/Users/nes/bin/mcp/rhino-cad-mcp",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "branch": "operator/bridge-phase6-001",
+  "base_commit": "fc68ce535391438cd81e5554b8da2b908bd18e3e",
+  "remote_url": "https://github.com/NESDUB/rhino-cad-mcp.git",
+  "git_available": true,
+  "gh_available": true,
+  "codex_available": true,
+  "rhino_8_app_exists": true,
+  "rhinocode_exists": true,
+  "checked_at": "2026-09-24T09:35:29.280762Z"
+}
