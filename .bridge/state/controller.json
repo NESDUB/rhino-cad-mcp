@@ -3,7 +3,7 @@
   "controller": "chatgpt-web",
   "repository": "NESDUB/rhino-cad-mcp",
   "branch": "main",
-  "latest_request": "bridge-phase10-001",
+  "latest_request": "bridge-phase12-001",
   "transport_verified": true,
   "operator_branch_model": "operator/<task-id>",
   "bootstrap_branch": "operator/bridge-bootstrap-v1",
@@ -11,5 +11,7 @@
   "direct_real_repo_exchange_verified": true,
   "one_command_operator_runner_built": true,
   "one_command_operator_runner_verified": true,
-  "ai_orientation_system_verified": true
+  "ai_orientation_system_verified": true,
+  "claude_orientation_skill_verified": true,
+  "rhino_cad_mcp_workflow_poc_under_test": true
 }
