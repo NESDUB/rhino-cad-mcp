@@ -1,0 +1,117 @@
+{
+  "document_id": "16858:268435461",
+  "display_mode": "Shaded",
+  "width": 800,
+  "height": 600,
+  "aspect_ratio": 1.33333333,
+  "square_requested": false,
+  "columns": 2,
+  "sheet": "/Users/nes/bin/mcp/rhino-cad-mcp/.bridge/artifacts/bridge-phase21-001/contact_sheet_shaded.png",
+  "views": [
+    {
+      "name": "isometric",
+      "direction": [
+        -0.6337242505244779,
+        -0.6337242505244779,
+        0.4436069753671345
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 2.315403415395359,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/.bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-isometric.png",
+      "camera": [
+        -80.4314817865211,
+        -80.4314817865211,
+        166.05203725056475
+      ],
+      "target": [
+        0.0,
+        0.0,
+        109.75
+      ]
+    },
+    {
+      "name": "front",
+      "direction": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 0.9325135250569475,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/.bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-front.png",
+      "camera": [
+        0.0,
+        -46.90737304687501,
+        109.75
+      ],
+      "target": [
+        0.0,
+        0.0,
+        109.75
+      ]
+    },
+    {
+      "name": "top",
+      "direction": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "up": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "parallel": true,
+      "lens_mm": 9.802725720088626,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/.bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-top.png",
+      "camera": [
+        0.0,
+        0.0,
+        -42.335205078125
+      ],
+      "target": [
+        0.0,
+        0.0,
+        109.75
+      ]
+    },
+    {
+      "name": "right",
+      "direction": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "parallel": true,
+      "lens_mm": 0.9325135250569475,
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/.bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-right.png",
+      "camera": [
+        -46.90737304687501,
+        0.0,
+        109.75
+      ],
+      "target": [
+        0.0,
+        0.0,
+        109.75
+      ]
+    }
+  ],
+  "restored": true
+}

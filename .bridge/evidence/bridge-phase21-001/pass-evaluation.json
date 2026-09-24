@@ -1,0 +1,265 @@
+{
+  "template_version": "1",
+  "task_id": "bridge-phase21-001",
+  "modeling_run_id": "zestly-modern-soda-bottle-001",
+  "pass_index": 1,
+  "pass_kind": "foundation",
+  "executed_payload_sha256": "38e13fa9af65dd9b8e97a96c1ba1e1e9357a938b1f0f7ed40e996b4abbc4d18d",
+  "execution_utc": "2026-09-24T21:53:47Z",
+  "document_identity": {
+    "document_id": "16858:268435461",
+    "saved_path": ".bridge/artifacts/bridge-phase21-001/ZESTLY_BOTTLE_PASS1.3dm",
+    "saved_bytes": 1044743,
+    "verified": true
+  },
+  "object_summary": {
+    "total_objects": 34,
+    "layers": [
+      "Default",
+      "ZESTLY_BOTTLE",
+      "ZESTLY_LABEL",
+      "ZESTLY_CAP",
+      "ZESTLY_DETAILS"
+    ],
+    "object_list": [
+      {"guid": "e4da07bb-7ba6-4bff-aba9-279c4fde4724", "name": "Zestly PET Bottle Body", "type": "Brep", "layer": "ZESTLY_BOTTLE"},
+      {"guid": "d91297c3-2552-4d9e-83c7-571dc78ea4ab", "name": "Zestly Neck Finish",     "type": "Brep", "layer": "ZESTLY_BOTTLE"},
+      {"guid": "4612005e-2923-41c9-99b1-6b8e9c760ef8", "name": "Zestly Printed Label Sleeve", "type": "Brep", "layer": "ZESTLY_LABEL"},
+      {"guid": "18f3f4ad-8e17-4d46-8132-3159c45cc203", "name": "Zestly Screw Cap",        "type": "Brep", "layer": "ZESTLY_CAP"},
+      {"guid": "64aff13d-34eb-4988-8ef6-9375730e11d3", "name": "Zestly Tamper Ring",      "type": "Brep", "layer": "ZESTLY_CAP"},
+      {"guid": "227e1e1e-f69f-43a7-b816-ca57488bc00e", "name": "Zestly Base Contact Ring","type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "cfbbc86a-f7ae-4c1c-866c-1b392075829e", "name": "Zestly Cap Rib 01", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "794e7e1f-d9d6-48e4-bbee-0acde0ccfe99", "name": "Zestly Cap Rib 02", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "583541d0-ee23-4250-aa91-b8a4d81ef0d4", "name": "Zestly Cap Rib 03", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "9c50526d-2067-448d-ba40-811ffab3c4df", "name": "Zestly Cap Rib 04", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "db8d0674-bb84-4f23-a436-3997e736aad8", "name": "Zestly Cap Rib 05", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "96088692-cf39-4b6f-be0b-86c8161510a4", "name": "Zestly Cap Rib 06", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "b553fda1-a258-44bd-8439-b00edfc02be0", "name": "Zestly Cap Rib 07", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "ffc4e9a6-a0ea-4ee6-8062-aa8a100eecf9", "name": "Zestly Cap Rib 08", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "74373ed6-aa13-4c54-b13f-059adbccbec3", "name": "Zestly Cap Rib 09", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "2d2d387c-fb33-4259-bd4f-d11a76a71fb6", "name": "Zestly Cap Rib 10", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "939329d4-0cf0-411d-bb58-e9e485ffb685", "name": "Zestly Cap Rib 11", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "387d08b0-7c9e-4cb8-964a-c3f6dedce0dd", "name": "Zestly Cap Rib 12", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "6beb7bcf-34df-4f96-a1b0-c3d33fc1bdda", "name": "Zestly Cap Rib 13", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "53ca42e8-c9b0-455c-a3e7-4c06320e2f08", "name": "Zestly Cap Rib 14", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "fe48c807-c321-4ce5-bc6a-51bacc89d382", "name": "Zestly Cap Rib 15", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "1dba8942-1350-4555-a598-0a3a3864946d", "name": "Zestly Cap Rib 16", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "79882e42-f0bd-45bf-9193-796d8f6a3e7e", "name": "Zestly Cap Rib 17", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "b984b82a-2952-46f0-b6ed-e517f4a63f49", "name": "Zestly Cap Rib 18", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "b609ceeb-5e08-4070-adb6-4ba6868cca85", "name": "Zestly Cap Rib 19", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "13434db4-e427-4359-bc9d-b273ea29d541", "name": "Zestly Cap Rib 20", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "e4a3b8ac-ef69-4c5d-9d0a-37c3b95ed135", "name": "Zestly Cap Rib 21", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "d23df446-626b-47b5-abd0-536596decbb9", "name": "Zestly Cap Rib 22", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "40c9755e-bd67-489c-9bc4-469d21f88b6e", "name": "Zestly Cap Rib 23", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "0281c118-7340-4864-994a-c3dcfe8eab87", "name": "Zestly Cap Rib 24", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "8af5f4c1-a24e-4b03-a0b3-bb955d7edcc2", "name": "Zestly Cap Rib 25", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "a5e59b09-08ec-4b78-b528-268d1f49de5b", "name": "Zestly Cap Rib 26", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "b6f759c4-4ac7-4ac6-b944-a33ce6e7074f", "name": "Zestly Cap Rib 27", "type": "Brep", "layer": "ZESTLY_DETAILS"},
+      {"guid": "73fd5f93-41e8-4ae9-8de6-cf4c84ff0e26", "name": "Zestly Cap Rib 28", "type": "Brep", "layer": "ZESTLY_DETAILS"}
+    ]
+  },
+  "measurements": {
+    "note": "All dimensions in millimeters (document units). Volumes and areas from Rhino computed properties.",
+    "per_object": [
+      {
+        "guid": "e4da07bb-7ba6-4bff-aba9-279c4fde4724",
+        "name": "Zestly PET Bottle Body",
+        "bbox_min": [-33.660, -33.660, 0.0],
+        "bbox_max": [33.660, 33.660, 202.0],
+        "volume_mm3": 617648.386,
+        "area_mm2": 43254.219
+      },
+      {
+        "guid": "d91297c3-2552-4d9e-83c7-571dc78ea4ab",
+        "name": "Zestly Neck Finish",
+        "bbox_min": [-14.800, -14.800, 196.0],
+        "bbox_max": [14.800, 14.800, 205.0],
+        "volume_mm3": 6193.210,
+        "area_mm2": 2213.189
+      },
+      {
+        "guid": "4612005e-2923-41c9-99b1-6b8e9c760ef8",
+        "name": "Zestly Printed Label Sleeve",
+        "bbox_min": [-33.850, -33.850, 58.0],
+        "bbox_max": [33.850, 33.850, 146.0],
+        "volume_mm3": null,
+        "area_mm2": 18716.352,
+        "note": "Open surface (by design); volume not meaningful"
+      },
+      {
+        "guid": "18f3f4ad-8e17-4d46-8132-3159c45cc203",
+        "name": "Zestly Screw Cap",
+        "bbox_min": [-17.100, -17.100, 203.0],
+        "bbox_max": [17.100, 17.100, 219.5],
+        "volume_mm3": 15157.446,
+        "area_mm2": 3610.067
+      },
+      {
+        "guid": "64aff13d-34eb-4988-8ef6-9375730e11d3",
+        "name": "Zestly Tamper Ring",
+        "bbox_min": [-17.400, -17.400, 200.0],
+        "bbox_max": [17.400, 17.400, 203.2],
+        "volume_mm3": 3043.676,
+        "area_mm2": 2252.145
+      },
+      {
+        "guid": "227e1e1e-f69f-43a7-b816-ca57488bc00e",
+        "name": "Zestly Base Contact Ring",
+        "bbox_min": [-29.100, -29.100, 0.6],
+        "bbox_max": [29.100, 29.100, 2.0],
+        "volume_mm3": 3724.465,
+        "area_mm2": 5576.641
+      },
+      {
+        "guid": "cfbbc86a-f7ae-4c1c-866c-1b392075829e",
+        "name": "Zestly Cap Rib 01 (representative)",
+        "bbox_min": [17.0, -1.25, 204.2],
+        "bbox_max": [18.1, 1.25, 218.2],
+        "volume_mm3": 38.500,
+        "area_mm2": 106.300
+      }
+    ],
+    "assembly_bbox_min": [-33.850, -33.850, 0.0],
+    "assembly_bbox_max": [33.850, 33.850, 219.5],
+    "assembly_height_mm": 219.5,
+    "assembly_footprint_mm": [67.7, 67.7]
+  },
+  "validation_summary": {
+    "geometry_pass": true,
+    "per_object": [
+      {"guid": "e4da07bb-7ba6-4bff-aba9-279c4fde4724", "name": "Zestly PET Bottle Body",        "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "d91297c3-2552-4d9e-83c7-571dc78ea4ab", "name": "Zestly Neck Finish",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "4612005e-2923-41c9-99b1-6b8e9c760ef8", "name": "Zestly Printed Label Sleeve",  "is_valid": true, "is_solid": false, "is_manifold": true, "naked_edges": 2, "note": "Open top and bottom — by design for label sleeve"},
+      {"guid": "18f3f4ad-8e17-4d46-8132-3159c45cc203", "name": "Zestly Screw Cap",              "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "64aff13d-34eb-4988-8ef6-9375730e11d3", "name": "Zestly Tamper Ring",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "227e1e1e-f69f-43a7-b816-ca57488bc00e", "name": "Zestly Base Contact Ring",     "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "cfbbc86a-f7ae-4c1c-866c-1b392075829e", "name": "Zestly Cap Rib 01",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "794e7e1f-d9d6-48e4-bbee-0acde0ccfe99", "name": "Zestly Cap Rib 02",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "583541d0-ee23-4250-aa91-b8a4d81ef0d4", "name": "Zestly Cap Rib 03",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "9c50526d-2067-448d-ba40-811ffab3c4df", "name": "Zestly Cap Rib 04",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "db8d0674-bb84-4f23-a436-3997e736aad8", "name": "Zestly Cap Rib 05",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "96088692-cf39-4b6f-be0b-86c8161510a4", "name": "Zestly Cap Rib 06",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "b553fda1-a258-44bd-8439-b00edfc02be0", "name": "Zestly Cap Rib 07",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "ffc4e9a6-a0ea-4ee6-8062-aa8a100eecf9", "name": "Zestly Cap Rib 08",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "74373ed6-aa13-4c54-b13f-059adbccbec3", "name": "Zestly Cap Rib 09",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "2d2d387c-fb33-4259-bd4f-d11a76a71fb6", "name": "Zestly Cap Rib 10",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "939329d4-0cf0-411d-bb58-e9e485ffb685", "name": "Zestly Cap Rib 11",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "387d08b0-7c9e-4cb8-964a-c3f6dedce0dd", "name": "Zestly Cap Rib 12",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "6beb7bcf-34df-4f96-a1b0-c3d33fc1bdda", "name": "Zestly Cap Rib 13",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "53ca42e8-c9b0-455c-a3e7-4c06320e2f08", "name": "Zestly Cap Rib 14",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "fe48c807-c321-4ce5-bc6a-51bacc89d382", "name": "Zestly Cap Rib 15",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "1dba8942-1350-4555-a598-0a3a3864946d", "name": "Zestly Cap Rib 16",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "79882e42-f0bd-45bf-9193-796d8f6a3e7e", "name": "Zestly Cap Rib 17",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "b984b82a-2952-46f0-b6ed-e517f4a63f49", "name": "Zestly Cap Rib 18",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "b609ceeb-5e08-4070-adb6-4ba6868cca85", "name": "Zestly Cap Rib 19",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "13434db4-e427-4359-bc9d-b273ea29d541", "name": "Zestly Cap Rib 20",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "e4a3b8ac-ef69-4c5d-9d0a-37c3b95ed135", "name": "Zestly Cap Rib 21",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "d23df446-626b-47b5-abd0-536596decbb9", "name": "Zestly Cap Rib 22",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "40c9755e-bd67-489c-9bc4-469d21f88b6e", "name": "Zestly Cap Rib 23",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "0281c118-7340-4864-994a-c3dcfe8eab87", "name": "Zestly Cap Rib 24",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "8af5f4c1-a24e-4b03-a0b3-bb955d7edcc2", "name": "Zestly Cap Rib 25",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "a5e59b09-08ec-4b78-b528-268d1f49de5b", "name": "Zestly Cap Rib 26",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "b6f759c4-4ac7-4ac6-b944-a33ce6e7074f", "name": "Zestly Cap Rib 27",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0},
+      {"guid": "73fd5f93-41e8-4ae9-8de6-cf4c84ff0e26", "name": "Zestly Cap Rib 28",            "is_valid": true, "is_solid": true,  "is_manifold": true, "naked_edges": 0}
+    ],
+    "assembly": {
+      "geometry_pass": true,
+      "invalid_or_non_solid_ids": [],
+      "duplicates": [],
+      "intersections": [
+        {"pair": ["Zestly Base Contact Ring", "Zestly PET Bottle Body"],    "volume_mm3": 3713.32,  "note": "Base ring partially embedded in bottle base — proxy geometry, no boolean"},
+        {"pair": ["Zestly Neck Finish", "Zestly PET Bottle Body"],          "volume_mm3": 3929.95,  "note": "Neck cylinder overlaps bottle top — proxy geometry, no boolean"},
+        {"pair": ["Zestly Screw Cap", "Zestly Neck Finish"],                "volume_mm3": 1376.27,  "note": "Cap base overlaps neck finish top"},
+        {"pair": ["Zestly Tamper Ring", "Zestly Neck Finish"],              "volume_mm3": 2202.03,  "note": "Tamper ring heavily overlaps neck finish"},
+        {"pair": ["Zestly Tamper Ring", "Zestly PET Bottle Body"],          "volume_mm3": 1316.90,  "note": "Tamper ring overlaps bottle body top"},
+        {"pair": ["Zestly Tamper Ring", "Zestly Screw Cap"],                "volume_mm3": 183.73,   "note": "Tamper ring overlaps cap base"},
+        {"pair": ["Zestly Cap Rib 01 (representative)", "Zestly Screw Cap"],"volume_mm3": 2.97,     "note": "Each of 28 ribs intersects cap by ~2.97mm³; ribs are surface features not subtracted from cap"}
+      ],
+      "metadata_incomplete": {
+        "count": 34,
+        "missing_fields": ["revision", "parent"],
+        "note": "All 34 objects missing 'revision' and 'parent' user strings; expected for foundation pass"
+      }
+    }
+  },
+  "capture_artifacts": {
+    "contact_sheet": ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered.png",
+    "contact_sheet_shaded": ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded.png",
+    "individual_views": [
+      {"name": "isometric_rendered",  "path": ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered-isometric.png"},
+      {"name": "front_rendered",      "path": ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered-front.png"},
+      {"name": "top_rendered",        "path": ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered-top.png"},
+      {"name": "right_rendered",      "path": ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered-right.png"},
+      {"name": "isometric_shaded",    "path": ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-isometric.png"},
+      {"name": "front_shaded",        "path": ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-front.png"},
+      {"name": "top_shaded",          "path": ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-top.png"},
+      {"name": "right_shaded",        "path": ".bridge/artifacts/bridge-phase21-001/contact_sheet_shaded-right.png"}
+    ],
+    "manifest_json": ".bridge/artifacts/bridge-phase21-001/contact_sheet_rendered.json"
+  },
+  "save_artifact": {
+    "path": ".bridge/artifacts/bridge-phase21-001/ZESTLY_BOTTLE_PASS1.3dm",
+    "bytes": 1044743,
+    "verified": true,
+    "readback_object_count": 34
+  },
+  "retries_and_errors": [],
+  "label_sleeve_material": {
+    "object_id": "4612005e-2923-41c9-99b1-6b8e9c760ef8",
+    "material_source": "MaterialFromObject",
+    "material_name": "Zestly Lemon Lime Label",
+    "material_index": 2,
+    "texture_sha256_user_string": "8095b8b50f9b0a11b8ce335c767a607a9fa866752e0d34cc0895f493f0dda1f6",
+    "source_asset_user_string": ".bridge/assets/bridge-phase21-001/zestly_full_label_256.jpg",
+    "note": "Material name and texture_sha256 user string confirmed. Pixel-level rendered label quality requires visual controller review of captured renders."
+  },
+  "objective_discrepancies": [
+    {
+      "id": "D1",
+      "description": "Assembly height is 219.5mm. Typical 500ml PET soda bottle is approximately 220–240mm tall (varies by brand). Bottle body alone is 202mm.",
+      "observed": "Assembly height=219.5mm, body height=202mm",
+      "expected": "~220–240mm per typical 500ml PET bottle form factor",
+      "impact": "low"
+    },
+    {
+      "id": "D2",
+      "description": "Label sleeve outer diameter is 67.7mm vs bottle body max diameter 67.3mm — 0.2mm radial gap. Sleeve floats slightly off the body surface at the label zone.",
+      "observed": "Label sleeve radius=33.85mm, body max radius=33.66mm, gap=0.19mm",
+      "expected": "Label sleeve should conform to or be coincident with bottle body surface",
+      "impact": "low"
+    },
+    {
+      "id": "D3",
+      "description": "Tamper ring overlaps neck finish by 2202mm³ and bottle body by 1317mm³. Tamper ring Z-range is 200–203.2mm; neck finish Z-range is 196–205mm. Significant volumetric overlap indicates Z-position needs adjustment for a non-proxy pass.",
+      "observed": "Tamper ring∩neck=2202mm³, tamper ring∩body=1317mm³, tamper ring∩cap=184mm³",
+      "expected": "Tamper ring should seat below cap with minimal overlap for accurate proportions",
+      "impact": "medium"
+    },
+    {
+      "id": "D4",
+      "description": "Neck finish overlaps bottle body by 3930mm³. Neck is placed at Z=196–205mm but body extends to Z=202mm. The neck cylinder is a proxy additive solid, not a boolean continuation of the body.",
+      "observed": "Neck∩body=3930mm³ overlap volume",
+      "expected": "Neck finish transitions cleanly from bottle body with no self-intersection for accurate surface rendering",
+      "impact": "medium"
+    },
+    {
+      "id": "D5",
+      "description": "All 28 cap grip ribs intersect the cap body by ~2.97mm³ each. Ribs are surface-placed boxes that were not boolean-subtracted from the cap. Visual appearance may be acceptable at render scale; relevant for any physical accuracy pass.",
+      "observed": "Each rib∩cap ≈ 2.97mm³ (uniform across all 28 ribs)",
+      "expected": "Ribs as relief features would ideally be extruded from cap surface or boolean-unioned for a clean solid",
+      "impact": "low"
+    },
+    {
+      "id": "D6",
+      "description": "All 34 objects are missing 'revision' and 'parent' user string metadata fields. These are flagged by the assembly validator as metadata_incomplete.",
+      "observed": "All 34 objects: missing=['revision', 'parent']",
+      "expected": "Optional controller-defined fields; not required for foundation pass",
+      "impact": "low"
+    }
+  ],
+  "local_modeling_used": false,
+  "local_modeling_authorized": false,
+  "payload_modified_by_operator": false,
+  "provenance_check": "pass",
+  "operator_recommendation_scope": "evidence_only"
+}
