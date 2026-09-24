@@ -1,0 +1,38 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase6-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE6-20260924-71A4E9",
+  "objective": "Validate the first complete controller/operator exchange directly inside the real NESDUB/rhino-cad-mcp repository, with no POC repository in the transport path.",
+  "operator_branch": "operator/bridge-phase6-001",
+  "instructions": [
+    "Work only in /Users/nes/bin/mcp/rhino-cad-mcp for this phase. The POC repository is not part of this exchange.",
+    "If the local repository is still on operator/bridge-bootstrap-v1, verify that branch is clean and fully pushed, then switch safely to main. Do not delete the bootstrap branch.",
+    "Fast-forward local main from origin/main. Do not reset, force checkout, or discard local work.",
+    "Run ./exchange.sh from real-repository main and confirm it discovers bridge-phase6-001 directly from NESDUB/rhino-cad-mcp.",
+    "Run ./exchange.sh prepare bridge-phase6-001. It must create operator/bridge-phase6-001 from origin/main.",
+    "Create .bridge/state/operator.json using measured facts from this real repository: protocol_version, operator, repository, local_path, platform, branch, base_commit, remote_url, git_available, gh_available, codex_available, rhino_8_app_exists, rhinocode_exists, checked_at.",
+    "Do not modify server.py, bridge.py, runtime_ops.py, tool_support.py, snippets.py, test_bridge.py, requirements.txt, knowledge/, tests/, or any Rhino document.",
+    "Commit .bridge/state/operator.json as the task work commit and capture its 40-character SHA as RESULT_COMMIT.",
+    "Create .bridge/reports/bridge-phase6-001.json using the v0.3 report schema. Set ack exactly to BRIDGE-PHASE6-20260924-71A4E9-OPERATOR-ACK, base_commit to the prepare base commit, result_commit to RESULT_COMMIT, and branch to operator/bridge-phase6-001.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase6-001 and require REPORT_OK.",
+    "Run git diff --check and verify protected Rhino/MCP runtime paths are unchanged relative to the task base.",
+    "Commit the report as a separate receipt commit after the work commit.",
+    "Push operator/bridge-phase6-001 to origin. Do not merge it.",
+    "Return branch name, base commit, result commit, receipt commit, REPORT_OK status, push verification, and confirmation that main and runtime implementation remained unchanged."
+  ],
+  "expected_outputs": [
+    ".bridge/state/operator.json",
+    ".bridge/reports/bridge-phase6-001.json",
+    "Remote branch operator/bridge-phase6-001"
+  ],
+  "constraints": [
+    "No POC repository involvement.",
+    "Do not modify Rhino/MCP runtime implementation files.",
+    "Do not run live Rhino geometry-changing tests.",
+    "Do not install dependencies.",
+    "Do not force push.",
+    "Do not merge the operator branch."
+  ]
+}
