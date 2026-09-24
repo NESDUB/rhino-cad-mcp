@@ -4,6 +4,7 @@
 # Source state: verified Phase 21 FOUNDATION artifact.
 # Python 3.9 / Rhino 8 compatible.
 
+import base64
 import hashlib
 import math
 import os
@@ -18,9 +19,9 @@ MODELING_RUN_ID = "zestly-modern-soda-bottle-001"
 PARENT_TASK_ID = "bridge-phase21-001"
 PARENT_RESULT_COMMIT = "e8ace3769f9be3c1c925e452483b0d5b3e47e5bb"
 
-LABEL_RELATIVE_PATH = ".bridge/assets/bridge-phase24-001/zestly_full_label_1536.jpg"
-LABEL_SHA256 = "6ec396c93db291d15b2420c3f26db7dbd80a46c57cc805a505a8f82ffe38b69c"
-LABEL_DIMENSIONS_PX = [1536, 399]
+LABEL_B64_RELATIVE_PATH = ".bridge/assets/bridge-phase24-001/zestly_label_960_q80.jpg.b64"
+LABEL_SHA256 = "c597c2f244b6f3e31812e54d2af71fe7817a4517a9c8e226aad608293074860e"
+LABEL_DIMENSIONS_PX = [960, 249]
 
 doc = sc.doc
 if doc is None:
@@ -30,14 +31,27 @@ if str(doc.ModelUnitSystem) != "Millimeters":
     raise RuntimeError("Phase 24 requires a millimeter Rhino document.")
 
 repo_root = os.path.join(os.path.expanduser("~"), "bin", "mcp", "rhino-cad-mcp")
-label_path = os.path.join(repo_root, LABEL_RELATIVE_PATH)
-if not os.path.isfile(label_path):
-    raise RuntimeError("High-resolution label asset missing: " + label_path)
+label_b64_path = os.path.join(repo_root, LABEL_B64_RELATIVE_PATH)
+if not os.path.isfile(label_b64_path):
+    raise RuntimeError("High-resolution label transport asset missing: " + label_b64_path)
 
-with open(label_path, "rb") as f:
-    actual_label_sha = hashlib.sha256(f.read()).hexdigest()
+with open(label_b64_path, "r") as f:
+    encoded_label = "".join(f.read().split())
+try:
+    label_bytes = base64.b64decode(encoded_label)
+except Exception as exc:
+    raise RuntimeError("Could not decode high-resolution label asset: " + str(exc))
+
+actual_label_sha = hashlib.sha256(label_bytes).hexdigest()
 if actual_label_sha != LABEL_SHA256:
-    raise RuntimeError("High-resolution label SHA-256 mismatch.")
+    raise RuntimeError("High-resolution label SHA-256 mismatch: " + actual_label_sha)
+
+artifact_dir = os.path.join(repo_root, ".bridge", "artifacts", TASK_ID)
+if not os.path.isdir(artifact_dir):
+    os.makedirs(artifact_dir)
+label_path = os.path.join(artifact_dir, "zestly_label_960_q80.jpg")
+with open(label_path, "wb") as f:
+    f.write(label_bytes)
 
 tol = doc.ModelAbsoluteTolerance
 
@@ -441,9 +455,10 @@ label_id = add_brep(
     label_mat,
     "printed_label_sleeve",
     {
-        "source_asset": LABEL_RELATIVE_PATH,
+        "source_asset": LABEL_B64_RELATIVE_PATH,
+        "decoded_texture_path": ".bridge/artifacts/%s/zestly_label_960_q80.jpg" % TASK_ID,
         "texture_sha256": LABEL_SHA256,
-        "texture_dimensions_px": "1536x399",
+        "texture_dimensions_px": "960x249",
         "texture_resolution_class": "high_resolution"
     },
     require_solid=False
@@ -527,7 +542,7 @@ doc.Strings.SetString("RHINO_CHATGPT", "pass_index", "2")
 doc.Strings.SetString("RHINO_CHATGPT", "pass_kind", "correction")
 doc.Strings.SetString("RHINO_CHATGPT", "parent_task_id", PARENT_TASK_ID)
 doc.Strings.SetString("RHINO_CHATGPT", "parent_result_commit", PARENT_RESULT_COMMIT)
-doc.Strings.SetString("RHINO_CHATGPT", "label_resolution", "1536x399")
+doc.Strings.SetString("RHINO_CHATGPT", "label_resolution", "960x249")
 
 doc.Views.Redraw()
 
@@ -576,7 +591,7 @@ result = {
     "notes": [
         "This pass intentionally combines the modern bottle redesign and high-resolution label correction.",
         "The bottle uses a raised-center five-foot base strategy rather than the rejected Phase 22 spherical subtraction.",
-        "The label texture is 1536 pixels wide, six times the Phase 21 256-pixel proxy width.",
+        "The label texture is 960 pixels wide versus the Phase 21 256-pixel proxy, with approximately 13.9x the source pixel count.",
         "The lower body includes a pronounced grip waist and staggered dimple-ring detailing inspired by current commercial soda PET packaging.",
         "The design is generic modern soda packaging and does not reproduce the supplied Sprite branding."
     ]
