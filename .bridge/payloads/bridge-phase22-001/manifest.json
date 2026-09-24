@@ -1,0 +1,21 @@
+{
+  "payload_version": "1",
+  "task_id": "bridge-phase22-001",
+  "author_role": "controller",
+  "authoring_model": "GPT-5.6 Sol",
+  "payload_type": "rhino_run",
+  "python_compatibility": "3.9",
+  "execution_method": "bridge.execute",
+  "operation_name": "correct_zestly_bottle_pass2",
+  "sha256": "30b8d6e03ad60b2b0c85de3b071933a72dffe8fafb74528bf87811346206da6e",
+  "target_document_required": true,
+  "local_modeling_authorized": false,
+  "notes": "Correction pass 2 for the Zestly bottle. Controller-selected targets: body/neck overlap and silhouette, cap/tamper proxy overlap, label front orientation and radial gap, overlapping base-ring proxy/flat base, and missing revision/parent metadata.",
+  "modeling_run_id": "zestly-modern-soda-bottle-001",
+  "pass_index": 2,
+  "pass_kind": "correction",
+  "parent_task_id": "bridge-phase21-001",
+  "parent_payload_sha256": "38e13fa9af65dd9b8e97a96c1ba1e1e9357a938b1f0f7ed40e996b4abbc4d18d",
+  "parent_result_commit": "e8ace3769f9be3c1c925e452483b0d5b3e47e5bb",
+  "requires_controller_review_after": true
+}
