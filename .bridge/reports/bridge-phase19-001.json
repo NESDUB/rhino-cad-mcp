@@ -1,0 +1,42 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase19-001",
+  "status": "complete",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "ack": "BRIDGE-PHASE19-MULTIPASS-20260924-51AF3C-OPERATOR-ACK",
+  "base_commit": "fbc788151bdb7b1254c48f0092f6d9acdfdf0482",
+  "result_commit": "a78bef8167e3b9908ea8e68d531edee8a48e8207",
+  "branch": "operator/bridge-phase19-001",
+  "summary": "COMPLETE — controller-led multi-pass modeling architecture formalized. Added: .bridge/workflows/MULTI_PASS_RHINO.md (full lifecycle, role boundaries, pass taxonomy, 3-pass default, example sequence), .bridge/templates/rhino-pass-evaluation-v1.json (standardized per-pass evidence packet with operator_recommendation_scope=evidence_only). Extended rhino-payload-manifest-v1.json with optional backward-compatible pass lineage fields (modeling_run_id, pass_index, pass_kind, parent_task_id, parent_payload_sha256, parent_result_commit). Updated protocol.json with multi_pass_modeling block (protocol_version unchanged at 0.3). Updated AI_ORIENTATION.md with concise multi-pass principle; controller/operator/reviewer guides with full loop descriptions; payloads README with multi-pass field reference. All JSON valid, run_rhino_payload.py unchanged and compiles, _example dry-run passes, protected files unchanged, no geometry execution.",
+  "files_changed": [
+    ".bridge/workflows/MULTI_PASS_RHINO.md",
+    ".bridge/templates/rhino-pass-evaluation-v1.json",
+    ".bridge/templates/rhino-payload-manifest-v1.json",
+    ".bridge/protocol.json",
+    "AI_ORIENTATION.md",
+    ".bridge/orientation/controller.md",
+    ".bridge/orientation/operator.md",
+    ".bridge/orientation/reviewer.md",
+    ".bridge/payloads/README.md",
+    ".bridge/evidence/bridge-phase19-001/multi-pass-architecture.json"
+  ],
+  "tests": [
+    "python3 -c 'json.load(open(.bridge/protocol.json))' — PASS",
+    "python3 -c 'json.load(open(.bridge/templates/rhino-payload-manifest-v1.json))' — PASS",
+    "python3 -c 'json.load(open(.bridge/templates/rhino-pass-evaluation-v1.json))' — PASS",
+    "python3 -c 'json.load(open(.bridge/payloads/_example/manifest.json))' — PASS",
+    "python3 -m py_compile .bridge/run_rhino_payload.py — PASS (unchanged)",
+    "python3 .bridge/run_rhino_payload.py --task _example --dry-run — PASS (backward compat)",
+    "protected runtime files unchanged — PASS (0 changes to server.py, bridge.py, runtime_ops.py, tool_support.py, snippets.py, .mcp.json, exchange.sh, orient.sh, operator.sh, bridge_cli.py, run_rhino_payload.py)",
+    "git diff --check — PASS",
+    "no geometry-changing Rhino execution — PASS"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "The multi-pass architecture is now canonical. See .bridge/workflows/MULTI_PASS_RHINO.md for the full lifecycle, role boundaries, and example three-pass sequence.",
+    "For the first real modeling task: author rhino.py (pass_kind=foundation), add modeling_run_id and pass_index=1 to manifest.json, commit alongside the request. Claude will execute, capture 4 views, validate geometry, produce a pass-evaluation evidence packet, save the .3dm, and return it without proposing redesigns.",
+    "The pass-evaluation template (.bridge/templates/rhino-pass-evaluation-v1.json) documents the exact fields to look for when reviewing returned evidence between passes.",
+    "Single-pass payloads (including all prior tasks) remain fully compatible — run_rhino_payload.py does not require multi-pass fields.",
+    "protocol_version remains 0.3. The multi_pass_modeling block in protocol.json is additive/informational."
+  ]
+}
