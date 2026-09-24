@@ -1,0 +1,37 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase8-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE8-20260924-9C31E5",
+  "objective": "Smoke-test the merged one-command operator runner end to end in the real repository.",
+  "operator_branch": "operator/bridge-phase8-001",
+  "instructions": [
+    "This task is specifically intended to be launched through ./operator.sh after it is merged to main.",
+    "Use the structured request as authoritative and follow the existing v0.3 lifecycle.",
+    "Create .bridge/evidence/bridge-phase8-001/runner-smoke.json containing protocol_version, task_id, launched_via_operator_runner=true, repository, local_path, platform, branch, base_commit, codex_version, checked_at, and a concise note that this is a control-plane smoke test.",
+    "Do not modify server.py, bridge.py, runtime_ops.py, tool_support.py, snippets.py, test_bridge.py, requirements.txt, knowledge/, tests/, exchange.sh, operator.sh, or .bridge/bridge_cli.py.",
+    "Do not run live Rhino tests and do not install dependencies.",
+    "Run python3 -m json.tool on the smoke evidence and git diff --check.",
+    "Verify protected Rhino/MCP runtime files are unchanged relative to the task base.",
+    "Commit the smoke evidence as the work commit and capture its SHA as RESULT_COMMIT.",
+    "Create .bridge/reports/bridge-phase8-001.json using the v0.3 report schema. Set ack exactly to BRIDGE-PHASE8-20260924-9C31E5-OPERATOR-ACK, base_commit to the prepare base commit, result_commit to RESULT_COMMIT, and branch to operator/bridge-phase8-001.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase8-001 and require REPORT_OK.",
+    "Commit the report as a separate receipt commit and push operator/bridge-phase8-001 to origin.",
+    "Do not merge the operator branch."
+  ],
+  "expected_outputs": [
+    ".bridge/evidence/bridge-phase8-001/runner-smoke.json",
+    ".bridge/reports/bridge-phase8-001.json",
+    "Remote branch operator/bridge-phase8-001"
+  ],
+  "constraints": [
+    "The task must be launched through operator.sh.",
+    "Do not modify control-plane runner code during the smoke test.",
+    "Do not modify Rhino/MCP runtime implementation files.",
+    "Do not run live Rhino geometry tests.",
+    "Do not install dependencies.",
+    "Do not force push.",
+    "Do not merge the operator branch."
+  ]
+}
