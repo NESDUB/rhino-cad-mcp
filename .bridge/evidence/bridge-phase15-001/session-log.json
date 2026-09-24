@@ -1,0 +1,105 @@
+{
+  "task_id": "bridge-phase15-001",
+  "session_start_utc": "2026-09-24T11:30:48Z",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "session_primary_wd": "/Users/nes",
+  "project_dir": "/Users/nes/bin/mcp/rhino-cad-mcp",
+  "events": [
+    {
+      "seq": 1,
+      "utc": "2026-09-24T11:30:48Z",
+      "stage": "orientation_skill_invocation",
+      "outcome": "OK",
+      "elapsed_seconds": 2,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "rhino-chatgpt-orientation skill invoked successfully via Skill tool. Skill loaded from ~/.claude/skills/rhino-chatgpt-orientation/SKILL.md (real file copy, Phase 13 fix). Payload applied silently. Improvement vs Phase 12: no fallback needed."
+    },
+    {
+      "seq": 2,
+      "utc": "2026-09-24T11:30:50Z",
+      "stage": "git_sync",
+      "outcome": "OK",
+      "elapsed_seconds": 4,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "git checkout main, fetch, pull --ff-only. Fast-forwarded main from b06d489 to 7276972. Phase 14 evidence (server import fix) and Phase 15 request now on main."
+    },
+    {
+      "seq": 3,
+      "utc": "2026-09-24T11:30:54Z",
+      "stage": "orientation_load",
+      "outcome": "OK",
+      "elapsed_seconds": 2,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "./orient.sh operator. Payload valid: version 1.0.0, protocol 0.3, main 7276972, 1 pending task bridge-phase15-001, controller state shows phase14 results connected/GO."
+    },
+    {
+      "seq": 4,
+      "utc": "2026-09-24T11:30:56Z",
+      "stage": "request_discovery",
+      "outcome": "OK",
+      "elapsed_seconds": 1,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "bridge_cli.py status: 1 pending task bridge-phase15-001. Request JSON read and internalized."
+    },
+    {
+      "seq": 5,
+      "utc": "2026-09-24T11:30:57Z",
+      "stage": "branch_preparation",
+      "outcome": "OK",
+      "elapsed_seconds": 3,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "./exchange.sh prepare bridge-phase15-001. Created operator/bridge-phase15-001 tracking origin/main. BASE_COMMIT=727697250162cd320c6e3d3080f3d09dbe2028d0. REQUEST_OK."
+    },
+    {
+      "seq": 6,
+      "utc": "2026-09-24T11:31:30Z",
+      "stage": "mcp_registration_check",
+      "outcome": "OK_CLI_ONLY",
+      "elapsed_seconds": 5,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": "claude mcp get (CLI)",
+      "notes": "claude mcp get rhino-cad: Scope=Project config (shared via .mcp.json), Status=Connected. CLI confirms server starts and responds. However this only tests the MCP CLI path, not session tool injection."
+    },
+    {
+      "seq": 7,
+      "utc": "2026-09-24T11:31:35Z",
+      "stage": "mcp_tool_discovery_in_session",
+      "outcome": "BLOCKED",
+      "elapsed_seconds": 10,
+      "human_intervention_required": false,
+      "retries": 2,
+      "mcp_tool": null,
+      "notes": "ToolSearch 'rhino' → no results. ToolSearch 'rhino_status document inspect' → no results. ListMcpResourcesTool server=rhino-cad → error: Server 'rhino-cad' not found. Available servers listed do not include rhino-cad. ROOT CAUSE: Project-scoped MCP servers defined in .mcp.json are only injected into a Claude Code session that was started from (or below) the project root directory. This session started from /Users/nes; the .mcp.json is at /Users/nes/bin/mcp/rhino-cad-mcp/.mcp.json. The server was not in scope at session startup, so its tools were never registered in this session's tool namespace. The claude mcp CLI confirms the server process starts correctly, but that is independent of session tool injection. No rhino-cad tools are callable in this session."
+    }
+  ],
+  "final_stage_reached": "mcp_registration_check (CLI only)",
+  "first_blocking_stage": "mcp_tool_discovery_in_session",
+  "summary": {
+    "total_elapsed_seconds": 64,
+    "git_commands": 5,
+    "mcp_calls_successful": 0,
+    "mcp_calls_attempted": 3,
+    "retries": 2,
+    "manual_interventions": 0,
+    "handoff_steps_completed": 5,
+    "handoff_steps_blocked": 10
+  },
+  "session_end_utc": "2026-09-24T11:32:22Z",
+  "improvement_vs_phase12": {
+    "orientation_skill": "NOW WORKING — invoked correctly, no fallback needed",
+    "server_import": "NOW FIXED — FastMCP import correct, server starts",
+    "mcp_registration": "REGISTERED — .mcp.json present, CLI shows Connected",
+    "new_blocker": "Project-scoped .mcp.json tools require session started from project directory"
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "task_id": "bridge-phase15-001",
+  "assessment_utc": "2026-09-24T11:32:22Z",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "base_commit": "727697250162cd320c6e3d3080f3d09dbe2028d0",
+
+  "architecture_path_observed": {
+    "path": "ChatGPT controller → Git request → Claude operator → [BLOCKED: rhino-cad tools not in session] → rhinocode/Rhino → validation/artifacts → Git report",
+    "completion_status": "PARTIAL",
+    "first_failing_stage": "mcp_tool_discovery_in_session",
+    "stages_completed": [
+      "orientation_skill_invocation (IMPROVED — skill now works)",
+      "git_sync",
+      "orientation_load",
+      "request_discovery",
+      "branch_preparation",
+      "mcp_registration_check (CLI confirms Connected)"
+    ],
+    "stages_blocked": [
+      "rhino_tool_visibility_in_session",
+      "rhino_connectivity_preflight",
+      "document_isolation",
+      "cad_operations",
+      "metadata",
+      "validation",
+      "visual_capture",
+      "save",
+      "final_inspection"
+    ]
+  },
+
+  "stage_metrics": {
+    "orientation_skill": {"outcome": "OK", "elapsed_seconds": 2, "retries": 0, "note": "FIXED vs Phase 12 — real file copy works"},
+    "git_sync": {"outcome": "OK", "elapsed_seconds": 4, "retries": 0},
+    "orientation_load": {"outcome": "OK", "elapsed_seconds": 2, "retries": 0},
+    "request_discovery": {"outcome": "OK", "elapsed_seconds": 1, "retries": 0},
+    "branch_preparation": {"outcome": "OK", "elapsed_seconds": 3, "retries": 0},
+    "mcp_registration_cli": {"outcome": "OK_CLI_ONLY", "elapsed_seconds": 5, "retries": 0},
+    "mcp_tool_discovery_in_session": {"outcome": "BLOCKED", "elapsed_seconds": 10, "retries": 2},
+    "rhino_preflight": {"outcome": "NOT_REACHED"},
+    "document_isolation": {"outcome": "NOT_REACHED"},
+    "cad_operations": {"outcome": "NOT_REACHED"},
+    "validation": {"outcome": "NOT_REACHED"},
+    "visual_capture": {"outcome": "NOT_REACHED"},
+    "save": {"outcome": "NOT_REACHED"},
+    "final_inspection": {"outcome": "NOT_REACHED"}
+  },
+
+  "mcp_tool_inventory": {
+    "tools_visible_in_session": 0,
+    "rhino_tools_in_session": [],
+    "server_connection_status": {
+      "cli_check": "Connected (claude mcp get rhino-cad)",
+      "session_check": "NOT IN SESSION (ListMcpResourcesTool server=rhino-cad → not found)",
+      "discrepancy": "CLI probes server independently of session tool injection"
+    },
+    "root_cause": "Project-scoped .mcp.json tools are injected into a Claude Code session only at session startup when the working directory is at or below the project root. This session was started from /Users/nes; .mcp.json is at /Users/nes/bin/mcp/rhino-cad-mcp/.mcp.json. The server was not in scope at startup.",
+    "tools_defined_in_source": {
+      "total": 42,
+      "rhino_tools": 32,
+      "grasshopper_tools": 10,
+      "note": "See Phase 12 workflow-assessment for full inventory — unchanged"
+    }
+  },
+
+  "rhino_preflight": {"attempted": false, "reason": "No rhino tools callable in session"},
+  "document_isolation": {"attempted": false, "dedicated_doc_created": false, "existing_docs_modified": false},
+  "cad_operations": {"attempted": false},
+  "validation_results": {"attempted": false},
+  "artifact_manifest": {
+    "viewport_png": "NOT_CAPTURED",
+    "artifact_directory_created": true,
+    "files": []
+  },
+  "save_results": {"attempted": false},
+
+  "retries_and_errors": [
+    {
+      "stage": "mcp_tool_discovery_in_session",
+      "error": "ToolSearch returns 0 rhino results; ListMcpResourcesTool server=rhino-cad returns 'not found'",
+      "retries": 2,
+      "resolution": "None — blocked. Session must be restarted from project directory.",
+      "root_cause": "Project .mcp.json not in scope at this session's startup directory (/Users/nes)"
+    }
+  ],
+
+  "manual_interventions": [],
+
+  "ambiguities": [
+    {
+      "stage": "mcp_registration",
+      "description": "claude mcp get rhino-cad returns Status: Connected, creating a false impression that tools are available. The Connected status reflects that the CLI can spawn the server process, not that the session has registered the tools. This is a significant UX ambiguity: an operator sees 'Connected' and expects tools to be callable, but they are not unless the session was started from the correct directory."
+    }
+  ],
+
+  "friction_points": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "category": "mcp_discovery",
+      "stage": "mcp_tool_discovery_in_session",
+      "title": "Project .mcp.json tools only available when session starts from project directory",
+      "description": "Claude Code 2.x loads project-scoped MCP servers (.mcp.json) only at session startup if the working directory is at or below the project root. If the operator starts Claude from any other directory (e.g., home directory), rhino-cad tools are absent from the session even though 'claude mcp get' reports Connected. The operator must know to launch 'claude' from /Users/nes/bin/mcp/rhino-cad-mcp to get the tools.",
+      "evidence": "Session started from /Users/nes. ToolSearch returns 0 rhino results. ListMcpResourcesTool server=rhino-cad: 'not found'. claude mcp get rhino-cad: Status=Connected. Available session servers do not include rhino-cad.",
+      "impact": "Complete block of all Rhino operations. Easy to trigger accidentally — the operator naturally opens Claude from their home directory or any project.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F2",
+      "severity": "medium",
+      "category": "mcp_discovery",
+      "stage": "mcp_registration_check",
+      "title": "claude mcp get Connected status is misleading when tools are not in session",
+      "description": "The Connected status in claude mcp get/list reflects whether the CLI can spawn and handshake with the server process, not whether the tools are registered in the current session. An operator who checks this and sees Connected will incorrectly assume tools are callable.",
+      "evidence": "claude mcp get rhino-cad → Connected. ToolSearch rhino → 0 results. ListMcpResourcesTool → server not found.",
+      "impact": "Operator confusion; wastes time debugging tool calls that fail for a configuration reason.",
+      "fix_type": "PROTOCOL_CHANGES"
+    },
+    {
+      "id": "F3",
+      "severity": "medium",
+      "category": "onboarding",
+      "stage": "operator_environment_setup",
+      "title": "No documented prerequisite: start Claude from project directory",
+      "description": "The operator guide, CLAUDE.md, AGENTS.md, and orient.sh output do not mention that Claude Code must be started from the project root to load the rhino-cad tools. This is a non-obvious requirement that will block every operator who doesn't happen to know the session-directory rule.",
+      "evidence": "Phase 12 and Phase 15 both blocked at MCP tool visibility despite the server being correctly configured.",
+      "impact": "Repeated blocking across POC runs; new operators will hit this before their first Rhino call.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F4",
+      "severity": "low",
+      "category": "git_bridge",
+      "stage": "worktree_safety_check",
+      "title": "Session starts on previous operator branch (repeated from Phase 12)",
+      "description": "Session opened on operator/bridge-phase14-001; manual git checkout main required before sync.",
+      "evidence": "git branch --show-current → operator/bridge-phase14-001 at session start.",
+      "impact": "Low; one extra step, easily caught.",
+      "fix_type": "PROTOCOL_CHANGES"
+    }
+  ],
+
+  "improvements_vs_phase12": [
+    "Orientation skill now invokes correctly via Skill tool — no fallback required",
+    "Server import fixed — claude mcp get reports Connected (server starts cleanly)",
+    ".mcp.json registered — project-scope registration is in place"
+  ],
+
+  "recommendations": {
+    "QUICK_WINS": [
+      {
+        "id": "QW1",
+        "priority": 1,
+        "title": "Add rhino-cad to global ~/.claude.json MCP config",
+        "description": "Move or duplicate the rhino-cad server entry from project .mcp.json into ~/.claude.json. Global entries are loaded in every Claude session regardless of starting directory. This eliminates the session-directory prerequisite entirely. The project .mcp.json can remain for reproducibility (shared with collaborators via Git), while the global entry ensures the operator's personal session always has the tools.",
+        "effort": "5 minutes (claude mcp add --scope user rhino-cad -- python3 /Users/nes/bin/mcp/rhino-cad-mcp/server.py)",
+        "impact": "Unblocks all Rhino operations regardless of session start directory"
+      },
+      {
+        "id": "QW2",
+        "priority": 2,
+        "title": "Document session start prerequisite in operator guide and orient.sh output",
+        "description": "Add a one-line note to .bridge/orientation/operator.md and AGENTS.md: 'Start Claude Code from /Users/nes/bin/mcp/rhino-cad-mcp (or add rhino-cad to global MCP config) to ensure rhino-cad tools are available in the session.' orient.sh operator output could also emit this as a preflight warning if the session directory heuristic can be checked.",
+        "effort": "15 minutes",
+        "impact": "Prevents repeated blocking for any operator who reads the guide"
+      }
+    ],
+    "PROTOCOL_CHANGES": [
+      {
+        "id": "PC1",
+        "priority": 1,
+        "title": "Add MCP session-visibility check to exchange.sh prepare for Rhino tasks",
+        "description": "exchange.sh prepare could attempt to verify that rhino-cad tools are available in the current session before completing branch setup for Rhino-dependent tasks. Even a simple 'claude mcp list | grep rhino-cad' check would warn the operator before they spend time on branch setup only to fail at the tool call stage.",
+        "effort": "30 minutes",
+        "impact": "Catches the directory issue at prepare time, not mid-run"
+      },
+      {
+        "id": "PC2",
+        "priority": 2,
+        "title": "Clarify 'Connected' semantics in operator documentation",
+        "description": "Document that 'claude mcp get' Connected status means the server binary starts and responds to MCP handshake, not that tools are registered in the current session. Operators should verify tool availability via ToolSearch or ListMcpResourcesTool before beginning Rhino work.",
+        "effort": "10 minutes",
+        "impact": "Prevents misleading Connected status from masking session-scope gap"
+      }
+    ],
+    "MCP_RUNTIME_CHANGES": [
+      {
+        "id": "MR1",
+        "priority": 1,
+        "title": "Add rhino-cad to global user MCP scope (matches QW1)",
+        "description": "claude mcp add --scope user rhino-cad -- /Users/nes/.pyenv/versions/3.12.0/bin/python3 /Users/nes/bin/mcp/rhino-cad-mcp/server.py. This writes to ~/.claude.json and makes tools available in every session.",
+        "effort": "5 minutes",
+        "impact": "Permanent fix for session-scope blocking"
+      }
+    ]
+  }
+}
