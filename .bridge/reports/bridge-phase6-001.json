@@ -1,0 +1,29 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase6-001",
+  "status": "complete",
+  "operator": "codex",
+  "ack": "BRIDGE-PHASE6-20260924-71A4E9-OPERATOR-ACK",
+  "base_commit": "fc68ce535391438cd81e5554b8da2b908bd18e3e",
+  "result_commit": "b0ee564f364b4d77a85fcbe0d2f745758483fa89",
+  "branch": "operator/bridge-phase6-001",
+  "summary": "Completed the first controller/operator exchange directly in NESDUB/rhino-cad-mcp by recording measured operator state on an isolated task branch, with no POC transport involvement and no Rhino/MCP runtime changes.",
+  "files_changed": [
+    ".bridge/state/operator.json",
+    ".bridge/reports/bridge-phase6-001.json"
+  ],
+  "tests": [
+    "./exchange.sh \u2014 discovered bridge-phase6-001 directly from NESDUB/rhino-cad-mcp",
+    "./exchange.sh prepare bridge-phase6-001 \u2014 created operator/bridge-phase6-001 at the requested base",
+    "python3 -m json.tool .bridge/state/operator.json \u2014 passed",
+    "python3 .bridge/bridge_cli.py verify-report bridge-phase6-001 \u2014 REPORT_OK",
+    "git diff --check \u2014 passed",
+    "Protected Rhino/MCP runtime paths unchanged relative to fc68ce535391438cd81e5554b8da2b908bd18e3e"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "No POC repository was used for this phase.",
+    "No dependencies were installed and no live Rhino geometry-changing test was run.",
+    "The operator branch is intentionally unmerged."
+  ]
+}
