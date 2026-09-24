@@ -1,0 +1,231 @@
+{
+  "task_id": "bridge-phase16-001",
+  "assessment_utc": "2026-09-24T11:42:45Z",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "base_commit": "b211cc75ab53b55361c4f040421e77ddd66626b1",
+
+  "architecture_path_observed": {
+    "path": "ChatGPT controller → Git request → Claude operator → [BLOCKED: rhino-cad tools not in session] → rhinocode/Rhino → isolated CAD mutation → validation/artifacts → Git report",
+    "completion_status": "PARTIAL",
+    "first_failing_stage": "mcp_tool_discovery_in_session",
+    "stages_completed": [
+      "orientation_skill_invocation (OK — real file copy, Phase 13 fix holds)",
+      "git_sync",
+      "request_discovery",
+      "branch_preparation",
+      "user_scope_config_verification (entry confirmed in ~/.claude.json)",
+      "mcp_registration_cli_check (Connected)"
+    ],
+    "stages_blocked": [
+      "mcp_tool_discovery_in_session",
+      "rhino_preflight (rhino_status, rhino_list_documents)",
+      "document_isolation (rhino_create_document RHINO_CHATGPT_BRIDGE_POC_003)",
+      "cad_operations (three-solid assembly)",
+      "layer_and_metadata",
+      "object_validation",
+      "assembly_validation",
+      "visual_capture",
+      "save",
+      "final_inspection"
+    ]
+  },
+
+  "stage_metrics": {
+    "orientation_skill": {"outcome": "OK", "elapsed_seconds": 2, "retries": 0},
+    "git_sync": {"outcome": "OK", "elapsed_seconds": 4, "retries": 0},
+    "request_discovery": {"outcome": "OK", "elapsed_seconds": 1, "retries": 0},
+    "branch_preparation": {"outcome": "OK", "elapsed_seconds": 8, "retries": 0},
+    "user_scope_config_check": {"outcome": "OK_CONFIG_ONLY", "elapsed_seconds": 3, "retries": 0, "note": "~/.claude.json entry confirmed present; not the same as session-scope injection"},
+    "mcp_registration_cli": {"outcome": "OK_CLI_ONLY", "elapsed_seconds": 2, "retries": 0, "note": "Connected reported; CLI reports project scope because CWD is inside project root"},
+    "mcp_tool_discovery_in_session": {"outcome": "BLOCKED", "elapsed_seconds": 12, "retries": 2},
+    "rhino_preflight": {"outcome": "NOT_REACHED"},
+    "document_isolation": {"outcome": "NOT_REACHED"},
+    "cad_operations": {"outcome": "NOT_REACHED"},
+    "layer_and_metadata": {"outcome": "NOT_REACHED"},
+    "object_validation": {"outcome": "NOT_REACHED"},
+    "assembly_validation": {"outcome": "NOT_REACHED"},
+    "visual_capture": {"outcome": "NOT_REACHED"},
+    "save": {"outcome": "NOT_REACHED"},
+    "final_inspection": {"outcome": "NOT_REACHED"}
+  },
+
+  "session_scope_validation": {
+    "method": "ToolSearch + ListMcpResourcesTool",
+    "rhino_tools_visible": 0,
+    "rhino_tool_names_visible": [],
+    "available_session_servers_count": 32,
+    "rhino_cad_in_session": false,
+    "tool_search_queries_run": [
+      {"query": "rhino_status document inspect", "results": 0},
+      {"query": "rhino", "results": 0}
+    ],
+    "list_mcp_resources_result": "error: Server 'rhino-cad' not found",
+    "user_scope_entry_verified": true,
+    "cli_connected": true,
+    "discrepancy": "User-scope entry in ~/.claude.json + CLI Connected, but rhino-cad absent from session's active server list"
+  },
+
+  "mcp_tool_inventory": {
+    "tools_visible_in_session": 0,
+    "rhino_tools_in_session": [],
+    "server_connection_status": {
+      "user_scope_entry": "CONFIRMED in ~/.claude.json mcpServers.rhino-cad",
+      "cli_check": "Connected (claude mcp get rhino-cad) — displays project scope because CWD is inside project root",
+      "session_check": "NOT IN SESSION (ListMcpResourcesTool server=rhino-cad → not found)",
+      "discrepancy": "User-scope entry confirmed present; session was started (or continued) before the entry was written. Claude Code does not hot-reload ~/.claude.json mid-session."
+    },
+    "root_cause": "This Claude Code session is a continuation after context compaction of the session that predates the user-scope registration fix. When a session is continued via context compaction, it retains the MCP server list from the original session start. The user-scope entry in ~/.claude.json was added during that prior session (or immediately before it in Phase 15), but Claude Code only reads ~/.claude.json at session startup — not mid-session, not on conversation resume, not on context compaction. A full Claude Code application quit-and-relaunch is required for the new user-scope entry to take effect.",
+    "tools_defined_in_source": {
+      "total": 42,
+      "rhino_tools": 32,
+      "grasshopper_tools": 10,
+      "note": "Source inventory unchanged since Phase 12"
+    }
+  },
+
+  "rhino_preflight": {"attempted": false, "reason": "No rhino tools callable in session"},
+  "document_isolation": {"attempted": false, "dedicated_doc_created": false, "existing_docs_modified": false},
+  "cad_operations": {"attempted": false},
+  "validation_results": {"attempted": false},
+  "artifact_manifest": {
+    "viewport_png": "NOT_CAPTURED",
+    "contact_sheet": "NOT_CAPTURED",
+    "scene_archive": "NOT_CAPTURED",
+    "artifact_directory_created": true,
+    "files": []
+  },
+  "save_results": {"attempted": false},
+
+  "retries_and_errors": [
+    {
+      "stage": "mcp_tool_discovery_in_session",
+      "error": "ToolSearch returns 0 rhino results; ListMcpResourcesTool server=rhino-cad returns 'not found'",
+      "retries": 2,
+      "resolution": "None — blocked. Full Claude Code quit-and-relaunch required.",
+      "root_cause": "Session continuation from context compaction predates user-scope registration. Claude Code does not hot-reload ~/.claude.json."
+    }
+  ],
+
+  "manual_interventions": [],
+
+  "ambiguities": [
+    {
+      "stage": "mcp_registration",
+      "description": "claude mcp get rhino-cad reports 'Scope: Project config (shared via .mcp.json)' even though a user-scope entry also exists in ~/.claude.json. This is because the CLI resolves the most specific matching scope for the current directory — since the CWD is inside the project root, it displays the project-scope entry. An operator cannot distinguish 'user-scope entry present' from 'project-scope entry only' by reading the CLI output alone."
+    },
+    {
+      "stage": "session_type",
+      "description": "This session is a context-compaction continuation of a prior session. It is ambiguous whether the original session was started before or after the user-scope entry was written. If the entry was present at original session start, this indicates a deeper issue where user-scope entries are not loaded even at startup from /Users/nes. If the entry was written mid-session (during Phase 15), the fix is simply to quit-and-relaunch. The fix to resolve the ambiguity: start a fully fresh Claude Code session from /Users/nes AFTER the user-scope entry was confirmed present."
+    }
+  ],
+
+  "friction_points": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "category": "mcp_discovery",
+      "stage": "mcp_tool_discovery_in_session",
+      "title": "User-scope ~/.claude.json entry does not inject tools into continued/compacted sessions",
+      "description": "Claude Code reads ~/.claude.json at session startup only. Context compaction restores the prior session's MCP server list without re-reading the config file. A user-scope entry added after the original session start is not visible until a full quit-and-relaunch. This is the third consecutive POC run blocked at MCP tool visibility despite each prior fix being correctly applied.",
+      "evidence": "~/.claude.json mcpServers.rhino-cad confirmed present. ListMcpResourcesTool: not found. ToolSearch: 0 results. Session type: context-compaction continuation.",
+      "impact": "Complete block of all Rhino operations. The fix (user-scope registration) was applied correctly but silently failed to activate because the session predates the fix.",
+      "fix_type": "OPERATOR_PROCEDURE"
+    },
+    {
+      "id": "F2",
+      "severity": "medium",
+      "category": "mcp_discovery",
+      "stage": "mcp_registration_cli_check",
+      "title": "claude mcp get scope display misleads when user-scope and project-scope entries coexist",
+      "description": "When the CWD is inside the project root, claude mcp get displays 'Scope: Project config (.mcp.json)' even if a user-scope entry also exists. An operator who checks 'which scope is active' cannot determine from the CLI output alone whether the user-scope entry is present. The user-scope entry is invisible in the CLI display unless the operator is outside the project directory.",
+      "evidence": "CLI shows 'Scope: Project config'. Direct JSON parse of ~/.claude.json confirms user-scope entry also present. Operator cannot distinguish the two states from CLI alone.",
+      "impact": "Operator confusion; may cause incorrect diagnosis (e.g., concluding user-scope fix did not apply when it did).",
+      "fix_type": "PROTOCOL_CHANGES"
+    },
+    {
+      "id": "F3",
+      "severity": "medium",
+      "category": "onboarding",
+      "stage": "operator_environment_setup",
+      "title": "No documented requirement: full Claude Code quit-and-relaunch after MCP config changes",
+      "description": "Neither the operator guide, CLAUDE.md, AGENTS.md, orient.sh, nor exchange.sh output mentions that Claude Code must be fully quit-and-relaunched after adding MCP server entries. Context compaction (which continues an existing session) does not trigger a config re-read. An operator who applies the user-scope fix, then resumes the same session via compaction, will hit the same invisible blocker.",
+      "evidence": "Phase 15 fix correctly applied. Phase 16 session is a compaction continuation. Tools absent.",
+      "impact": "Repeated blocking across POC runs despite correct config. Fourth consecutive phase blocked at MCP visibility.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F4",
+      "severity": "low",
+      "category": "mcp_discovery",
+      "stage": "mcp_registration_cli_check",
+      "title": "No session-scope MCP preflight in exchange.sh prepare",
+      "description": "exchange.sh prepare completes successfully and reports REQUEST_OK regardless of whether rhino-cad tools are visible in the current session. An operator who runs prepare and sees REQUEST_OK has no indication that the Rhino tools are absent until they attempt to call them.",
+      "evidence": "exchange.sh prepare → REQUEST_OK. Immediately after: ToolSearch rhino → 0 results.",
+      "impact": "Wasted branch setup effort; confusing gap between prepare success and tool call failure.",
+      "fix_type": "PROTOCOL_CHANGES"
+    }
+  ],
+
+  "improvements_vs_phase15": [
+    "User-scope ~/.claude.json entry is now confirmed present — Phase 15 fix applied correctly",
+    "No regression on orientation skill, git sync, server import, or CLI Connected status",
+    "Root cause of new sub-blocker identified: session continuation vs. full restart semantics"
+  ],
+
+  "recommendations": {
+    "QUICK_WINS": [
+      {
+        "id": "QW1",
+        "priority": 1,
+        "title": "Quit Claude Code completely and relaunch from /Users/nes for Phase 17",
+        "description": "The user-scope entry in ~/.claude.json is correct. The only remaining action is a full application quit-and-relaunch. After relaunch, rhino-cad tools should appear in the session's active server list. Verify with ListMcpResourcesTool server=rhino-cad immediately after relaunch before proceeding with any bridge work.",
+        "effort": "30 seconds",
+        "impact": "Should unblock all Rhino operations in the next POC run"
+      },
+      {
+        "id": "QW2",
+        "priority": 2,
+        "title": "Document full quit-and-relaunch requirement in operator guide and AGENTS.md",
+        "description": "Add one paragraph to operator.md and AGENTS.md: 'After adding or modifying MCP server entries in ~/.claude.json, Claude Code must be fully quit and relaunched. Context compaction and new conversation windows within the same session do not trigger a config re-read. Verify tool availability with ListMcpResourcesTool immediately after relaunch.'",
+        "effort": "10 minutes",
+        "impact": "Prevents every future operator from hitting this silently"
+      }
+    ],
+    "PROTOCOL_CHANGES": [
+      {
+        "id": "PC1",
+        "priority": 1,
+        "title": "Add rhino-cad session-scope MCP preflight to exchange.sh prepare for Rhino tasks",
+        "description": "After branch setup, exchange.sh prepare should verify rhino-cad is in the active session's server list (e.g., by checking ListMcpResourcesTool output or an equivalent session-scope probe). If absent, emit a clear error: 'rhino-cad not in session. Full Claude Code quit-and-relaunch required after user-scope registration. Do not proceed.' This fail-fast check prevents the operator from investing in branch setup only to block at the first rhino_status call.",
+        "effort": "30 minutes",
+        "impact": "Catches the restart requirement at prepare time, not mid-run"
+      },
+      {
+        "id": "PC2",
+        "priority": 2,
+        "title": "Add a session-scope MCP inventory verification step to orient.sh operator output",
+        "description": "orient.sh operator output should include a preflight section that reports whether rhino-cad is visible in the current session. A one-line summary — 'rhino-cad: IN SESSION (32 tools)' or 'rhino-cad: NOT IN SESSION — relaunch required' — would give the operator immediate situational awareness before any bridge work begins.",
+        "effort": "20 minutes",
+        "impact": "Makes the session-scope gap visible before any branch work is started"
+      },
+      {
+        "id": "PC3",
+        "priority": 3,
+        "title": "Clarify claude mcp get scope display semantics when user-scope and project-scope coexist",
+        "description": "Document that when CWD is inside the project root, claude mcp get shows the project-scope entry even if a user-scope entry also exists. Operators who want to confirm user-scope registration should parse ~/.claude.json directly or run claude mcp list from outside the project root.",
+        "effort": "5 minutes",
+        "impact": "Prevents scope ambiguity confusion during debugging"
+      }
+    ],
+    "MCP_RUNTIME_CHANGES": [
+      {
+        "id": "MR1",
+        "priority": 1,
+        "title": "Investigate whether Claude Code supports runtime MCP server hot-reload",
+        "description": "If Claude Code 2.x supports a mechanism to hot-reload ~/.claude.json without a full restart (e.g., a CLI command or signal), document it and add it to the operator guide. This would allow operators to apply MCP config changes within an existing session without interrupting their workflow.",
+        "effort": "Research only",
+        "impact": "If hot-reload exists, eliminates the restart requirement entirely"
+      }
+    ]
+  }
+}

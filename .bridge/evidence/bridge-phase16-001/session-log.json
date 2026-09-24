@@ -1,0 +1,125 @@
+{
+  "task_id": "bridge-phase16-001",
+  "session_start_utc": "2026-09-24T11:40:00Z",
+  "operator": "claude-code (claude-sonnet-4-6, v2.1.100)",
+  "session_primary_wd": "/Users/nes",
+  "session_type": "continuation_after_context_compaction",
+  "project_dir": "/Users/nes/bin/mcp/rhino-cad-mcp",
+  "events": [
+    {
+      "seq": 1,
+      "utc": "2026-09-24T11:40:00Z",
+      "stage": "orientation_skill_invocation",
+      "outcome": "OK",
+      "elapsed_seconds": 2,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "rhino-chatgpt-orientation skill active from SKILL.md in ~/.claude/skills/. Orientation payload internalized silently (operator role). Skill trigger from CLAUDE.md managed block continues to work correctly."
+    },
+    {
+      "seq": 2,
+      "utc": "2026-09-24T11:40:02Z",
+      "stage": "git_sync",
+      "outcome": "OK",
+      "elapsed_seconds": 4,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "main was current at b211cc75 (Bridge phase 16: update controller state). No pull needed — already up to date. Phase 15 results, Phase 16 request all on main."
+    },
+    {
+      "seq": 3,
+      "utc": "2026-09-24T11:40:06Z",
+      "stage": "request_discovery",
+      "outcome": "OK",
+      "elapsed_seconds": 1,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "bridge-phase16-001.json read and internalized. Objective: first live end-to-end Rhino CAD MCP POC after user-scope registration fix, starting session from /Users/nes."
+    },
+    {
+      "seq": 4,
+      "utc": "2026-09-24T11:40:07Z",
+      "stage": "branch_preparation",
+      "outcome": "OK",
+      "elapsed_seconds": 8,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "./exchange.sh prepare bridge-phase16-001. fetch/pull, REQUEST_OK, created operator/bridge-phase16-001 tracking origin/main. BASE_COMMIT=b211cc75ab53b55361c4f040421e77ddd66626b1."
+    },
+    {
+      "seq": 5,
+      "utc": "2026-09-24T11:41:15Z",
+      "stage": "user_scope_mcp_config_check",
+      "outcome": "OK_CONFIG_ONLY",
+      "elapsed_seconds": 3,
+      "human_intervention_required": false,
+      "retries": 0,
+      "mcp_tool": null,
+      "notes": "Verified ~/.claude.json mcpServers.rhino-cad entry exists: {type:stdio, command:/Users/nes/.pyenv/versions/3.12.0/bin/python3, args:[server.py]}. Entry present as expected from Phase 15 fix. claude mcp get rhino-cad: Scope=Project config (.mcp.json), Status=Connected. NOTE: CLI displays project scope because current working directory is inside project root; user-scope entry in ~/.claude.json is confirmed present by direct JSON parse."
+    },
+    {
+      "seq": 6,
+      "utc": "2026-09-24T11:41:18Z",
+      "stage": "mcp_tool_discovery_in_session",
+      "outcome": "BLOCKED",
+      "elapsed_seconds": 12,
+      "human_intervention_required": false,
+      "retries": 2,
+      "mcp_tool": "ToolSearch, ListMcpResourcesTool",
+      "notes": "ToolSearch 'rhino_status document inspect' → 0 rhino-cad results. ToolSearch 'rhino' → 0 results. ListMcpResourcesTool server=rhino-cad → error: Server 'rhino-cad' not found. Available servers: plugin:vercel:vercel, fetch, sequentialthinking, cupertino, context7, apple-docs, stackoverflow, obsidian, irs-taxpayer, mcp-accounting, docling, pdf-filler, govinfo, grants-gov, nih-reporter, nsf-awards, grants, siyuan, sam-gov, agentmail, capture-mcp, agenda, google-maps, jobspy, mem0-mcp, superset-mcp, ruflo, tableau-local, computer-use, claude.ai Claude Docs, claude.ai Gmail, claude.ai Google Calendar, claude.ai Google Drive. rhino-cad absent despite user-scope ~/.claude.json entry. ROOT CAUSE HYPOTHESIS: This session is a continuation after context compaction of the same Claude Code session that predates the user-scope registration. Claude Code does not hot-reload ~/.claude.json mid-session; the new user-scope entry was written AFTER this session started, so it was not present at session startup and was never loaded into the session's active server list. A full quit-and-relaunch of Claude Code is required."
+    }
+  ],
+  "final_stage_reached": "user_scope_mcp_config_check",
+  "first_blocking_stage": "mcp_tool_discovery_in_session",
+  "summary": {
+    "total_elapsed_seconds": 30,
+    "git_commands": 3,
+    "mcp_calls_successful": 0,
+    "mcp_calls_attempted": 3,
+    "retries": 2,
+    "manual_interventions": 0,
+    "handoff_steps_completed": 4,
+    "handoff_steps_blocked": 12
+  },
+  "session_end_utc": "2026-09-24T11:42:45Z",
+  "session_facts": {
+    "claude_code_version": "v2.1.100",
+    "model": "claude-sonnet-4-6",
+    "session_starting_directory": "/Users/nes",
+    "session_type": "continuation_after_context_compaction",
+    "effective_project_directory": "/Users/nes/bin/mcp/rhino-cad-mcp",
+    "orientation_skill_result": "OK",
+    "local_base_commit": "b211cc75ab53b55361c4f040421e77ddd66626b1",
+    "git_clean": true,
+    "claude_mcp_get_rhino_cad": {
+      "scope": "Project config (shared via .mcp.json)",
+      "status": "Connected",
+      "type": "stdio",
+      "command": "/Users/nes/.pyenv/versions/3.12.0/bin/python3",
+      "args": "/Users/nes/bin/mcp/rhino-cad-mcp/server.py"
+    },
+    "user_scope_entry_in_claude_json": true,
+    "rhino_cad_in_session_mcp_registry": false,
+    "rhino_tools_visible_in_session": 0,
+    "available_session_servers": [
+      "plugin:vercel:vercel", "fetch", "sequentialthinking", "cupertino", "context7",
+      "apple-docs", "stackoverflow", "obsidian", "irs-taxpayer", "mcp-accounting",
+      "docling", "pdf-filler", "govinfo", "grants-gov", "nih-reporter", "nsf-awards",
+      "grants", "siyuan", "sam-gov", "agentmail", "capture-mcp", "agenda",
+      "google-maps", "jobspy", "mem0-mcp", "superset-mcp", "ruflo", "tableau-local",
+      "computer-use", "claude.ai Claude Docs", "claude.ai Gmail",
+      "claude.ai Google Calendar", "claude.ai Google Drive"
+    ],
+    "rhino_open": "NOT_VERIFIED — blocked before preflight stage"
+  },
+  "improvement_vs_phase15": {
+    "user_scope_entry_written": "CONFIRMED — ~/.claude.json mcpServers.rhino-cad present",
+    "server_import": "PREVIOUSLY FIXED (Phase 14) — still correct",
+    "mcp_registration_cli": "Connected (same as Phase 15)",
+    "new_blocker_detail": "User-scope entry written after session start OR session is context-compaction continuation. Claude Code does not hot-reload ~/.claude.json. Full quit-and-relaunch required."
+  }
+}
