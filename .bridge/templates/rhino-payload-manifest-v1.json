@@ -1,0 +1,15 @@
+{
+  "_comment": "Template for controller-authored Rhino payload manifests. Copy to .bridge/payloads/<task-id>/manifest.json and fill all fields. Do not commit with _comment or unfilled placeholders.",
+  "payload_version": "1",
+  "task_id": "<TASK_ID>",
+  "author_role": "controller",
+  "authoring_model": "<e.g. chatgpt-web, chatgpt-o3, etc.>",
+  "payload_type": "rhino_run",
+  "python_compatibility": "3.9",
+  "execution_method": "bridge.execute",
+  "operation_name": "<short snake_case name describing what the script does>",
+  "sha256": "<sha256 hex digest of rhino.py as committed>",
+  "target_document_required": true,
+  "local_modeling_authorized": false,
+  "notes": "<Optional: describe geometry intent, expected side effects, any special targeting requirements.>"
+}

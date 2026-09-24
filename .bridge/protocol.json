@@ -3,7 +3,7 @@
   "protocol_version": "0.3",
   "transport": "git",
   "controller": "chatgpt-web",
-  "operator": "codex",
+  "operator": "local-ai",
   "default_branch": "main",
   "operator_branch_prefix": "operator/",
   "request_directory": ".bridge/requests",
@@ -17,6 +17,10 @@
     "complete",
     "reviewed"
   ],
+  "modeling_authority": {
+    "default": "controller-authored-payload",
+    "note": "ChatGPT Web is the normal Rhino modeling author. Local AI executes, validates, captures, saves, and reports. Local modeling is only authorized when the active structured request explicitly grants it."
+  },
   "principles": [
     "Git is the durable source of truth.",
     "Controller requests are machine-readable JSON.",

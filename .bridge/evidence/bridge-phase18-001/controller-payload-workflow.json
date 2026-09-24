@@ -1,0 +1,125 @@
+{
+  "task_id": "bridge-phase18-001",
+  "generated_utc": "2026-09-24T12:10:00Z",
+
+  "file_map": {
+    "new_files": [
+      ".bridge/payloads/README.md",
+      ".bridge/payloads/_example/rhino.py",
+      ".bridge/payloads/_example/manifest.json",
+      ".bridge/templates/rhino-payload-manifest-v1.json",
+      ".bridge/run_rhino_payload.py",
+      ".bridge/evidence/bridge-phase18-001/controller-payload-workflow.json"
+    ],
+    "modified_files": [
+      "AI_ORIENTATION.md",
+      ".bridge/orientation/controller.md",
+      ".bridge/orientation/operator.md",
+      ".bridge/orientation/reviewer.md",
+      "AGENTS.md",
+      "CLAUDE.md",
+      ".bridge/protocol.json"
+    ],
+    "protected_files_unchanged": [
+      "server.py", "bridge.py", "runtime_ops.py", "tool_support.py",
+      "snippets.py", "requirements.txt", ".mcp.json",
+      "exchange.sh", "orient.sh", "operator.sh",
+      ".bridge/bridge_cli.py"
+    ]
+  },
+
+  "role_policy": {
+    "controller_chatgpt_web": {
+      "modeling_authority": "PRIMARY",
+      "responsibilities": [
+        "Author rhino.py for all geometry tasks",
+        "Commit rhino.py + manifest.json alongside the request",
+        "Compute and commit SHA-256 hash in manifest.json",
+        "Receive payload failure evidence from operator",
+        "Revise and recommit corrected payloads"
+      ]
+    },
+    "operator_claude": {
+      "modeling_authority": "NONE_BY_DEFAULT",
+      "responsibilities": [
+        "Preflight, Git lifecycle, target/document isolation",
+        "Execute exact controller-authored payload via run_rhino_payload.py",
+        "Validate geometry results",
+        "Capture views, save artifacts, report",
+        "Record and return payload failures — do not patch"
+      ],
+      "prohibited": [
+        "Inventing substitute geometry",
+        "Redesigning objects",
+        "Editing controller modeling code to make it work"
+      ]
+    },
+    "operator_codex": {
+      "modeling_authority": "NONE_BY_DEFAULT",
+      "modeling_authorized_when": "Active structured request contains explicit local_modeling_authorized=true",
+      "note": "No implicit modeling authority. Same execution/validation default as Claude."
+    }
+  },
+
+  "execution_contract": {
+    "runner": ".bridge/run_rhino_payload.py",
+    "payload_location": ".bridge/payloads/<task-id>/rhino.py",
+    "manifest_location": ".bridge/payloads/<task-id>/manifest.json",
+    "validation_steps": [
+      "task_id format check (regex guard against traversal)",
+      "payload_dir must resolve within .bridge/payloads/",
+      "manifest.json schema — all required fields present",
+      "manifest.task_id matches requested task",
+      "manifest.author_role == 'controller'",
+      "SHA-256 recomputed from rhino.py must match manifest.sha256",
+      "tool_support.check_code(code) — Python 3.9 compat, no subprocess",
+      "target_document_required check — --document-id required if true"
+    ],
+    "execution": "bridge.execute(code, timeout, operation, document_id, idempotency_key)",
+    "idempotency_key": "run_rhino_payload:<task_id>:<sha256> unless manifest supplies explicit key",
+    "failure_behavior": "Print JSON result, exit nonzero, return to operator for evidence/report"
+  },
+
+  "helper_behavior": {
+    "does": [
+      "Load and validate manifest.json",
+      "Verify SHA-256 of rhino.py",
+      "Check Python 3.9 compatibility",
+      "Call bridge.execute() with exact verified code",
+      "Print result as JSON",
+      "Exit nonzero on any validation or execution failure"
+    ],
+    "does_not": [
+      "Create geometry logic itself",
+      "Modify or patch the payload before execution",
+      "Accept paths outside .bridge/payloads/<task-id>/",
+      "Accept non-controller authored payloads without explicit override"
+    ],
+    "cli_options": {
+      "--task": "Required. Task ID.",
+      "--document-id": "Required when target_document_required=true.",
+      "--timeout": "Execution timeout seconds (default 30).",
+      "--dry-run": "Verify only, no Rhino execution."
+    }
+  },
+
+  "tests_run": {
+    "compile": {"command": "python3 -m py_compile .bridge/run_rhino_payload.py", "result": "PASS"},
+    "dry_run_example": {"command": "python3 .bridge/run_rhino_payload.py --task _example --dry-run", "result": "PASS — exit 0"},
+    "negative_wrong_hash": {"command": "run with tampered sha256 in manifest", "result": "PASS — exit 1, clear error"},
+    "negative_path_traversal": {"command": "--task '../etc/passwd'", "result": "PASS — exit 3, invalid task_id format"},
+    "negative_nonexistent_task": {"command": "--task nonexistent-task-xyz", "result": "PASS — exit 1, dir not found"},
+    "negative_missing_document_id": {"command": "target_document_required=true, no --document-id", "result": "PASS — exit 1, clear error"},
+    "negative_bad_python": {"command": "payload with 'import subprocess'", "result": "PASS — exit 1, check_code rejection"}
+  },
+
+  "backward_compatibility": {
+    "protocol_version": "0.3 — unchanged",
+    "operator_field": "Changed from 'codex' to 'local-ai' in protocol.json. No report/request schema impact.",
+    "existing_tasks": "Tasks 1-17 used direct rhino_run MCP calls. Payload convention is opt-in for new tasks. No existing evidence or reports affected.",
+    "run_rhino_payload_py": "Standard library only — no new dependencies. Works with existing bridge.py and tool_support.py."
+  },
+
+  "runtime_files_unchanged": true,
+  "geometry_execution_in_phase": false
+}

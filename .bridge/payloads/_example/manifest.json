@@ -1,0 +1,14 @@
+{
+  "payload_version": "1",
+  "task_id": "_example",
+  "author_role": "controller",
+  "authoring_model": "chatgpt-web",
+  "payload_type": "rhino_run",
+  "python_compatibility": "3.9",
+  "execution_method": "bridge.execute",
+  "operation_name": "example_metadata_read",
+  "sha256": "f99158cfe32d2602961178391d2119f1d8b5880aea6164ce75f1e05582fe8860",
+  "target_document_required": false,
+  "local_modeling_authorized": false,
+  "notes": "Non-mutating fixture for dry-run and negative testing. Reads document metadata only, no geometry changes."
+}

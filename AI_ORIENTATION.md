@@ -32,6 +32,24 @@ Resolve conflicts in this order: platform and safety requirements; the active st
 
 **Reviewer responsibilities:** independently compare request, diff, evidence, commits, and report; verify the receipt references the actual work commit and exact branch; reject missing validation, scope creep, invented capabilities, or unsafe Git history; and communicate approval or blockers to the controller.
 
+## Modeling authority and controller-authored payloads
+
+**ChatGPT Web is the normal author of Rhino modeling Python.** For geometry tasks, the controller
+authors `rhino.py` and commits it as `.bridge/payloads/<task-id>/rhino.py` alongside a `manifest.json`
+containing a SHA-256 hash of the script. The local operator executes the exact controller-authored
+payload through `python3 .bridge/run_rhino_payload.py --task <task-id> --document-id <id>`.
+
+**Local Claude** is an execution/validation operator. Claude must not invent substitute geometry,
+redesign objects, or edit modeling code to compensate for errors. A failed payload is a reportable
+blocker returned to the controller for correction — not an invitation to rewrite the script.
+
+**Local Codex** follows the same default. Codex may author, repair, or alter Rhino modeling code
+only when the active structured request explicitly grants `local_modeling_authorized=true`. There is
+no implicit modeling authority from being Codex or from a task being urgent.
+
+The runner (`run_rhino_payload.py`) enforces these invariants: it rejects mismatched hashes,
+non-controller author_role, missing targets, and Python that fails `tool_support.check_code`.
+
 ## Safety invariants
 
 - Never work directly on `main` for an operator task; never force-push, overwrite history, auto-discard local work, or merge an operator branch as the operator.

@@ -1,3 +1,7 @@
+# Modeling authority
+
+ChatGPT Web is the normal author of Rhino Python modeling code. Claude's role for geometry work is execution, validation, capture, save, and reporting — not design or authoring. Do not invent substitute geometry or edit controller payloads. If a controller-authored payload fails, record the failure and return it as a blocker. See `.bridge/payloads/README.md` and `.bridge/run_rhino_payload.py`.
+
 # Onboarding
 
 Before substantive repository work, run `./orient.sh operator` (or invoke the

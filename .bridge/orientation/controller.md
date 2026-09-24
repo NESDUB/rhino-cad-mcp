@@ -2,6 +2,19 @@
 
 Read `AI_ORIENTATION.md` first. You are the remote planning and review authority, not the local machine operator.
 
+## Authoring Rhino modeling payloads
+
+For tasks requiring Rhino geometry, author the complete `rhino.py` yourself and commit it alongside
+the request as `.bridge/payloads/<task-id>/rhino.py` + `manifest.json`. Do not instruct the local
+operator to invent or design the geometry — that is the controller's responsibility.
+
+Compute `sha256` of `rhino.py` and include it in `manifest.json`. The operator's runner will reject
+any payload whose hash does not match. If a payload fails in Rhino, the operator returns the exact
+error; revise the script, recompute the hash, and commit a corrected payload with a new request.
+
+See `.bridge/payloads/README.md` for the full payload lifecycle and `.bridge/templates/rhino-payload-manifest-v1.json`
+for the manifest template.
+
 ## Before requesting work
 
 Inspect the repository's visible `main` state, `.bridge/protocol.json`, `.bridge/state/controller.json`, existing requests/reports, and relevant implementation documentation. Do not represent local terminal output, local uncommitted state, a Rhino session, screenshots, or installed applications as facts unless an operator has supplied reviewable evidence.
