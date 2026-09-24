@@ -2,87 +2,134 @@
   "task_id": "bridge-phase20-001",
   "challenge_ack": "BRIDGE-PHASE20-MULTIPASS-ENFORCEMENT-20260924-94C2E7-OPERATOR-ACK",
   "execution_utc": "2026-09-24T00:00:00Z",
-  "summary": "Phase 20 converts the Phase 19 multi-pass modeling policy from documentation into machine-enforced bridge invariants in bridge_cli.py verify-report.",
+  "summary": "Phase 20 converts the Phase 19 multi-pass modeling policy from documentation into machine-enforced bridge invariants in bridge_cli.py verify-report. Review corrections (same branch) strengthened the trust boundary in _check_payload_provenance and added HEAD/result_commit verification.",
+  "review_corrections": {
+    "bypass_1_fixed": "Authorization was previously read from the result-commit manifest, allowing an operator to self-authorize by changing local_modeling_authorized=false to true. Fix: authorization is now read exclusively from the base-commit manifest. The result manifest is still parsed for SHA/identity cross-checks, but local_modeling_authorized comes only from base.",
+    "bypass_2_fixed": "If the controller payload (manifest.json + rhino.py) did not exist at base_commit, the old comparison (base_rhino is None) silently skipped the modification check, allowing a fabricated payload to pass. Fix: both manifest.json and rhino.py are now required to exist at base_commit; absence is a hard PROVENANCE_ERROR.",
+    "bypass_3_fixed": "verify-report only checked that result_commit was a well-formed 40-char hex string. Fix: result_commit is now validated as a real git object (git cat-file -e) and must equal the current HEAD, enforcing that verify-report is run before the receipt commit."
+  },
+  "trust_boundary_rules": {
+    "authorization_source": "base_commit manifest only — operator cannot self-authorize by altering the result manifest",
+    "payload_origin_required_at_base": "Both manifest.json and rhino.py must exist at base_commit for a payload task",
+    "payload_immutability_when_not_authorized": "result manifest and rhino.py must be byte-for-byte identical to base manifest and rhino.py",
+    "result_commit_validated": "Must exist as a git object and equal current HEAD at verify time",
+    "review_signal": "Parent report presence at base_commit is the machine proxy for controller review/merge of the parent pass"
+  },
   "invariants_implemented": [
     {
       "id": "INV-1",
-      "description": "Payload provenance: when a task has .bridge/payloads/<task-id>/manifest.json, verify author_role=controller, recompute SHA-256 of rhino.py at result_commit, require it to match manifest.sha256.",
+      "description": "Payload provenance trigger: when .bridge/payloads/<task-id>/manifest.json exists at result_commit, provenance checks apply.",
+      "function": "_check_payload_provenance"
+    },
+    {
+      "id": "INV-2",
+      "description": "Fabrication prevention: manifest.json and rhino.py must both exist at base_commit. If either is absent, verification fails.",
       "function": "_check_payload_provenance",
       "error_code": "PROVENANCE_ERROR"
     },
     {
-      "id": "INV-2",
-      "description": "Unauthorized modification: when local_modeling_authorized is false/absent, reject if rhino.py or manifest.json changed between base_commit and result_commit.",
+      "id": "INV-3",
+      "description": "Controller authorship: author_role=controller must be present in base_commit manifest.",
+      "function": "_check_payload_provenance",
+      "error_code": "PROVENANCE_ERROR"
+    },
+    {
+      "id": "INV-4",
+      "description": "Base integrity: SHA-256 of rhino.py at base_commit must match manifest.sha256 at base_commit.",
+      "function": "_check_payload_provenance",
+      "error_code": "PROVENANCE_ERROR"
+    },
+    {
+      "id": "INV-5",
+      "description": "Self-authorization prevention: local_modeling_authorized is read from base manifest only. If base=false but result=true, verification fails.",
       "function": "_check_payload_provenance",
       "error_code": "UNAUTHORIZED_LOCAL_MODELING"
     },
     {
-      "id": "INV-3",
+      "id": "INV-6",
+      "description": "Payload immutability: when local_modeling_authorized=false (per base manifest), result manifest and rhino.py must be byte-for-byte identical to their base versions.",
+      "function": "_check_payload_provenance",
+      "error_code": "UNAUTHORIZED_LOCAL_MODELING"
+    },
+    {
+      "id": "INV-7",
+      "description": "Authorized modification: when local_modeling_authorized=true, result rhino.py SHA-256 must match result manifest.sha256.",
+      "function": "_check_payload_provenance",
+      "error_code": "PROVENANCE_ERROR"
+    },
+    {
+      "id": "INV-8",
+      "description": "result_commit existence: git cat-file -e must succeed for report.result_commit.",
+      "function": "cmd_verify_report",
+      "error_code": "does not exist"
+    },
+    {
+      "id": "INV-9",
+      "description": "result_commit = HEAD: current HEAD must equal report.result_commit at verify time (enforces pre-receipt workflow).",
+      "function": "cmd_verify_report",
+      "error_code": "HEAD_MISMATCH"
+    },
+    {
+      "id": "INV-10",
       "description": "Multi-pass activation: triggered when manifest carries a non-empty modeling_run_id.",
       "function": "_check_multipass_lineage"
     },
     {
-      "id": "INV-4",
-      "description": "pass_index must be a positive integer; pass_kind must be one of foundation|correction|detail_qa|hotfix|single_pass; requires_controller_review_after must be boolean if present.",
+      "id": "INV-11",
+      "description": "pass_index must be a positive integer; pass_kind must be in {foundation, correction, detail_qa, hotfix, single_pass}; requires_controller_review_after must be boolean if present.",
       "function": "_check_multipass_lineage",
       "error_code": "LINEAGE_ERROR"
     },
     {
-      "id": "INV-5",
-      "description": "Foundation pass (pass_index=1, non-hotfix): reject parent_task_id, parent_payload_sha256, parent_result_commit if present.",
+      "id": "INV-12",
+      "description": "Foundation pass (pass_index=1, non-hotfix): reject parent lineage fields if present.",
       "function": "_check_multipass_lineage",
       "error_code": "LINEAGE_ERROR"
     },
     {
-      "id": "INV-6",
-      "description": "pass_index > 1: require parent_task_id, parent_payload_sha256, parent_result_commit. Resolve parent from base_commit (not operator modifications).",
+      "id": "INV-13",
+      "description": "pass_index > 1: require parent_task_id, parent_payload_sha256, parent_result_commit. Resolve parent from base_commit only.",
       "function": "_check_multipass_lineage",
       "error_code": "LINEAGE_ERROR"
     },
     {
-      "id": "INV-7",
-      "description": "Parent report must exist at base_commit. Presence on base_commit is the machine signal that the controller reviewed and merged the parent pass.",
+      "id": "INV-14",
+      "description": "Parent report must exist at base_commit (machine signal for controller review/merge).",
       "function": "_check_multipass_lineage",
       "error_code": "LINEAGE_ERROR"
     },
     {
-      "id": "INV-8",
+      "id": "INV-15",
       "description": "Parent report result_commit must equal manifest.parent_result_commit.",
       "function": "_check_multipass_lineage",
       "error_code": "LINEAGE_ERROR"
     },
     {
-      "id": "INV-9",
-      "description": "Parent payload manifest must exist at base_commit. Parent manifest sha256 must equal manifest.parent_payload_sha256. Parent manifest modeling_run_id must match current.",
+      "id": "INV-16",
+      "description": "Parent payload manifest sha256 must equal manifest.parent_payload_sha256; modeling_run_id must match; pass_index must equal parent+1.",
       "function": "_check_multipass_lineage",
       "error_code": "LINEAGE_ERROR"
     },
     {
-      "id": "INV-10",
-      "description": "pass_index must equal parent pass_index + 1 (sequential, no gaps).",
-      "function": "_check_multipass_lineage",
-      "error_code": "LINEAGE_ERROR"
-    },
-    {
-      "id": "INV-11",
+      "id": "INV-17",
       "description": "Multi-pass tasks must commit .bridge/evidence/<task-id>/pass-evaluation.json at result_commit.",
       "function": "_check_pass_evaluation",
       "error_code": "PASS_EVAL_ERROR"
     },
     {
-      "id": "INV-12",
-      "description": "pass-evaluation.json fields task_id, modeling_run_id, pass_index, pass_kind, executed_payload_sha256 must match the manifest.",
+      "id": "INV-18",
+      "description": "pass-evaluation fields task_id, modeling_run_id, pass_index, pass_kind, executed_payload_sha256 must match the manifest.",
       "function": "_check_pass_evaluation",
       "error_code": "PASS_EVAL_ERROR"
     },
     {
-      "id": "INV-13",
+      "id": "INV-19",
       "description": "operator_recommendation_scope must equal 'evidence_only'.",
       "function": "_check_pass_evaluation",
       "error_code": "PASS_EVAL_ERROR"
     },
     {
-      "id": "INV-14",
+      "id": "INV-20",
       "description": "When local_modeling_authorized=false: reject if local_modeling_used=true or payload_modified_by_operator=true in pass-evaluation.",
       "function": "_check_pass_evaluation",
       "error_code": "PASS_EVAL_ERROR"
@@ -102,15 +149,15 @@
   "files_changed": [
     {
       "path": ".bridge/bridge_cli.py",
-      "change": "Added hashlib+subprocess imports; PAYLOADS, EVIDENCE, SHA_RE, VALID_PASS_KINDS constants; _git_show_bytes, _git_show_json, _check_payload_provenance, _check_multipass_lineage, _check_pass_evaluation helpers; extended cmd_verify_report; added cmd_next_pass_context; added next-pass-context dispatch in main()."
+      "change": "Added hashlib+subprocess imports; PAYLOADS, EVIDENCE, SHA_RE, VALID_PASS_KINDS constants; _git_show_bytes, _git_show_json, _check_payload_provenance (strengthened trust boundary), _check_multipass_lineage, _check_pass_evaluation helpers; extended cmd_verify_report with result_commit existence/HEAD-match checks; added cmd_next_pass_context; added next-pass-context dispatch in main()."
     },
     {
       "path": ".bridge/tests/test_bridge_cli.py",
-      "change": "New file. 14 fixture-based tests covering all major invariants and backward-compat cases using temporary Git repositories. No live Rhino or network access required."
+      "change": "20-case fixture test suite. All tests call verify-report before receipt commit (matching real workflow). Covers all invariants including 6 new review-correction cases: self-authorization attack, fabricated payload attack, result manifest changed, result rhino.py changed, nonexistent result_commit, result_commit != HEAD."
     },
     {
       "path": ".bridge/templates/rhino-pass-evaluation-v1.json",
-      "change": "Added provenance fields: local_modeling_used, local_modeling_authorized, payload_modified_by_operator, provenance_check. Defaults represent normal controller-authored workflow."
+      "change": "Added provenance fields: local_modeling_used, local_modeling_authorized, payload_modified_by_operator, provenance_check."
     },
     {
       "path": ".bridge/workflows/MULTI_PASS_RHINO.md",
@@ -118,7 +165,7 @@
     },
     {
       "path": ".bridge/orientation/reviewer.md",
-      "change": "Added machine-enforcement notices for payload and lineage checks; updated pass-evaluation path to canonical .bridge/evidence/<task-id>/pass-evaluation.json."
+      "change": "Added machine-enforcement notices for payload and lineage checks; updated pass-evaluation path."
     },
     {
       "path": ".bridge/orientation/operator.md",
@@ -127,8 +174,8 @@
   ],
   "tests": {
     "suite": ".bridge/tests/test_bridge_cli.py",
-    "count": 14,
-    "result": "14/14 PASS",
+    "count": 20,
+    "result": "20/20 PASS",
     "cases": [
       "TestNonPayloadBackwardCompat.test_non_payload_passes",
       "TestValidFoundationPass.test_valid_foundation",
@@ -143,20 +190,27 @@
       "TestWrongExecutedSHA.test_wrong_executed_sha",
       "TestWrongRecommendationScope.test_wrong_scope",
       "TestUnauthorizedLocalModelingUsed.test_unauthorized_local_modeling",
-      "TestSinglePassNonModelingBackwardCompat.test_single_pass_no_run_id"
+      "TestSinglePassNonModelingBackwardCompat.test_single_pass_no_run_id",
+      "TestSelfAuthorizationAttack.test_operator_self_authorization",
+      "TestFabricatedPayloadAttack.test_payload_absent_at_base",
+      "TestResultManifestChangedUnauthorized.test_manifest_field_changed",
+      "TestResultRhinoPyChangedUnauthorized.test_rhino_py_changed",
+      "TestNonexistentResultCommit.test_nonexistent_result_commit",
+      "TestResultCommitNotCurrentHead.test_head_mismatch"
     ]
   },
   "validations": {
     "py_compile": "python3 -m py_compile .bridge/bridge_cli.py → COMPILE_OK",
-    "fixture_tests": "python3 .bridge/tests/test_bridge_cli.py → 14/14 OK",
+    "fixture_tests": "python3 .bridge/tests/test_bridge_cli.py → 20/20 OK",
     "dry_run": "python3 .bridge/run_rhino_payload.py --task _example --dry-run → DRY-RUN PASS",
     "json_valid": "All modified JSON files validated via json.load",
+    "whitespace": "git diff --check → WHITESPACE_OK",
     "rhino_runtime_unchanged": "No Rhino/MCP runtime implementation files modified"
   },
   "known_limitations": [
-    "verify-report does not check that result_commit is a real git object (it checks format only). A fake 40-char hex SHA passes format checks. This was pre-existing behavior and is out of scope for Phase 20.",
     "next-pass-context reads from the current working tree, not a specific commit. Controllers should run it from a clean up-to-date checkout after the parent pass is merged.",
-    "The parent report presence on base_commit is used as the proxy for controller review/merge. There is no protocol-level signature; a manually inserted report file would satisfy the check.",
-    "Pass-evaluation schema is validated for key fields only; free-form fields like measurements and capture_artifacts are not schema-checked by verify-report."
+    "The parent report presence at base_commit is used as the proxy for controller review/merge. There is no protocol-level signature; a manually inserted report file would satisfy the check.",
+    "Pass-evaluation schema is validated for key fields only; free-form fields like measurements and capture_artifacts are not schema-checked by verify-report.",
+    "verify-report runs git operations from ROOT; if called outside a git repository it will fail with a subprocess error rather than a clear bridge error."
   ]
 }

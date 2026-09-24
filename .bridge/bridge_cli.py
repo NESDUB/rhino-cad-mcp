@@ -76,68 +76,123 @@ def _git_show_json(sha: str, rel_path: str) -> dict | None:
 
 def _check_payload_provenance(task_id: str, base_commit: str, result_commit: str) -> dict | None:
     """
-    If a controller-authored payload manifest exists at result_commit, enforce:
-      - author_role = "controller"
-      - sha256 in manifest matches sha256 of rhino.py at result_commit
-      - if local_modeling_authorized is false/absent:
-          rhino.py and manifest.json must be unchanged from base_commit
+    Enforce controller-authored payload provenance.
 
-    Returns the manifest dict if provenance checks passed, or None if no
-    manifest exists (non-payload task — skip silently).
+    Trust boundary rules (strengthened in Phase-20 review correction):
+      - The BASE-COMMIT manifest is authoritative for local_modeling_authorized.
+        An operator may not self-authorize by altering the result manifest.
+      - Both manifest.json and rhino.py must already exist at base_commit.
+        If either appears only on the operator branch, the payload is fabricated.
+      - author_role=controller is checked at base_commit.
+      - base rhino.py SHA-256 must match base manifest.sha256.
+      - When local_modeling_authorized is false:
+          result manifest must be byte-for-byte identical to base manifest.
+          result rhino.py must be byte-for-byte identical to base rhino.py.
+      - When local_modeling_authorized is true:
+          result manifest SHA-256 must match result rhino.py (operator may modify).
+
+    Returns the result-commit manifest dict on success, or None when no manifest
+    exists at result_commit (non-payload task — skip silently).
 
     Raises SystemExit on any provenance violation.
     """
     manifest_rel = f".bridge/payloads/{task_id}/manifest.json"
     rhino_rel    = f".bridge/payloads/{task_id}/rhino.py"
 
-    manifest = _git_show_json(result_commit, manifest_rel)
-    if manifest is None:
-        # No manifest → not a controller-authored payload task; skip.
+    # Load manifest bytes from both commits up front.
+    base_manifest_bytes   = _git_show_bytes(base_commit, manifest_rel)
+    result_manifest_bytes = _git_show_bytes(result_commit, manifest_rel)
+
+    if result_manifest_bytes is None:
+        # No manifest at result_commit → not a payload task; skip.
         return None
 
-    # 1. author_role must be "controller"
-    if manifest.get("author_role") != "controller":
+    # Payload must have originated from the controller before the operator branch.
+    if base_manifest_bytes is None:
         raise SystemExit(
-            f"PROVENANCE_ERROR: manifest.author_role is "
-            f"{manifest.get('author_role')!r}, expected 'controller'"
+            f"PROVENANCE_ERROR: {manifest_rel} not found at base_commit {base_commit}. "
+            f"A controller-authored payload must exist on main before the operator branch; "
+            f"an operator cannot introduce a new manifest."
         )
 
-    # 2. rhino.py must exist at result_commit
-    rhino_bytes = _git_show_bytes(result_commit, rhino_rel)
-    if rhino_bytes is None:
+    # Parse manifests.
+    try:
+        base_manifest = json.loads(base_manifest_bytes)
+    except json.JSONDecodeError as exc:
         raise SystemExit(
-            f"PROVENANCE_ERROR: {rhino_rel} not found at result_commit {result_commit}"
+            f"PROVENANCE_ERROR: {manifest_rel} at base_commit is not valid JSON: {exc}"
+        )
+    try:
+        result_manifest = json.loads(result_manifest_bytes)
+    except json.JSONDecodeError as exc:
+        raise SystemExit(
+            f"PROVENANCE_ERROR: {manifest_rel} at result_commit is not valid JSON: {exc}"
         )
 
-    # 3. SHA-256 of rhino.py must match manifest.sha256
-    computed = hashlib.sha256(rhino_bytes).hexdigest()
-    declared = manifest.get("sha256", "")
-    if computed != declared:
+    # author_role must be "controller" at base_commit.
+    if base_manifest.get("author_role") != "controller":
         raise SystemExit(
-            f"PROVENANCE_ERROR: rhino.py SHA-256 mismatch — "
-            f"computed {computed}, manifest declares {declared}"
+            f"PROVENANCE_ERROR: base manifest author_role is "
+            f"{base_manifest.get('author_role')!r}, expected 'controller'"
         )
 
-    # 4. If local_modeling_authorized is false/absent, operator must not have
-    #    modified rhino.py or manifest.json relative to base_commit.
-    authorized = manifest.get("local_modeling_authorized", False)
+    # Load rhino.py from both commits.
+    base_rhino   = _git_show_bytes(base_commit, rhino_rel)
+    result_rhino = _git_show_bytes(result_commit, rhino_rel)
+
+    if base_rhino is None:
+        raise SystemExit(
+            f"PROVENANCE_ERROR: {rhino_rel} not found at base_commit {base_commit}. "
+            f"Controller must commit rhino.py alongside the manifest."
+        )
+    if result_rhino is None:
+        raise SystemExit(
+            f"PROVENANCE_ERROR: {rhino_rel} not found at result_commit {result_commit}."
+        )
+
+    # Base integrity: base rhino.py SHA-256 must match base manifest.sha256.
+    base_computed = hashlib.sha256(base_rhino).hexdigest()
+    base_declared = base_manifest.get("sha256", "")
+    if base_computed != base_declared:
+        raise SystemExit(
+            f"PROVENANCE_ERROR: base rhino.py SHA-256 mismatch — "
+            f"computed {base_computed}, base manifest declares {base_declared}"
+        )
+
+    # Authorization is authoritative from BASE manifest only — never from result.
+    authorized = base_manifest.get("local_modeling_authorized", False)
+
+    # Self-authorization prevention: result manifest must not grant more authority.
+    if not authorized and result_manifest.get("local_modeling_authorized", False):
+        raise SystemExit(
+            f"UNAUTHORIZED_LOCAL_MODELING: result manifest claims "
+            f"local_modeling_authorized=true but base manifest has "
+            f"local_modeling_authorized=false. Operator cannot self-authorize."
+        )
+
     if not authorized:
-        base_rhino    = _git_show_bytes(base_commit, rhino_rel)
-        base_manifest = _git_show_bytes(base_commit, manifest_rel)
-        result_manifest = _git_show_bytes(result_commit, manifest_rel)
-
-        if base_rhino is not None and base_rhino != rhino_bytes:
+        # Payload files must be byte-for-byte identical to base commit.
+        if result_manifest_bytes != base_manifest_bytes:
+            raise SystemExit(
+                f"UNAUTHORIZED_LOCAL_MODELING: manifest.json was modified on the operator "
+                f"branch but local_modeling_authorized=false per base manifest"
+            )
+        if result_rhino != base_rhino:
             raise SystemExit(
                 f"UNAUTHORIZED_LOCAL_MODELING: rhino.py was modified on the operator "
-                f"branch but local_modeling_authorized=false in {manifest_rel}"
+                f"branch but local_modeling_authorized=false per base manifest"
             )
-        if base_manifest is not None and base_manifest != result_manifest:
+    else:
+        # When authorized: result rhino.py SHA-256 must match result manifest.
+        result_computed = hashlib.sha256(result_rhino).hexdigest()
+        result_declared = result_manifest.get("sha256", "")
+        if result_computed != result_declared:
             raise SystemExit(
-                f"UNAUTHORIZED_LOCAL_MODELING: manifest.json was modified on the "
-                f"operator branch but local_modeling_authorized=false in {manifest_rel}"
+                f"PROVENANCE_ERROR: result rhino.py SHA-256 mismatch — "
+                f"computed {result_computed}, result manifest declares {result_declared}"
             )
 
-    return manifest
+    return result_manifest
 
 
 def _check_multipass_lineage(task_id: str, base_commit: str, manifest: dict) -> None:
@@ -482,9 +537,36 @@ def cmd_verify_report(task_id: str):
     if report["branch"] != req["operator_branch"]:
         raise SystemExit("Report branch does not match request operator_branch")
 
-    # Phase-20 provenance and multi-pass enforcement
+    # Verify result_commit is a real git object and equals current HEAD.
+    # verify-report is run before the receipt commit, so HEAD must be the work commit.
     base_commit   = report["base_commit"]
     result_commit = report["result_commit"]
+
+    obj_check = subprocess.run(
+        ["git", "cat-file", "-e", result_commit],
+        capture_output=True,
+        cwd=str(ROOT),
+    )
+    if obj_check.returncode != 0:
+        raise SystemExit(
+            f"result_commit {result_commit!r} does not exist as a git object. "
+            f"Ensure result_commit references the actual work commit SHA."
+        )
+
+    head_result = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        capture_output=True, text=True,
+        cwd=str(ROOT),
+    )
+    current_head = head_result.stdout.strip()
+    if current_head != result_commit:
+        raise SystemExit(
+            f"HEAD_MISMATCH: report.result_commit={result_commit!r} but "
+            f"current HEAD={current_head!r}. "
+            f"Run verify-report before the receipt commit, with HEAD at the work commit."
+        )
+
+    # Phase-20 provenance and multi-pass enforcement
 
     manifest = _check_payload_provenance(task_id, base_commit, result_commit)
     if manifest is not None:
