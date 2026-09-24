@@ -1,0 +1,23 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase20-001",
+  "status": "complete",
+  "operator": "claude-local",
+  "ack": "BRIDGE-PHASE20-MULTIPASS-ENFORCEMENT-20260924-94C2E7-OPERATOR-ACK",
+  "base_commit": "9423329cc6cba9448e8adb39cfa000c1256e3fae",
+  "result_commit": "62fb43ea6457c3e9c350e9f2824a80b7a0087614",
+  "branch": "operator/bridge-phase20-001",
+  "summary": "Converted the Phase 19 multi-pass modeling policy into machine-enforced bridge invariants. Extended verify-report with payload provenance checks, unauthorized-modification detection, multi-pass lineage validation, and canonical pass-evaluation enforcement. Added next-pass-context CLI helper. Added 14-case fixture test suite. Updated templates, workflow, and role docs. All validations pass; backward compatible.",
+  "files_changed": [
+    ".bridge/bridge_cli.py",
+    ".bridge/tests/test_bridge_cli.py",
+    ".bridge/templates/rhino-pass-evaluation-v1.json",
+    ".bridge/workflows/MULTI_PASS_RHINO.md",
+    ".bridge/orientation/reviewer.md",
+    ".bridge/orientation/operator.md",
+    ".bridge/evidence/bridge-phase20-001/multipass-enforcement.json"
+  ],
+  "tests": "python3 .bridge/tests/test_bridge_cli.py → 14/14 OK (non-payload compat, valid foundation, valid correction lineage, SHA mismatch, unauthorized modification, missing parent report, wrong parent result commit, wrong modeling_run_id, non-sequential pass_index, missing pass-evaluation, wrong executed SHA, wrong recommendation scope, unauthorized local_modeling_used, single-pass backward compat)",
+  "blockers": [],
+  "notes_for_controller": "All Phase 20 invariants implemented. No Rhino/MCP runtime files changed. Protocol version remains 0.3. The _example payload dry-run continues to pass. Known limitation: verify-report checks SHA format but not git object existence (pre-existing behavior, out of scope). next-pass-context reads from current working tree; run from clean up-to-date main after parent merge."
+}
