@@ -1,0 +1,34 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase14-001",
+  "status": "complete",
+  "operator": "claude-code (claude-sonnet-4-6)",
+  "ack": "BRIDGE-PHASE14-SERVER-IMPORT-20260924-4E72A9-OPERATOR-ACK",
+  "base_commit": "7978cd194704b0a011ef5c6eb315dab1225ec188",
+  "result_commit": "38354a524a64fc361cc440fedf5386db7b6e3928",
+  "branch": "operator/bridge-phase14-001",
+  "summary": "Applied the authorized one-line F1b fix to server.py: replaced 'from mcp.server.mcpserver import MCPServer as FastMCP' with 'from mcp.server.fastmcp import FastMCP'. All validations passed: py_compile clean, module import confirms FastMCP and mcp instance name 'rhino-cad', server starts without error on stdin EOF (exit 0, no stderr), claude mcp get rhino-cad shows Status: Connected. Retest assessment is GO — all Phase 12/13/14 blockers resolved.",
+  "files_changed": [
+    "server.py (1 line: import path corrected)",
+    ".bridge/evidence/bridge-phase14-001/server-import-fix.json",
+    ".bridge/evidence/bridge-phase14-001/retest-readiness.md",
+    ".bridge/reports/bridge-phase14-001.json"
+  ],
+  "tests": [
+    "python3 -c 'from mcp.server.fastmcp import FastMCP' — PASS",
+    "backup pre-enhancement server.py uses same import — confirmed",
+    "python3 -m py_compile server.py — PASS",
+    "git diff server.py — exactly 1 line changed, no other runtime files — PASS",
+    "git diff --check — PASS",
+    "python3 -c 'import server; print(server.mcp.name)' — rhino-cad — PASS",
+    "python3 server.py < /dev/null — exit 0, no stderr — PASS",
+    "claude mcp get rhino-cad — Status: Connected, Scope: Project config — PASS"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "The work commit is 38354a524a64fc361cc440fedf5386db7b6e3928; this report is the receipt commit.",
+    "Retest readiness is GO. Rhino 8 must be running on the local machine before the Phase 12 rerun — the MCP server connects to a live process, it does not launch Rhino itself.",
+    "No bridge, orientation, installer, or Grasshopper files were modified.",
+    "The rhino-chatgpt-orientation skill is working (confirmed in this session). The project .mcp.json remains unchanged."
+  ]
+}
