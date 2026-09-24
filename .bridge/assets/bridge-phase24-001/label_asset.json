@@ -1,14 +1,33 @@
 {
-  "asset_name": "zestly_full_label_1536",
+  "asset_name": "zestly_full_label_high_resolution",
   "task_id": "bridge-phase24-001",
   "purpose": "High-resolution cylindrical wrap texture for the combined modern PET bottle redesign pass.",
   "source": "Cropped directly from the AI-generated flat Zestly label supplied in the conversation.",
-  "repo_path": ".bridge/assets/bridge-phase24-001/zestly_full_label_1536.jpg",
-  "dimensions_px": [1536, 399],
-  "format": "JPEG",
-  "quality_note": "1536-pixel-wide high-resolution texture; replaces the Phase 21 256x67 proxy texture.",
-  "sha256": "6ec396c93db291d15b2420c3f26db7dbd80a46c57cc805a505a8f82ffe38b69c",
-  "crop_source_dimensions_px": [1805, 469],
+  "original_cropped_dimensions_px": [
+    1805,
+    469
+  ],
+  "transported_dimensions_px": [
+    960,
+    249
+  ],
+  "transport_format": "base64 text encoding of JPEG",
+  "transport_path": ".bridge/assets/bridge-phase24-001/zestly_label_960_q80.jpg.b64",
+  "runtime_decoded_path": ".bridge/artifacts/bridge-phase24-001/zestly_label_960_q80.jpg",
+  "decoded_jpeg_sha256": "c597c2f244b6f3e31812e54d2af71fe7817a4517a9c8e226aad608293074860e",
+  "previous_phase21_dimensions_px": [
+    256,
+    67
+  ],
+  "linear_resolution_multiplier_vs_phase21": 3.75,
+  "approximate_pixel_count_multiplier_vs_phase21": 13.94,
+  "crop_bbox_xyxy": [
+    88,
+    176,
+    1893,
+    645
+  ],
   "label_scope": "entire unwrapped label only",
-  "dissection": false
+  "dissection": false,
+  "quality_note": "Substantially higher-resolution source than the Phase 21 256x67 proxy; transported as exact base64 text and hash-verified after decode."
 }
