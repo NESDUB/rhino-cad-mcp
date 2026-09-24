@@ -1,0 +1,45 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase10-001",
+  "status": "complete",
+  "operator": "codex",
+  "ack": "BRIDGE-PHASE10-20260924-ORIENT-6A2F91-OPERATOR-ACK",
+  "base_commit": "e42dae49d8edb3f0eb119afde27cd171484973a1",
+  "result_commit": "05102bb54f3333bfb3a9f0a49e8c2475408dc3e7",
+  "branch": "operator/bridge-phase10-001",
+  "summary": "Implemented orientation system v1.0.0: a canonical universal AI handbook, role-specific controller/operator/reviewer guides, a universal quickstart, a manifest with protocol and precedence metadata, and an executable deterministic orientation payload generator with optional macOS clipboard support. Added a thin AGENTS.md bootstrap and preserved all existing Rhino CAD Agent Rules while minimally linking CLAUDE.md to the onboarding sources.",
+  "files_changed": [
+    "AI_ORIENTATION.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "orient.sh",
+    ".bridge/orientation/manifest.json",
+    ".bridge/orientation/controller.md",
+    ".bridge/orientation/operator.md",
+    ".bridge/orientation/reviewer.md",
+    ".bridge/orientation/quickstart.md",
+    ".bridge/orientation/build_payload.py",
+    ".bridge/evidence/bridge-phase10-001/orientation-system.json",
+    ".bridge/reports/bridge-phase10-001.json"
+  ],
+  "tests": [
+    "bash -n orient.sh — passed",
+    "python3 -m py_compile .bridge/orientation/build_payload.py — passed",
+    "./orient.sh universal — passed",
+    "./orient.sh controller — passed",
+    "./orient.sh operator — passed",
+    "./orient.sh reviewer — passed",
+    "Role-specific payload contract assertions — passed: every payload contains orientation version 1.0.0, repository NESDUB/rhino-cad-mcp, protocol 0.3, current main SHA e42dae49d8edb3f0eb119afde27cd171484973a1, controller state, canonical handbook, selected role, and its matching guide source",
+    "git merge-base HEAD main equals exact base_commit — passed",
+    "Protected Rhino/MCP runtime implementation paths unchanged relative to base_commit — passed",
+    "git diff --check — passed",
+    "python3 .bridge/bridge_cli.py verify-report bridge-phase10-001 — REPORT_OK"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "The work commit is 05102bb54f3333bfb3a9f0a49e8c2475408dc3e7; this report is intentionally committed afterward as the receipt commit.",
+    "Generated payload facts are explicitly labeled and are measured at invocation time from the local checkout. The generator never claims local Rhino access.",
+    "The universal role uses quickstart.md as its selected guide; controller, operator, and reviewer each have dedicated guides.",
+    "No Rhino/MCP runtime implementation files, bridge runtime files, dependencies, operator.sh, exchange.sh, or bridge_cli.py changed. No live Rhino tests ran. pbcopy was not invoked during automated validation."
+  ]
+}
