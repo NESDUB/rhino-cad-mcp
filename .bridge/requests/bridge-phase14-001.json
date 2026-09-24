@@ -1,0 +1,40 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase14-001",
+  "status": "queued",
+  "controller": "chatgpt-web",
+  "challenge": "BRIDGE-PHASE14-SERVER-IMPORT-20260924-4E72A9",
+  "objective": "Apply and validate the single authorized server.py import correction identified by Phase 13 so the registered rhino-cad MCP server can start, without changing any other runtime behavior.",
+  "operator_branch": "operator/bridge-phase14-001",
+  "instructions": [
+    "Act as the local Claude operator. Begin from a clean, up-to-date main in /Users/nes/bin/mcp/rhino-cad-mcp and use the normal manual exchange lifecycle to prepare bridge-phase14-001.",
+    "Load fresh Rhino CHATGPT operator orientation using the now-working rhino-chatgpt-orientation skill before substantive work.",
+    "Read the Phase 13 report and retest-readiness evidence. This task authorizes exactly the F1b fix and its validation; do not broaden scope.",
+    "In server.py, replace exactly: from mcp.server.mcpserver import MCPServer as FastMCP with: from mcp.server.fastmcp import FastMCP.",
+    "Before editing, confirm the installed mcp package exposes mcp.server.fastmcp.FastMCP and confirm backups/pre-enhancements-20260920/server.py uses the same import. Record both checks.",
+    "Do not modify any other server.py line unless the one-line change exposes a direct syntax/import incompatibility that prevents module import. If that occurs, STOP and report the new blocker instead of continuing to refactor.",
+    "Do not modify bridge.py, runtime_ops.py, tool_support.py, snippets.py, requirements.txt, knowledge/, tests/, .mcp.json, orientation files, operator.sh, exchange.sh, or bridge_cli.py.",
+    "Validate with the exact interpreter configured in .mcp.json. At minimum: import mcp.server.fastmcp.FastMCP successfully; import server.py successfully; verify the configured server command does not terminate immediately with an import/config exception; and run claude mcp get rhino-cad or the installed equivalent to confirm the project registration is still recognized.",
+    "For the server-start smoke check, use a bounded/non-destructive method. A server remaining alive awaiting stdio after startup is success; do not treat the expected lack of a client handshake as failure.",
+    "If practical without mutating Rhino, launch a fresh Claude Code process/session rooted in this repository and confirm that rhino-cad MCP tool discovery is no longer blocked by the server import. Do not execute geometry-changing Rhino tools in this phase.",
+    "Create .bridge/evidence/bridge-phase14-001/server-import-fix.json containing base commit, old import, new import, package/version/interpreter facts, backup confirmation, validation commands/results, MCP registration recognition, fresh-session tool-discovery result if tested, remaining restart/session requirements, and any new blocker.",
+    "Create .bridge/evidence/bridge-phase14-001/retest-readiness.md with an explicit GO/NO-GO for rerunning the instrumented Rhino POC. GO requires the configured MCP server to start without immediate exception and no unresolved registration/import blocker.",
+    "Run python3 -m py_compile server.py with the configured interpreter, git diff --check, and verify the only runtime implementation change relative to base is the authorized one-line server.py import.",
+    "Commit the one-line fix plus evidence as the work commit and capture RESULT_COMMIT.",
+    "Create .bridge/reports/bridge-phase14-001.json with ack exactly BRIDGE-PHASE14-SERVER-IMPORT-20260924-4E72A9-OPERATOR-ACK, exact base_commit, RESULT_COMMIT, and branch operator/bridge-phase14-001.",
+    "Run python3 .bridge/bridge_cli.py verify-report bridge-phase14-001 and require REPORT_OK.",
+    "Commit the report as the separate receipt commit, push operator/bridge-phase14-001, and do not merge it."
+  ],
+  "expected_outputs": [
+    "server.py with only the authorized FastMCP import correction",
+    ".bridge/evidence/bridge-phase14-001/server-import-fix.json",
+    ".bridge/evidence/bridge-phase14-001/retest-readiness.md",
+    ".bridge/reports/bridge-phase14-001.json",
+    "Remote branch operator/bridge-phase14-001"
+  ],
+  "constraints": [
+    "Exactly one authorized runtime code change: the FastMCP import line in server.py.",
+    "No dependency installation, MCP re-registration, Rhino mutation, force push, or merge.",
+    "If another runtime incompatibility appears, stop and report it instead of expanding the fix."
+  ]
+}
