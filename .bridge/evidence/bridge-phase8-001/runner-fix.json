@@ -1,0 +1,75 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase8-001",
+  "checked_at": "2026-09-24T09:53:31.679288Z",
+  "codex_version": "codex-cli 0.156.1",
+  "original_failing_invocation": "codex exec --cd \"$ROOT\" --sandbox workspace-write --approve-for-me --ephemeral --color never \"$prompt\"",
+  "exact_cli_error": "error: the argument '--sandbox <SANDBOX_MODE>' cannot be used with '--approve-for-me'",
+  "failure_reproduction": {
+    "command": "codex exec --cd \"$PWD\" --sandbox workspace-write --approve-for-me --ephemeral --color never \"Do not use tools or modify files. Reply exactly COMPATIBILITY_OK.\"",
+    "exit_code": 2,
+    "agent_started": false,
+    "files_modified": false
+  },
+  "measured_help_facts": {
+    "approve_for_me_description": "Route approval requests through automatic review using the workspace-write sandbox",
+    "approve_for_me_and_explicit_sandbox_are_mutually_exclusive": true,
+    "dangerous_bypass_available": true,
+    "dangerous_bypass_used": false,
+    "danger_full_access_used": false
+  },
+  "measured_compatible_invocation": "codex exec --cd \"$ROOT\" --approve-for-me --ephemeral --color never \"$prompt\"",
+  "why_safe": [
+    "The installed CLI reports that --approve-for-me itself uses the workspace-write sandbox, so the redundant conflicting --sandbox workspace-write flag is removed.",
+    "The repaired command retains automatic approval review rather than disabling approvals.",
+    "The repaired command does not use --dangerously-bypass-approvals-and-sandbox, danger-full-access, or --ask-for-approval never.",
+    "All existing operator.sh Git cleanliness, main-branch, fast-forward-only, single-request, structured-discovery, and branch-collision guards are unchanged.",
+    "Shell exec continues to propagate the codex exec process exit status."
+  ],
+  "no_op_non_interactive_launch": {
+    "command": "codex exec --cd \"$PWD\" --approve-for-me --ephemeral --color never \"Do not use tools or modify files. Reply exactly COMPATIBILITY_OK.\"",
+    "succeeded": true,
+    "exit_code": 0,
+    "response": "COMPATIBILITY_OK",
+    "observed_approval": "on-request",
+    "observed_sandbox": "workspace-write [workdir, /tmp, $TMPDIR]",
+    "tools_used_by_no_op_agent": false,
+    "repository_files_modified": false
+  },
+  "runner_changes": {
+    "file": "operator.sh",
+    "change": "Removed only the explicit --sandbox workspace-write argument from the codex exec invocation.",
+    "runner_executed_against_fix_task": false
+  },
+  "validation_commands_results": [
+    {
+      "command": "codex exec --cd \"$PWD\" --sandbox workspace-write --approve-for-me --ephemeral --color never <no-op prompt>",
+      "result": "exit 2 with the exact mutual-exclusion error before the agent started"
+    },
+    {
+      "command": "codex exec --cd \"$PWD\" --approve-for-me --ephemeral --color never <no-op prompt>",
+      "result": "exit 0; COMPATIBILITY_OK; observed approval=on-request and sandbox=workspace-write"
+    },
+    {
+      "command": "bash -n operator.sh",
+      "result": "passed"
+    },
+    {
+      "command": "python3 -m py_compile .bridge/bridge_cli.py",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --quiet 398be371db2670f41e56a5d1299f0fbf228f5b30 -- protected paths",
+      "result": "passed; Rhino/MCP runtime files, exchange.sh, and .bridge/bridge_cli.py unchanged"
+    }
+  ],
+  "protected_paths_modified": [],
+  "limitations": [
+    "The repaired operator.sh was intentionally not executed against bridge-phase8-001.",
+    "A separate controller request is required for the end-to-end runner smoke test."
+  ]
+}

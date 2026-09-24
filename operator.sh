@@ -58,7 +58,6 @@ echo "Launching Codex non-interactively..."
 
 exec codex exec \
   --cd "$ROOT" \
-  --sandbox workspace-write \
   --approve-for-me \
   --ephemeral \
   --color never \
