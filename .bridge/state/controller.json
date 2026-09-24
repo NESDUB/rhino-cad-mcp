@@ -54,14 +54,23 @@
     "current_pass": 2,
     "pass_kind": "correction",
     "task_id": "bridge-phase24-001",
-    "controller_payload_sha256": "c37dc146d4b39085173b364b838e6434643090f96e4fd1c588bfaadd2a80724c",
+    "controller_payload_sha256": "2e407d1c4b9d57ddfea7452cb49635a9ab941990d90b1171678e6f99d186f6e5",
     "high_resolution_label": {
-      "path": ".bridge/assets/bridge-phase24-001/zestly_full_label_1536.jpg",
-      "dimensions_px": [1536, 399],
-      "sha256": "6ec396c93db291d15b2420c3f26db7dbd80a46c57cc805a505a8f82ffe38b69c"
+      "transport_path": ".bridge/assets/bridge-phase24-001/zestly_label_960_q80.jpg.b64",
+      "decoded_runtime_path": ".bridge/artifacts/bridge-phase24-001/zestly_label_960_q80.jpg",
+      "dimensions_px": [
+        960,
+        249
+      ],
+      "decoded_sha256": "c597c2f244b6f3e31812e54d2af71fe7817a4517a9c8e226aad608293074860e",
+      "previous_dimensions_px": [
+        256,
+        67
+      ]
     },
     "combined_scope": [
       "modern current-day 500 mL PET soda bottle redesign",
+      "five-foot petaloid-style base and lower grip detailing",
       "high-resolution Zestly label replacement",
       "front-facing hero label orientation"
     ],
