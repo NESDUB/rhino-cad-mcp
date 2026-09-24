@@ -1,0 +1,33 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase8-001",
+  "status": "complete",
+  "operator": "codex",
+  "ack": "BRIDGE-PHASE8-FIX-20260924-2D7A61-OPERATOR-ACK",
+  "base_commit": "398be371db2670f41e56a5d1299f0fbf228f5b30",
+  "result_commit": "2f516b1feb15beca14afecc2ce794c9ef977fe3b",
+  "branch": "operator/bridge-phase8-001",
+  "summary": "Reproduced the installed Codex CLI flag conflict, measured that --approve-for-me alone provides workspace-write sandboxing, removed only the redundant incompatible --sandbox workspace-write flag, and validated the compatible no-op non-interactive invocation without running operator.sh against the fix task.",
+  "files_changed": [
+    "operator.sh",
+    ".bridge/evidence/bridge-phase8-001/runner-fix.json",
+    ".bridge/reports/bridge-phase8-001.json"
+  ],
+  "tests": [
+    "Invalid no-op invocation with --sandbox workspace-write and --approve-for-me \u2014 exit 2 with exact mutual-exclusion error",
+    "Compatible no-op codex exec invocation with --approve-for-me alone \u2014 exit 0 and COMPATIBILITY_OK",
+    "Compatible no-op observed approval=on-request and sandbox=workspace-write",
+    "bash -n operator.sh \u2014 passed",
+    "python3 -m py_compile .bridge/bridge_cli.py \u2014 passed",
+    "git diff --check \u2014 passed",
+    "Protected Rhino/MCP runtime paths, exchange.sh, and .bridge/bridge_cli.py unchanged relative to 398be371db2670f41e56a5d1299f0fbf228f5b30",
+    "python3 .bridge/bridge_cli.py verify-report bridge-phase8-001 \u2014 REPORT_OK"
+  ],
+  "blockers": [],
+  "notes_for_controller": [
+    "Repaired invocation: codex exec --cd \"$ROOT\" --approve-for-me --ephemeral --color never \"$prompt\".",
+    "No dangerous approval/sandbox bypass or danger-full-access mode is used.",
+    "operator.sh was not executed against bridge-phase8-001.",
+    "No live Rhino tests ran, no dependencies were installed, and the operator branch is intentionally unmerged."
+  ]
+}
