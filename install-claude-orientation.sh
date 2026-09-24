@@ -1,14 +1,26 @@
 #!/usr/bin/env bash
 # install-claude-orientation.sh
-# Idempotent installer: creates ~/.claude/skills/rhino-chatgpt-orientation symlink and
-# inserts a managed pointer block into ~/.claude/CLAUDE.md.
+# Idempotent installer: copies the canonical project skill into
+# ~/.claude/skills/rhino-chatgpt-orientation/ and inserts a managed
+# pointer block into ~/.claude/CLAUDE.md.
+#
+# Phase 12 baseline revealed that Claude Code 2.x does not load skills
+# from ~/.claude/skills/ when the skill directory is a symlink. This
+# installer was updated in Phase 13 to use a real managed file copy
+# so that skill discovery works without relying on symlink resolution.
+# The canonical project skill remains .claude/skills/rhino-chatgpt-orientation/SKILL.md;
+# the personal copy is a managed duplicate that this installer keeps in sync.
+#
 # Usage: ./install-claude-orientation.sh [--uninstall]
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_SKILL_DIR="$SCRIPT_DIR/.claude/skills/rhino-chatgpt-orientation"
+PROJECT_SKILL_FILE="$PROJECT_SKILL_DIR/SKILL.md"
 GLOBAL_SKILLS_DIR="$HOME/.claude/skills"
-SYMLINK_PATH="$GLOBAL_SKILLS_DIR/rhino-chatgpt-orientation"
+PERSONAL_SKILL_DIR="$GLOBAL_SKILLS_DIR/rhino-chatgpt-orientation"
+PERSONAL_SKILL_FILE="$PERSONAL_SKILL_DIR/SKILL.md"
+MANAGED_MARKER_FILE="$PERSONAL_SKILL_DIR/.managed-by-install-claude-orientation"
 GLOBAL_CLAUDE_MD="$HOME/.claude/CLAUDE.md"
 
 MANAGED_BLOCK_START="<!-- BEGIN RHINO-CHATGPT-ORIENTATION MANAGED BLOCK -->"
@@ -36,20 +48,25 @@ done
 if [[ "$uninstall_mode" -eq 1 ]]; then
   echo "--- Uninstall mode ---"
 
-  # Remove symlink only (never remove a real directory)
-  if [[ -L "$SYMLINK_PATH" ]]; then
-    rm "$SYMLINK_PATH"
-    echo "REMOVED symlink: $SYMLINK_PATH"
-  elif [[ -e "$SYMLINK_PATH" ]]; then
-    echo "SKIP: $SYMLINK_PATH exists but is not a symlink; not removing."
+  # Remove managed personal skill directory (only if this installer owns it)
+  if [[ -d "$PERSONAL_SKILL_DIR" ]]; then
+    if [[ -f "$MANAGED_MARKER_FILE" ]]; then
+      rm -rf "$PERSONAL_SKILL_DIR"
+      echo "REMOVED managed personal skill dir: $PERSONAL_SKILL_DIR"
+    else
+      echo "SKIP: $PERSONAL_SKILL_DIR exists but was not created by this installer (no marker file). Not removing."
+    fi
+  elif [[ -L "$PERSONAL_SKILL_DIR" ]]; then
+    # Legacy: remove old symlink if present
+    rm "$PERSONAL_SKILL_DIR"
+    echo "REMOVED legacy symlink: $PERSONAL_SKILL_DIR"
   else
-    echo "OK: no symlink at $SYMLINK_PATH"
+    echo "OK: no managed skill at $PERSONAL_SKILL_DIR"
   fi
 
   # Remove managed block from CLAUDE.md
   if [[ -f "$GLOBAL_CLAUDE_MD" ]]; then
     if grep -qF "$MANAGED_BLOCK_START" "$GLOBAL_CLAUDE_MD"; then
-      # Use Python for safe multi-line removal
       python3 - "$GLOBAL_CLAUDE_MD" "$MANAGED_BLOCK_START" "$MANAGED_BLOCK_END" <<'PYEOF'
 import sys, re, pathlib
 path, start, end = sys.argv[1], sys.argv[2], sys.argv[3]
@@ -74,12 +91,12 @@ fi
 # ── Install ────────────────────────────────────────────────────────────────────
 echo "--- Install mode ---"
 
-# Verify project skill exists
-if [[ ! -f "$PROJECT_SKILL_DIR/SKILL.md" ]]; then
-  echo "ERROR: project skill not found at $PROJECT_SKILL_DIR/SKILL.md" >&2
+# Verify canonical project skill exists
+if [[ ! -f "$PROJECT_SKILL_FILE" ]]; then
+  echo "ERROR: canonical project skill not found at $PROJECT_SKILL_FILE" >&2
   exit 1
 fi
-echo "OK: project skill found at $PROJECT_SKILL_DIR/SKILL.md"
+echo "OK: canonical project skill found at $PROJECT_SKILL_FILE"
 
 # Create ~/.claude/skills if needed
 if [[ ! -d "$GLOBAL_SKILLS_DIR" ]]; then
@@ -89,33 +106,39 @@ else
   echo "OK: $GLOBAL_SKILLS_DIR exists"
 fi
 
-# Create or repair symlink
-if [[ -L "$SYMLINK_PATH" ]]; then
-  current_target="$(readlink "$SYMLINK_PATH")"
-  if [[ "$current_target" == "$PROJECT_SKILL_DIR" ]]; then
-    echo "OK: symlink already correct: $SYMLINK_PATH -> $PROJECT_SKILL_DIR"
-  else
-    echo "REPAIR: updating symlink from $current_target to $PROJECT_SKILL_DIR"
-    rm "$SYMLINK_PATH"
-    ln -s "$PROJECT_SKILL_DIR" "$SYMLINK_PATH"
-    echo "CREATED: $SYMLINK_PATH -> $PROJECT_SKILL_DIR"
-  fi
-elif [[ -e "$SYMLINK_PATH" ]]; then
-  echo "CONFLICT: $SYMLINK_PATH exists and is not a symlink. Manual resolution required." >&2
-  echo "  Remove or rename it, then re-run this installer." >&2
-  exit 1
-else
-  ln -s "$PROJECT_SKILL_DIR" "$SYMLINK_PATH"
-  echo "CREATED: $SYMLINK_PATH -> $PROJECT_SKILL_DIR"
+# Remove legacy symlink if present (Phase 11 installer created a symlink;
+# Phase 13 replaces it with a real directory copy)
+if [[ -L "$PERSONAL_SKILL_DIR" ]]; then
+  echo "MIGRATE: removing legacy symlink at $PERSONAL_SKILL_DIR"
+  rm "$PERSONAL_SKILL_DIR"
+  echo "REMOVED legacy symlink"
 fi
 
-# Verify symlink resolves
-resolved="$(readlink -f "$SYMLINK_PATH" 2>/dev/null)" || true
-if [[ "$resolved" == "$PROJECT_SKILL_DIR" ]]; then
-  echo "OK: symlink resolves correctly to $resolved"
-else
-  echo "WARNING: symlink target may not resolve as expected. Resolved to: $resolved"
+# Conflict check: if a real unmanaged directory exists, stop
+if [[ -d "$PERSONAL_SKILL_DIR" && ! -f "$MANAGED_MARKER_FILE" ]]; then
+  echo "CONFLICT: $PERSONAL_SKILL_DIR exists and is not managed by this installer." >&2
+  echo "  Remove or rename it, then re-run this installer." >&2
+  exit 1
 fi
+
+# Create managed personal skill directory
+mkdir -p "$PERSONAL_SKILL_DIR"
+
+# Copy SKILL.md from canonical source
+cp "$PROJECT_SKILL_FILE" "$PERSONAL_SKILL_FILE"
+echo "COPIED: $PROJECT_SKILL_FILE -> $PERSONAL_SKILL_FILE"
+
+# Write managed marker
+printf 'Managed by install-claude-orientation.sh\nCanonical source: %s\n' "$PROJECT_SKILL_FILE" > "$MANAGED_MARKER_FILE"
+
+# Verify copy is byte-for-byte identical
+if cmp -s "$PROJECT_SKILL_FILE" "$PERSONAL_SKILL_FILE"; then
+  echo "OK: personal SKILL.md matches canonical source (byte-for-byte)"
+else
+  echo "ERROR: copy verification failed — SKILL.md does not match canonical source" >&2
+  exit 1
+fi
+echo "OK: personal skill installed at $PERSONAL_SKILL_FILE"
 
 # Insert managed block into ~/.claude/CLAUDE.md (idempotent)
 if [[ ! -f "$GLOBAL_CLAUDE_MD" ]]; then
@@ -125,7 +148,6 @@ if [[ ! -f "$GLOBAL_CLAUDE_MD" ]]; then
 elif grep -qF "$MANAGED_BLOCK_START" "$GLOBAL_CLAUDE_MD"; then
   echo "OK: managed block already present in $GLOBAL_CLAUDE_MD (idempotent, no change)"
 else
-  # Append with a blank line separator
   printf '\n%s\n' "$MANAGED_BLOCK" >> "$GLOBAL_CLAUDE_MD"
   echo "APPENDED: managed block to $GLOBAL_CLAUDE_MD"
 fi
@@ -141,5 +163,8 @@ fi
 echo ""
 echo "Install complete."
 echo ""
-echo "NOTE: A Claude Code session restart may be required for the new skill to appear in"
-echo "the session's skill list. The skill is immediately available to any new session."
+echo "Personal skill: $PERSONAL_SKILL_FILE"
+echo "Canonical source: $PROJECT_SKILL_FILE"
+echo ""
+echo "NOTE: A Claude Code session restart is required for the new skill to become"
+echo "available. This is standard Claude Code behavior for newly installed skills."

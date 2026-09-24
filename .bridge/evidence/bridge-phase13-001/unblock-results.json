@@ -1,0 +1,104 @@
+{
+  "task_id": "bridge-phase13-001",
+  "assessment_utc": "2026-09-24T11:09:08Z",
+  "operator": "claude-code (claude-sonnet-4-6)",
+  "base_commit": "360f67f21a5b5a5f53fcdcda109e88eb5a075e22",
+
+  "installed_claude_version": "2.1.100 (Claude Code)",
+  "claude_config_dir": {
+    "CLAUDE_CONFIG_DIR_env": "unset",
+    "effective_dir": "~/.claude (default)"
+  },
+
+  "F1_mcp_registration": {
+    "root_cause": "server.py was updated during the 2026-09-20 enhancements to import 'from mcp.server.mcpserver import MCPServer as FastMCP', but mcp.server.mcpserver does not exist in the installed mcp package (version 1.27.0). The correct import is 'from mcp.server.fastmcp import FastMCP', which is what the pre-enhancement backup uses. Additionally, the server was never registered in ~/.claude.json or a project .mcp.json.",
+    "sub_blocker_F1a": {
+      "issue": "Server not registered anywhere",
+      "fix_applied": true,
+      "fix": "Created .mcp.json at project root via 'claude mcp add --scope project rhino-cad -- /Users/nes/.pyenv/versions/3.12.0/bin/python3 /Users/nes/bin/mcp/rhino-cad-mcp/server.py'",
+      "status": "FIXED"
+    },
+    "sub_blocker_F1b": {
+      "issue": "server.py uses broken import path: 'from mcp.server.mcpserver import MCPServer as FastMCP' — module mcp.server.mcpserver does not exist in mcp 1.27.0",
+      "fix_applied": false,
+      "fix_needed": "Change line 6 of server.py from 'from mcp.server.mcpserver import MCPServer as FastMCP' to 'from mcp.server.fastmcp import FastMCP'",
+      "why_not_fixed": "server.py is a protected file per Phase 13 constraints",
+      "status": "BLOCKED — requires controller authorization to modify server.py",
+      "evidence": "python3 server.py 2>&1 → 'ModuleNotFoundError: No module named mcp.server.mcpserver' (line 6)",
+      "backup_comparison": "backups/pre-enhancements-20260920/server.py line 6: 'from mcp.server.fastmcp import FastMCP' — correct"
+    },
+    "mcp_json_path": ".mcp.json",
+    "mcp_json_content": {
+      "mcpServers": {
+        "rhino-cad": {
+          "type": "stdio",
+          "command": "/Users/nes/.pyenv/versions/3.12.0/bin/python3",
+          "args": ["/Users/nes/bin/mcp/rhino-cad-mcp/server.py"],
+          "env": {}
+        }
+      }
+    },
+    "python_interpreter": "/Users/nes/.pyenv/versions/3.12.0/bin/python3",
+    "python_version": "3.12.0",
+    "mcp_package_version": "1.27.0",
+    "mcp_package_location": "/Users/nes/.pyenv/versions/3.12.0/lib/python3.12/site-packages",
+    "validation": {
+      "level_1_json_valid": true,
+      "level_2_server_starts": false,
+      "level_2_failure_reason": "ModuleNotFoundError: No module named 'mcp.server.mcpserver' (line 6 of server.py)",
+      "level_3_claude_recognizes_config": true,
+      "level_3_evidence": "claude mcp get rhino-cad → Scope: Project config (shared via .mcp.json) / Status: Failed to connect (fails at server startup, not config recognition)",
+      "overall": "PARTIAL — registration recognized by Claude Code; server cannot start until F1b is fixed"
+    }
+  },
+
+  "F2_skill_discovery": {
+    "root_cause": "Claude Code 2.x does not load skills from ~/.claude/skills/ when the skill directory is a symlink. The Phase 11 installer created ~/.claude/skills/rhino-chatgpt-orientation as a symlink to the project directory. ToolSearch and the Skill tool failed to resolve it across two sessions and a restart. Real file copies in ~/.claude/skills/<name>/SKILL.md are loaded correctly.",
+    "discovery_mechanism": "Skills under ~/.claude/skills/ require a real directory with a real SKILL.md file. Symlinks to directories are not followed by Claude Code's skill scanner. Skills under ~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/skills/ also work but require plugin registration.",
+    "fix_applied": true,
+    "fix": "Updated install-claude-orientation.sh to replace the symlink with a managed real directory copy. On first run it detects and removes the legacy symlink, creates ~/.claude/skills/rhino-chatgpt-orientation/ as a real directory, copies SKILL.md from the canonical project source, writes a .managed-by-install-claude-orientation marker, and verifies byte-for-byte identity.",
+    "canonical_project_skill": {
+      "path": ".claude/skills/rhino-chatgpt-orientation/SKILL.md",
+      "preserved": true
+    },
+    "personal_skill": {
+      "path": "~/.claude/skills/rhino-chatgpt-orientation/SKILL.md",
+      "is_real_file": true,
+      "is_symlink": false,
+      "byte_match": true,
+      "managed_marker": "~/.claude/skills/rhino-chatgpt-orientation/.managed-by-install-claude-orientation",
+      "status": "INSTALLED"
+    },
+    "installer_validation": {
+      "bash_syntax": "PASS",
+      "first_run": "migrated legacy symlink → created real copy, byte-match OK",
+      "second_run": "idempotent, no changes except overwrites SKILL.md with fresh copy from canonical source",
+      "uninstall": "removes managed directory (marker-protected), removes managed CLAUDE.md block",
+      "conflict_protection": "stops if directory exists without marker file"
+    },
+    "fresh_session_skill_visibility": {
+      "result": "CONFIRMED IN CURRENT SESSION",
+      "method": "After running installer (second pass), rhino-chatgpt-orientation appeared in the current session's skill list without a restart. This confirms that ~/.claude/skills/<name>/SKILL.md (real file) is loaded in the running session when the installer runs — or at least is recognized without a fresh session.",
+      "restart_required": false,
+      "evidence": "skill list system-reminder update showed 'rhino-chatgpt-orientation: Load the canonical Rhino CHATGPT orientation system...' immediately after installer completed"
+    }
+  },
+
+  "files_changed": [
+    ".mcp.json (new — project-scope MCP registration)",
+    "install-claude-orientation.sh (updated — symlink → managed file copy)"
+  ],
+  "files_not_changed": [
+    "server.py (protected — F1b fix deferred to controller amendment)",
+    "bridge.py", "runtime_ops.py", "tool_support.py", "snippets.py", "requirements.txt",
+    ".claude/skills/rhino-chatgpt-orientation/SKILL.md (canonical, unchanged)",
+    "orient.sh", "exchange.sh", "operator.sh", ".bridge/bridge_cli.py",
+    "AI_ORIENTATION.md", "CLAUDE.md"
+  ],
+
+  "remaining_uncertainties": [
+    "F1b (server.py broken import) must be fixed before rhino-cad tools are reachable. This is a 1-line change that requires controller authorization.",
+    "After F1b is fixed, Rhino must be running and rhinocode accessible for the MCP server to respond to tool calls. Rhino availability was not tested in this phase.",
+    "The skill copy approach means the personal skill can drift from the canonical source if the project SKILL.md is updated without re-running the installer. The installer's second-run behavior (overwrite with fresh copy) handles this, but it requires the user to run ./install-claude-orientation.sh after any skill content update."
+  ]
+}
