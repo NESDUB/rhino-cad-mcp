@@ -1,0 +1,396 @@
+{
+  "task_id": "bridge-phase12-001",
+  "assessment_utc": "2026-09-24T10:47:36Z",
+  "operator": "claude-code (claude-sonnet-4-6)",
+  "base_commit": "93f8b2eafd5a4ed475c476ddb29f44674e4b1339",
+
+  "architecture_path_observed": {
+    "path": "ChatGPT controller → Git request → Claude operator → [BLOCKED: rhino-cad MCP not registered] → rhinocode/Rhino → validation/artifacts → Git report",
+    "completion_status": "PARTIALLY_DEMONSTRATED",
+    "first_failing_stage": "mcp_tool_discovery",
+    "stages_completed": [
+      "orientation_load (manual fallback)",
+      "git_sync",
+      "request_discovery",
+      "branch_preparation"
+    ],
+    "stages_blocked": [
+      "rhino_connectivity_preflight",
+      "document_isolation",
+      "cad_operations",
+      "validation",
+      "visual_capture",
+      "save_and_verify",
+      "final_inspection"
+    ]
+  },
+
+  "stage_metrics": {
+    "orientation_skill_invocation": {
+      "outcome": "BLOCKED",
+      "elapsed_seconds": 2,
+      "retries": 1,
+      "note": "Skill not surfaced after restart; fell back to ./orient.sh manually"
+    },
+    "git_sync": {
+      "outcome": "OK",
+      "elapsed_seconds": 4,
+      "retries": 0
+    },
+    "orientation_manual": {
+      "outcome": "OK",
+      "elapsed_seconds": 2,
+      "retries": 0
+    },
+    "request_discovery": {
+      "outcome": "OK",
+      "elapsed_seconds": 1,
+      "retries": 0
+    },
+    "branch_preparation": {
+      "outcome": "OK",
+      "elapsed_seconds": 3,
+      "retries": 0
+    },
+    "mcp_tool_discovery": {
+      "outcome": "BLOCKED",
+      "elapsed_seconds": 25,
+      "retries": 2,
+      "note": "rhino-cad server not registered; tools invisible to Claude session"
+    },
+    "rhino_connectivity_preflight": { "outcome": "NOT_REACHED" },
+    "document_isolation": { "outcome": "NOT_REACHED" },
+    "cad_operations": { "outcome": "NOT_REACHED" },
+    "validation": { "outcome": "NOT_REACHED" },
+    "visual_capture": { "outcome": "NOT_REACHED" },
+    "save": { "outcome": "NOT_REACHED" },
+    "final_inspection": { "outcome": "NOT_REACHED" }
+  },
+
+  "mcp_tool_inventory": {
+    "tools_visible_in_session": 0,
+    "rhino_tools_in_session": [],
+    "server_registration_status": "NOT_REGISTERED",
+    "config_locations_checked": {
+      "global_claude_json": {
+        "path": "~/.claude.json",
+        "rhino_cad_entry": "ABSENT",
+        "configured_servers": 27
+      },
+      "project_mcp_json": {
+        "path": "/Users/nes/bin/mcp/rhino-cad-mcp/.mcp.json",
+        "exists": false
+      }
+    },
+    "server_entry_point": {
+      "path": "/Users/nes/bin/mcp/rhino-cad-mcp/server.py",
+      "exists": true,
+      "mcp_package_importable": true,
+      "python_version": "3.12.0"
+    },
+    "tools_defined_in_source": {
+      "rhino_tools": [
+        "rhino_status",
+        "rhino_inspect_document",
+        "rhino_inspect_selection",
+        "rhino_inspect_object",
+        "rhino_run",
+        "rhino_validate",
+        "rhino_capture_viewport",
+        "rhino_capture_views",
+        "rhino_visual_qa",
+        "rhino_undo",
+        "rhino_command",
+        "rhino_save",
+        "rhino_save_as",
+        "rhino_export",
+        "rhino_set_metadata",
+        "rhino_get_metadata",
+        "rhino_create_layer",
+        "rhino_move_to_layer",
+        "rhino_list_documents",
+        "rhino_inspect_hierarchy",
+        "rhino_test_hierarchy_effective_state",
+        "rhino_create_document",
+        "rhino_open_document",
+        "rhino_activate_document",
+        "rhino_close_document",
+        "rhino_job_status",
+        "rhino_job_wait",
+        "rhino_list_jobs",
+        "rhino_apply_material",
+        "rhino_read_material",
+        "rhino_validate_assembly",
+        "rhino_transaction"
+      ],
+      "grasshopper_tools": [
+        "gh_inspect_document",
+        "gh_find_components",
+        "gh_bake",
+        "gh_solve",
+        "gh_add_component",
+        "gh_add_slider",
+        "gh_add_panel",
+        "gh_wire",
+        "gh_set_slider",
+        "gh_load_document"
+      ],
+      "mcp_resources": [
+        "grasshopper://capability-map",
+        "grasshopper://recipe-intelligence",
+        "grasshopper://compatibility"
+      ],
+      "total_tools_defined": 42,
+      "total_resources_defined": 3
+    },
+    "missing_from_session": "ALL 42 tools — server not registered",
+    "readme_vs_actual_discrepancy": "Cannot assess; server not running. All tool names match CLAUDE.md references in source."
+  },
+
+  "rhino_preflight": {
+    "attempted": false,
+    "reason": "MCP server not accessible; no rhino_status or inspection tool callable",
+    "rhino_running_status": "UNKNOWN",
+    "document_state": "UNKNOWN"
+  },
+
+  "document_isolation": {
+    "attempted": false,
+    "reason": "rhino_create_document not accessible; MCP not registered",
+    "dedicated_doc_created": false,
+    "existing_user_documents_modified": false,
+    "isolation_blocker": "HIGH — rhino-cad MCP server not registered in any Claude Code config"
+  },
+
+  "cad_operations": {
+    "attempted": false,
+    "rectangular_base": "NOT_CREATED",
+    "cylindrical_pedestal": "NOT_CREATED",
+    "top_cap": "NOT_CREATED",
+    "layer_created": false,
+    "metadata_assigned": false
+  },
+
+  "validation_results": {
+    "attempted": false,
+    "per_object_validation": "NOT_REACHED",
+    "assembly_validation": "NOT_REACHED",
+    "note": "rhino_validate and rhino_validate_assembly tools not accessible"
+  },
+
+  "artifact_manifest": {
+    "viewport_png": "NOT_CAPTURED",
+    "scene_archive": "NOT_CAPTURED",
+    "reason": "rhino_capture_viewport not accessible; MCP not registered",
+    "artifact_directory": ".bridge/artifacts/bridge-phase12-001/",
+    "artifact_directory_created": true,
+    "files": []
+  },
+
+  "save_results": {
+    "attempted": false,
+    "file_path": null,
+    "file_size_bytes": null,
+    "object_count": null,
+    "verify_status": null,
+    "reason": "rhino_save_as not accessible; MCP not registered"
+  },
+
+  "retries_and_errors": [
+    {
+      "stage": "orientation_skill_invocation",
+      "error": "Unknown skill: rhino-chatgpt-orientation",
+      "retries": 1,
+      "resolution": "Manual fallback to ./orient.sh operator",
+      "root_cause": "Claude Code requires session restart to surface newly installed skills; skill still not surfaced post-restart. Possible issue: symlink uses absolute path while other ~/.claude/skills symlinks use relative paths (../../.agents/skills/...)."
+    },
+    {
+      "stage": "mcp_tool_discovery",
+      "error": "ToolSearch returns no rhino results; server not registered",
+      "retries": 2,
+      "resolution": "None — stopped per constraint. Recorded as blocker.",
+      "root_cause": "rhino-cad server (server.py) was never added to ~/.claude.json or project .mcp.json"
+    }
+  ],
+
+  "manual_interventions": [
+    {
+      "stage": "session_restart",
+      "description": "User performed Claude Code session restart to attempt skill loading",
+      "required_by": "Skill not surfacing after installation",
+      "outcome": "Skill still not available post-restart"
+    }
+  ],
+
+  "ambiguities": [
+    {
+      "stage": "orientation_skill_loading",
+      "description": "It is unclear whether the rhino-chatgpt-orientation skill fails to load because: (a) skills installed via symlink require a different restart type, (b) the absolute symlink path is incompatible with how Claude Code resolves skill dirs, or (c) the skill directory structure is correct but Claude Code's skill discovery doesn't scan ~/.claude/skills/. Other skills in ~/.claude/skills/ also use relative symlink paths (../../.agents/skills/*) and are also not visible — suggesting those may be dangling or unrelated to Claude Code's skill discovery mechanism."
+    },
+    {
+      "stage": "mcp_registration",
+      "description": "It is unclear whether the rhino-cad server was previously functional and its registration was lost, or whether it was never registered. The server is fully implemented and the mcp package is importable, but no registration artifact exists."
+    }
+  ],
+
+  "friction_points": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "category": "mcp_discovery",
+      "stage": "mcp_tool_discovery",
+      "title": "rhino-cad MCP server not registered — entire Rhino path blocked",
+      "description": "The rhino-cad server (server.py) exists and is fully implemented, but has never been added to ~/.claude.json or a project .mcp.json. Claude has no access to any rhino_* or gh_* tools. This blocks all Rhino operations, connectivity preflight, document isolation, CAD, validation, capture, and save.",
+      "evidence": "ToolSearch for 'rhino' returns no tools. ~/.claude.json has 27 registered servers, none named rhino-cad. No .mcp.json in project root.",
+      "impact": "Complete workflow block after Stage 6. The Git bridge portion works; the Rhino portion has never been connected.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F2",
+      "severity": "high",
+      "category": "onboarding",
+      "stage": "orientation_skill_invocation",
+      "title": "rhino-chatgpt-orientation skill not invocable even after session restart",
+      "description": "The skill was installed via symlink at ~/.claude/skills/rhino-chatgpt-orientation -> /Users/nes/bin/mcp/rhino-cad-mcp/.claude/skills/rhino-chatgpt-orientation. After installation and a user-initiated session restart, the skill is still not available to the Skill tool. Other skills in ~/.claude/skills/ use relative symlink paths (../../.agents/skills/*); this installation uses an absolute path. It is unclear whether Claude Code's skill discovery requires relative symlinks, a specific parent directory structure, or some other registration step beyond symlink creation.",
+      "evidence": "Skill tool returns 'Unknown skill: rhino-chatgpt-orientation' in two consecutive sessions. No other ~/.claude/skills/ symlinks appear to resolve to actual directories either (all are dangling).",
+      "impact": "Orientation requires manual fallback to ./orient.sh. The 'institutional memory' goal of the skill is not achieved.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F3",
+      "severity": "medium",
+      "category": "onboarding",
+      "stage": "orientation_skill_invocation",
+      "title": "Session restart required for new skills — not documented in orientation or install flow",
+      "description": "Installing a new skill requires a Claude Code session restart for it to be discoverable. This is expected behavior per the skill system, but the installer (install-claude-orientation.sh) does note it. However, the restart didn't help in this case, suggesting a deeper issue with the skill discovery path.",
+      "evidence": "install-claude-orientation.sh outputs the restart notice. Skill still not available after restart.",
+      "impact": "Mild friction for onboarding; medium if the restart doesn't solve it.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F4",
+      "severity": "medium",
+      "category": "request_protocol",
+      "stage": "request_discovery",
+      "title": "No automated discovery — operator must know to run exchange.sh manually",
+      "description": "The operator must know to run ./exchange.sh prepare <task-id> after reading the request. bridge_cli.py status shows the pending task ID but the operator must separately invoke exchange.sh. There is no hook or prompt that tells the operator the exact next command after reading the request JSON.",
+      "evidence": "bridge_cli.py status returns queued task IDs but not the next action command.",
+      "impact": "Requires cognitive overhead per task; low cost for an experienced operator but a real friction point for a fresh session.",
+      "fix_type": "PROTOCOL_CHANGES"
+    },
+    {
+      "id": "F5",
+      "severity": "medium",
+      "category": "git_bridge",
+      "stage": "orientation_load",
+      "title": "orient.sh reads local state — no warning if local main is stale",
+      "description": "orient.sh generates a payload from the local checkout without checking whether local main is up to date with origin/main. The operator must know to pull before trusting the orientation payload for consequential work. If an operator loads orientation before pulling, the 'current_main_commit' and pending task list may be stale.",
+      "evidence": "orient.sh has no git fetch or staleness check. The skill's rule 3 documents this, but orient.sh itself does not warn.",
+      "impact": "Could lead an operator to act on stale controller state; medium severity because the exchange.sh workflow does pull before branching.",
+      "fix_type": "QUICK_WIN"
+    },
+    {
+      "id": "F6",
+      "severity": "low",
+      "category": "branch_lifecycle",
+      "stage": "worktree_safety_check",
+      "title": "Session begins on previous operator branch, not main",
+      "description": "After completing a previous task, the session was left on operator/bridge-phase11-001. A new session starting on a non-main branch requires a manual checkout before any bridge work. This is expected Git behavior but could trip up a less careful operator.",
+      "evidence": "Session opened on operator/bridge-phase11-001; had to checkout main before pulling.",
+      "impact": "Low — one extra git checkout step; easily caught by git status.",
+      "fix_type": "PROTOCOL_CHANGES"
+    },
+    {
+      "id": "F7",
+      "severity": "low",
+      "category": "artifact_handoff",
+      "stage": "visual_capture",
+      "title": "Artifact directory structure defined in request but not pre-created",
+      "description": "The request specifies .bridge/artifacts/bridge-phase12-001/ as the artifact target. This directory doesn't exist until the operator creates it. No tooling or protocol step creates it automatically.",
+      "evidence": "mkdir -p was required to create .bridge/artifacts/bridge-phase12-001/",
+      "impact": "Low — trivial to create; not a blocker.",
+      "fix_type": "QUICK_WIN"
+    }
+  ],
+
+  "recommendations": {
+    "QUICK_WINS": [
+      {
+        "id": "QW1",
+        "priority": 1,
+        "title": "Register rhino-cad MCP server",
+        "description": "Add the rhino-cad server to ~/.claude.json (or create a project-level .mcp.json). The server is fully implemented and the mcp package is available. This single registration unblocks the entire Rhino workflow path. Suggested entry: { \"rhino-cad\": { \"command\": \"python3\", \"args\": [\"/Users/nes/bin/mcp/rhino-cad-mcp/server.py\"] } }. A restart will be required after registration.",
+        "effort": "5 minutes",
+        "impact": "Unblocks all remaining POC stages"
+      },
+      {
+        "id": "QW2",
+        "priority": 2,
+        "title": "Fix skill discovery for rhino-chatgpt-orientation",
+        "description": "Investigate why ~/.claude/skills/ symlinks are not surfacing as Claude Code skills. Other symlinks in that directory also appear dangling. Compare the working skill paths (e.g., from plugins/cache) with the ~/.claude/skills/ structure. May require placing SKILL.md directly in ~/.claude/skills/rhino-chatgpt-orientation/ rather than symlinking, or identifying the correct discovery path for personal skills.",
+        "effort": "30 minutes",
+        "impact": "Enables automatic orientation loading on first mention of Rhino bridge"
+      },
+      {
+        "id": "QW3",
+        "priority": 3,
+        "title": "Add staleness warning to orient.sh",
+        "description": "Before building the payload, orient.sh could run git fetch --dry-run (or compare local HEAD with origin/main ref) and emit a warning if local main is behind. Low-risk, purely additive change.",
+        "effort": "15 minutes",
+        "impact": "Prevents operators from acting on stale controller state"
+      },
+      {
+        "id": "QW4",
+        "priority": 4,
+        "title": "Auto-create .bridge/artifacts/<task-id>/ via exchange.sh prepare",
+        "description": "exchange.sh prepare already creates the operator branch and validates the request. It could also mkdir .bridge/artifacts/<task-id>/ so the artifact path is ready before the operator needs it.",
+        "effort": "5 minutes",
+        "impact": "Removes a trivial manual step"
+      }
+    ],
+    "PROTOCOL_CHANGES": [
+      {
+        "id": "PC1",
+        "priority": 1,
+        "title": "Add 'next action' hint to bridge_cli.py status output",
+        "description": "When a pending task is found, bridge_cli.py status could print the exact next command: './exchange.sh prepare <task-id>'. This removes the cognitive gap between discovering a task and knowing what to do next.",
+        "effort": "30 minutes",
+        "impact": "Reduces operator cognitive load per task"
+      },
+      {
+        "id": "PC2",
+        "priority": 2,
+        "title": "Document expected session starting state in operator guide",
+        "description": "The operator guide should note that sessions may start on a previous operator branch, and the first step is always 'git checkout main && git status'. This is obvious to an experienced operator but should be explicit in the onboarding protocol.",
+        "effort": "10 minutes",
+        "impact": "Prevents branch-state friction for fresh or infrequent operators"
+      },
+      {
+        "id": "PC3",
+        "priority": 3,
+        "title": "Add MCP registration check to operator preflight",
+        "description": "The operator role guide or exchange.sh prepare could verify that the rhino-cad MCP server is registered before proceeding to Rhino-related tasks. A simple check could grep ~/.claude.json for 'rhino-cad' and warn if absent.",
+        "effort": "1 hour",
+        "impact": "Catches the registration gap before the operator reaches the Rhino stage"
+      }
+    ],
+    "MCP_RUNTIME_CHANGES": [
+      {
+        "id": "MR1",
+        "priority": 1,
+        "title": "Add project .mcp.json for rhino-cad registration",
+        "description": "A project-level .mcp.json would make the rhino-cad server discoverable when Claude Code is opened in the project directory without requiring a global ~/.claude.json edit. This is the recommended pattern for project-specific MCP servers. The server command would be: python3 /Users/nes/bin/mcp/rhino-cad-mcp/server.py (or a relative path). This removes the 'missing registration' class of blocker entirely for operators working in the project directory.",
+        "effort": "10 minutes",
+        "impact": "Permanent fix for MCP registration gap; enables Rhino path"
+      },
+      {
+        "id": "MR2",
+        "priority": 2,
+        "title": "Validate rhino_create_document isolation safety after MCP registration",
+        "description": "Once the MCP is registered, rhino_create_document needs to be tested for safe isolation from existing user documents. The POC was designed to stop before mutation if isolation cannot be guaranteed. The tool exists in server.py; its actual behavior (does it target the active document or create a new one?) needs verification in a real Rhino session.",
+        "effort": "POC re-run after QW1/MR1",
+        "impact": "Required before any mutation work; prevents user document corruption"
+      }
+    ]
+  }
+}
