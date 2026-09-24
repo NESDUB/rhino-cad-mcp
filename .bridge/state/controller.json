@@ -3,8 +3,10 @@
   "controller": "chatgpt-web",
   "repository": "NESDUB/rhino-cad-mcp",
   "branch": "main",
-  "latest_request": null,
+  "latest_request": "bridge-phase6-001",
   "transport_verified": true,
   "operator_branch_model": "operator/<task-id>",
-  "bootstrap_branch": "operator/bridge-bootstrap-v1"
+  "bootstrap_branch": "operator/bridge-bootstrap-v1",
+  "bootstrap_merged": true,
+  "direct_real_repo_exchange_under_test": true
 }
