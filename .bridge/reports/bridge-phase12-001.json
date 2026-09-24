@@ -1,0 +1,48 @@
+{
+  "protocol_version": "0.3",
+  "task_id": "bridge-phase12-001",
+  "status": "complete",
+  "operator": "claude-code (claude-sonnet-4-6)",
+  "ack": "BRIDGE-PHASE12-RHINO-POC-20260924-3B91D4-OPERATOR-ACK",
+  "base_commit": "93f8b2eafd5a4ed475c476ddb29f44674e4b1339",
+  "result_commit": "864dbbfd9bcd0ab0b0620aa5300b7b088b5c0218",
+  "branch": "operator/bridge-phase12-001",
+  "summary": "The full path ChatGPT controller → Git request → Claude operator → rhino-cad MCP → rhinocode/Rhino → validation/artifacts → Git report was PARTIALLY DEMONSTRATED. The Git bridge portion (orientation load, git sync, request discovery, branch preparation) worked correctly. The workflow was BLOCKED at the rhino-cad MCP Discovery stage: the server is fully implemented in server.py but has never been registered in ~/.claude.json or a project .mcp.json, making all 42 rhino/grasshopper tools invisible to Claude. Orientation skill invocation also failed (skill not surfacing from ~/.claude/skills/ symlink even after session restart). Seven friction points documented; top fix is a 5-minute MCP registration step (add project .mcp.json or global ~/.claude.json entry) that unblocks the entire Rhino pipeline.",
+  "files_changed": [
+    ".bridge/evidence/bridge-phase12-001/session-log.json",
+    ".bridge/evidence/bridge-phase12-001/workflow-assessment.json",
+    ".bridge/evidence/bridge-phase12-001/operator-experience.md"
+  ],
+  "tests": [
+    "git status — clean worktree on operator/bridge-phase12-001 — PASS",
+    "git diff --check — PASS",
+    "ToolSearch 'rhino' — 0 results (EXPECTED blocker, correctly recorded)",
+    "~/.claude.json rhino-cad entry — ABSENT (correctly recorded as F1)",
+    "orient.sh operator — payload valid, all 6 required fields present — PASS",
+    "exchange.sh prepare bridge-phase12-001 — REQUEST_OK, branch created — PASS",
+    "No implementation files modified — PASS",
+    "No Rhino documents touched — PASS"
+  ],
+  "blockers": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "title": "rhino-cad MCP server not registered",
+      "fix": "Add project .mcp.json or ~/.claude.json entry for server.py"
+    },
+    {
+      "id": "F2",
+      "severity": "high",
+      "title": "rhino-chatgpt-orientation skill not invocable from ~/.claude/skills/ symlink",
+      "fix": "Investigate Claude Code skill discovery path; may require direct file placement or different symlink strategy"
+    }
+  ],
+  "notes_for_controller": [
+    "The work commit is 864dbbfd9bcd0ab0b0620aa5300b7b088b5c0218; this report is the receipt commit.",
+    "The Git bridge is working correctly and cleanly. The gap is purely MCP registration.",
+    "The two high-severity fixes (MCP registration + skill discovery) are quick-win items that should unblock a full re-run of this POC.",
+    "The artifacts directory .bridge/artifacts/bridge-phase12-001/ was created but contains no viewport captures — Rhino was never reached.",
+    "The operator-experience.md contains a ranked top-5 improvement list. workflow-assessment.json contains the full friction map with severity/category classification and separated recommendations.",
+    "No operator.sh, exchange.sh, orient.sh, server.py, bridge_cli.py, runtime files, or orientation/skill/installer files were modified during this run."
+  ]
+}
